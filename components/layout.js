@@ -1,13 +1,17 @@
-import Head from './head';
-import Navbar from './navbar';
+import Head from 'next/head';
+import Header from './header';
+import Footer from './footer';
 
-export default function Layout({ children }) {
+export default function Layout({ children, active }) {
     return (
         <>
-            <Head />
-            <Navbar />
+            <Head>
+                <title>Backpack Buddy</title>
+                <link rel="icon" href="/favicon.png" />
+            </Head>
+            <Header active={active} />
             <main>{ children }</main>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }

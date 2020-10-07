@@ -1,0 +1,48 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  position: relative;
+}
+.header::before {
+  background-image: url("/images/bg-header.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+}
+.header .nav-link {
+  color: #f2f2f2 !important;
+  font-weight: bold;
+}
+.header .nav-link:hover {
+  opacity: 0.5;
+  transition: 0.3s all;
+}
+.header__intro h1 {
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/*# sourceMappingURL=app.css.map */
