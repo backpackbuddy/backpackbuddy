@@ -30,9 +30,11 @@ export default function Header({ active }) {
                 </Navbar>
 
                 <div className="header__intro text-white text-center py-4 mt-5">
-                    <h1>Pertama Kali ke Bali?</h1>
-                    <p className="home__description">Gratis rute wisata harian untuk backpacker di Bali</p>
-                    <Button className="mt-4">Cari tau disini</Button>
+                    <Container>
+                        <h1>Pertama Kali ke Bali?</h1>
+                        <p className="home__description">Gratis rute wisata harian untuk backpacker di Bali</p>
+                        <Button className="mt-4">Cari tau disini</Button>
+                    </Container>
                 </div>
             </div>
         </>

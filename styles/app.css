@@ -45,4 +45,8 @@ a {
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 
+.home__place {
+  background-color: #222;
+}
+
 /*# sourceMappingURL=app.css.map */
