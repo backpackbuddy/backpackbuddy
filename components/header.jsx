@@ -33,7 +33,7 @@ export default function Header({ active }) {
                     <Container>
                         <h1>Pertama Kali ke Bali?</h1>
                         <p className="home__description">Gratis rute wisata harian untuk backpacker di Bali</p>
-                        <Button className="mt-4">Cari tau disini</Button>
+                        <Button className="my-4">Cari tau disini</Button>
                     </Container>
                 </div>
             </div>

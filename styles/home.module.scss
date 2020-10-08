@@ -1,0 +1,71 @@
+.place { background-color: #fff; }
+.find {
+    background-color: #222;
+
+    * { color: #f2f2f2; }
+}
+.concultation {
+    display: block;
+    position: relative;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+
+    &::before {
+        background-image: url('/images/bg-konsultasi.jpeg');
+        background-size: cover;
+        background-position: center;
+        content: '';
+        z-index: -2;
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    &::after {
+        background-color: black;
+        content: '';
+        height: 100%;
+        opacity: .1;
+        width: 100%;
+        z-index: -1;
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    h2,
+    h5 {
+        text-shadow: 3px 3px 8px rgba(0,0,0,.4);
+        line-height: 1.8rem;
+    }
+}
+
+.why {
+    img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
+.bgImage {
+}
+
+.bgLighter {
+    // background-color: #fff;
+}
+
+.keepAspect {
+
+}
+
+.description {
+    max-width: 600px;
+}
+

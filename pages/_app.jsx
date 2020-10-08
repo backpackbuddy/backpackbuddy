@@ -1,4 +1,4 @@
-import '../styles/app.css';
+import '../styles/globals.scss';
 import 'typeface-roboto';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
