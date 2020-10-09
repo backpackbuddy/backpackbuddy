@@ -1,3 +1,4 @@
+import styles from '../styles/intro.module.scss';
 import {
     Button,
     Nav,
@@ -29,10 +30,10 @@ export default function Header({ active }) {
                     </Container>
                 </Navbar>
 
-                <div className="header__intro text-white text-center py-4 mt-5">
+                <div className={[styles.intro, "text-white text-center py-4 mt-5"].join(' ')}>
                     <Container>
                         <h1>Pertama Kali ke Bali?</h1>
-                        <p className="home__description">Gratis rute wisata harian untuk backpacker di Bali</p>
+                        <h5 className={[styles.intro__description]}>Gratis rute wisata harian untuk backpacker di Bali</h5>
                         <Button className="my-4">Cari tau disini</Button>
                     </Container>
                 </div>
