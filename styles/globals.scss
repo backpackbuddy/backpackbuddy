@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
 @import './variables';
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: $font-boogaloo;
+  font-family: $font-text;
 }
 
 a {
@@ -19,7 +19,7 @@ a {
 }
 
 h1, h2, h3 {
-    font-family: $font-fredoka;
+    font-family: $font-title;
 }
 
 
@@ -31,6 +31,17 @@ h1, h2, h3 {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -2;
+    }
+
+    &::after {
+        background-color: rgba(0,0,0,.2);
         content: '';
         position: absolute;
         top: 0;
