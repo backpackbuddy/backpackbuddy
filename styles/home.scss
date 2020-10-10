@@ -1,7 +1,7 @@
-.place { background-color: #fff; }
-.find {
-    a { color: #000; }
-}
+@import './variables';
+
+.find a { color: #000; }
+
 .concultation {
     display: block;
     position: relative;

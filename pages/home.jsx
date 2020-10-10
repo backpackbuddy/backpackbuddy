@@ -1,11 +1,15 @@
-import styles from '../styles/home.module.scss';
 import Layout from '../components/layout';
 import toSlugCase from 'to-slug-case';
+import '../styles/home.scss';
+
+// Icons
 import {
     Free as FreeIcon,
     Experienced as ExperiencedIcon,
     Custom as CustomIcon
 } from '../components/icons';
+
+// Bootstrap components
 import {
     Button,
     Col,
@@ -14,7 +18,6 @@ import {
     Image,
     Row,
 } from 'react-bootstrap';
-
 
 function Destinasi() {
     const data = [ 'Ubud', 'Gianyar', 'Kintamani', 'Nusa Penida', 'Seminyak', 'Canggu' ];
@@ -25,7 +28,7 @@ function Destinasi() {
         return (
             <Col className="p-2" xs={12} sm={6} md={4}>
                 <Image className="img-fluid" src="/images/destinasi/ubud.jpg" alt={place} />
-                <h5 className={[styles.place, 'font-italic', 'd-flex', 'align-items-center', 'text-dark', 'p-3'].join(' ')}>
+                <h5 className="place font-italic d-flex align-items-center text-dark p-3">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-geo-alt-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
@@ -50,7 +53,7 @@ export default function Home() {
                 </Container>
             </div>
 
-            <div className={[styles.find, 'py-5'].join(' ')}>
+            <div className="find py-5">
                 <Container>
                     <h3>Cari Itinerary favoritmu</h3>
                     <Row>
@@ -86,27 +89,35 @@ export default function Home() {
                 </Container>
             </div>
 
-            <div className={[styles.concultation, 'text-white'].join(' ')}>
+            <div className="concultation text-white">
                 <Container className="text-right">
                     <h2 className="pb-2">Gratis konsultasi rute wisata</h2>
                     <h5 className="w-50 ml-auto font-weight-normal">Butuh rekomendasi rute selama di Bali atau ingin tahu wisata anti mainstream yang baru di Bali. Konsultasikan dengan kami secara gratis!</h5>
-                    <Button className="mt-2" variant="outline-light" size="lg">Cari tau disini</Button>
+                    <Button
+                        className="mt-2"
+                        variant="outline-light"
+                        size="lg"
+                    >
+                        Cari tau disini
+                    </Button>
                 </Container>
             </div>
 
-            <div className={[styles.why, 'bg-light', 'py-5'].join(' ')}>
+            <div className="why bg-light py-5">
                 <Container>
                     <h2 className="text-center">Mengapa memilih Backpack Buddy?</h2>
-                    <p className={[styles.description, "text-center font-weight-normal font-italic mx-auto mb-4"].join(' ')}>Kami melayani konsultasi rute wisata harian dengan informasi yang lebih lengkap secara langsung bersama konsultan kami</p>
+                    <p className="description text-center font-weight-normal font-italic mx-auto mb-4">
+                        Kami melayani konsultasi rute wisata harian dengan informasi yang lebih lengkap secara langsung bersama konsultan kami
+                    </p>
 
                     <Row>
                         {
                             [
                                 {
                                     file: '1.jpeg',
-                                    Icon: FreeIcon,
-                                    title: 'Gratis',
-                                    description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
+                                        Icon: FreeIcon,
+                                        title: 'Gratis',
+                                        description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
                                 },
                                 {
                                     file: '2.jpeg',
@@ -120,9 +131,10 @@ export default function Home() {
                                     title: 'Customize itinerary',
                                     description: 'Kami melayani request itinerary sesuai keinginan pelanggan.'
                                 },
-                            ].map(({file, Icon, title, description}) => (
+                            ].map(({file, Icon, title, description}, index) => (
                                 <Col
-                                    className={[styles.why__col, 'text-center', 'text-white'].join(' ')}
+                                    key={index}
+                                    className="why__col text-center text-white"
                                     style={{
                                         backgroundImage: `url('/images/gallery/${file}')`,
                                         backgroundSize: 'cover',
@@ -132,7 +144,7 @@ export default function Home() {
                                     xs={12}
                                     md={4}
                                 >
-                                    <div className={styles.why__text}>
+                                    <div className="why__text">
                                         <Icon width="48px" height="48px" fill="#fff" />
                                         <h4 className="mt-3">{title}</h4>
                                         <h5>{description}</h5>
