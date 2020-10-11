@@ -27,23 +27,11 @@ function Destination() {
     return data.map(place => {
         const filename = toSlugCase(place);
 
-        // return (
-        //     <Col className="place__destination" xs={12} sm={6} md={4}>
-        //         <Image className="img-fluid place__img" src="/images/destinasi/ubud.jpg" alt={place} />
-        //         <h5 className="place__name font-italic d-flex align-items-center text-dark p-3">
-        //             <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-geo-alt-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        //                 <path fillRule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-        //             </svg>
-        //             <span>&nbsp; {place}</span>
-        //         </h5>
-        //     </Col>
-        // );
-
         return (
             <Col className="place__destination mb-4" xs={12} sm={6} md={4}>
                 <Card className="place__card">
                     <a href="#">
-                        <Card.Img className="place__img" variant="top" src="/images/destinasi/ubud.jpg" alt={place} />
+                        <Card.Img className="place__img" loading="lazy" variant="top" src="/images/destinasi/ubud.jpg" alt={place} />
                     </a>
                     <Card.Body className="place__card--body">
                         <Card.Title className="place__name d-flex align-items-center mb-0">
@@ -71,7 +59,7 @@ function Home() {
                     <Row className="my-2 my-md-0">
                         <Destination />
                     </Row>
-                    <a className="text-center mt-4 d-flex align-items-center justify-content-center" href="free-itinerary">
+                    <a className="text-center d-flex align-items-center justify-content-center" href="free-itinerary">
                         <span>Destinasi Lainnya</span>
                         &nbsp;<RightArrowIcon width="1rem" height="1rem" />
                     </a>
@@ -114,7 +102,7 @@ function Home() {
                                     md={4}
                                 >
                                     <Card className="why__card">
-                                        <Image loading="lazy" className="why__img" src={`/images/gallery/${file}.jpeg`} />
+                                        <Image loading="lazy" className="why__img" src={`/images/gallery/${file}.jpeg`} alt={title} />
                                         <Card.Body className="why__text">
                                             <Icon width="48px" height="48px" fill="#fff" />
                                             <h4 className="mt-3">{title}</h4>
