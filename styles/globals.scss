@@ -1,24 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
 @import './variables';
+
+* {
+  box-sizing: border-box;
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: $font-text;
+
+  * { font-family: $font-text; }
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
     font-family: $font-title;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+
+  &:hover { text-decoration: none; }
 }
 
-* {
-  box-sizing: border-box;
-}
+section {
+    @media only screen and (min-width: 720px) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
 
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
