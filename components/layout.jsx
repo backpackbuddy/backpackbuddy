@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Header from './header';
 import Footer from './footer';
+import SosmedBtn from './sosmedBtn';
 
 function Layout({ children, active }) {
     return (
@@ -27,6 +28,7 @@ function Layout({ children, active }) {
             </Head>
             <Header active={active} />
             <main>{ children }</main>
+            <SosmedBtn />
             <Footer />
         </>
     );
