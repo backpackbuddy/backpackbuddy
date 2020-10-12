@@ -8,6 +8,10 @@ import {
     ExperiencedIcon,
     CustomIcon,
     RightArrowIcon,
+    FacebookIcon,
+    YoutubeIcon,
+    InstagramIcon,
+    LinkedInIcon,
 } from '../components/icons';
 
 // Bootstrap components
@@ -31,7 +35,7 @@ function Destination() {
             <Col className="place__destination mb-4" xs={12} sm={6} md={4}>
                 <Card className="place__card">
                     <a href="#">
-                        <Card.Img className="place__img" loading="lazy" variant="top" src="/images/destinasi/ubud.jpg" alt={place} />
+                        <Card.Img className="place__img" loading="lazy" variant="top" src={`/images/destinasi/${filename}.jpg`} alt={place} />
                     </a>
                     <Card.Body className="place__card--body">
                         <Card.Title className="place__name d-flex align-items-center mb-0">
@@ -167,6 +171,13 @@ function Home() {
                                 </Form.Group>
                                 <Button variant="outline-primary" type="submit">Subscribe</Button>
                             </Form>
+                            <div className="mt-4">
+                                {
+                                    [FacebookIcon, YoutubeIcon, InstagramIcon, LinkedInIcon].map(Icon => (
+                                        <Icon className="m-2" fill="#222" width="2.5em" height="2.5em" />
+                                    ))
+                                }
+                            </div>
                         </Col>
                     </Row>
                 </Container>
