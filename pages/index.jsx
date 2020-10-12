@@ -8,10 +8,6 @@ import {
     ExperiencedIcon,
     CustomIcon,
     RightArrowIcon,
-    FacebookIcon,
-    YoutubeIcon,
-    InstagramIcon,
-    LinkedInIcon,
 } from '../components/icons';
 
 // Bootstrap components
@@ -24,6 +20,8 @@ import {
     Image,
     Row,
 } from 'react-bootstrap';
+
+import Sosmed from '../components/sosmed';
 
 function Destination() {
     const data = [ 'Ubud', 'Gianyar', 'Kintamani', 'Nusa Penida', 'Seminyak', 'Canggu' ];
@@ -172,11 +170,12 @@ function Home() {
                                 <Button variant="outline-primary" type="submit">Subscribe</Button>
                             </Form>
                             <div className="mt-4">
-                                {
-                                    [FacebookIcon, YoutubeIcon, InstagramIcon, LinkedInIcon].map(Icon => (
-                                        <Icon className="m-2" fill="#222" width="2.5em" height="2.5em" />
-                                    ))
-                                }
+                                <Sosmed
+                                    className="m-2"
+                                    fill="#222"
+                                    height="2.5em"
+                                    width="2.5em"
+                                />
                             </div>
                         </Col>
                     </Row>
