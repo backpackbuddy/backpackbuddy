@@ -1,12 +1,11 @@
 import Layout from '../components/layout';
 
-
-function About() {
+function Contact() {
     return (
         <Layout>
-            <h1 className="text-center">About</h1>
+            <h1 className="text-center">Contact</h1>
         </Layout>
     );
 }
 
-export default About;
+export default Contact;

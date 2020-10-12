@@ -21,7 +21,7 @@ export default function Header(props) {
                     <Navbar.Collapse id="bb-navbar-nav">
                         <Nav className="ml-auto p-2 p-lg-0 font-weight-bold" defaultActiveKey={useRouter().pathname}>
                             <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="#">Free Itinerary</Nav.Link>
+                            <Nav.Link href="free-itinerary">Free Itinerary</Nav.Link>
                             <Nav.Link href="/contact">Contact</Nav.Link>
                             <Nav.Link href="/about">About</Nav.Link>
                         </Nav>

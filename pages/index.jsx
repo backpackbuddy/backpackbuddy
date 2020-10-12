@@ -139,7 +139,7 @@ function Home() {
             {*/}
 
             <section className="find">
-                <Container>
+                <Container className="px-4">
                     <h3>Cari Itinerary favoritmu</h3>
                     <Row>
                         <Col xs={12} md={4}>
