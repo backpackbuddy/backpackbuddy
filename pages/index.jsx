@@ -1,6 +1,7 @@
 import '../styles/home.scss';
 import Layout from '../components/layout';
 import toSlugCase from 'to-slug-case';
+import Link from 'next/link';
 
 // Icons
 import {
@@ -61,10 +62,12 @@ function Home() {
                     <Row className="my-2 my-md-0">
                         <Destination />
                     </Row>
-                    <a className="text-center d-flex align-items-center justify-content-center" href="free-itinerary">
-                        <span>Destinasi Lainnya</span>
-                        &nbsp;<RightArrowIcon width="1rem" height="1rem" />
-                    </a>
+                    <Link href="/free-itinerary">
+                        <a className="text-center d-flex align-items-center justify-content-center" href="/free-itinerary">
+                            <span>Destinasi Lainnya</span>
+                            &nbsp;<RightArrowIcon width="1rem" height="1rem" />
+                        </a>
+                    </Link>
                 </Container>
             </section>
 
@@ -115,10 +118,12 @@ function Home() {
                             ))
                         }
                     </Row>
-                    <a className="text-center mt-4 d-flex align-items-center justify-content-center" href="free-itinerary">
-                        <span>Tentang Kami</span>
-                        &nbsp;<RightArrowIcon width="1rem" height="1rem" />
-                    </a>
+                    <Link href="/about">
+                        <a className="text-center mt-4 d-flex align-items-center justify-content-center" href="/about">
+                            <span>Tentang Kami</span>
+                            &nbsp;<RightArrowIcon width="1rem" height="1rem" />
+                        </a>
+                    </Link>
                 </Container>
             </section>
 
