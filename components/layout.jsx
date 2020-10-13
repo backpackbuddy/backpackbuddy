@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Header from './header';
 import Footer from './footer';
 import SosmedBtn from './sosmedBtn';
 
@@ -26,7 +25,6 @@ function Layout({ children, active }) {
                     rel="stylesheet"
                 /> 
             </Head>
-            <Header active={active} />
             <main>{ children }</main>
             <SosmedBtn />
             <Footer />

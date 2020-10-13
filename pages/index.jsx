@@ -1,4 +1,5 @@
 import '../styles/home.scss';
+import Header from '../components/header';
 import Layout from '../components/layout';
 import toSlugCase from 'to-slug-case';
 import Link from 'next/link';
@@ -53,86 +54,88 @@ function Destination() {
 
 function Home() {
     return (
-        <Layout>
-            <section className="place">
-                <Container className="">
-                    <h2 className="text-center">Mulai petualanganmu</h2>
-                    <p className="text-center">Destinasi wisata populer di Bali</p>
+        <>
+            <Header />
+            <Layout>
+                <section className="place">
+                    <Container className="">
+                        <h2 className="text-center">Mulai petualanganmu</h2>
+                        <p className="text-center">Destinasi wisata populer di Bali</p>
 
-                    <Row className="my-2 my-md-0">
-                        <Destination />
-                    </Row>
-                    <Link href="/free-itinerary">
-                        <a className="text-center d-flex align-items-center justify-content-center" href="/free-itinerary">
-                            <span>Destinasi Lainnya</span>
-                            &nbsp;<RightArrowIcon width="1rem" height="1rem" />
-                        </a>
-                    </Link>
-                </Container>
-            </section>
+                        <Row className="my-2 my-md-0">
+                            <Destination />
+                        </Row>
+                        <Link href="/free-itinerary">
+                            <a className="text-center d-flex align-items-center justify-content-center" href="/free-itinerary">
+                                <span>Destinasi Lainnya</span>
+                                &nbsp;<RightArrowIcon width="1rem" height="1rem" />
+                            </a>
+                        </Link>
+                    </Container>
+                </section>
 
-            <section className="why bg-light">
-                <Container>
-                    <h2 className="text-center">Mengapa memilih Backpack Buddy?</h2>
-                    <p className="description text-center font-weight-normal font-italic mx-auto mb-4">
-                        Kami melayani konsultasi rute wisata harian dengan informasi yang lebih lengkap secara langsung bersama konsultan kami
-                    </p>
+                <section className="why bg-light">
+                    <Container>
+                        <h2 className="text-center">Mengapa memilih Backpack Buddy?</h2>
+                        <p className="description text-center font-weight-normal font-italic mx-auto mb-4">
+                            Kami melayani konsultasi rute wisata harian dengan informasi yang lebih lengkap secara langsung bersama konsultan kami
+                        </p>
 
-                    <Row>
-                        {
-                            [
+                        <Row>
                             {
-                                file: '1',
-                                Icon: FreeIcon,
-                                title: 'Gratis',
-                                description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
-                                },
-                                {
-                                    file: '2',
+                                [
+                                    {
+                                        file: '1',
+                                            Icon: FreeIcon,
+                                            title: 'Gratis',
+                                            description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
+                                    },
+                                    {
+                                        file: '2',
                                         Icon: ExperiencedIcon,
                                         title: 'Konsultan berpengalaman',
                                         description: 'Para konsultan merupakan traveler asli Bali.'
-                                },
-                                {
-                                    file: '3',
-                                    Icon: CustomIcon,
-                                    title: 'Customize itinerary',
-                                    description: 'Kami melayani request itinerary sesuai keinginan pelanggan.'
                                     },
-                            ].map(({file, Icon, title, description}, index) => (
-                                <Col
-                                    key={index}
-                                    className="why__col text-center text-white"
-                                    xs={12}
-                                    md={4}
-                                >
-                                    <Card className="why__card">
-                                        <Image loading="lazy" className="why__img" src={`/images/gallery/${file}.jpeg`} alt={title} />
-                                        <Card.Body className="why__text">
-                                            <Icon width="48px" height="48px" fill="#fff" />
-                                            <h4 className="mt-3">{title}</h4>
-                                            <p>{description}</p>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            ))
-                        }
-                    </Row>
-                    <Link href="/about">
-                        <a className="text-center mt-4 d-flex align-items-center justify-content-center" href="/about">
-                            <span>Tentang Kami</span>
-                            &nbsp;<RightArrowIcon width="1rem" height="1rem" />
-                        </a>
-                    </Link>
-                </Container>
-            </section>
+                                    {
+                                        file: '3',
+                                        Icon: CustomIcon,
+                                        title: 'Customize itinerary',
+                                        description: 'Kami melayani request itinerary sesuai keinginan pelanggan.'
+                                    },
+                                ].map(({file, Icon, title, description}, index) => (
+                                    <Col
+                                        key={index}
+                                        className="why__col text-center text-white"
+                                        xs={12}
+                                        md={4}
+                                    >
+                                        <Card className="why__card">
+                                            <Image loading="lazy" className="why__img" src={`/images/gallery/${file}.jpeg`} alt={title} />
+                                            <Card.Body className="why__text">
+                                                <Icon width="48px" height="48px" fill="#fff" />
+                                                <h4 className="mt-3">{title}</h4>
+                                                <p>{description}</p>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                ))
+                            }
+                        </Row>
+                        <Link href="/about">
+                            <a className="text-center mt-4 d-flex align-items-center justify-content-center" href="/about">
+                                <span>Tentang Kami</span>
+                                &nbsp;<RightArrowIcon width="1rem" height="1rem" />
+                            </a>
+                        </Link>
+                    </Container>
+                </section>
 
-            {/*}
-            <section className="concultation text-white">
-                <Container className="text-right">
-                    <h2 className="pb-2">Gratis konsultasi rute wisata</h2>
-                    <h5 className="w-50 ml-auto font-weight-normal">Butuh rekomendasi rute selama di Bali atau ingin tahu wisata anti mainstream yang baru di Bali. Konsultasikan dengan kami secara gratis!</h5>
-                    <Button
+                {/*}
+                <section className="concultation text-white">
+                    <Container className="text-right">
+                        <h2 className="pb-2">Gratis konsultasi rute wisata</h2>
+                        <h5 className="w-50 ml-auto font-weight-normal">Butuh rekomendasi rute selama di Bali atau ingin tahu wisata anti mainstream yang baru di Bali. Konsultasikan dengan kami secara gratis!</h5>
+                        <Button
                         className="mt-2"
                         variant="outline-light"
                         size="lg"
@@ -145,7 +148,7 @@ function Home() {
 
             <section className="find">
                 <Container className="px-4">
-                    <h3>Cari Itinerary favoritmu</h3>
+                    <h3>Cari Itinerary Favoritmu</h3>
                     <Row>
                         <Col xs={12} md={4}>
                             <a className="d-block my-2" href="#">Bertualang ke hutan</a>
@@ -187,6 +190,7 @@ function Home() {
                 </Container>
             </section>
         </Layout>
+    </>
     )
 }
 
