@@ -12,6 +12,7 @@
     "dependencies": {
         "@zeit/next-sass": "^1.0.1",
         "bootstrap": "^4.5.2",
+        "framer-motion": "^2.9.1",
         "jquery": "^3.5.1",
         "next": "9.5.3",
         "nextjs-fonts": "^0.22.0",

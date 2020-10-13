@@ -34,7 +34,7 @@ function Sosmed(props) {
             url: linkedinLink,
         }
     ].map(({Icon, url}) => (
-        <a href={url} target="_blank">
+        <a href={url} target="_blank" key={url}>
             <Icon {...props} />
         </a>
     ));

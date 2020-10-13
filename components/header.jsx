@@ -1,5 +1,6 @@
-import '../styles/header.scss';
+import { motion } from 'framer-motion';
 import TopBar from './topbar';
+import '../styles/header.scss';
 
 // react bootstrap components
 import {
@@ -17,13 +18,21 @@ export default function Header({
         <header className="header">
             <TopBar />
 
-            <div className="intro text-white text-center">
-                <Container>
+            <div className="intro text-white text-center" >
+                <motion.div
+                    className="container"
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    initial={{ opacity: 0 }}
+                    transition={{
+                        when: "beforeChildren"
+                    }}
+                >
                     <h1>{title}</h1>
                     <p className="intro__description">{description}</p>
                     { btn && <Button className="mt-4">Cari tau disini</Button> }
                     { children }
-                </Container>
+                </motion.div>
             </div>
         </header>
     );
