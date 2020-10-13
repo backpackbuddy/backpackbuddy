@@ -1,0 +1,3 @@
+# rewrite non-existing .php file to existing .html
+RewriteCond %{DOCUMENT_ROOT}/$1 !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
