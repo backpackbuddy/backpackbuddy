@@ -1,6 +1,10 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+// react bootstrap components
 import {
     Container,
+    Image,
     Nav,
     Navbar,
 } from 'react-bootstrap';
@@ -37,4 +41,4 @@ function TopBar() {
     );
 }
 
-export default Navbar;
+export default TopBar;

@@ -1,3 +1,4 @@
+
 // Icons
 import {
     FacebookIcon,
@@ -6,23 +7,31 @@ import {
     LinkedInIcon,
 } from '../components/icons';
 
+// variables
+import {
+    facebookLink,
+    youtubeLink,
+    instagramLink,
+    linkedinLink
+} from './_variable';
+
 function Sosmed(props) {
     return [
         {
             Icon: FacebookIcon,
-            url: 'https://facebook.com/backpackbuddyid'
+            url: facebookLink,
         },
         {
             Icon: YoutubeIcon,
-            url: 'https://youtube.com/channel/UCS9pAKRfIfMZz8nbCKORxHA'
+            url: youtubeLink,
         },
         {
             Icon: InstagramIcon,
-            url: 'https://www.instagram.com/backpack.buddy/'
+            url: instagramLink,
         },
         {
             Icon: LinkedInIcon,
-            url: '#'
+            url: linkedinLink,
         }
     ].map(({Icon, url}) => (
         <a href={url} target="_blank">

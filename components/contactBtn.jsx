@@ -1,15 +1,25 @@
 import { useState } from 'react';
+
+// floating btn components
 import {
     FloatingMenu,
     MainButton,
     ChildButton,
 } from 'react-floating-button-menu';
 
+// icons
 import {
     ChatIcon,
     CloseIcon,
     WhatsappIcon,
+    MessengerIcon,
 } from '../components/icons';
+
+// variables
+import {
+    whatsappLink,
+    messengerLink,
+} from './_variable';
 
 
 function SosmedBtn(props) {
@@ -21,10 +31,10 @@ function SosmedBtn(props) {
 
     return (
         <FloatingMenu
-            slideSpeed={500}
             direction="up"
-            spacing={8}
             isOpen={isOpen}
+            slideSpeed={500}
+            spacing={8}
             style={{
                 position: 'fixed',
                 bottom: '1.5rem',
@@ -40,10 +50,22 @@ function SosmedBtn(props) {
                 size={56}
             />
             <ChildButton 
-                icon={<WhatsappIcon width="20px" height="20px" />}
-                size={50}
                 background="white"
-                onClick={() => document.location.href="/"}
+                icon={
+                    <a href={whatsappLink}>
+                        <WhatsappIcon width="20px" height="20px" />
+                    </a>
+                }
+                size={50}
+            />
+            <ChildButton 
+                background="white"
+                icon={
+                    <a href={messengerLink} target="_blank">
+                        <MessengerIcon width="20px" height="20px" />
+                    </a>
+                }
+                size={50}
             />
         </FloatingMenu>
     );

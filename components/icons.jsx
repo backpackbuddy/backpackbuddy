@@ -113,3 +113,14 @@ export function WhatsappIcon(props) {
         </svg>
     )
 }
+
+export function MessengerIcon(props) {
+  return (
+    <svg height="1em" viewBox="0 0 24 24" width="1em" {...props}>
+      <path
+        d="M0 11.111c0 3.496 1.744 6.615 4.471 8.652V24l4.086-2.242a12.92 12.92 0 003.442.465c6.627 0 12-4.974 12-11.111C24 4.975 18.627 0 12 0S0 4.974 0 11.111zm10.734-3.112l3.13 3.259 5.887-3.259-6.56 6.962-3.055-3.258-5.963 3.259z"
+        fill="#2196f3"
+      />
+    </svg>
+  )
+}

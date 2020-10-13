@@ -34,8 +34,6 @@ $transition: .35s all ease;
     }
 }
 
-.find a { color: #000; }
-
 .concultation {
     display: block;
     position: relative;
@@ -83,6 +81,7 @@ $transition: .35s all ease;
     &__col { position: relative; }
 
     &__card {
+        height: 100%;
         overflow: hidden;
 
         &:hover img {

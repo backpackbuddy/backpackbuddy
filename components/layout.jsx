@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Footer from './footer';
-import SosmedBtn from './sosmedBtn';
+import ContactBtn from './contactBtn';
 
-function Layout({ children, active }) {
+function Layout({ children }) {
     return (
         <>
             <Head>
@@ -26,7 +26,7 @@ function Layout({ children, active }) {
                 /> 
             </Head>
             <main>{ children }</main>
-            <SosmedBtn />
+            <ContactBtn />
             <Footer />
         </>
     );

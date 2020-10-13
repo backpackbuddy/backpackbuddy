@@ -148,28 +148,35 @@ function Home() {
 
             <section className="find">
                 <Container className="px-4">
-                    <h3>Cari Itinerary Favoritmu</h3>
+                    <Row>
+                        <Col xs={12} md={8}>
+                            <h3>Cari Itinerary Favoritmu</h3>
+                        </Col>
+                        <Col className="d-none d-md-block" xs={12} md={4}>
+                            <h4>Newsletter</h4>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col xs={12} md={4}>
-                            <a className="d-block my-2" href="#">Bertualang ke hutan</a>
-                            <a className="d-block my-2" href="#">Petualangan ke air terjun</a>
-                            <a className="d-block my-2" href="#">Itinerary untuk keluarga dan anak-anak</a>
-                            <a className="d-block my-2" href="#">Mengenal budaya Bali</a>
+                            <a className="d-block my-3" href="#">Bertualang ke hutan</a>
+                            <a className="d-block my-3" href="#">Petualangan ke air terjun</a>
+                            <a className="d-block my-3" href="#">Itinerary untuk keluarga dan anak-anak</a>
+                            <a className="d-block my-3" href="#">Mengenal budaya Bali</a>
                         </Col>
 
                         <Col xs={12} md={4}>
-                            <a className="d-block my-2" href="#">City tour kota Denpasar</a>
-                            <a className="d-block my-2" href="#">Mencari sunset</a>
-                            <a className="d-block my-2" href="#">Naik Gunung Batur</a>
-                            <a className="d-block my-2" href="#">Petualangan penuh adrenalin</a>
+                            <a className="d-block my-3" href="#">City tour kota Denpasar</a>
+                            <a className="d-block my-3" href="#">Mencari sunset</a>
+                            <a className="d-block my-3" href="#">Naik Gunung Batur</a>
+                            <a className="d-block my-3" href="#">Petualangan penuh adrenalin</a>
                         </Col>
 
                         <Col
                             xs={12}
                             md={4}
-                            className="mt-4 mt-md-0"
+                            className="find__newsletter mt-4 mt-md-0"
                         >
-                            <h4>Newsletter</h4>
+                            <h4 className="d-md-none">Newsletter</h4>
                             <p>Daftar untuk mendapatkan info terbaru</p>
                             <Form action="/" method="post">
                                 <Form.Group controlId="#newsletterInput">

@@ -1,14 +1,17 @@
 import '../styles/footer.scss';
 import Sosmed from '../components/sosmed';
-import { Container } from 'react-bootstrap';
+import {
+    Container,
+    Image,
+} from 'react-bootstrap';
 
 function Footer() {
     return (
         <footer className="footer text-light text-center py-5">
             <Container>
-                <h3>
-                    <a href="/">Backpack Buddy</a>
-                </h3>
+                <a href="/">
+                    <Image className="d-block mx-auto img-fluid" src="/images/default-logo.png" alt="backpackbuddy logo" />
+                </a>
                 <Sosmed
                     className="m-2"
                     fill="#fff"
