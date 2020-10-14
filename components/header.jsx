@@ -14,25 +14,32 @@ export default function Header({
     btn = true,
     children
 }) {
+
+    const visibleMotion = {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 }
+    }
+
     return (
         <header className="header">
             <TopBar />
 
             <div className="intro text-white text-center" >
-                <motion.div
-                    className="container"
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    initial={{ opacity: 0 }}
-                    transition={{
-                        when: "beforeChildren"
-                    }}
-                >
-                    <h1>{title}</h1>
-                    <p className="intro__description">{description}</p>
-                    { btn && <Button className="mt-4">Cari tau disini</Button> }
-                    { children }
-                </motion.div>
+                <Container>
+                    <motion.div
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        variants={visibleMotion}
+                        transition={{ duration: .3 }}
+                    >
+                        <h1> {title} </h1>
+                        <p className="intro__description">{description}</p>
+                        { btn && <Button className="mt-4">Cari tau disini</Button> }
+                        { children }
+                    </motion.div>
+                </Container>
             </div>
         </header>
     );
