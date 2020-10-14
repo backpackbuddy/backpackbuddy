@@ -7,6 +7,7 @@
         "build": "next build",
         "preexport": "npm run build",
         "export": "next export",
+        "prestart": "npm run build",
         "start": "next start",
         "predeploy": "next build && next export",
         "deploy": "gh-pages -d out"
@@ -16,6 +17,7 @@
         "bootstrap": "^4.5.2",
         "framer-motion": "^2.9.1",
         "jquery": "^3.5.1",
+        "moment": "^2.29.1",
         "next": "9.5.3",
         "nextjs-fonts": "^0.22.0",
         "popper.js": "^1.16.1",
@@ -25,6 +27,7 @@
         "react-floating-button-menu": "^2.0.8",
         "sass": "^1.27.0",
         "styled-components": "^5.2.0",
+        "to-sentence-case-with-dot": "^1.0.9",
         "to-slug-case": "^1.0.0",
         "to-title-case": "^1.0.0"
     },

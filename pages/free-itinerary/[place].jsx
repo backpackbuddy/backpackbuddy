@@ -1,29 +1,108 @@
 import TopBar from '../../components/topbar';
 import Layout from '../../components/layout';
+import Link from 'next/link';
 import toSlugCase from 'to-slug-case';
 import toTitleCase from 'to-title-case';
+import toSentenceCase from 'to-sentence-case-with-dot';
+import '../../styles/itinerary.scss';
 
 // react bootstrap components
 import {
+    Button,
+    Card,
     Container,
     Col,
     Image,
     Row,
+    Table,
 } from 'react-bootstrap';
 
 function Itinerary({ place }) {
     const data = filterData(place);
+    const borderColors = [
+        'primary',
+        'success',
+        'danger',
+        'warning',
+        'info',
+        'dark',
+    ];
 
     function ItineraryLists() {
-        return data.map((item) => ( 
-            <Row>
-                <Col className="bg-light" xs={12} md={4}>
-                    <Image className="img-fluid" src="https://source.unsplash.com/random" alt="random" />
-                </Col>
-                <Col xs={12} md={8}>
-                    <h2>{ toTitleCase(item.kecamatan) }</h2>
-                </Col>
-            </Row>
+        return data.map(({
+            kecamatan,
+            kabupaten,
+            waktu,
+            map,
+            tempat,
+            untuk,
+            info,
+            kategori,
+            telp,
+            keterangan,
+            foto,
+        }, index) => ( 
+        <Row className="justify-content-center">
+            <Col className="mb-2" xs={12} sm={8} md={6}>
+                <Card border={borderColors[index % borderColors.length]}>
+                    <Card.Img
+                        className="itinerary__img img-fluid"
+                        variant="top"
+                        src="https://source.unsplash.com/random"
+                        style={{
+                            maxHeight: '312px',
+                            objectFit: 'cover',
+                        }}
+                    />
+                    <Card.Body>
+                        <Card.Text>
+                            <h3>{index + 1}. {toTitleCase(tempat)}</h3>
+                            <p>{toSentenceCase(info)}</p>
+                            <Table>
+                                <tbody>
+                                    <tr>
+                                        <th>Kecamatan</th>
+                                        <td>{toTitleCase(kecamatan)}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Kabupaten</th>
+                                        <td>{toTitleCase(kabupaten)}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Telp.</th>
+                                        <td>{telp}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Cocok Untuk</th>
+                                        <td>
+                                            { untuk.split(';').map(e => toTitleCase(e)).join(', ') }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Waktu</th>
+                                        <td>{toTitleCase(waktu)}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Kategori</th>
+                                        <td>{toTitleCase(kategori.split(';').join(', '))}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Google Map</th>
+                                        <td>
+                                            <a className="text-primary" href={map} target="_blank">Klik Disini</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Keterangan</th>
+                                        <td>{toSentenceCase(keterangan)}</td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            </Col>
+        </Row>
         ));
     }
 
@@ -31,8 +110,12 @@ function Itinerary({ place }) {
         <>
             <TopBar className="py-0 shadow-sm" bg="light" variant="light" sticky="top" />
             <Layout>
-                <Container className="py-4">
+                <Container className="itinerary py-4">
+                    <h2 className="text-center py-3">Itinerary {toTitleCase(place)}</h2>
                     <ItineraryLists />
+                    <Link href="/free-itinerary">
+                        <Button className="mx-auto d-block mt-3" variant="info"> Back to list </Button>
+                    </Link>
                 </Container>
             </Layout>
         </>
