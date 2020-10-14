@@ -1,16 +1,15 @@
 import '../styles/home.scss';
 import Header from '../components/header';
 import Layout from '../components/layout';
-import toSlugCase from 'to-slug-case';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Destination from '../components/destination';
 
 // Icons
 import {
     CustomIcon,
     ExperiencedIcon,
     FreeIcon,
-    LocationIcon,
     RightArrowIcon,
 } from '../components/icons';
 
@@ -26,36 +25,6 @@ import {
 } from 'react-bootstrap';
 
 import Sosmed from '../components/sosmed';
-
-function Destination() {
-    const data = [ 'Ubud', 'Gianyar', 'Kintamani', 'Nusa Penida', 'Seminyak', 'Canggu' ];
-
-    return data.map(place => {
-        const filename = toSlugCase(place);
-
-        return (
-            <Col className="place__destination mb-4" xs={12} sm={6} md={4}>
-                <Card className="place__card">
-                    <a href="#">
-                        <Card.Img
-                            className="place__img"
-                            loading="lazy"
-                            variant="top"
-                            src={`/images/destinasi/${filename}.jpg`} alt={place} 
-                        />
-                    </a>
-                    <Card.Body className="place__card--body">
-                        <Card.Title className="place__name d-flex align-items-center mb-0">
-                            <LocationIcon />
-                            <span>&nbsp;</span>
-                            <a href="#">{place}</a>
-                        </Card.Title>
-                    </Card.Body>
-                </Card>
-            </Col>
-        );
-    });
-}
 
 function Home() {
     return (
@@ -74,13 +43,11 @@ function Home() {
                     transition={{ duration: .5 }}
                 >
                     <section className="place">
-                        <Container className="">
+                        <Container>
                             <h2 className="text-center">Mulai petualanganmu</h2>
                             <p className="text-center">Destinasi wisata populer di Bali</p>
 
-                            <Row className="my-2 my-md-0">
-                                <Destination />
-                            </Row>
+                            <Destination />
                             <Link href="/free-itinerary">
                                 <a className="text-center d-flex align-items-center justify-content-center" href="/free-itinerary">
                                     <span>Destinasi Lainnya</span>
