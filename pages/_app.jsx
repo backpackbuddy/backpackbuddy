@@ -4,11 +4,7 @@ import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps, router }) {
     return (
-        <AnimateSharedLayout>
-            <AnimatePresence>
-                <Component {...pageProps} key={router.route} />
-            </AnimatePresence>
-        </AnimateSharedLayout>
+        <Component {...pageProps} key={router.route} />
     );
 }
 

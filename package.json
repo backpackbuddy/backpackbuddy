@@ -5,6 +5,8 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
+        "preexport": "npm run build",
+        "export": "next export",
         "start": "next start",
         "predeploy": "next build && next export",
         "deploy": "gh-pages -d out"
@@ -23,7 +25,8 @@
         "react-floating-button-menu": "^2.0.8",
         "sass": "^1.27.0",
         "styled-components": "^5.2.0",
-        "to-slug-case": "^1.0.0"
+        "to-slug-case": "^1.0.0",
+        "to-title-case": "^1.0.0"
     },
     "devDependencies": {
         "@zeit/next-css": "^1.0.1",

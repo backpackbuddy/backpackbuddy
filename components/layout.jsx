@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Footer from './footer';
 import ContactBtn from './contactBtn';
-import { motion} from 'framer-motion';
 
 function Layout({ children }) {
     return (
@@ -26,9 +25,7 @@ function Layout({ children }) {
                     rel="stylesheet"
                 /> 
             </Head>
-            <motion.main layout >
-                { children }
-            </motion.main>
+            <main> { children } </main>
             <ContactBtn />
             <Footer />
         </>

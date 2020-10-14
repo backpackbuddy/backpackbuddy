@@ -9,9 +9,9 @@ import {
     Navbar,
 } from 'react-bootstrap';
 
-function TopBar() {
+function TopBar(props) {
     return (
-        <Navbar className="py-4" variant="dark" expand="lg">
+        <Navbar className="py-4" variant="dark" expand="lg" {...props}>
             <Container>
                 <Link href="/">
                     <Navbar.Brand href="/">
