@@ -4,6 +4,7 @@ import Layout from '../components/layout';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Destination from '../components/destination';
+import Categories from '../components/categories';
 
 // Icons
 import {
@@ -47,7 +48,7 @@ function Home() {
                             <h2 className="text-center">Mulai petualanganmu</h2>
                             <p className="text-center">Destinasi wisata populer di Bali</p>
 
-                            <Destination />
+                            <Destination limit={6} />
                             <Link href="/free-itinerary">
                                 <a className="text-center d-flex align-items-center justify-content-center" href="/free-itinerary">
                                     <span>Destinasi Lainnya</span>
@@ -140,6 +141,7 @@ function Home() {
                             </Col>
                         </Row>
                         <Row>
+                            <Categories />
                             <Col xs={12} md={4}>
                                 <a className="d-block my-3" href="#">Bertualang ke hutan</a>
                                 <a className="d-block my-3" href="#">Petualangan ke air terjun</a>

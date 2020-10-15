@@ -132,3 +132,30 @@ export function LocationIcon(props) {
         </svg>
     );
 }
+
+export function BlueArrowIcon(props) {
+  return (
+    <svg viewBox="0 0 512 512" width="1em" height="1em" {...props}>
+      <linearGradient
+        id="prefix__a"
+        gradientUnits="userSpaceOnUse"
+        x1={31.985}
+        y1={258.02}
+        x2={479.984}
+        y2={258.02}
+        gradientTransform="matrix(1.0001 0 0 -1.0001 .003 514.033)"
+      >
+        <stop offset={0} stopColor="#00f2fe" />
+        <stop offset={0.021} stopColor="#03effe" />
+        <stop offset={0.293} stopColor="#24d2fe" />
+        <stop offset={0.554} stopColor="#3cbdfe" />
+        <stop offset={0.796} stopColor="#4ab0fe" />
+        <stop offset={1} stopColor="#4facfe" />
+      </linearGradient>
+      <path
+        d="M256.005 512c-15.367 0-30.735-5.848-42.435-17.549L37.864 319.176c-7.82-7.801-7.836-20.465-.035-28.286 7.801-7.82 20.465-7.835 28.285-.035L241.84 466.148c7.815 7.815 20.505 7.815 28.302.018l175.743-175.311c7.82-7.8 20.484-7.785 28.285.035s7.785 20.484-.035 28.286L298.411 494.469C286.725 506.155 271.365 512 256.005 512zm19.996-129.981V20.001C276.001 8.954 267.046 0 255.999 0s-20.001 8.954-20.001 20.001v362.018c0 11.047 8.954 20.001 20.001 20.001s20.002-8.954 20.002-20.001z"
+        fill="url(#prefix__a)"
+      />
+    </svg>
+  )
+}

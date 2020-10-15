@@ -3,14 +3,6 @@ import Layout from '../components/layout';
 import Sosmed from '../components/sosmed';
 import '../styles/about.scss';
 
-// icons
-import {
-    WhatsappIcon,
-    FacebookIcon,
-    InstagramIcon,
-    YoutubeIcon,
-} from '../components/icons';
-
 // react bootstrap components
 import {
     Container,

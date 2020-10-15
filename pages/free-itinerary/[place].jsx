@@ -4,8 +4,8 @@ import Link from 'next/link';
 import toSlugCase from 'to-slug-case';
 import toTitleCase from 'to-title-case';
 import toSentenceCase from 'to-sentence-case-with-dot';
-import filterData from '../../utils/filterData';
-import noDuplicateData from '../../utils/noDuplicateData';
+import filterData from '../../utils/filter-data';
+import noDuplicateData from '../../utils/no-duplicate-data';
 import '../../styles/itinerary.scss';
 
 // react bootstrap components
@@ -19,7 +19,7 @@ import {
     Table,
 } from 'react-bootstrap';
 
-const dataJson = require('./data.json');
+const dataJson = require('../../data.json');
 
 function Itinerary({ place }) {
     const data = filterData(dataJson, place);
@@ -45,6 +45,7 @@ function Itinerary({ place }) {
             telp,
             keterangan,
             foto,
+            fotoInstagram,
         }, index) => ( 
         <Row className="justify-content-center">
             <Col className="mb-2" xs={12} sm={8} md={6}>
@@ -97,6 +98,10 @@ function Itinerary({ place }) {
                                         </td>
                                     </tr>
                                     <tr>
+                                        <th>Instagram</th>
+                                        <td><a className="text-primary" href={fotoInstagram}></a></td>
+                                    </tr>
+                                    <tr>
                                         <th>Keterangan</th>
                                         <td>{toSentenceCase(keterangan)}</td>
                                     </tr>
@@ -112,15 +117,17 @@ function Itinerary({ place }) {
 
     return (
         <>
-            <TopBar className="py-0 shadow-sm" bg="light" variant="light" sticky="top" />
+            <TopBar className="py-0 shadow-sm" bg="white" variant="white" sticky="top" />
             <Layout>
-                <Container className="itinerary py-4">
-                    <h2 className="text-center py-3">Itinerary {toTitleCase(place)}</h2>
-                    <ItineraryLists />
-                    <Link href="/free-itinerary">
-                        <Button className="mx-auto d-block mt-3" variant="info"> Back to list </Button>
-                    </Link>
-                </Container>
+                <div className="bg-light">
+                    <Container className="itinerary py-4">
+                        <h2 className="text-center py-3">Itinerary {toTitleCase(place)}</h2>
+                        <ItineraryLists />
+                        <Link href="/free-itinerary">
+                            <Button className="mx-auto d-block mt-3" variant="info"> Back to list </Button>
+                        </Link>
+                    </Container>
+                </div>
             </Layout>
         </>
     );
@@ -128,7 +135,7 @@ function Itinerary({ place }) {
 
 // for next export 
 export async function getStaticPaths() {
-    const uniqueData = noDuplicateData(dataJson);
+    const uniqueData = noDuplicateData(dataJson, 'kecamatan');
 
     return {
         paths: uniqueData.map((kecamatan) => ({

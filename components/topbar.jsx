@@ -13,12 +13,10 @@ function TopBar(props) {
     return (
         <Navbar className="py-4" variant="dark" expand="lg" {...props}>
             <Container>
-                <Link href="/">
-                    <Navbar.Brand href="/">
-                        <Image className="d-none d-sm-block" src="/images/default-logo.png" alt="Backpack Buddy" />
-                        <Image className="d-sm-none" src="/images/default-logo-mobile.png" height="50px" alt="Backpack Buddy" />
-                    </Navbar.Brand>
-                </Link>
+                <Navbar.Brand href="/">
+                    <Image className="d-none d-sm-block" src="/images/default-logo.png" alt="Backpack Buddy" />
+                    <Image className="d-sm-none" src="/images/default-logo-mobile.png" height="50px" alt="Backpack Buddy" />
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="bb-navbar-nav" />
                 <Navbar.Collapse id="bb-navbar-nav">
                     <Nav className="ml-auto p-2 p-lg-0 font-weight-bold" defaultActiveKey={useRouter().pathname}>
