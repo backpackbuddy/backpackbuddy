@@ -4,6 +4,8 @@ import Link from 'next/link';
 import toSlugCase from 'to-slug-case';
 import toTitleCase from 'to-title-case';
 import toSentenceCase from 'to-sentence-case-with-dot';
+import filterData from '../../utils/filterData';
+import noDuplicateData from '../../utils/noDuplicateData';
 import '../../styles/itinerary.scss';
 
 // react bootstrap components
@@ -17,8 +19,10 @@ import {
     Table,
 } from 'react-bootstrap';
 
+const dataJson = require('./data.json');
+
 function Itinerary({ place }) {
-    const data = filterData(place);
+    const data = filterData(dataJson, place);
     const borderColors = [
         'primary',
         'success',
@@ -48,7 +52,7 @@ function Itinerary({ place }) {
                     <Card.Img
                         className="itinerary__img img-fluid"
                         variant="top"
-                        src="https://source.unsplash.com/random"
+                        src={foto}
                         style={{
                             maxHeight: '312px',
                             objectFit: 'cover',
@@ -122,28 +126,9 @@ function Itinerary({ place }) {
     );
 }
 
-/*
- * filter data by kecamatan
- */
-function filterData(place) {
-    const data = require('./data.json');
-
-    return data.filter(item => {
-        const dataKecamatan = toSlugCase(item.kecamatan);
-        const dataKabupaten = toSlugCase(item.kabupaten);
-        const search = toSlugCase(place);
-
-        return dataKecamatan == search || dataKabupaten == search;
-    });
-}
-
 // for next export 
 export async function getStaticPaths() {
-    const data = await require('./data.json');
-    const uniqueData = [];
-    await data.forEach(({ kecamatan }) => {
-        return uniqueData.indexOf(kecamatan) === -1 && uniqueData.push(kecamatan);
-    });
+    const uniqueData = noDuplicateData(dataJson);
 
     return {
         paths: uniqueData.map((kecamatan) => ({

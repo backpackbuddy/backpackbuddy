@@ -1,5 +1,6 @@
 import toSlugCase from 'to-slug-case';
 import Link from 'next/link';
+import toTitleCase from 'to-title-case';
 import '../styles/home.scss';
 
 // icons 
@@ -12,8 +13,9 @@ import {
     Row,
 } from 'react-bootstrap';
 
-function Cards() {
-    const data = [ 'Ubud', 'Gianyar', 'Kintamani', 'Nusa Penida', 'Seminyak', 'Canggu' ];
+function Cards({ data = [
+    'Ubud', 'Gianyar', 'Kintamani', 'Nusa Penida', 'Seminyak', 'Canggu' 
+] }) {
 
     return data.map(place => {
         const filename = toSlugCase(place);
@@ -37,7 +39,7 @@ function Cards() {
                             <span>&nbsp;</span>
 
                             <Link href={`/free-itinerary/${filename}`}>
-                                <a>{place}</a>
+                                <a>{toTitleCase(place)}</a>
                             </Link>
                         </Card.Title>
                     </Card.Body>
@@ -47,8 +49,8 @@ function Cards() {
     });
 }
 
-function Destination() {
-    return <Row className="my-2 my-md-0"> <Cards /> </Row>;
+function Destination(props) {
+    return <Row className="my-2 my-md-0"> <Cards {...props} /> </Row>;
 }
 
 export default Destination;
