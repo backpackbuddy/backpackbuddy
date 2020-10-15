@@ -8,10 +8,9 @@ import toSlugCase from 'to-slug-case';
  */
 export default function filterData(data, input) {
     return data.filter(item => {
-        const dataKecamatan = toSlugCase(item.kecamatan);
-        const dataKabupaten = toSlugCase(item.kabupaten);
+        const dataRute = toSlugCase(item.rute);
         const search = toSlugCase(input);
 
-        return dataKecamatan == search || dataKabupaten == search;
+        return dataRute === search;
     });
 }
