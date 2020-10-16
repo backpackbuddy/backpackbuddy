@@ -8,7 +8,7 @@ import {
     Container,
 } from 'react-bootstrap';
 
-export default function Header({
+function Header({
     title = 'Pertama kali ke Bali?',
     description = 'Gratis rute wisata harian untuk backpacker di Bali.',
     btn = true,
@@ -34,7 +34,7 @@ export default function Header({
                         variants={visibleMotion}
                         transition={{ duration: .3 }}
                     >
-                        <h1> {title} </h1>
+                        <h1>{title}</h1>
                         <p className="intro__description">{description}</p>
                         { btn && <Button className="mt-4">Cari tau disini</Button> }
                         { children }
@@ -44,3 +44,5 @@ export default function Header({
         </header>
     );
 }
+
+export default Header;

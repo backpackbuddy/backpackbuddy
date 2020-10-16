@@ -70,9 +70,9 @@ function Home() {
                                     [
                                         {
                                             file: '1',
-                                                Icon: FreeIcon,
-                                                title: 'Gratis',
-                                                description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
+                                            Icon: FreeIcon,
+                                            title: 'Gratis',
+                                            description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
                                         },
                                         {
                                             file: '2',
@@ -179,6 +179,11 @@ function Home() {
                                 </div>
                             </Col>
                         </Row>
+                    </Container>
+                </section>
+
+                <section id="contact">
+                    <Container>
                     </Container>
                 </section>
             </motion.div>

@@ -14,6 +14,7 @@ import {
 function About() {
     return (
         <>
+            <TopBar />
             <Header
                 title="About Us"
                 description="Your digital Travel Buddy"
