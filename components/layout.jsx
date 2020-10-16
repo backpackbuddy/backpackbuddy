@@ -18,6 +18,10 @@ function Layout({ children }) {
                     name="description"
                     content="Backpack Buddy. Gratis rute wisata harian untuk backpacker di Bali"
                 />
+                <meta
+                    name="keywords"
+                    content="backpack, buddy, id, travel, indonesia, bali, free, itinerary"
+                />
                 <title>Backpack Buddy</title>
                 <link rel="icon" href="/favicon.ico" />
                 <link
