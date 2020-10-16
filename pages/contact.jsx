@@ -33,18 +33,22 @@ function Contact() {
                     <Container>
                         <h2 className="text-center mb-4">Let's Chat</h2>
                         <Row className="justify-content-center">
-                            <Col className="bg-light shadow-sm p-4" xs={12} lg={4}>
-                                <h4>Alamat</h4>
-                                <p>Balai Diklat Industri Denpasar Gedung Animation Jl. WR Supratman no. 302 Tohpati Denpasar – Bali</p>
+                            <Col className="bg-light shadow-sm p-4 mt-4 mt-lg-0" xs={12} lg={4}>
+                                <Col className="px-0" sm={6} md={12}>
+                                    <h4>Alamat</h4>
+                                    <p>Balai Diklat Industri Denpasar Gedung Animation Jl. WR Supratman no. 302 Tohpati Denpasar – Bali</p>
+                                </Col>
 
-                                <h5>Jam Kerja</h5>
-                                <p>
-                                    Senin - Jumat: 9:00 AM – 5:00 PM <br />
-                                    Sabtu : 11:00 AM – 3:00 PM
-                                </p>
+                                <Col className="px-0" sm={6} md={12}>
+                                    <h5>Jam Kerja</h5>
+                                    <p>
+                                        Senin - Jumat: 9:00 AM – 5:00 PM <br />
+                                        Sabtu : 11:00 AM – 3:00 PM
+                                    </p>
+                                </Col>
                                 <h5>Social Media</h5>
                                 <Sosmed width="38px" height="38px" className="m-1 m-lg-2" />
-                                <h5 className="mt-2">Personal Chat</h5>
+                                <h5 className="mt-3">Personal Chat</h5>
                                 <div className="m-1 m-lg-2">
                                     <a className="mr-2" href={whatsappLink}>
                                         <WhatsappIcon height="38px" width="38px" />
@@ -54,7 +58,7 @@ function Contact() {
                                     </a>
                                 </div>
                             </Col>
-                            <Col className="bg-light shadow-sm p-4 mt-4 mt-lg-0" xs={12} lg={{ offset: 1, span: 6 }}>
+                            <Col className="bg-light shadow-sm p-4" xs={{ span: 12, order: 'first' }} lg={{ offset: 1, span: 6, order: 'last' }}>
                                 <h4 className="text-center mb-4">Kirim Pesan</h4>
                                 <Form action="/" method="POST">
                                     <Row>

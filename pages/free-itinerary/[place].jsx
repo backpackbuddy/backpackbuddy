@@ -36,7 +36,7 @@ function Itinerary({ place }) {
             "telp": "",
             "map": "https://www.google.com/maps/place/Goa+Gajah/@-8.5233969,115.2846644,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd216319e3e8cbb:0xcf6f85fcf798a545!8m2!3d-8.5234378!4d115.2871568",
             "foto_instagram": "https://www.instagram.com/explore/tags/goagajah/",
-            "info": "Tempat wisata Goa Gajah merupakan salah satu tempat wisata paling populer di Gianyar, bahkan di pulau Bali. Tempat ini memang benar-benar unik dan bersejarah",
+            "info": "Tempat wisata Goa Gajah",
             "foto": "https://tempatwisatadibali.info/wp-content/uploads/2017/08/Goa-Gajah-Bedulu-Ubud-Gianyar-Bali.jpg",
             "waktu": "09:00",
             "rute_ke": "6",
@@ -95,16 +95,13 @@ function Itinerary({ place }) {
     return (
         <>
             <TopBarSlim />
-            <Container bg="white">
-                <Row>
-                    <ItineraryLists data={dataRute} />
-                </Row>
-            </Container>
             <Layout>
                 <div className="bg-light">
                     <Container className="itinerary py-4">
                         <h2 className="text-center py-3">Itinerary {toTitleCase(place)}</h2>
-
+                        <Row>
+                            <ItineraryLists data={dataRute} />
+                        </Row>
 
                         <Link href="/free-itinerary">
                             <Button className="mx-auto d-block mt-3" variant="info"> Back to list </Button>

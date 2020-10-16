@@ -4,14 +4,14 @@ import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps, router }) {
     return (
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence exitBeforeEnter initial={false}>
             <motion.div
                 key={router.route}
-                initial={{ opacity: .5 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: .5 }}
+                initial={{ opacity: .5, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{}}
             >
-                <Component {...pageProps} key={router.route} />
+                <Component {...pageProps} />
             </motion.div>
         </AnimatePresence>
     );

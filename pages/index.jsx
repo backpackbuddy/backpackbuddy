@@ -118,7 +118,11 @@ function Home() {
                 </section>
                 {*/}
 
-                <section className="find">
+                <section className="">
+                    <h3 className="text-center">Apa kata mereka tentang Backpack Buddy?</h3>
+                </section>
+
+                <section className="find bg-light">
                     <Container className="px-4">
                         <Row>
                             <Col xs={12} md={8}>

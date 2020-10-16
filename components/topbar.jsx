@@ -41,7 +41,12 @@ function TopBar(props) {
 
 export function TopBarSlim() {
     return (
-        <TopBar className="py-0 shadow-sm" bg="white" variant="white" sticky="top" />
+        <TopBar
+            className="py-0 shadow-sm"
+            bg="white"
+            variant="white"
+            sticky="top"
+        />
     );
 }
 
