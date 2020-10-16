@@ -1,6 +1,21 @@
 import Header from '../components/header';
 import Layout from '../components/layout';
+import { TopBarSlim } from '../components/topbar';
+import Sosmed from '../components/sosmed';
 
+// icons
+import {
+    MessengerIcon,
+    WhatsappIcon,
+} from '../components/icons';
+
+// sosmed links
+import {
+    whatsappLink,
+    messengerLink,
+} from '../components/_variable';
+
+// react bootstrap components
 import {
     Button,
     Col,
@@ -12,14 +27,13 @@ import {
 function Contact() {
     return (
         <>
-            <Header
-                title="Let's Chat"
-            />
+            <TopBarSlim />
             <Layout>
-                <section>
+                <section className="pt-4">
                     <Container>
-                        <Row>
-                            <Col className="bg-light p-4" xs={12} md={4}>
+                        <h2 className="text-center mb-4">Let's Chat</h2>
+                        <Row className="justify-content-center">
+                            <Col className="bg-light shadow-sm p-4" xs={12} lg={4}>
                                 <h4>Alamat</h4>
                                 <p>Balai Diklat Industri Denpasar Gedung Animation Jl. WR Supratman no. 302 Tohpati Denpasar – Bali</p>
 
@@ -28,17 +42,28 @@ function Contact() {
                                     Senin - Jumat: 9:00 AM – 5:00 PM <br />
                                     Sabtu : 11:00 AM – 3:00 PM
                                 </p>
+                                <h5>Social Media</h5>
+                                <Sosmed width="38px" height="38px" className="m-1 m-lg-2" />
+                                <h5 className="mt-2">Personal Chat</h5>
+                                <div className="m-1 m-lg-2">
+                                    <a className="mr-2" href={whatsappLink}>
+                                        <WhatsappIcon height="38px" width="38px" />
+                                    </a>
+                                    <a href={messengerLink}>
+                                        <MessengerIcon height="38px" width="38px" />
+                                    </a>
+                                </div>
                             </Col>
-                            <Col className="bg-light p-4" xs={12} md={{ offset: 1, span: 6 }}>
+                            <Col className="bg-light shadow-sm p-4 mt-4 mt-lg-0" xs={12} lg={{ offset: 1, span: 6 }}>
                                 <h4 className="text-center mb-4">Kirim Pesan</h4>
                                 <Form action="/" method="POST">
                                     <Row>
-                                        <Col>
+                                        <Col xs={12} sm={6}>
                                             <Form.Group controlId="name-input">
                                                 <Form.Control type="text" placeholder="Nama Lengkap" />
                                             </Form.Group>
                                         </Col>
-                                        <Col>
+                                        <Col xs={12} sm={6}>
                                             <Form.Group controlId="email-input">
                                                 <Form.Control type="email" placeholder="Alamat E-Mail" />
                                             </Form.Group>

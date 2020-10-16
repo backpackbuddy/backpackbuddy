@@ -19,7 +19,7 @@ function Layout({ children }) {
                     content="Backpack Buddy. Gratis rute wisata harian untuk backpacker di Bali"
                 />
                 <title>Backpack Buddy</title>
-                <link rel="icon" href="/favicon.png" />
+                <link rel="icon" href="/favicon.ico" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
                     rel="stylesheet"

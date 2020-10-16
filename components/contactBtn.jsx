@@ -22,7 +22,7 @@ import {
 } from './_variable';
 
 
-function SosmedBtn(props) {
+function ContactBtn(props) {
     const [isOpen, setIsOpen] = useState(false);
 
     function toggleIsOpen() {
@@ -71,4 +71,4 @@ function SosmedBtn(props) {
     );
 }
 
-export default SosmedBtn;
+export default ContactBtn;
