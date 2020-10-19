@@ -22,39 +22,32 @@ const data = removeDuplicateObject(dataJson, 'ikonik');
 
 function Cards({ offset = 0, limit = data.length }) {
 
-    return data.slice(offset, limit).map(({
-        ikonik,
-    }) => {
-        console.log(' place : ', ikonik);
-        const foto = filterData(dataJson, ikonik)[0].foto;
+    return data.slice(offset, limit).map(({ ikonik, foto }) => (
+        <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={ikonik}>
+            <Card className="place__card">
+                <Link href={`/free-itinerary/${toSlugCase(ikonik)}`}>
+                    <a>
+                        <Card.Img
+                            className="place__img"
+                            loading="lazy"
+                            variant="top"
+                            src={foto} alt={ikonik} 
+                        />
+                    </a>
+                </Link>
+                <Card.Body className="place__card--body">
+                    <Card.Title className="place__name d-flex align-items-center mb-0">
+                        <LocationIcon />
+                        <span>&nbsp;</span>
 
-        return (
-            <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={ikonik}>
-                <Card className="place__card">
-                    <Link href={`/free-itinerary/${toSlugCase(ikonik)}`}>
-                        <a>
-                            <Card.Img
-                                className="place__img"
-                                loading="lazy"
-                                variant="top"
-                                src={foto} alt={ikonik} 
-                            />
-                        </a>
-                    </Link>
-                    <Card.Body className="place__card--body">
-                        <Card.Title className="place__name d-flex align-items-center mb-0">
-                            <LocationIcon />
-                            <span>&nbsp;</span>
-
-                            <Link href={`/free-itinerary/${toSlugCase(ikonik)}`}>
-                                <a>{toTitleCase(ikonik)}</a>
-                            </Link>
-                        </Card.Title>
-                    </Card.Body>
-                </Card>
-            </Col>
-        );
-    });
+                        <Link href={`/free-itinerary/${toSlugCase(ikonik)}`}>
+                            <a>{ toTitleCase(ikonik) }</a>
+                        </Link>
+                    </Card.Title>
+                </Card.Body>
+            </Card>
+        </Col>
+    ));
 }
 
 function Destination(props) {
