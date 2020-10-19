@@ -5,7 +5,7 @@ import toSlugCase from 'to-slug-case';
 import toTitleCase from 'to-title-case';
 import toSentenceCase from 'to-sentence-case-with-dot';
 import filterData from '../../utils/filter-data';
-import noDuplicateData from '../../utils/no-duplicate-data';
+import removeDuplicateObject from '../../utils/remove-duplicate-object';
 import '../../styles/itinerary.scss';
 
 // react bootstrap components
@@ -25,8 +25,9 @@ const dataJson = require('../../data.json');
 
 function Itinerary({ place }) {
     console.log('place: ', place);
-    // const data = filterData(dataJson, place);
-    const data = dataJson;
+    const data = filterData(dataJson, place);
+    console.log(data);
+    // const data = dataJson;
 
     return (
         <>
@@ -34,13 +35,13 @@ function Itinerary({ place }) {
             <Layout>
                 <div className="bg-light">
                     <Container className="itinerary py-4">
-                        <h2 className="text-center py-3">Itinerary {toTitleCase(place)}</h2>
+                        <h2 className="text-center py-3">Itinerary { toTitleCase(place) }</h2>
                         <Row>
                             <ItineraryLists data={data} />
                         </Row>
 
                         <Link href="/free-itinerary">
-                            <Button className="mx-auto d-block mt-3" variant="info"> Back to list </Button>
+                            <Button className="mx-auto d-block mt-3" variant="info">Back to list</Button>
                         </Link>
                     </Container>
                 </div>
