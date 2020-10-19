@@ -9,8 +9,8 @@ function Footer() {
     return (
         <footer className="footer text-light text-center py-5 bg-dark">
             <Container>
-                <a href="/">
-                    <Image className="d-block mx-auto img-fluid" src="/images/default-logo.png" alt="backpackbuddy logo" />
+                <a className="d-block mx-auto" href="/">
+                    <Image src="/images/default-logo.png" alt="backpackbuddy logo" />
                 </a>
                 <Sosmed
                     className="m-2"

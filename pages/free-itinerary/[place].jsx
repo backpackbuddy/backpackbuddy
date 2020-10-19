@@ -14,6 +14,7 @@ import {
     Button,
     Card,
     CardColumns,
+    Col,
     Container,
     Row,
     Table,
@@ -32,9 +33,11 @@ function Itinerary({ place }) {
                     <Container className="itinerary py-4">
                         <h2 className="text-center py-3">Itinerary { toTitleCase(place) }</h2>
                         <Row>
-                            <CardColumns className="justify-content-center">
-                                <ItineraryLists data={data} />
-                            </CardColumns>
+                            <Col>
+                                <CardColumns>
+                                    <ItineraryLists data={data} />
+                                </CardColumns>
+                            </Col>
                         </Row>
 
                         <Button

@@ -13,12 +13,14 @@ function FreeItinerary() {
         <>
             <BasicTopBar />
             <Layout>
-                <Container className="py-4">
-                    <h2 className="text-center">Free Itinerary</h2>
-                    <p className="text-center">Destinasi Wisata Populer</p>
+                <section className="pt-4">
+                    <Container>
+                        <h2 className="text-center">Free Itinerary</h2>
+                        <p className="text-center">Destinasi Wisata Populer</p>
 
-                    <Destination />
-                </Container>
+                        <Destination />
+                    </Container>
+                </section>
             </Layout>
         </>
     );
