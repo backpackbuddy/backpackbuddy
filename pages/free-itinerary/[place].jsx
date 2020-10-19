@@ -22,10 +22,7 @@ import {
 const dataJson = require('../../data.json');
 
 function Itinerary({ place }) {
-    console.log('place: ', place);
     const data = filterData(dataJson, place);
-    console.log(data);
-    // const data = dataJson;
 
     return (
         <>
@@ -34,8 +31,8 @@ function Itinerary({ place }) {
                 <div className="bg-light">
                     <Container className="itinerary py-4">
                         <h2 className="text-center py-3">Itinerary { toTitleCase(place) }</h2>
-                        <Row className="justify-content-center">
-                            <CardColumns>
+                        <Row>
+                            <CardColumns className="justify-content-center">
                                 <ItineraryLists data={data} />
                             </CardColumns>
                         </Row>

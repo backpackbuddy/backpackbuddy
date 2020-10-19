@@ -2,7 +2,6 @@ import toSlugCase from 'to-slug-case';
 import Link from 'next/link';
 import toTitleCase from 'to-title-case';
 import uniqueBy from 'unique-by';
-import filterData from '../utils/filter-data';
 import '../styles/home.scss';
 
 // icons 

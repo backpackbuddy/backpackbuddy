@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import 'bootstrap/scss/bootstrap.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps, router }) {
