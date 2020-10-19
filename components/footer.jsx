@@ -19,6 +19,7 @@ function Footer() {
                     width="2em"
                 />
                 <p className="mt-2">Travel makes one modest. You see what a tiny place you occupy in the world.</p>
+                <small>&copy; Backpack Buddy. All Rights Reserved</small>
             </Container>
         </footer>
     );

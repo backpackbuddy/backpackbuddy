@@ -76,7 +76,7 @@ function Home() {
                                 ].map(({file, Icon, title, description}, index) => (
                                     <Col
                                         key={index}
-                                        className="why__col text-center text-white mt-2 mt-md-0"
+                                        className="why__col text-center text-white mt-4 mt-md-0"
                                         xs={12}
                                         md={4}
                                     >
@@ -117,18 +117,18 @@ function Home() {
                 </section>
                 {*/}
 
-                <section className="">
-                    <h3 className="text-center">Apa kata mereka tentang Backpack Buddy?</h3>
+                <section>
+                    <h2 className="text-center">Testimonials</h2>
                 </section>
 
                 <section className="find bg-light">
                     <Container className="px-4">
                         <Row>
                             <Col xs={12} md={8}>
-                                <h3>Cari Itinerary Favoritmu</h3>
+                                <h2 className="text-center text-md-left">Cari Itinerary Favoritmu</h2>
                             </Col>
                             <Col className="d-none d-md-block" xs={12} md={4}>
-                                <h4>Newsletter</h4>
+                                <h3>Newsletter</h3>
                             </Col>
                         </Row>
                         <Row>
@@ -151,7 +151,7 @@ function Home() {
                                 md={4}
                                 className="find__newsletter mt-4 mt-md-0"
                             >
-                                <h4 className="d-md-none">Newsletter</h4>
+                                <h3 className="d-md-none text-center">Newsletter</h3>
                                 <p>Daftar untuk mendapatkan info terbaru</p>
                                 <Form action="/" method="post">
                                     <Form.Group controlId="newsletterInput">
