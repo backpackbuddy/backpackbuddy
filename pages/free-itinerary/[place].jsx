@@ -1,4 +1,4 @@
-import { TopBarSlim } from '../../components/topbar';
+import TopBar from '../../components/topbar';
 import Layout from '../../components/layout';
 import Link from 'next/link';
 import toSlugCase from 'to-slug-case';
@@ -24,83 +24,19 @@ import {
 const dataJson = require('../../data.json');
 
 function Itinerary({ place }) {
-    const data = filterData(dataJson, place);
-    const dataRute = [
-        {
-            "tempat": "Goa Gajah",
-            "kabupaten": "gianyar",
-            "kecamatan": "Blahbatu",
-            "kategori": "alami;temple;hidden gem",
-            "keterangan": "Goa tersembunyi",
-            "untuk": "solo traveler;couple;group kecil",
-            "telp": "",
-            "map": "https://www.google.com/maps/place/Goa+Gajah/@-8.5233969,115.2846644,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd216319e3e8cbb:0xcf6f85fcf798a545!8m2!3d-8.5234378!4d115.2871568",
-            "foto_instagram": "https://www.instagram.com/explore/tags/goagajah/",
-            "info": "Tempat wisata Goa Gajah",
-            "foto": "https://tempatwisatadibali.info/wp-content/uploads/2017/08/Goa-Gajah-Bedulu-Ubud-Gianyar-Bali.jpg",
-            "waktu": "09:00",
-            "rute_ke": "6",
-            "rute": "Blahbatuh"
-        },
-        {
-            "tempat": "Goa Gajah",
-            "kabupaten": "gianyar",
-            "kecamatan": "Blahbatu",
-            "kategori": "alami;temple;hidden gem",
-            "keterangan": "Goa tersembunyi",
-            "untuk": "solo traveler;couple;group kecil",
-            "telp": "",
-            "map": "https://www.google.com/maps/place/Goa+Gajah/@-8.5233969,115.2846644,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd216319e3e8cbb:0xcf6f85fcf798a545!8m2!3d-8.5234378!4d115.2871568",
-            "foto_instagram": "https://www.instagram.com/explore/tags/goagajah/",
-            "info": "Tempat wisata Goa Gajah merupakan salah satu tempat wisata paling populer di Gianyar, bahkan di pulau Bali. Tempat ini memang benar-benar unik dan bersejarah",
-            "foto": "https://tempatwisatadibali.info/wp-content/uploads/2017/08/Goa-Gajah-Bedulu-Ubud-Gianyar-Bali.jpg",
-            "waktu": "09:00",
-            "rute_ke": "6",
-            "rute": "Blahbatuh"
-        },
-        {
-            "tempat": "Goa Gajah",
-            "kabupaten": "gianyar",
-            "kecamatan": "Blahbatu",
-            "kategori": "alami;temple;hidden gem",
-            "keterangan": "Goa tersembunyi",
-            "untuk": "solo traveler;couple;group kecil",
-            "telp": "",
-            "map": "https://www.google.com/maps/place/Goa+Gajah/@-8.5233969,115.2846644,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd216319e3e8cbb:0xcf6f85fcf798a545!8m2!3d-8.5234378!4d115.2871568",
-            "foto_instagram": "https://www.instagram.com/explore/tags/goagajah/",
-            "info": "Tempat wisata Goa Gajah merupakan salah satu tempat wisata paling populer di Gianyar, bahkan di pulau Bali. Tempat ini memang benar-benar unik dan bersejarah",
-            "foto": "https://tempatwisatadibali.info/wp-content/uploads/2017/08/Goa-Gajah-Bedulu-Ubud-Gianyar-Bali.jpg",
-            "waktu": "09:00",
-            "rute_ke": "6",
-            "rute": "Blahbatuh"
-        },
-        {
-            "tempat": "Goa Gajah",
-            "kabupaten": "gianyar",
-            "kecamatan": "Blahbatu",
-            "kategori": "alami;temple;hidden gem",
-            "keterangan": "Goa tersembunyi",
-            "untuk": "solo traveler;couple;group kecil",
-            "telp": "",
-            "map": "https://www.google.com/maps/place/Goa+Gajah/@-8.5233969,115.2846644,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd216319e3e8cbb:0xcf6f85fcf798a545!8m2!3d-8.5234378!4d115.2871568",
-            "foto_instagram": "https://www.instagram.com/explore/tags/goagajah/",
-            "info": "Tempat wisata Goa Gajah merupakan salah satu tempat wisata paling populer di Gianyar, bahkan di pulau Bali. Tempat ini memang benar-benar unik dan bersejarah",
-            "foto": "https://tempatwisatadibali.info/wp-content/uploads/2017/08/Goa-Gajah-Bedulu-Ubud-Gianyar-Bali.jpg",
-            "waktu": "09:00",
-            "rute_ke": "6",
-            "rute": "Blahbatuh"
-        },
-    ]
+    console.log('place: ', place);
+    // const data = filterData(dataJson, place);
+    const data = dataJson;
 
     return (
         <>
-            <TopBarSlim />
+            <TopBar />
             <Layout>
                 <div className="bg-light">
                     <Container className="itinerary py-4">
                         <h2 className="text-center py-3">Itinerary {toTitleCase(place)}</h2>
                         <Row>
-                            <ItineraryLists data={dataRute} />
+                            <ItineraryLists data={data} />
                         </Row>
 
                         <Link href="/free-itinerary">
@@ -151,17 +87,17 @@ function ItineraryLists({ data }) {
             />
             <Card.Body>
                 <Card.Text>
-                    <h3>{index + 1}. {toTitleCase(tempat)}</h3>
+                    <h3>{ index + 1 }. { toTitleCase(tempat) }</h3>
                     <p>{toSentenceCase(info)}</p>
                     <Table>
                         <tbody>
                             <tr>
                                 <th>Kecamatan</th>
-                                <td>{toTitleCase(kecamatan)}</td>
+                                <td>{ toTitleCase(kecamatan) }</td>
                             </tr>
                             <tr>
                                 <th>Kabupaten</th>
-                                <td>{toTitleCase(kabupaten)}</td>
+                                <td>{ toTitleCase(kabupaten) }</td>
                             </tr>
                             <tr>
                                 <th>Telp.</th>
@@ -175,11 +111,11 @@ function ItineraryLists({ data }) {
                             </tr>
                             <tr>
                                 <th>Waktu</th>
-                                <td>{toTitleCase(waktu)}</td>
+                                <td>{ toTitleCase(waktu) }</td>
                             </tr>
                             <tr>
                                 <th>Kategori</th>
-                                <td>{toTitleCase(kategori.split(';').join(', '))}</td>
+                                <td>{ toTitleCase(kategori.split(';').join(', ')) }</td>
                             </tr>
                             <tr>
                                 <th>Google Map</th>
@@ -195,7 +131,7 @@ function ItineraryLists({ data }) {
                             </tr>
                             <tr>
                                 <th>Keterangan</th>
-                                <td>{toSentenceCase(keterangan)}</td>
+                                <td>{ toSentenceCase(keterangan) }</td>
                             </tr>
                         </tbody>
                     </Table>
@@ -208,7 +144,7 @@ function ItineraryLists({ data }) {
 
 // for next export 
 export async function getStaticPaths() {
-    const uniqueData = noDuplicateData(dataJson, 'rute');
+    const uniqueData = noDuplicateData(dataJson, 'ikonik');
 
     return {
         paths: uniqueData.map((rute) => ({

@@ -1,4 +1,5 @@
-import TopBar from './topbar';
+import { HomeTopBar } from './topbar';
+import Link from 'next/link';
 import '../styles/header.scss';
 
 // react bootstrap components
@@ -16,13 +17,13 @@ function Header({
 
     return (
         <header className="header">
-            <TopBar />
+            <HomeTopBar />
 
             <div className="intro text-white text-center" >
                 <Container>
                     <h1>{title}</h1>
                     <p className="intro__description">{description}</p>
-                    { btn && <Button className="mt-4">Cari tau disini</Button> }
+                    { btn && <Link href="/free-itinerary"><Button className="mt-4">Cari tau disini</Button></Link> }
                     { children }
                 </Container>
             </div>

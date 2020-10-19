@@ -11,6 +11,18 @@ import {
 
 function TopBar(props) {
     return (
+        <HomeTopBar
+            className="py-0 shadow-sm"
+            bg="white"
+            variant="white"
+            sticky="top"
+            {...props}
+        />
+    );
+}
+
+export function HomeTopBar(props) {
+    return (
         <Navbar className="py-4" variant="dark" expand="lg" {...props}>
             <Container>
                 <Navbar.Brand href="/">
@@ -36,17 +48,6 @@ function TopBar(props) {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-    );
-}
-
-export function TopBarSlim() {
-    return (
-        <TopBar
-            className="py-0 shadow-sm"
-            bg="white"
-            variant="white"
-            sticky="top"
-        />
     );
 }
 

@@ -3,7 +3,6 @@ import Header from '../components/header';
 import Layout from '../components/layout';
 import Link from 'next/link';
 import Destination from '../components/destination';
-import Categories from '../components/categories';
 
 // Icons
 import {
@@ -133,7 +132,6 @@ function Home() {
                             </Col>
                         </Row>
                         <Row>
-                            <Categories />
                             <Col xs={12} md={4}>
                                 <a className="d-block my-3" href="#">Bertualang ke hutan</a>
                                 <a className="d-block my-3" href="#">Petualangan ke air terjun</a>

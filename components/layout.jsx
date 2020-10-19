@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Footer from './footer';
-import ContactBtn from './contactBtn';
+import ContactBtn from './contact-btn';
 
 function Layout({ children }) {
     return (
