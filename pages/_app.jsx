@@ -4,11 +4,11 @@ import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps, router }) {
     return (
-        <AnimatePresence exitBeforeEnter initial={false}>
+        <AnimatePresence initial={false}>
             <motion.div
                 key={router.route}
-                initial={{ opacity: .5, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
                 exit={{}}
             >
                 <Component {...pageProps} />

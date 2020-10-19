@@ -7,7 +7,7 @@ import {
 
 function Footer() {
     return (
-        <footer className="footer text-light text-center py-5">
+        <footer className="footer text-light text-center py-5 bg-dark">
             <Container>
                 <a href="/">
                     <Image className="d-block mx-auto img-fluid" src="/images/default-logo.png" alt="backpackbuddy logo" />
