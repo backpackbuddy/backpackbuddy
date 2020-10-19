@@ -1,7 +1,7 @@
 import toSlugCase from 'to-slug-case';
 import Link from 'next/link';
 import toTitleCase from 'to-title-case';
-import removeDuplicateObject from '../utils/remove-duplicate-object';
+import uniqueBy from 'unique-by';
 import filterData from '../utils/filter-data';
 import '../styles/home.scss';
 
@@ -18,7 +18,7 @@ import {
 } from 'react-bootstrap';
 
 const dataJson = require('../data.json');
-const data = removeDuplicateObject(dataJson, 'ikonik');
+const data = uniqueBy(dataJson, 'ikonik');
 
 function Cards({ offset = 0, limit = data.length }) {
 

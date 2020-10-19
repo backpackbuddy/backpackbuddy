@@ -1,6 +1,5 @@
-import Header from '../components/header';
 import Layout from '../components/layout';
-import TopBar from '../components/topbar';
+import BasicTopBar from '../components/topbar';
 import Sosmed from '../components/sosmed';
 
 // icons
@@ -27,7 +26,7 @@ import {
 function Contact() {
     return (
         <>
-            <TopBar />
+            <BasicTopBar />
             <Layout>
                 <section className="pt-4">
                     <Container>

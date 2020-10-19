@@ -1,12 +1,14 @@
 'use strict';
 
+import toSlugCase from "to-slug-case";
+
 function removeDuplicateObject(data, input) {
 
-    return data.filter((obj, _, self) => (
-        self.findIndex((item) => (
-            item[input] === obj[input]
-        ))
-    ));
+    const unique = data.reduce((uniqueData = [{}, {}], item) => {
+        if (!(item[input] in uniqueData.map(e => e[input]))) item;
+    });
+
+    console.log(unique);
 }
 
 export default removeDuplicateObject;

@@ -1,4 +1,4 @@
-import TopBar from '../components/topbar';
+import BasicTopBar from '../components/topbar';
 import Layout from '../components/layout';
 import Sosmed from '../components/sosmed';
 import '../styles/about.scss';
@@ -14,7 +14,7 @@ import {
 function About() {
     return (
         <>
-            <TopBar />
+            <BasicTopBar />
             <Layout className="py-4">
                 <Container className="text-dark">
                     <h1 className="text-center">About Us</h1>

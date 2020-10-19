@@ -1,4 +1,4 @@
-import TopBar from '../../components/topbar';
+import BasicTopBar from '../../components/topbar';
 import Layout from '../../components/layout';
 import Destination from '../../components/destination';
 
@@ -11,7 +11,7 @@ function FreeItinerary() {
 
     return (
         <>
-            <TopBar className="py-0 shadow-sm" bg="white" variant="white" sticky="top" />
+            <BasicTopBar />
             <Layout>
                 <Container className="py-4">
                     <h2 className="text-center">Free Itinerary</h2>

@@ -1,4 +1,4 @@
-import TopBar from '../../components/topbar';
+import BasicTopBar from '../../components/topbar';
 import Layout from '../../components/layout';
 import Link from 'next/link';
 import toSlugCase from 'to-slug-case';
@@ -31,7 +31,7 @@ function Itinerary({ place }) {
 
     return (
         <>
-            <TopBar />
+            <BasicTopBar />
             <Layout>
                 <div className="bg-light">
                     <Container className="itinerary py-4">

@@ -11,19 +11,7 @@ import {
 
 function TopBar(props) {
     return (
-        <HomeTopBar
-            className="py-0 shadow-sm"
-            bg="white"
-            variant="white"
-            sticky="top"
-            {...props}
-        />
-    );
-}
-
-export function HomeTopBar(props) {
-    return (
-        <Navbar className="py-4" variant="dark" expand="lg" {...props}>
+        <Navbar {...props}>
             <Container>
                 <Navbar.Brand href="/">
                     <Image className="d-none d-sm-block" src="/images/default-logo.png" alt="Backpack Buddy" />
@@ -51,4 +39,28 @@ export function HomeTopBar(props) {
     );
 }
 
-export default TopBar;
+export function HomeTopBar(props) {
+    return (
+        <TopBar
+            className="header--home py-4"
+            variant="dark"
+            expand="lg"
+            {...props}
+        />
+    );
+}
+
+function BasicTopBar(props) {
+    return (
+        <TopBar
+            className="header--slim py-0 shadow-sm"
+            bg="white"
+            expand="lg"
+            variant="light"
+            sticky="top"
+            {...props}
+        />
+    );
+}
+
+export default BasicTopBar;

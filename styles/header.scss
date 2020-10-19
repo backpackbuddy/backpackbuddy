@@ -29,34 +29,35 @@
         z-index: -1;
     }
 
+    &--home {
+        .navbar {
 
-    .navbar {
+            &-toggler {
+                border: none;
+                outline: none;
 
-        &-toggler {
-            border: none;
-            outline: none;
-
-            &-icon {
-                background-image: url('/icons/menu.svg');
+                &-icon {
+                    background-image: url('/icons/menu.svg');
+                }
             }
         }
-    }
 
-    .nav-link {
-        color: #f2f2f2 !important;
-        margin-right: 1rem;
+        .nav-link {
+            color: #f2f2f2 !important;
+            margin-right: 1rem;
 
-        &:last-child { margin-right: 0; }
+            &:last-child { margin-right: 0; }
 
-        &:hover {
-            opacity: .5;
-            transition: .3s all;
+            &:hover {
+                opacity: .5;
+                transition: .3s all;
+            }
         }
-    }
 
-    .active {
-        color: #fff !important;
-        border-bottom: 2px solid #fff;
+        .active {
+            color: #fff !important;
+            border-bottom: 2px solid #fff;
+        }
     }
 }
 
