@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Footer from './footer';
 import ContactBtn from './contact-btn';
 
-function Layout({ children }) {
+function Layout(props) {
     return (
         <>
             <Head>
@@ -29,7 +29,7 @@ function Layout({ children }) {
                     rel="stylesheet"
                 /> 
             </Head>
-            <main> { children } </main>
+            <main {...props}> { props.children } </main>
             <ContactBtn />
             <Footer />
         </>
