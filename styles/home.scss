@@ -2,6 +2,8 @@
 
 $transition: .35s all ease;
 
+.description { max-width: 600px; }
+
 .place {
     background-color: #f2f2f2;
 
@@ -122,4 +124,14 @@ $transition: .35s all ease;
     }
 }
 
-.description { max-width: 600px; }
+.testimonials {
+    &__row {
+        & img {
+            min-width: 300px;
+        }
+    }
+
+    &__card-deck {
+
+    }
+}

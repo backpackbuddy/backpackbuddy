@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps, router }) {
         <AnimatePresence initial={false}>
             <motion.div
                 key={router.route}
-                initial={{ y: 100 }}
+                initial={{ y: 80 }}
                 animate={{ y: 0 }}
                 exit={{}}
             >

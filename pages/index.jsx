@@ -16,6 +16,7 @@ import {
 import {
     Button,
     Card,
+    CardDeck,
     Col,
     Container,
     Form,
@@ -117,8 +118,26 @@ function Home() {
                 </section>
                 {*/}
 
-                <section>
-                    <h2 className="text-center">Testimonials</h2>
+                <section className="testimonials">
+                    <Container>
+                        <h2 className="text-center">Testimonials</h2>
+                        <p className="description text-center mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, inventore!</p>
+
+                        <div className="bg-white shadow mt-4">
+                            <Row className="testimonials__row flex-nowrap overflow-auto mx-0 px-4">
+                                {
+                                    Array.from(Array(13).keys()).map(i => (
+                                        <Image
+                                            className="img-fluid"
+                                            src={`/images/testimonials/${i + 1}.jpg`}
+                                            alt="Testimonials Backpack Buddy"
+                                            key={i}
+                                        />
+                                    ))
+                                }
+                            </Row>
+                        </div>
+                    </Container>
                 </section>
 
                 <section className="find bg-light">

@@ -15,15 +15,19 @@ function Layout(props) {
                     content="width=device-width, initial-scale=1.0"
                 />
                 <meta
+                    name="title"
+                    content="Gratis Konsultasi Rute Wisata"
+                />
+                <meta
                     name="description"
                     content="Backpack Buddy. Gratis rute wisata harian untuk backpacker di Bali"
                 />
                 <meta
                     name="keywords"
-                    content="backpack, buddy, id, travel, indonesia, bali, free, itinerary"
+                    content="backpack, buddy, travel, id, indonesia, bali, free, itinerary, wisata, backpacker"
                 />
                 <title>Backpack Buddy</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="favicon" href="/favicon.ico" type="image/x-icon" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
                     rel="stylesheet"
