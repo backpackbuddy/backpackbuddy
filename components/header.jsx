@@ -1,4 +1,4 @@
-import { HomeTopBar } from './topbar';
+import BasicTopBar, { HomeTopBar } from './topbar';
 import Link from 'next/link';
 import '../styles/header.scss';
 

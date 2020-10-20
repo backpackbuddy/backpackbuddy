@@ -1,8 +1,12 @@
-import '../styles/home.scss';
+import { useState, useEffect } from 'react';
+import BasicTopBar from '../components/topbar';
+import Destination from '../components/destination';
 import Header from '../components/header';
 import Layout from '../components/layout';
 import Link from 'next/link';
-import Destination from '../components/destination';
+import { motion } from 'framer-motion';
+import Sosmed from '../components/sosmed';
+import '../styles/home.scss';
 
 // Icons
 import {
@@ -24,11 +28,30 @@ import {
     Row,
 } from 'react-bootstrap';
 
-import Sosmed from '../components/sosmed';
 
 function Home() {
+    const [shrink, setShrink] = useState(false);
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            setShrink(true);
+        } else {
+            setShrink(false);
+        }
+    }
+
+    useEffect(() => {
+        window.onscroll = scrollFunction;
+    }, []);
+
     return (
         <>
+            {
+                shrink && <BasicTopBar
+                    sticky={false}
+                    fixed="top"
+                />
+            }
             <Header />
             <Layout>
                 <section className="place">

@@ -1,9 +1,11 @@
 import '../styles/footer.scss';
 import Sosmed from '../components/sosmed';
 import {
+    Button,
     Container,
     Image,
 } from 'react-bootstrap';
+import { FooterArrowIcon } from './icons';
 
 function Footer() {
     return (
@@ -20,6 +22,11 @@ function Footer() {
                 />
                 <p className="mt-2">Travel makes one modest. You see what a tiny place you occupy in the world.</p>
                 <small>&copy; Backpack Buddy. All Rights Reserved</small>
+                <div className="mt-5">
+                    <Button variant="outline-light">
+                        <FooterArrowIcon fill="#f2f2f2" />
+                    </Button>
+                </div>
             </Container>
         </footer>
     );

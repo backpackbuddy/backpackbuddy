@@ -11,7 +11,7 @@ import {
 
 function TopBar(props) {
     return (
-        <Navbar {...props}>
+        <Navbar collapseOnSelect={true} {...props}>
             <Container>
                 <Navbar.Brand href="/">
                     <Image className="d-none d-sm-block" src="/images/default-logo.png" alt="Backpack Buddy" />
