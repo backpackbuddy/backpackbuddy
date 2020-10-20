@@ -31,10 +31,10 @@ function Home() {
     const [shrink, setShrink] = useState(false);
 
     function scrollFunction() {
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-            setShrink(true);
+        if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+            !shrink && setShrink(true);
         } else {
-            setShrink(false);
+            shrink && setShrink(false);
         }
     }
 
@@ -149,7 +149,7 @@ function Home() {
                                 {
                                     Array.from(Array(13).keys()).map(i => (
                                         <Image
-                                            className="img-fluid"
+                                            className="img-fluid w-100"
                                             src={`/images/testimonials/${i + 1}.jpg`}
                                             alt="Testimonials Backpack Buddy"
                                             key={i}

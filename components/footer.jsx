@@ -8,6 +8,14 @@ import {
 import { FooterArrowIcon } from './icons';
 
 function Footer() {
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
+
     return (
         <footer className="footer text-light text-center py-5 bg-dark">
             <Container>
@@ -23,7 +31,7 @@ function Footer() {
                 <p className="mt-2">Travel makes one modest. You see what a tiny place you occupy in the world.</p>
                 <small>&copy; Backpack Buddy. All Rights Reserved</small>
                 <div className="mt-5">
-                    <Button variant="outline-light">
+                    <Button onClick={scrollToTop} variant="outline-light">
                         <FooterArrowIcon fill="#f2f2f2" />
                     </Button>
                 </div>
