@@ -4,7 +4,6 @@ import Destination from '../components/destination';
 import Header from '../components/header';
 import Layout from '../components/layout';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import Sosmed from '../components/sosmed';
 import '../styles/home.scss';
 
@@ -20,7 +19,6 @@ import {
 import {
     Button,
     Card,
-    CardDeck,
     Col,
     Container,
     Form,
@@ -81,9 +79,9 @@ function Home() {
                                 [
                                     {
                                         file: '1',
-                                            Icon: FreeIcon,
-                                            title: 'Gratis',
-                                            description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
+                                        Icon: FreeIcon,
+                                        title: 'Gratis',
+                                        description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
                                     },
                                     {
                                         file: '2',
