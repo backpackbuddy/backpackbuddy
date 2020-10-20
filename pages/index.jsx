@@ -144,7 +144,7 @@ function Home() {
                         <h2 className="text-center">Testimonials</h2>
                         <p className="description text-center mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, inventore!</p>
 
-                        <div className="bg-white shadow mt-4">
+                        <div className="testimonials__box bg-white shadow mt-4">
                             <Row className="testimonials__row flex-nowrap overflow-auto mx-0 px-4">
                                 {
                                     Array.from(Array(13).keys()).map(i => (
