@@ -162,7 +162,7 @@ function ItineraryLists({ data }) {
                                     </tbody>
                                 </Table>
                                 <Button
-                                    className="d-block mx-auto"
+                                    className="d-block mx-auto mt-4"
                                     variant="default"
                                     size="sm"
                                     style={{ boxShadow: 'none' }}

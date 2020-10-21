@@ -142,7 +142,6 @@ function Home() {
                 <section className="testimonials">
                     <Container>
                         <h2 className="text-center">Testimonials</h2>
-                        <p className="description text-center mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, inventore!</p>
 
                         <div className="testimonials__box bg-white shadow mt-4">
                             <Row className="testimonials__row flex-nowrap overflow-auto mx-0 px-4">
