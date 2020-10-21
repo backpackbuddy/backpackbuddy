@@ -1,32 +1,78 @@
 @import './variables';
 
-.header {
-    padding-top: 1.5rem;
-    position: relative;
+.intro {
 
-    &::before {
-        background-image: url('/images/bg-2.webp');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -2;
+    &__carousel {
+        
+        &-item {
+            &:first-child .intro__caption {
+                background-image: url('/images/bg-1.webp');
+            }
+
+            &:last-child .intro__caption {
+                background-image: url('/images/bg-2.webp');
+            }
+        }
     }
 
-    &::after {
-        background-color: rgba(0,0,0,.25);
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
+    &__caption {
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #fff;
+        padding: 7rem 2rem;
+        text-align: center;
+    }
+
+    &__description {
+        font-size: 1.1em;
+        margin: auto;
+    }
+}
+
+/*
+.header {
+    // padding-top: 1.5rem;
+    // position: relative;
+
+    // &::before {
+    //     background-image: url('/images/bg-2.webp');
+    //     background-size: cover;
+    //     background-repeat: no-repeat;
+    //     background-position: center;
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     z-index: -2;
+    // }
+
+    &__carousel {
+        &-item {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+    }
+
+    &__bg {
+
+        &::before {
+            background-color: rgba(0,0,0,.2);
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+        }
+    }
+
+    &__img {
+    }
+
+    &__caption {
     }
 
     &--home {
@@ -78,3 +124,4 @@
         text-transform: uppercase;
     }
 }
+*/

@@ -5,15 +5,32 @@ import '../styles/header.scss';
 // react bootstrap components
 import {
     Button,
+    Carousel,
     Container,
 } from 'react-bootstrap';
 
 function Header({ children }) {
 
     return (
-        <header className="header">
-            <HomeTopBar />
+        <header className="intro">
+            <Carousel controls={false} className="intro__carousel">
+                <Carousel.Item className="intro__carousel-item">
+                    <div className="intro__caption">
+                        <h1>Butuh rekomendasi rute?</h1>
+                        <p className="intro__description">Konsultasikan dengan kami secara gratis!</p>
+                        <Link href="/free-itinerary"><Button className="mt-4">Cari tau disini</Button></Link>
+                    </div>
+                </Carousel.Item>
+                <Carousel.Item className="intro__carousel-item">
+                    <div className="intro__caption">
+                        <h1>Pertama kali ke Bali?</h1>
+                        <p className="intro__description">Gratis rute wisata harian untuk backpacker di Bali.</p>
+                        <Link href="/free-itinerary"><Button className="mt-4">Cari tau disini</Button></Link>
+                    </div>
+                </Carousel.Item>
+            </Carousel>
 
+            {/*}
             <div className="intro text-white text-center" >
                 <Container>
                     <h1>Pertama kali ke Bali?</h1>
@@ -22,6 +39,7 @@ function Header({ children }) {
                     { children }
                 </Container>
             </div>
+            {*/}
         </header>
     );
 }

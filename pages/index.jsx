@@ -45,10 +45,7 @@ function Home() {
     return (
         <>
             {
-                shrink && <BasicTopBar
-                    sticky={false}
-                    fixed="top"
-                />
+                shrink && <BasicTopBar />
             }
             <Header />
             <Layout>
