@@ -7,6 +7,7 @@ import toTitleCase from 'to-title-case';
 import toSentenceCase from 'to-sentence-case-with-dot';
 import Router from 'next/router';
 import uniqueBy from 'unique-by';
+import { useState } from 'react';
 import '../../styles/itinerary.scss';
 
 // react bootstrap components
@@ -33,10 +34,8 @@ function Itinerary({ place }) {
                     <Container className="itinerary py-4">
                         <h2 className="text-center py-3">Itinerary { toTitleCase(place) }</h2>
                         <Row>
-                            <Col>
-                                <CardColumns>
-                                    <ItineraryLists data={data} />
-                                </CardColumns>
+                            <Col xs={12} md={{ span: 6, offset: 3 }}>
+                                <ItineraryLists data={data} />
                             </Col>
                         </Row>
 
@@ -65,6 +64,8 @@ function ItineraryLists({ data }) {
         'dark',
     ];
 
+    const [isOpen, setIsOpen] = useState(null);
+
     return data.map(({
         kecamatan,
         kabupaten,
@@ -79,14 +80,14 @@ function ItineraryLists({ data }) {
         foto,
         foto_instagram,
     }, index) => ( 
-    <Card border={borderColors[index % borderColors.length]}>
+    <Card className="mb-4" border={borderColors[index % borderColors.length]} key={index}>
         <Link href={foto}>
             <Card.Img
                 className="itinerary__img img-fluid"
                 variant="top"
                 src={foto}
                 style={{
-                    maxHeight: '312px',
+                    height: '312px',
                     objectFit: 'cover',
                 }}
             />
@@ -95,52 +96,73 @@ function ItineraryLists({ data }) {
             <Card.Text>
                 <h3>{ toTitleCase(tempat) }</h3>
                 <p>{toSentenceCase(info)}</p>
-                <Table>
-                    <tbody>
-                        <tr>
-                            <th>Kecamatan</th>
-                            <td>{ toTitleCase(kecamatan) }</td>
-                        </tr>
-                        <tr>
-                            <th>Kabupaten</th>
-                            <td>{ toTitleCase(kabupaten) }</td>
-                        </tr>
-                        <tr>
-                            <th>Telp.</th>
-                            <td>{telp}</td>
-                        </tr>
-                        <tr>
-                            <th>Cocok Untuk</th>
-                            <td>
-                                { untuk.split(';').map(e => toTitleCase(e)).join(', ') }
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Waktu</th>
-                            <td>{ toTitleCase(waktu) }</td>
-                        </tr>
-                        <tr>
-                            <th>Kategori</th>
-                            <td>{ toTitleCase(kategori.split(';').join(', ')) }</td>
-                        </tr>
-                        <tr>
-                            <th>Google Map</th>
-                            <td>
-                                <a className="text-primary" href={map} target="_blank">Klik Disini</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Instagram</th>
-                            <td>
-                                <a className="text-primary" href={foto_instagram} target="_blank">Klik Disini</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Keterangan</th>
-                            <td>{ toSentenceCase(keterangan) }</td>
-                        </tr>
-                    </tbody>
-                </Table>
+                {
+                    isOpen === index ?
+                    <Table>
+                        <tbody>
+                            <tr>
+                                <th>Buka Jam</th>
+                                <td>{ waktu }</td>
+                            </tr>
+                            <tr>
+                                <th>Kecamatan</th>
+                                <td>{ toTitleCase(kecamatan) }</td>
+                            </tr>
+                            <tr>
+                                <th>Kabupaten</th>
+                                <td>{ toTitleCase(kabupaten) }</td>
+                            </tr>
+                            <tr>
+                                <th>Telp.</th>
+                                <td>{telp}</td>
+                            </tr>
+                            <tr>
+                                <th>Cocok Untuk</th>
+                                <td>
+                                    { untuk.split(';').map(e => toTitleCase(e)).join(', ') }
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Kategori</th>
+                                <td>{ toTitleCase(kategori.split(';').join(', ')) }</td>
+                            </tr>
+                            <tr>
+                                <th>Google Map</th>
+                                <td>
+                                    <a className="text-primary" href={map} target="_blank">Klik Disini</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Instagram</th>
+                                <td>
+                                    <a className="text-primary" href={foto_instagram} target="_blank">Klik Disini</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Keterangan</th>
+                                <td>{ toSentenceCase(keterangan) }</td>
+                            </tr>
+                        </tbody>
+                    </Table> :
+                    <>
+                        <Table borderless size="sm">
+                            <tbody>
+                                <tr>
+                                    <th>Buka Jam</th>
+                                    <td>{ waktu }</td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                        <Button
+                            className="d-block mx-auto"
+                            variant="default"
+                            size="sm"
+                            onClick={() => setIsOpen(index)}
+                        >
+                            Info Selengkapnya
+                        </Button>
+                    </>
+                }
             </Card.Text>
         </Card.Body>
     </Card>
