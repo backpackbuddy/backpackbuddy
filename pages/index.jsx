@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import BasicTopBar, { HomeTopBar } from '../components/topbar';
+import TopBar from '../components/topbar';
 import Destination from '../components/destination';
+import Intro from '../components/intro';
 import Layout from '../components/layout';
 import Link from 'next/link';
+import { motion, useViewportScroll } from 'framer-motion';
 import Sosmed from '../components/sosmed';
 import '../styles/home.scss';
 
@@ -44,40 +46,22 @@ function Home() {
 
     return (
         <>
-            <BasicTopBar
-                className={[ shrink ? 'py-0' : 'py-4', 'd-none d-lg-block' ].join(' ')}
-                bg={ shrink ? 'white' : '#eee' }
-                fixed="top"
-                sticky={false}
-                variant={ shrink ? 'light' : 'dark' }
-            />
-            <BasicTopBar
+            {/* Mobile */}
+            <TopBar
                 className="d-lg-none shadow-sm py-0"
                 fixed="top"
                 sticky={false}
             />
-            <div className="intro">
-                <Carousel controls={false} className="intro__carousel">
-                    <Carousel.Item className="intro__carousel-item">
-                        <div className="intro__caption">
-                            <Container className="intro__caption-text">
-                                <h1>Pertama Kali Ke Bali?</h1>
-                                <p className="intro__description">Gratis rute wisata harian untuk backpacker di Bali.</p>
-                                <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
-                            </Container>
-                        </div>
-                    </Carousel.Item>
-                    <Carousel.Item className="intro__carousel-item">
-                        <div className="intro__caption">
-                            <Container className="intro__caption-text">
-                                <h1>Butuh Rekomendasi Rute?</h1>
-                                <p className="intro__description">Konsultasikan dengan kami secara gratis!</p>
-                                <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
-                            </Container>
-                        </div>
-                    </Carousel.Item>
-                </Carousel>
-            </div>
+
+            {/* Desktop */}
+            <TopBar
+                className={[ shrink ? 'py-0' : 'py-4', 'd-none d-lg-block' ].join(' ')}
+                bg={ shrink ? 'white' : false }
+                fixed="top"
+                sticky={false}
+                variant={ shrink ? 'light' : 'dark' }
+            />
+            <Intro />
             <Layout>
                 <section className="place">
                     <Container>
@@ -146,23 +130,6 @@ function Home() {
                         </Link>
                     </Container>
                 </section>
-
-                {/*}
-                <section className="concultation text-white">
-                    <Container className="text-right">
-                        <h2 className="pb-2">Gratis konsultasi rute wisata</h2>
-                        <h5 className="w-50 ml-auto font-weight-normal">Butuh rekomendasi rute selama di Bali atau ingin tahu wisata anti mainstream yang baru di Bali. Konsultasikan dengan kami secara gratis!</h5>
-                        <Button
-                            className="mt-2"
-                            variant="outline-light"
-                            size="lg"
-                        >
-                            Cari tau disini
-                        </Button>
-                    </Container>
-                </section>
-                {*/}
-
                 <section className="testimonials">
                     <Container>
                         <h2 className="text-center">Testimonials</h2>

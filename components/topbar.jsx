@@ -13,7 +13,16 @@ import {
 
 function TopBar(props) {
     return (
-        <Navbar collapseOnSelect={true} {...props}>
+        <Navbar
+            className="header--slim py-0 shadow-sm"
+            collapseOnSelect={true}
+            bg="white"
+            expand="lg"
+            sticky="top"
+            style={{ transition: '.35s all ease' }}
+            variant="light"
+            {...props}
+        >
             <Container>
                 <Navbar.Brand href="/">
                     <Image className="d-none d-sm-block" src="/images/default-logo.png" alt="Backpack Buddy" />
@@ -41,31 +50,4 @@ function TopBar(props) {
     );
 }
 
-export function HomeTopBar(props) {
-    return (
-        <TopBar
-            className="header--home py-4"
-            bg="white"
-            expand="lg"
-            fixed="top"
-            variant="light"
-            {...props}
-        />
-    );
-}
-
-function BasicTopBar(props) {
-    return (
-        <TopBar
-            className="header--slim py-0 shadow-sm"
-            bg="white"
-            expand="lg"
-            sticky="top"
-            style={{ transition: 'all .3s ease' }}
-            variant="light"
-            {...props}
-        />
-    );
-}
-
-export default BasicTopBar;
+export default TopBar;

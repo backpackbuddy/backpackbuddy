@@ -1,6 +1,5 @@
-import BasicTopBar, { HomeTopBar } from './topbar';
 import Link from 'next/link';
-import '../styles/header.scss';
+import '../styles/intro.scss'
 
 // react bootstrap components
 import {
@@ -9,14 +8,14 @@ import {
     Container,
 } from 'react-bootstrap';
 
-function Header({ children }) {
+function Header() {
 
     return (
-        <header className="intro">
+        <div className="intro">
             <Carousel controls={false} className="intro__carousel">
                 <Carousel.Item className="intro__carousel-item">
                     <div className="intro__caption">
-                        <Container>
+                        <Container className="intro__caption-text">
                             <h1>Pertama Kali Ke Bali?</h1>
                             <p className="intro__description">Gratis rute wisata harian untuk backpacker di Bali.</p>
                             <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
@@ -25,7 +24,7 @@ function Header({ children }) {
                 </Carousel.Item>
                 <Carousel.Item className="intro__carousel-item">
                     <div className="intro__caption">
-                        <Container>
+                        <Container className="intro__caption-text">
                             <h1>Butuh Rekomendasi Rute?</h1>
                             <p className="intro__description">Konsultasikan dengan kami secara gratis!</p>
                             <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
@@ -33,18 +32,7 @@ function Header({ children }) {
                     </div>
                 </Carousel.Item>
             </Carousel>
-
-            {/*}
-            <div className="intro text-white text-center" >
-                <Container>
-                    <h1>Pertama kali ke Bali?</h1>
-                    <p className="intro__description">Gratis rute wisata harian untuk backpacker di Bali.</p>
-                    <Link href="/free-itinerary"><Button className="mt-4">Cari tau disini</Button></Link>
-                    { children }
-                </Container>
-            </div>
-            {*/}
-        </header>
+        </div>
     );
 }
 

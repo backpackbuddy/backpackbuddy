@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import toSlugCase from 'to-slug-case';
 import Link from 'next/link';
 import toTitleCase from 'to-title-case';
@@ -21,8 +20,6 @@ const dataJson = require('../data.json');
 const data = uniqueBy(dataJson, 'ikonik');
 
 function Cards({ offset = 0, limit = data.length }) {
-
-    const [isOpen, setIsOpen] = useState(null);
 
     return data.slice(offset, limit).map(({ ikonik, foto }) => (
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={ikonik}>
