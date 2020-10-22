@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import toSlugCase from 'to-slug-case';
+import toTitleCase from 'to-title-case';
 import { useRouter } from 'next/router';
 
 // react bootstrap components
@@ -20,18 +22,13 @@ function TopBar(props) {
                 <Navbar.Toggle aria-controls="bb-navbar-nav" />
                 <Navbar.Collapse id="bb-navbar-nav">
                     <Nav className="ml-auto p-2 p-lg-0 font-weight-bold" defaultActiveKey={useRouter().pathname}>
-                        <Link href="/">
-                            <Nav.Link href="/">Home</Nav.Link>
-                        </Link>
-                        <Link href="/free-itinerary">
-                            <Nav.Link href="/free-itinerary">Free Itinerary</Nav.Link>
-                        </Link>
-                        <Link href="/contact">
-                            <Nav.Link href="/contact">Contact</Nav.Link>
-                        </Link>
-                        <Link href="/about">
-                            <Nav.Link href="/about">About</Nav.Link>
-                        </Link>
+                        {
+                            ['home', 'free itinerary', 'contact', 'about'].map((item) => (
+                                <Link href="/">
+                                    <Nav.Link className="px-lg-3" href={'/' + toSlugCase(item == 'home' ? '' : item)}>{toTitleCase(item)}</Nav.Link>
+                                </Link>
+                            ))
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
@@ -43,8 +40,10 @@ export function HomeTopBar(props) {
     return (
         <TopBar
             className="header--home py-4"
-            variant="dark"
+            bg="white"
             expand="lg"
+            fixed="top"
+            variant="light"
             {...props}
         />
     );
@@ -56,8 +55,9 @@ function BasicTopBar(props) {
             className="header--slim py-0 shadow-sm"
             bg="white"
             expand="lg"
+            fixed="top"
+            style={{ transition: 'all .3s ease' }}
             variant="light"
-            sticky="top"
             {...props}
         />
     );

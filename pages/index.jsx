@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import BasicTopBar from '../components/topbar';
+import BasicTopBar, { HomeTopBar } from '../components/topbar';
 import Destination from '../components/destination';
 import Header from '../components/header';
 import Layout from '../components/layout';
@@ -31,10 +31,12 @@ function Home() {
     const [shrink, setShrink] = useState(false);
 
     function scrollFunction() {
-        if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-            !shrink && setShrink(true);
+        console.log(document.documentElement.scrollTop);
+        console.log(shrink);
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            setShrink(true);
         } else {
-            shrink && setShrink(false);
+            setShrink(false);
         }
     }
 
@@ -44,9 +46,12 @@ function Home() {
 
     return (
         <>
-            {
-                shrink && <BasicTopBar />
-            }
+            <BasicTopBar
+                className={[ shrink ? 'py-0' : 'py-4', 'd-none d-lg-block' ].join(' ')}
+                bg={ shrink ? 'white' : 'transparent' }
+                variant={ shrink ? 'light' : 'dark' }
+            />
+            <BasicTopBar className="d-lg-none shadow-sm py-0" />
             <Header />
             <Layout>
                 <section className="place">
@@ -75,24 +80,21 @@ function Home() {
                             {
                                 [
                                     {
-                                        file: '1',
                                         Icon: FreeIcon,
                                         title: 'Gratis',
                                         description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
                                     },
                                     {
-                                        file: '2',
                                         Icon: ExperiencedIcon,
                                         title: 'Konsultan berpengalaman',
                                         description: 'Para konsultan merupakan traveler asli Bali.'
                                     },
                                     {
-                                        file: '3',
                                         Icon: CustomIcon,
                                         title: 'Customize itinerary',
                                         description: 'Kami melayani request itinerary sesuai keinginan pelanggan.'
                                     },
-                                ].map(({file, Icon, title, description}, index) => (
+                                ].map(({Icon, title, description}, index) => (
                                     <Col
                                         key={index}
                                         className="why__col text-center text-white mt-4 mt-md-0"
@@ -100,7 +102,7 @@ function Home() {
                                         md={4}
                                     >
                                         <Card className="why__card">
-                                            <Image loading="lazy" className="why__img" src={`/images/gallery/${file}.jpeg`} alt={title} />
+                                            <Image loading="lazy" className="why__img" src={`/images/gallery/${index + 1}.jpeg`} alt={title} />
                                             <Card.Body className="why__text">
                                                 <Icon width="48px" height="48px" fill="#fff" />
                                                 <h4 className="mt-3">{title}</h4>

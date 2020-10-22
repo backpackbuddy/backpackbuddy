@@ -16,16 +16,20 @@ function Header({ children }) {
             <Carousel controls={false} className="intro__carousel">
                 <Carousel.Item className="intro__carousel-item">
                     <div className="intro__caption">
-                        <h1>Butuh rekomendasi rute?</h1>
-                        <p className="intro__description">Konsultasikan dengan kami secara gratis!</p>
-                        <Link href="/free-itinerary"><Button className="mt-4">Cari tau disini</Button></Link>
+                        <Container>
+                            <h1>Pertama Kali Ke Bali?</h1>
+                            <p className="intro__description">Gratis rute wisata harian untuk backpacker di Bali.</p>
+                            <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
+                        </Container>
                     </div>
                 </Carousel.Item>
                 <Carousel.Item className="intro__carousel-item">
                     <div className="intro__caption">
-                        <h1>Pertama kali ke Bali?</h1>
-                        <p className="intro__description">Gratis rute wisata harian untuk backpacker di Bali.</p>
-                        <Link href="/free-itinerary"><Button className="mt-4">Cari tau disini</Button></Link>
+                        <Container>
+                            <h1>Butuh Rekomendasi Rute?</h1>
+                            <p className="intro__description">Konsultasikan dengan kami secara gratis!</p>
+                            <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
+                        </Container>
                     </div>
                 </Carousel.Item>
             </Carousel>
