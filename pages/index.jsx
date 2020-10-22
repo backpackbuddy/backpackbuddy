@@ -46,7 +46,7 @@ function Home() {
         <>
             <BasicTopBar
                 className={[ shrink ? 'py-0' : 'py-4', 'd-none d-lg-block' ].join(' ')}
-                bg={ shrink ? 'white' : 'transparent' }
+                bg={ shrink ? 'white' : '#eee' }
                 fixed="top"
                 sticky={false}
                 variant={ shrink ? 'light' : 'dark' }
@@ -60,7 +60,7 @@ function Home() {
                 <Carousel controls={false} className="intro__carousel">
                     <Carousel.Item className="intro__carousel-item">
                         <div className="intro__caption">
-                            <Container>
+                            <Container className="intro__caption-text">
                                 <h1>Pertama Kali Ke Bali?</h1>
                                 <p className="intro__description">Gratis rute wisata harian untuk backpacker di Bali.</p>
                                 <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
@@ -69,7 +69,7 @@ function Home() {
                     </Carousel.Item>
                     <Carousel.Item className="intro__carousel-item">
                         <div className="intro__caption">
-                            <Container>
+                            <Container className="intro__caption-text">
                                 <h1>Butuh Rekomendasi Rute?</h1>
                                 <p className="intro__description">Konsultasikan dengan kami secara gratis!</p>
                                 <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
