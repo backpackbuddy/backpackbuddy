@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import BasicTopBar, { HomeTopBar } from '../components/topbar';
 import Destination from '../components/destination';
-import Header from '../components/header';
 import Layout from '../components/layout';
 import Link from 'next/link';
 import Sosmed from '../components/sosmed';
@@ -19,6 +18,7 @@ import {
 import {
     Button,
     Card,
+    Carousel,
     Col,
     Container,
     Form,
@@ -31,8 +31,6 @@ function Home() {
     const [shrink, setShrink] = useState(false);
 
     function scrollFunction() {
-        console.log(document.documentElement.scrollTop);
-        console.log(shrink);
         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
             setShrink(true);
         } else {
@@ -49,10 +47,37 @@ function Home() {
             <BasicTopBar
                 className={[ shrink ? 'py-0' : 'py-4', 'd-none d-lg-block' ].join(' ')}
                 bg={ shrink ? 'white' : 'transparent' }
+                fixed="top"
+                sticky={false}
                 variant={ shrink ? 'light' : 'dark' }
             />
-            <BasicTopBar className="d-lg-none shadow-sm py-0" />
-            <Header />
+            <BasicTopBar
+                className="d-lg-none shadow-sm py-0"
+                fixed="top"
+                sticky={false}
+            />
+            <div className="intro">
+                <Carousel controls={false} className="intro__carousel">
+                    <Carousel.Item className="intro__carousel-item">
+                        <div className="intro__caption">
+                            <Container>
+                                <h1>Pertama Kali Ke Bali?</h1>
+                                <p className="intro__description">Gratis rute wisata harian untuk backpacker di Bali.</p>
+                                <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
+                            </Container>
+                        </div>
+                    </Carousel.Item>
+                    <Carousel.Item className="intro__carousel-item">
+                        <div className="intro__caption">
+                            <Container>
+                                <h1>Butuh Rekomendasi Rute?</h1>
+                                <p className="intro__description">Konsultasikan dengan kami secara gratis!</p>
+                                <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
+                            </Container>
+                        </div>
+                    </Carousel.Item>
+                </Carousel>
+            </div>
             <Layout>
                 <section className="place">
                     <Container>
@@ -81,8 +106,8 @@ function Home() {
                                 [
                                     {
                                         Icon: FreeIcon,
-                                        title: 'Gratis',
-                                        description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
+                                            title: 'Gratis',
+                                            description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
                                     },
                                     {
                                         Icon: ExperiencedIcon,

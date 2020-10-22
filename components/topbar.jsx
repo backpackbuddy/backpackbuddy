@@ -24,8 +24,13 @@ function TopBar(props) {
                     <Nav className="ml-auto p-2 p-lg-0 font-weight-bold" defaultActiveKey={useRouter().pathname}>
                         {
                             ['home', 'free itinerary', 'contact', 'about'].map((item) => (
-                                <Link href="/">
-                                    <Nav.Link className="px-lg-3" href={'/' + toSlugCase(item == 'home' ? '' : item)}>{toTitleCase(item)}</Nav.Link>
+                                <Link href={'/' + toSlugCase(item == 'home' ? '' : item)}>
+                                    <Nav.Link
+                                        className="px-lg-3"
+                                        href={'/' + toSlugCase(item == 'home' ? '' : item)}
+                                    >
+                                        {toTitleCase(item)}
+                                    </Nav.Link>
                                 </Link>
                             ))
                         }
@@ -55,7 +60,7 @@ function BasicTopBar(props) {
             className="header--slim py-0 shadow-sm"
             bg="white"
             expand="lg"
-            fixed="top"
+            sticky="top"
             style={{ transition: 'all .3s ease' }}
             variant="light"
             {...props}

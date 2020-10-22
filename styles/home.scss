@@ -4,6 +4,59 @@ $transition: .35s all ease;
 
 .description { max-width: 600px; }
 
+.intro {
+
+    &__carousel {
+        
+        &-item {
+
+            &:first-child .intro__caption {
+                background-image: url('/images/bg-2.webp');
+            }
+
+            &:last-child .intro__caption {
+                background-image: url('/images/bg-1.webp');
+            }
+        }
+    }
+
+    &__caption {
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #fff;
+        padding: 7rem 2rem;
+        text-align: center;
+        padding: 13rem 0px 10rem 0px;
+        position: relative;
+        z-index: -2;
+
+        &:before {
+            background-color: rgba(0,0,0,.2);
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+    }
+
+    h1 {
+        font-size: 3rem;
+        text-shadow: 3px 3px 6px rgba(0,0,0,.3);
+    }
+
+    &__description {
+        font-size: 1.4rem;
+    }
+
+    button {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
 .place {
     background-color: #f2f2f2;
 
