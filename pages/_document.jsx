@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="id, in-ID">
+      <Html lang="in-ID">
         <Head />
         <body>
           <Main />
