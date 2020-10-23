@@ -175,4 +175,10 @@ $transition: .35s all ease;
             -webkit-line-clamp: 4;
         }
     }
+
+    &__quote-icon {
+        position: absolute;
+        top: -16px;
+        left: -10px;
+    }
 }

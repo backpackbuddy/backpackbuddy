@@ -32,14 +32,30 @@ function TopBar(props) {
                 <Navbar.Collapse id="bb-navbar-nav">
                     <Nav className="ml-auto p-2 p-lg-0 font-weight-bold" defaultActiveKey={useRouter().pathname}>
                         {
-                            ['home', 'free itinerary', 'contact', 'about'].map((item) => (
-                                <Link href={'/' + toSlugCase(item == 'home' ? '' : item)}>
-                                    <Nav.Link
-                                        className="px-lg-3"
-                                        href={'/' + toSlugCase(item == 'home' ? '' : item)}
-                                    >
-                                        {toTitleCase(item)}
-                                    </Nav.Link>
+                            [
+                                {
+                                    url: '/',
+                                    name: 'Home',
+                                },
+                                {
+                                    url: '/free-itinerary',
+                                    name: 'Free Itinerary'
+                                },
+                                {
+                                    url: 'https://blog.backpackbuddy.id',
+                                    name: 'Blog',
+                                },
+                                {
+                                    url: '/contact',
+                                    name: 'Contact'
+                                },
+                                {
+                                    url: '/about',
+                                    name: 'About'
+                                }
+                            ].map(({ url, name }) => (
+                                <Link href={url}>
+                                    <Nav.Link className="px-lg-3" href={url}>{name}</Nav.Link>
                                 </Link>
                             ))
                         }

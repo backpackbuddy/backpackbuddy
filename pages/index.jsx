@@ -4,9 +4,9 @@ import Destination from '../components/destination';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
 import Link from 'next/link';
-import { motion, useViewportScroll } from 'framer-motion';
 import Sosmed from '../components/sosmed';
 import toTitleCase from 'to-title-case';
+import uniqueBy from 'unique-by';
 import '../styles/home.scss';
 
 // Icons
@@ -16,13 +16,13 @@ import {
     FreeIcon,
     RightArrowIcon,
     VCircleArrowIcon,
+    QuoteIcon,
 } from '../components/icons';
 
 // Bootstrap components
 import {
     Button,
     Card,
-    Carousel,
     Col,
     Container,
     Form,
@@ -30,8 +30,11 @@ import {
     Row,
 } from 'react-bootstrap';
 
+const dataJson = require('../data.json');
+
 
 function Home() {
+    const data = uniqueBy(dataJson, 'ikonik');
     const [shrink, setShrink] = useState(false);
     const [isOpen, setIsOpen] = useState([false, false, false]);
 
@@ -62,7 +65,7 @@ function Home() {
 
             {/* Desktop */}
             <TopBar
-                className={[ shrink ? 'py-0' : 'py-4', 'd-none d-lg-block' ].join(' ')}
+                className={[ shrink ? 'py-0 shadow-sm' : 'py-4 d-none d-lg-block' ].join(' ')}
                 bg={ shrink ? 'white' : false }
                 fixed="top"
                 sticky={false}
@@ -139,8 +142,8 @@ function Home() {
                 </section>
                 <section className="testimonials">
                     <Container>
-                        <h2 className="text-center">Testimonials</h2>
-                        <p className="text-center">Apa kata mereka tentang backpack buddy</p>
+                        <h2 className="text-center">Happy Travelers</h2>
+                        <p className="text-center">Dengarkan kisah dari mereka</p>
 
                         <div className="testimonials__box">
                             <Row className="testimonials__row">
@@ -171,16 +174,24 @@ function Home() {
                                                 <Card.Body>
                                                     <Card.Title className="text-center">{toTitleCase(name)}</Card.Title>
                                                     <Card.Text
-                                                        className={["testimonials__message", !isOpen[index] && "testimonials__message--truncate"].join(' ')}
+                                                        className={[
+                                                            "testimonials__message",
+                                                            !isOpen[index] && "testimonials__message--truncate",
+                                                        ].join(' ')}
                                                     >
-                                                        "{message}"
+                                                        <QuoteIcon
+                                                            fill="gold"
+                                                            height="30px"
+                                                            width="30px"
+                                                            className="testimonials__quote-icon"
+                                                        />
+                                                        <span>{message}</span>
                                                     </Card.Text>
                                                     <Card.Text>
                                                         <Button
-                                                            className="d-block mx-auto"
+                                                            className="d-block mx-auto shadow-none"
                                                             onClick={() => toggleReadMore(index)}
                                                             size="sm"
-                                                            style={{ boxShadow: 'none' }}
                                                             variant="default"
                                                         >
                                                             <VCircleArrowIcon
@@ -212,6 +223,23 @@ function Home() {
                             </Col>
                         </Row>
                         <Row>
+                            {/*}
+                            <Col xs={12} md={4}>
+                                {
+                                    data.slice(0, 5).map(({ ikonik }) => (
+                                        <a className="d-block my-3" href={toSlugCase(ikonik)}>{toTitleCase(ikonik)}</a>
+                                    ))
+                                }
+                            </Col>
+
+                            <Col xs={12} md={4}>
+                                {
+                                    data.slice(5, 10).map(({ ikonik }) => (
+                                        <a className="d-block my-3" href={toSlugCase(ikonik)}>{toTitleCase(ikonik)}</a>
+                                    ))
+                                }
+                            </Col>
+                            {*/}
                             <Col xs={12} md={4}>
                                 <a className="d-block my-3" href="#">Bertualang ke hutan</a>
                                 <a className="d-block my-3" href="#">Petualangan ke air terjun</a>
