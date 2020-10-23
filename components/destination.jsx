@@ -28,7 +28,6 @@ function Cards({ offset = 0, limit = data.length }) {
                     <a>
                         <Card.Img
                             className="place__img"
-                            loading="lazy"
                             variant="top"
                             src={foto} alt={ikonik} 
                         />
