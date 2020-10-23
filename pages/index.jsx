@@ -15,6 +15,7 @@ import {
     ExperiencedIcon,
     FreeIcon,
     RightArrowIcon,
+    VCircleArrowIcon,
 } from '../components/icons';
 
 // Bootstrap components
@@ -32,6 +33,7 @@ import {
 
 function Home() {
     const [shrink, setShrink] = useState(false);
+    const [isOpen, setIsOpen] = useState([false, false, false]);
 
     function scrollFunction() {
         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
@@ -39,6 +41,10 @@ function Home() {
         } else {
             setShrink(false);
         }
+    }
+
+    function toggleReadMore(index) {
+        setIsOpen(prevState => prevState.map((prev, i) => i === index ? !prev : prev));
     }
 
     useEffect(() => {
@@ -152,8 +158,8 @@ function Home() {
                                             name: 'lia',
                                             message: 'Saya dan suami sudah berusia 50 tahun dan kami backpackeran dari Bandung. Saya sudah sering mengunjungi Bali namun terbatas di pantai Kuta dan seminyak saya. Saya lega ada jasa konsultasi dari Backpackbuddy yang membuatkan rute dan ide-ide wisata yang bisa kami tempuh dengan motor tanpa harus kecapekan. saya baru tau kalau Bali gak cuma di Kuta saja. Next time kalau anak saya kesini minta di aturin rutenya sama Backpackbuddy saja.'
                                         }
-                                    ].map(({ name, message }) => (
-                                        <Col className="testimonials__col" xs={12} md={4}>
+                                    ].map(({ name, message }, index) => (
+                                        <Col className="testimonials__col" xs={12} md={4} key={index}>
                                             <div className="testimonials__img">
                                                 <Image
                                                     className="testimonials__img img-fluid"
@@ -164,10 +170,27 @@ function Home() {
                                             <Card className="testimonials__card shadow" bg="info" text="light">
                                                 <Card.Body>
                                                     <Card.Title className="text-center">{toTitleCase(name)}</Card.Title>
-                                                    <Card.Text className="testimonials__message">
+                                                    <Card.Text
+                                                        className={["testimonials__message", !isOpen[index] && "testimonials__message--truncate"].join(' ')}
+                                                    >
                                                         "{message}"
                                                     </Card.Text>
-                                                    <a href="#">Read more</a>
+                                                    <Card.Text>
+                                                        <Button
+                                                            className="d-block mx-auto"
+                                                            onClick={() => toggleReadMore(index)}
+                                                            size="sm"
+                                                            style={{ boxShadow: 'none' }}
+                                                            variant="default"
+                                                        >
+                                                            <VCircleArrowIcon
+                                                                fill="#f2f2f2"
+                                                                height="25px"
+                                                                style={{ transform: isOpen[index] ? 'rotate(0deg)' : 'rotate(180deg)' }}
+                                                                width="25px"
+                                                            />
+                                                        </Button>
+                                                    </Card.Text>
                                                 </Card.Body>
                                             </Card>
                                         </Col>
