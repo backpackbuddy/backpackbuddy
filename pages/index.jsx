@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import Link from 'next/link';
 import { motion, useViewportScroll } from 'framer-motion';
 import Sosmed from '../components/sosmed';
+import toTitleCase from 'to-title-case';
 import '../styles/home.scss';
 
 // Icons
@@ -133,17 +134,43 @@ function Home() {
                 <section className="testimonials">
                     <Container>
                         <h2 className="text-center">Testimonials</h2>
+                        <p className="text-center">Apa kata mereka tentang backpack buddy</p>
 
-                        <div className="testimonials__box bg-white shadow mt-4">
-                            <Row className="testimonials__row flex-nowrap overflow-auto mx-0 px-4">
+                        <div className="testimonials__box">
+                            <Row className="testimonials__row">
                                 {
-                                    Array.from(Array(13).keys()).map(i => (
-                                        <Image
-                                            className="img-fluid w-100"
-                                            src={`/images/testimonials/${i + 1}.jpg`}
-                                            alt="Testimonials Backpack Buddy"
-                                            key={i}
-                                        />
+                                    [
+                                        {
+                                            name: 'fredy',
+                                            message: 'Terimakasih atas itinerary yang diberikan untuk tur hari pertama saya. Konsultannya sangat friendly dan mengerti rute yang harus diambil selanjutnya. Rekomendasi kulinernya juga enak-enak. Terimakasih Backpackbuddy sukses selalu'
+                                        },
+                                        {
+                                            name: 'eira',
+                                            message: 'Sebagai seorang yang sudah sering berwisata ke Bali saya masih kesulitan untuk menentukan rute wisata terbaru yang bisa saya tempuh seharian. Adanya konsultan Backpackbuddy membantu saya memilih tempat wisata sesuai dengan minat dan jalur yang akan saya tempuh.'
+                                        },
+                                        {
+                                            name: 'lia',
+                                            message: 'Saya dan suami sudah berusia 50 tahun dan kami backpackeran dari Bandung. Saya sudah sering mengunjungi Bali namun terbatas di pantai Kuta dan seminyak saya. Saya lega ada jasa konsultasi dari Backpackbuddy yang membuatkan rute dan ide-ide wisata yang bisa kami tempuh dengan motor tanpa harus kecapekan. saya baru tau kalau Bali gak cuma di Kuta saja. Next time kalau anak saya kesini minta di aturin rutenya sama Backpackbuddy saja.'
+                                        }
+                                    ].map(({ name, message }) => (
+                                        <Col className="testimonials__col" xs={12} md={4}>
+                                            <div className="testimonials__img">
+                                                <Image
+                                                    className="testimonials__img img-fluid"
+                                                    src={`/images/testimonials/${name}.jpeg`}
+                                                    alt={toTitleCase(name)}
+                                                />
+                                            </div>
+                                            <Card className="testimonials__card shadow" bg="info" text="light">
+                                                <Card.Body>
+                                                    <Card.Title className="text-center">{toTitleCase(name)}</Card.Title>
+                                                    <Card.Text className="testimonials__message">
+                                                        "{message}"
+                                                    </Card.Text>
+                                                    <a href="#">Read more</a>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
                                     ))
                                 }
                             </Row>

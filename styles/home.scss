@@ -126,9 +126,45 @@ $transition: .35s all ease;
 
 .testimonials {
 
-    &__row {
-        & img {
-            min-width: 300px;
+    &__col {
+        margin-top: 5rem;
+
+        &:nth-child(2) img {
+            object-position: center 70%;
         }
+    }
+
+    &__img {
+        display: block;
+
+        & img {
+            border: .4rem solid $cyan;
+            border-radius: 50%;
+            height: 120px;
+            margin: auto;
+            -o-object-fit: cover;
+            object-fit: cover;
+            -o-object-position: bottom;
+            object-position: bottom;
+            transform: translateX(-50%);
+            width: 120px;
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            z-index: 2;
+        }
+    }
+
+    &__card {
+        border: none;
+        padding-top: 3rem;
+        position: relative;
+    }
+
+    &__message {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
     }
 }
