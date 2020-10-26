@@ -1,0 +1,3 @@
+wordpress admin
+user: niken.namsantrip
+pass: 70F9f9Bj!
