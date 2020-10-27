@@ -12,8 +12,8 @@
     "info": "Tempat wisata Goa Gajah merupakan salah satu tempat wisata paling populer di Gianyar, bahkan di pulau Bali. Tempat ini memang benar-benar unik dan bersejarah",
     "foto": "https://tempatwisatadibali.info/wp-content/uploads/2017/08/Goa-Gajah-Bedulu-Ubud-Gianyar-Bali.jpg",
     "waktu": "09:00",
-    "rute_ke": "6;1",
-    "ikonik": "Blahbatuh"
+    "ikonik": "Blahbatuh",
+    "rute_ke": 1
   },
   {
     "tempat": "Wr Babi Guling Bu Man Sading",
@@ -28,8 +28,8 @@
     "info": "tempat makan ini memiliki view sawah yang indah",
     "foto": "https://cdn2.tstatic.net/bali/foto/bank/images/babi-guling_20181103_132127.jpg",
     "waktu": "18:00",
-    "rute_ke": "5;3",
-    "ikonik": "Mengwi"
+    "ikonik": "Mengwi",
+    "rute_ke": 1
   },
   {
     "tempat": "Pasar Seni Sukawati",
@@ -44,8 +44,8 @@
     "info": "Anda tidak akan pernah selesai menjelajahi pasar ini dengan berbagai souvenirnya yang unik dan membuat manja mata untuk membelinya",
     "foto": "https://www.piknikdong.com/wp-content/uploads/2019/03/Pasar-Seni-Sukawati.jpg",
     "waktu": "16:00",
-    "rute_ke": "2;3",
-    "ikonik": "Sukawati"
+    "ikonik": "Sukawati",
+    "rute_ke": 3
   },
   {
     "tempat": "Air Terjun Tegenungan (Blangsinga)",
@@ -60,8 +60,8 @@
     "info": "Merupakan air terjun paling populer di bali dan paling dekat dengan bandara Ngurah Rai.",
     "foto": "https://www.balisaritour.com/wp-content/uploads/2017/05/tegenunganwaterfall@balisaritour.jpg",
     "waktu": "13:00",
-    "rute_ke": "6;2",
-    "ikonik": "Sukawati"
+    "ikonik": "Sukawati",
+    "rute_ke": 1
   },
   {
     "tempat": "BUBUR BALI",
@@ -76,8 +76,8 @@
     "info": "pemandangan yang indah dengan hidangan sederhana",
     "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUPXdzZU4I9EvtRgZpIJSGIcTRvigfB2_v3A&usqp=CAU",
     "waktu": "16:00",
-    "rute_ke": "6;3",
-    "ikonik": "Sukawati"
+    "ikonik": "Sukawati",
+    "rute_ke": 2
   },
   {
     "tempat": "Bukit Campuhan Ubud",
@@ -92,8 +92,8 @@
     "info": "Bukit Campuhan atau lebih dikenal dengan nama bukit Cinta merupakan tempat wisata berupa alam perbukitan dengan area jogging dengan rumput ilalang di kanan kiri track ini.",
     "foto": "https://www.nativeindonesia.com/wp-content/uploads/2018/09/bukit-campuhan-ubud-bali.jpg",
     "waktu": "06:00",
-    "rute_ke": "1;1",
-    "ikonik": "Tegalalang"
+    "ikonik": "Tegalalang",
+    "rute_ke": 1
   },
   {
     "tempat": "The Natural Terrace Rice Bali",
@@ -108,24 +108,8 @@
     "info": "",
     "foto": "https://thingstodoinbali.com/wp-content/uploads/rice-fields-bali_tegallalang-rice-terraces.jpg",
     "waktu": "07:00",
-    "rute_ke": "4;1",
-    "ikonik": "Tegalalang"
-  },
-  {
-    "tempat": "The Natural Terrace Rice Bali",
-    "kabupaten": "gianyar",
-    "kecamatan": "Tegalalang",
-    "kategori": "alami;instagram;desa wisata",
-    "keterangan": "memiliki hamparan sawah yang luas",
-    "untuk": "couple;group kecil;family dengan anak",
-    "telp": 62816576950,
-    "map": "https://goo.gl/maps/qZWuASebeLorEbwX9",
-    "foto_instagram": "https://www.instagram.com/explore/tags/cekinganriceterrace/",
-    "info": "",
-    "foto": "https://thingstodoinbali.com/wp-content/uploads/rice-fields-bali_tegallalang-rice-terraces.jpg",
-    "waktu": "07:00",
-    "rute_ke": "2;1",
-    "ikonik": "Tegalalang"
+    "ikonik": "Tegalalang",
+    "rute_ke": 2
   },
   {
     "tempat": "Suwat Waterfall",
@@ -140,8 +124,8 @@
     "info": "",
     "foto": "https://img.locationscout.net/images/2018-06/haew-suwat-waterfall-thailand_l.jpeg",
     "waktu": "11:00",
-    "rute_ke": "4;2",
-    "ikonik": "Tegalalang"
+    "ikonik": "Tegalalang",
+    "rute_ke": 3
   },
   {
     "tempat": "Nasi Ayam Kedewatan Ibu Agung",
@@ -156,8 +140,8 @@
     "info": "",
     "foto": "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1559044541/mbc6egen15g5qqcwvcuu.jpg",
     "waktu": "10:00",
-    "rute_ke": "1;2",
-    "ikonik": "ubud"
+    "ikonik": "ubud",
+    "rute_ke": 1
   },
   {
     "tempat": "Air Terjun Kanto Lampo",
@@ -172,8 +156,8 @@
     "info": "Air terjun ini tergolong unik karena airnya yang jatuh tidak secara langsung menuju sungai. Sebelum mencapai sungai, air yang jatuh akan menghantam bebatuan hitam yang tersusun acak sehingga menghasilkan cipratan air dari segala sisi.",
     "foto": "https://img.traveltriangle.com/blog/wp-content/uploads/2018/12/cover-for-kanto-lampo.jpg",
     "waktu": "13:00",
-    "rute_ke": "1;3",
-    "ikonik": "ubud"
+    "ikonik": "ubud",
+    "rute_ke": 3
   },
   {
     "tempat": "Tirta Empul Temple",
@@ -188,103 +172,7 @@
     "info": "Jika Anda merasa ingin menyucikan diri dan lahir kembali menjadi pribadi yang baru, pergilah ke Pura Tirta Empul. Konon pura ini sudah ada sejak tahun 960 masehi!",
     "foto": "https://assets-a2.kompasiana.com/items/album/2019/10/22/tirta-5daec904097f3679aa7de652.jpg?t=o&v=760",
     "waktu": "11:00",
-    "rute_ke": "2;2",
-    "ikonik": "ubud"
-  },
-  {
-    "tempat": "Pulagan Bali Agro ( wantilan subak )",
-    "kabupaten": "gianyar",
-    "kecamatan": "tampaksiring",
-    "kategori": "alami",
-    "keterangan": "hamparan sawah yang membentang luasbisa kita temui di tempat ini",
-    "untuk": "solo traveler;couple;group kecil;family dengan anak",
-    "telp": "",
-    "map": "https://goo.gl/maps/aMMAPgEtmSmaVg2r5",
-    "foto_instagram": "https://www.instagram.com/explore/tags/pulaganbaliagro/",
-    "info": "tempat yang masih sangat terjaga",
-    "foto": "https://img.okezone.com/content/2017/08/13/406/1755229/subak-pulagan-warisan-era-keemasan-prabu-udayana-yang-keramat-pK9IY1q3vj.jpg",
-    "waktu": "07:00",
-    "rute_ke": "3;1",
-    "ikonik": "ubud"
-  },
-  {
-    "tempat": "Air Terjun Rang Reng",
-    "kabupaten": "gianyar",
-    "kecamatan": "Bakbakan",
-    "kategori": "alami;instagram;experience;hidden gem",
-    "keterangan": "",
-    "untuk": "solo traveler;couple;group kecil;family dengan anak",
-    "telp": "",
-    "map": "https://www.google.com/maps/place/Goa+Rang+Reng+Waterfall/@-8.5155304,115.3314293,15z/data=!4m5!3m4!1s0x0:0xddcb7fa4117838d3!8m2!3d-8.5155304!4d115.3314293",
-    "foto_instagram": "https://www.instagram.com/explore/tags/goarangrengwaterfall/",
-    "info": "",
-    "foto": "https://www.kintamani.id/wp-content/uploads/Air-Terjun-Goa-Rang-Reng-Gianyar-1.jpg",
-    "waktu": "12:00",
-    "rute_ke": "3;2",
-    "ikonik": "ubud"
-  },
-  {
-    "tempat": "Pasar Senggol Gianyar",
-    "kabupaten": "gianyar",
-    "kecamatan": "Gianyar",
-    "kategori": "street food",
-    "keterangan": "menyediakan banyak pilihan makanan dan jajanan khas bali yang bisa kita piih",
-    "untuk": "solo traveler;couple;group kecil;family dengan anak",
-    "telp": 62361944123,
-    "map": "https://goo.gl/maps/6m1vc8QMN8Gaott79",
-    "foto_instagram": "https://www.instagram.com/explore/tags/pasarsengolgianyar/",
-    "info": "mulai buka pada pukul 15.00",
-    "foto": "https://idetrips.com/wp-content/uploads/2019/02/gianyar-night-market-2-640x360.jpg",
-    "waktu": "17:00",
-    "rute_ke": "3;3",
-    "ikonik": "ubud"
-  },
-  {
-    "tempat": "Nasi Ayam Kedewatan Ibu Agung",
-    "kabupaten": "gianyar",
-    "kecamatan": "ubud",
-    "kategori": "street food",
-    "keterangan": "tempat makan yang enak di kunjungi bersama teman dan keluarga",
-    "untuk": "solo traveler;couple;group kecil;family dengan anak",
-    "telp": "",
-    "map": "https://goo.gl/maps/TMeauCtAqu2yMQkU9",
-    "foto_instagram": "https://www.instagram.com/explore/tags/nasiayamkedewatan/",
-    "info": "",
-    "foto": "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1559044541/mbc6egen15g5qqcwvcuu.jpg",
-    "waktu": "10:00",
-    "rute_ke": "4;3",
-    "ikonik": "ubud"
-  },
-  {
-    "tempat": "The Blanco Renaissance Museum",
-    "kabupaten": "gianyar",
-    "kecamatan": "ubud",
-    "kategori": "instagram;taman buatan;themepark",
-    "keterangan": "cocok untuk wisata keluarga dan",
-    "untuk": "couple;group kecil;family dengan anak",
-    "telp": 62361975502,
-    "map": "https://goo.gl/maps/tHpUc8v2ZL7Z6xeQ7",
-    "foto_instagram": "https://www.instagram.com/explore/tags/blancomuseum/",
-    "info": "banyak spot foto bagus yang bisa juga di jadikan rekomendasi untuk foto prewedding",
-    "foto": "https://idetrips.com/wp-content/uploads/2018/08/The-Blanco-Renaissance-Museum-st-640x361.jpg",
-    "waktu": "10:00",
-    "rute_ke": "5;1",
-    "ikonik": "ubud"
-  },
-  {
-    "tempat": "Ubud Monkey Forest",
-    "kabupaten": "gianyar",
-    "kecamatan": "Ubud",
-    "kategori": "alami;desa wisata",
-    "keterangan": "menjelajahi hutan Bersama para monyet",
-    "untuk": "solo traveler;couple;group kecil;family dengan anak",
-    "telp": 62361971304,
-    "map": "https://www.google.com/maps/place/Sacred+Monkey+Forest+Sanctuary/@-8.5187458,115.2564086,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd23d43f6189b67:0xb6ec43164befc356!8m2!3d-8.5187511!4d115.2585973",
-    "foto_instagram": "https://www.instagram.com/explore/tags/ubudmonkeyforest/",
-    "info": "Ubud Monkey Forest merupakan sebuah kawasan hutan yang dihuni oleh ratusan ekor kera. Di sini wisatawan bisa melihat tingkah pola perilaku kera-kera yang berada di kawasan hutan yang alami dengan penuh suasana religius.",
-    "foto": "https://dolanyok.com/wp-content/uploads/2020/01/Monkey-Forest-2-by-monkeyforestsanctuaryubud_.jpg",
-    "waktu": "14:00",
-    "rute_ke": "5;2",
-    "ikonik": "ubud"
+    "ikonik": "ubud",
+    "rute_ke": 2
   }
 ]

@@ -34,5 +34,7 @@
         "to-title-case": "^1.0.0",
         "unique-by": "^1.0.0"
     },
-    "dependencies": {}
+    "dependencies": {
+        "fast-sort": "^2.2.0"
+    }
 }

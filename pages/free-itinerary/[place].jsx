@@ -1,4 +1,5 @@
 import BasicTopBar from '../../components/topbar';
+import sort from 'fast-sort';
 import filterData from '../../utils/filter-data';
 import Layout from '../../components/layout';
 import Link from 'next/link';
@@ -71,7 +72,7 @@ function ItineraryLists({ data }) {
 
     const [isOpen, setIsOpen] = useState(null);
 
-    return data.map(({
+    return sort(data).asc(e => e.rute_ke).map(({
         kecamatan,
         kabupaten,
         waktu,
