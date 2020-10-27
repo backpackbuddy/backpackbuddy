@@ -12,7 +12,7 @@ function Header() {
 
     return (
         <div className="intro">
-            <Carousel controls={false} className="intro__carousel">
+            <Carousel className="intro__carousel" controls={false} pause={false}>
                 <Carousel.Item className="intro__carousel-item">
                     <div className="intro__caption">
                         <Container className="intro__caption-text">
