@@ -42,7 +42,7 @@ function TopBar(props) {
                                     name: 'Free Itinerary'
                                 },
                                 {
-                                    url: 'https://blog.backpackbuddy.id',
+                                    url: 'http://blog.backpackbuddy.id',
                                     name: 'Blog',
                                 },
                                 {
