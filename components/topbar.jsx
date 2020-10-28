@@ -25,8 +25,18 @@ function TopBar(props) {
         >
             <Container>
                 <Navbar.Brand href="/">
-                    <Image className="d-none d-sm-block" src="/images/default-logo.png" alt="Backpack Buddy" />
-                    <Image className="d-sm-none" src="/images/default-logo-mobile.png" width="50px" height="auto" alt="Backpack Buddy" />
+                    <Image
+                        className="d-none d-sm-block"
+                        alt="Backpack Buddy"
+                        src="/images/default-logo.png"
+                    />
+                    <Image
+                        className="d-sm-none"
+                        alt="Backpack Buddy"
+                        height="auto"
+                        src="/images/default-logo-mobile.png"
+                        width="50px"
+                    />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="bb-navbar-nav" />
                 <Navbar.Collapse id="bb-navbar-nav">
