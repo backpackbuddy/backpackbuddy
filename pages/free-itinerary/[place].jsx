@@ -109,7 +109,7 @@ function ItineraryLists({ data }) {
                             <Table>
                                 <tbody>
                                     <tr>
-                                        <th>Buka Jam</th>
+                                        <th>Jam</th>
                                         <td>{ waktu }</td>
                                     </tr>
                                     <tr>
@@ -157,7 +157,7 @@ function ItineraryLists({ data }) {
                                 <Table borderless size="sm">
                                     <tbody>
                                         <tr>
-                                            <th>Buka Jam</th>
+                                            <th>Jam</th>
                                             <td>{ waktu }</td>
                                         </tr>
                                     </tbody>
