@@ -15,18 +15,34 @@ page
 
 db
 table
++ free-itinerary
+    - -
+
 + premium-itinerary
-    - {free-itinerary data}
+    - nama tempat
+    - deskripsi
+    - kategori
     - harga tiket
+    - dipesan
+    - is_discount
+    - termasuk
+    - foto tempat
 
 + voucher
+    - [premium-itinerary]
     - discount
-    - is_discount
 
 + comment
+    - [premium-itinerary]
     - name
+    - rating
     - content
 
 fitur:
     - Terlaris
     - Login
+
+
+TODO:
+    - update navbar
+    - free & premium itinerary jadi 1 page
