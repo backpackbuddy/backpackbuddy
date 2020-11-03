@@ -9,6 +9,9 @@ import {
 } from 'react-bootstrap';
 
 function Header() {
+    function Btn() {
+        return <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
+    }
 
     return (
         <div className="intro">
@@ -18,16 +21,16 @@ function Header() {
                         <Container className="intro__caption-text">
                             <h1>Pertama Kali Ke Bali?</h1>
                             <p className="intro__description">Gratis rute wisata harian untuk backpacker di Bali.</p>
-                            <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
+                            <Btn />
                         </Container>
                     </div>
                 </Carousel.Item>
                 <Carousel.Item className="intro__carousel-item">
                     <div className="intro__caption">
                         <Container className="intro__caption-text">
-                            <h1>Butuh Rekomendasi Rute?</h1>
+                            <h1>Butuh Rekomendasi Rute Lagi?</h1>
                             <p className="intro__description">Konsultasikan dengan kami secara gratis!</p>
-                            <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
+                            <Btn />
                         </Container>
                     </div>
                 </Carousel.Item>

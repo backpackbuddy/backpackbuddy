@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import Link from 'next/link';
 import Sosmed from '../components/sosmed';
 import toTitleCase from 'to-title-case';
+import toSlugCase from 'to-slug-case';
 import uniqueBy from 'unique-by';
 import '../styles/home.scss';
 
@@ -38,20 +39,18 @@ function Home() {
     const [shrink, setShrink] = useState(false);
     const [isOpen, setIsOpen] = useState([false, false, false]);
 
-    function scrollFunction() {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-            setShrink(true);
-        } else {
-            setShrink(false);
-        }
-    }
-
     function toggleReadMore(index) {
         setIsOpen(prevState => prevState.map((prev, i) => i === index ? !prev : prev));
     }
 
     useEffect(() => {
-        window.onscroll = scrollFunction;
+        window.onscroll = () => {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                setShrink(true);
+            } else {
+                setShrink(false);
+            }
+        };
     }, []);
 
     return (
@@ -223,7 +222,6 @@ function Home() {
                             </Col>
                         </Row>
                         <Row>
-                            {/*}
                             <Col xs={12} md={4}>
                                 {
                                     data.slice(0, 5).map(({ ikonik }) => (
@@ -239,7 +237,7 @@ function Home() {
                                     ))
                                 }
                             </Col>
-                            {*/}
+                            {/*}
                             <Col xs={12} md={4}>
                                 <a className="d-block my-3" href="#">Bertualang ke hutan</a>
                                 <a className="d-block my-3" href="#">Petualangan ke air terjun</a>
@@ -253,6 +251,7 @@ function Home() {
                                 <a className="d-block my-3" href="#">Naik Gunung Batur</a>
                                 <a className="d-block my-3" href="#">Petualangan penuh adrenalin</a>
                             </Col>
+                            {*/}
 
                             <Col
                                 xs={12}

@@ -1,7 +1,7 @@
+import { forwardRef } from 'react';
 import Link from 'next/link';
-import toSlugCase from 'to-slug-case';
-import toTitleCase from 'to-title-case';
 import { useRouter } from 'next/router';
+import '../styles/topbar.scss';
 
 // react bootstrap components
 import {
@@ -9,6 +9,7 @@ import {
     Image,
     Nav,
     Navbar,
+    NavDropdown,
 } from 'react-bootstrap';
 
 function TopBar(props) {
@@ -24,50 +25,75 @@ function TopBar(props) {
             {...props}
         >
             <Container>
-                <Navbar.Brand href="/">
-                    <Image
-                        className="d-none d-sm-block"
-                        alt="Backpack Buddy"
-                        src="/images/default-logo.png"
-                    />
-                    <Image
-                        className="d-sm-none"
-                        alt="Backpack Buddy"
-                        height="auto"
-                        src="/images/default-logo-mobile.png"
-                        width="50px"
-                    />
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="bb-navbar-nav" />
+                <span className="d-flex flex-nowrap align-items-center">
+                    <Navbar.Brand href="/">
+                        <Image
+                            className="img-fluid"
+                            alt="Backpack Buddy"
+                            src="/images/default-logo.png"
+                        />
+                    </Navbar.Brand>
+                    <span>
+                        <Navbar.Toggle aria-controls="bb-navbar-nav" />
+                    </span>
+                </span>
                 <Navbar.Collapse id="bb-navbar-nav">
                     <Nav className="ml-auto p-2 p-lg-0 font-weight-bold" defaultActiveKey={useRouter().pathname}>
                         {
                             [
                                 {
                                     url: '/',
-                                    name: 'Home',
+                                        name: 'Home',
+                                        dropdown: false
                                 },
                                 {
-                                    url: '/free-itinerary',
-                                    name: 'Free Itinerary'
+                                    name: 'Services',
+                                    dropdown: true,
+                                    items: [
+                                        {
+                                            url: '/free-itinerary',
+                                            name: 'Free Itinerary'
+                                        },
+                                        {
+                                            url: '/premium-itinerary',
+                                            name: 'Premium Itinerary'
+                                        },
+                                        {
+                                            url: '/voucher',
+                                            name: 'Voucher'
+                                        },
+                                    ]
                                 },
                                 {
                                     url: 'http://blog.backpackbuddy.id',
                                     name: 'Blog',
+                                    dropdown: false
                                 },
                                 {
-                                    url: '/contact',
-                                    name: 'Contact'
+                                        url: '/contact',
+                                    name: 'Contact',
+                                    dropdown: false
                                 },
                                 {
                                     url: '/about',
-                                    name: 'About'
+                                    name: 'About',
+                                    dropdown: false
                                 }
-                            ].map(({ url, name }) => (
-                                <Link href={url} key={name}>
-                                    <Nav.Link className="px-lg-3" href={url}>{name}</Nav.Link>
-                                </Link>
-                            ))
+                            ].map(({ url, name, dropdown, items }) => {
+                                return dropdown
+                                    ? <NavDropdown title={name} id={'dropdown' + name}>
+                                        {
+                                            items.map(({ url, name }) => (
+                                                <Link href={url} key={name}>
+                                                    <NavDropdown.Item className="py-3" href={url}>{name}</NavDropdown.Item>
+                                                </Link>
+                                            ))
+                                        }
+                                    </NavDropdown>
+                                    : <Link href={url} key={name}>
+                                        <Nav.Link className="px-lg-3" href={url}>{name}</Nav.Link>
+                                    </Link>
+                            })
                         }
                     </Nav>
                 </Navbar.Collapse>

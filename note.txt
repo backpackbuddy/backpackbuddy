@@ -3,3 +3,30 @@ wordpress admin
 http://blog.backpackbuddy.id/wp-admin/
 user: niken.namsantrip
 pass: 70F9f9Bj!
+
+premium
+- harga tiket
+- ulasan
+
+page
+- premium itinerary
+- voucher
+- requests
+
+db
+table
++ premium-itinerary
+    - {free-itinerary data}
+    - harga tiket
+
++ voucher
+    - discount
+    - is_discount
+
++ comment
+    - name
+    - content
+
+fitur:
+    - Terlaris
+    - Login

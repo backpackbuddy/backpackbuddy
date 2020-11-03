@@ -7,9 +7,9 @@ function MyApp({ Component, pageProps, router }) {
         <AnimatePresence initial={false}>
             <motion.div
                 key={router.route}
-                initial={{ y: 80 }}
-                animate={{ y: 0 }}
-                exit={{}}
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: .5 }}
             >
                 <Component {...pageProps} />
             </motion.div>
