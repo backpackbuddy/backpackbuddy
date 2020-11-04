@@ -4,6 +4,9 @@ http://blog.backpackbuddy.id/wp-admin/
 user: niken.namsantrip
 pass: 70F9f9Bj!
 
+ssh
+&nYmWs@5E4J
+
 premium
 - harga tiket
 - ulasan
