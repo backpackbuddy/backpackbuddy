@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import BasicTopBar from '../../components/topbar';
 import filterData from '../../utils/filter-data';
 import ItineraryLists from '../../components/itinerary-lists';
 import Layout from '../../components/layout';
 import toSlugCase from 'to-slug-case';
 import toTitleCase from 'to-title-case';
+import Rating from 'react-rating';
 import Router from 'next/router';
 import uniqueBy from 'unique-by';
 import '../../styles/premium-itinerary.scss';
@@ -20,10 +22,19 @@ import {
     Row,
 } from 'react-bootstrap';
 
+// icons
+import {
+    StarFilledIcon,
+    StarOutlineIcon,
+} from '../../components/icons';
+
 const dataJson = require('../../data.json');
 
 function Itinerary({ place }) {
     const data = filterData(dataJson, place);
+    const [rating, setRating] = useState(0);
+
+    const ratingClickHandler = e => { setRating(e); }
 
     return (
         <>
@@ -32,34 +43,45 @@ function Itinerary({ place }) {
                 <div className="bg-light premium">
                     <Container className="py-4">
                         <Carousel className="premium__carousel mb-4">
-                            <Carousel.Item>
-                                <img
-                                    className="premium__img d-block w-100"
-                                    src={data[3].foto}
-                                    alt="First slide"
-                                    loading="lazy"
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="premium__img d-block w-100"
-                                    src={data[1].foto}
-                                    alt="Third slide"
-                                    loading="lazy"
-                                />
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img
-                                    className="premium__img d-block w-100"
-                                    src={data[0].foto}
-                                    alt="Third slide"
-                                    loading="lazy"
-                                />
-                            </Carousel.Item>
+                            {
+                                data.map(({ foto }) => (
+                                    <Carousel.Item>
+                                        <img
+                                            className="premium__img d-block w-100"
+                                            src={foto}
+                                            alt="First slide"
+                                            loading="lazy"
+                                        />
+                                    </Carousel.Item>
+                                ))
+                            }
                         </Carousel>
                         <Row>
-                            <Col lg={8}>
+                            <Col
+                                lg={{
+                                    span: 4,
+                                    order: 'last',
+                                }}
+                            >
                                 <div className="border p-4 bg-white">
+                                    <p className="premium__price--discount mb-0">Rp. 550.000</p>
+                                    <h3 className="premium__price">Rp. 550.000</h3>
+                                    <Button className="w-100 mt-4">Pesan Sekarang</Button>
+
+                                    <hr />
+
+                                    <h5>Termasuk</h5>
+                                    <ul>
+                                        <li>Cras justo odio</li>
+                                        <li>Dapibus ac facilisis in</li>
+                                        <li>Morbi leo risus</li>
+                                        <li>Porta ac consectetur ac</li>
+                                        <li>Vestibulum at eros</li>
+                                    </ul>
+                                </div>
+                            </Col>
+                            <Col lg={8}>
+                                <div className="shadow-sm p-4 my-4 my-lg-0 bg-white">
                                     <h2>{ toTitleCase(place) }</h2>
                                     <div className="premium__info d-sm-flex justify-content-between align-items-center">
                                         <div>
@@ -79,49 +101,30 @@ function Itinerary({ place }) {
                                     </div>
                                 </div>
 
-                                <div className="border p-4 bg-white mt-4">
+                                <div className="shadow-sm p-4 bg-white mt-4">
                                     <div className="premium__comment">
                                         <h3>Ulasan</h3>
-                                        <div className="premium__rating">5.0 *****</div>
-                                        <Form>
+                                        <Form action="#" method="POST">
+                                            <div className="premium__rating d-flex align-items-center">
+                                                <div className="text-warning font-weight-bold mr-1" style={{ fontSize: '3em' }}>{rating}</div>
+                                                <Rating
+                                                    className="my-4"
+                                                    emptySymbol={<StarOutlineIcon className="mx-1" height="2em" width="2em" />}
+                                                    fullSymbol={<StarFilledIcon className="mx-1" height="2em" width="2em" />}
+                                                    initialRating={rating}
+                                                    onClick={ratingClickHandler}
+                                                />
+                                                <div className="ml-2">75 Ulasan</div>
+                                            </div>
                                             <Form.Group controlId="formBasicEmail">
-                                                <Form.Label>Email address</Form.Label>
-                                                <Form.Control type="email" placeholder="Enter email" />
-                                                <Form.Text className="text-muted">
-                                                    We'll never share your email with anyone else.
-                                                </Form.Text>
+                                                <Form.Control as="textarea" type="text" rows={4} placeholder="Tulis ulasan" />
                                             </Form.Group>
 
-                                            <Form.Group controlId="formBasicPassword">
-                                                <Form.Label>Password</Form.Label>
-                                                <Form.Control type="password" placeholder="Password" />
-                                            </Form.Group>
-                                            <Form.Group controlId="formBasicCheckbox">
-                                                <Form.Check type="checkbox" label="Check me out" />
-                                            </Form.Group>
-                                            <Button variant="primary" type="submit">
-                                                Submit
+                                            <Button variant="outline-primary" type="submit">
+                                                Kirim Ulasan
                                             </Button>
                                         </Form>
                                     </div>
-                                </div>
-                            </Col>
-                            <Col lg={4}>
-                                <div className="border p-4 bg-white">
-                                    <p className="premium__price--discount mb-0">Rp. 550.000</p>
-                                    <h3 className="premium__price">Rp. 550.000</h3>
-                                    <Button className="w-100 mt-4">Pesan Sekarang</Button>
-
-                                    <hr />
-
-                                    <h5>Termasuk</h5>
-                                    <ul>
-                                        <li>Cras justo odio</li>
-                                        <li>Dapibus ac facilisis in</li>
-                                        <li>Morbi leo risus</li>
-                                        <li>Porta ac consectetur ac</li>
-                                        <li>Vestibulum at eros</li>
-                                    </ul>
                                 </div>
                             </Col>
                         </Row>

@@ -43,57 +43,29 @@ function TopBar(props) {
                             [
                                 {
                                     url: '/',
-                                        name: 'Home',
-                                        dropdown: false
+                                    name: 'Home',
                                 },
                                 {
-                                    name: 'Services',
-                                    dropdown: true,
-                                    items: [
-                                        {
-                                            url: '/free-itinerary',
-                                            name: 'Free Itinerary'
-                                        },
-                                        {
-                                            url: '/premium-itinerary',
-                                            name: 'Premium Itinerary'
-                                        },
-                                        {
-                                            url: '/voucher',
-                                            name: 'Voucher'
-                                        },
-                                    ]
+                                    url: '/itinerary-lists',
+                                    name: 'Itinerary Lists',
                                 },
                                 {
                                     url: 'http://blog.backpackbuddy.id',
                                     name: 'Blog',
-                                    dropdown: false
                                 },
                                 {
-                                        url: '/contact',
+                                    url: '/contact',
                                     name: 'Contact',
-                                    dropdown: false
                                 },
                                 {
                                     url: '/about',
                                     name: 'About',
-                                    dropdown: false
                                 }
-                            ].map(({ url, name, dropdown, items }) => {
-                                return dropdown
-                                    ? <NavDropdown title={name} id={'dropdown' + name}>
-                                        {
-                                            items.map(({ url, name }) => (
-                                                <Link href={url} key={name}>
-                                                    <NavDropdown.Item className="py-3" href={url}>{name}</NavDropdown.Item>
-                                                </Link>
-                                            ))
-                                        }
-                                    </NavDropdown>
-                                    : <Link href={url} key={name}>
-                                        <Nav.Link className="px-lg-3" href={url}>{name}</Nav.Link>
-                                    </Link>
-                            })
+                            ].map(({ url, name }) => (
+                                <Link href={url} key={name}>
+                                    <Nav.Link className="px-lg-3" href={url}>{name}</Nav.Link>
+                                </Link>
+                        ))
                         }
                     </Nav>
                 </Navbar.Collapse>

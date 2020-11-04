@@ -21,10 +21,10 @@ const data = uniqueBy(dataJson, 'ikonik');
 
 function Cards({ offset = 0, limit = data.length }) {
 
-    return data.slice(offset, limit).map(({ ikonik, foto }) => (
+    return data.slice(offset, limit).map(({ ikonik, foto, is_free = false }) => (
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={ikonik}>
             <Card className="place__card">
-                <Link href={`/free-itinerary/${toSlugCase(ikonik)}`}>
+                <Link href={`/${is_free ? 'free' : 'premium'}-itinerary/${toSlugCase(ikonik)}`}>
                     <a>
                         <Card.Img
                             className="place__img"
@@ -38,7 +38,7 @@ function Cards({ offset = 0, limit = data.length }) {
                         <LocationIcon />
                         <span>&nbsp;</span>
 
-                        <Link href={`/free-itinerary/${toSlugCase(ikonik)}`}>
+                        <Link href={`/${is_free ? 'free' : 'premium'}-itinerary/${toSlugCase(ikonik)}`}>
                             <a>{ toTitleCase(ikonik) }</a>
                         </Link>
                     </Card.Title>
