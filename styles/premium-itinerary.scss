@@ -1,6 +1,7 @@
 .premium {
     &__img {
-        height: 500px;
+        min-height: 500px;
+        max-height: 500px;
         object-fit: cover;
     }
 
@@ -13,5 +14,11 @@
             text-decoration: line-through;
             opacity: .8;
         }
+    }
+
+    &__avatar {
+        height: 60px;
+        object-fit: cover;
+        width: 60px;
     }
 }
