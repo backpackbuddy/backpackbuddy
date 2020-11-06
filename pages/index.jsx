@@ -78,8 +78,8 @@ function Home() {
                         <p className="text-center">Destinasi wisata populer di Bali</p>
 
                         <Destination limit={6} />
-                        <Link href="/free-itinerary">
-                            <a className="text-center d-flex align-items-center justify-content-center" href="/free-itinerary">
+                        <Link href="/destinasi">
+                            <a className="text-center d-flex align-items-center justify-content-center" href="/destinasi">
                                 <span>Destinasi Lainnya</span>
                                 &nbsp;<RightArrowIcon width="1rem" height="1rem" />
                             </a>

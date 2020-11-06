@@ -1,0 +1,17 @@
+.comment {
+    &__avatar {
+        $size: 40px;
+
+        @media only screen and (min-width: 400px) {
+            $size: 60px;
+        }
+
+        height: $size;
+        max-height: $size;
+        max-width: $size;
+        min-height: $size;
+        min-width: $size;
+        object-fit: cover;
+        width: $size;
+    }
+}

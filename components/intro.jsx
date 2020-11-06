@@ -10,7 +10,7 @@ import {
 
 function Header() {
     function Btn() {
-        return <Link href="/free-itinerary"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
+        return <Link href="/destinasi"><Button className="mt-5 shadow">Cari tau disini</Button></Link>
     }
 
     return (

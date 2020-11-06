@@ -1,13 +1,13 @@
-import BasicTopBar from '../components/topbar';
-import Layout from '../components/layout';
-import Destination from '../components/destination';
+import BasicTopBar from '../../components/topbar';
+import Layout from '../../components/layout';
+import Destination from '../../components/destination';
 
 // react bootstrap components
 import {
     Container,
 } from 'react-bootstrap';
 
-function FreeItinerary() {
+function Destinasi() {
 
     return (
         <>
@@ -15,8 +15,8 @@ function FreeItinerary() {
             <Layout>
                 <section className="pt-4">
                     <Container>
-                        <h2 className="text-center">Premium Itinerary</h2>
-                        <p className="text-center">Rekomendasi Destinasi Wisata</p>
+                        <h2 className="text-center">Destinasi Wisata</h2>
+                        <p className="text-center">Pilihan Destinasi Wisata di Bali</p>
 
                         <Destination />
                     </Container>
@@ -26,4 +26,4 @@ function FreeItinerary() {
     );
 }
 
-export default FreeItinerary;
+export default Destinasi;

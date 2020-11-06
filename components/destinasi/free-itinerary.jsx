@@ -1,21 +1,57 @@
 import { useState } from 'react';
+import BasicTopBar from '../topbar';
 import Link from 'next/link';
-import sort from 'fast-sort';
-import toSentenceCase from 'to-sentence-case-with-dot';
+import Layout from '../layout';
 import toTitleCase from 'to-title-case';
+import toSentenceCase from 'to-sentence-case-with-dot';
+import Router from 'next/router';
+import sort from 'fast-sort';
+import '../../styles/itinerary.scss';
 
 // react bootstrap components
 import {
     Button,
     Card,
+    Col,
+    Container,
     Table,
+    Row,
 } from 'react-bootstrap';
 
 // icons
 import {
     BlueArrowIcon,
     VCircleArrowIcon,
-} from './icons';
+} from '../icons';
+
+function FreeItinerary({ place, data }) {
+
+    return (
+        <>
+            <BasicTopBar />
+            <Layout>
+                <div className="bg-light">
+                    <Container className="itinerary py-4">
+                        <h2 className="text-center py-3">Itinerary { toTitleCase(place) }</h2>
+                        <Row>
+                            <Col xs={12} md={{ span: 6, offset: 3 }}>
+                                <ItineraryLists data={data} />
+                            </Col>
+                        </Row>
+
+                        <Button
+                            className="mx-auto d-block mt-3"
+                            variant="info"
+                            onClick={Router.back}
+                        >
+                            Back to list
+                        </Button>
+                    </Container>
+                </div>
+            </Layout>
+        </>
+    );
+}
 
 function ItineraryLists({ data }) {
     const borderColors = [
@@ -110,25 +146,25 @@ function ItineraryLists({ data }) {
                                 </tbody>
                             </Table>
                         </> :
-                            <>
-                                <Table borderless size="sm">
-                                    <tbody>
-                                        <tr>
-                                            <th>Jam</th>
-                                            <td>{ waktu }</td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
-                                <Button
-                                    className="d-block mx-auto mt-4"
-                                    variant="default"
-                                    size="sm"
-                                    style={{ boxShadow: 'none' }}
-                                    onClick={() => setIsOpen(index)}
-                                >
-                                    Info Selengkapnya <VCircleArrowIcon style={{ transform: 'rotate(180deg)' }} />
-                                </Button>
-                            </>
+                        <>
+                            <Table borderless size="sm">
+                                <tbody>
+                                    <tr>
+                                        <th>Jam</th>
+                                        <td>{ waktu }</td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                            <Button
+                                className="d-block mx-auto mt-4"
+                                variant="default"
+                                size="sm"
+                                style={{ boxShadow: 'none' }}
+                                onClick={() => setIsOpen(index)}
+                            >
+                                Info Selengkapnya <VCircleArrowIcon style={{ transform: 'rotate(180deg)' }} />
+                            </Button>
+                        </>
                     }
                 </Card.Text>
             </Card.Body>
@@ -146,4 +182,4 @@ function ItineraryLists({ data }) {
     ));
 }
 
-export default ItineraryLists;
+export default FreeItinerary;

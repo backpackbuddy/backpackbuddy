@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="in-ID">
+      <Html lang="in-ID" style={{ fontSize: '16px' }}>
         <Head />
         <body>
           <Main />

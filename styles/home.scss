@@ -4,38 +4,6 @@ $transition: .35s all ease;
 
 .description { max-width: 600px; }
 
-.place {
-    background-color: #f2f2f2;
-
-    &__destination {
-        cursor: pointer;
-    }
-
-    &__card {
-        overflow: hidden;
-
-        &--body {
-            background-color: white;
-            position: relative;
-            z-index: 2;
-        }
-    }
-
-    &__name a {
-        font-family: $font-title;
-    }
-
-    &__img {
-        object-fit: cover;
-        height: 260px;
-        transition: $transition;
-
-        &:hover {
-            transform: scale(1.1);
-        }
-    }
-}
-
 .concultation {
     display: block;
     position: relative;

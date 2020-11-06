@@ -38,7 +38,7 @@ function About() {
                                     src="/images/default-logo.png"
                                     alt="backpack buddy logo"
                                 />
-                                <p>BackpackBuddy adalah startup yang menyediakan rute wisata harian untuk Backpacker secara Gratis di Bali.</p>
+                                <p>Backpack Buddy adalah startup yang menyediakan rute wisata harian untuk Backpacker secara Gratis di Bali.</p>
                                 <p>Kami melayani konsultasi rute wisata harian dengan informasi yang lebih lengkap secara langsung bersama konsultan kami terutama wisata-wisata baru yang anti mainstream dan pengalaman yang berbeda saat berwisata ke Bali.</p>
                                 <p>Kami juga bisa membantu backpacker jika ingin menyewa kendaraan ataupun rute wisata beserta tiket masuknya. Hemat waktu, hemat budget dan jelajah lebih banyak tempat di Bali!</p>
                                 <strong style={{ fontSize: '1.2em' }}>Plan Now, Travel Soon!!</strong>
@@ -61,7 +61,7 @@ function About() {
                             </Col>
                             <Col xs={12} md={6}>
                                 <h2 className="mt-2 mt-md-0 text-center text-md-left">Niken Pertiwi</h2>
-                                <p>Hai, saya Niki, saya merupakan founder dari BackpackBuddy. Saya berpengalaman dari tahun 2015 mengelola Chagiya Korean Tour. Saya memiliki passion berpetualang dan bertemu orang baru, oleh karena itu saya suka jalan-jalan ke berbagai destinasi di dalam dan luar negeri. Lewat BackpackBuddy ini saya ingin berbagi rute-rute wisata baru di Bali yang kalian bisa akses sendiri. Saya ingin seluruh milenial saat jalan-jalan menggunakan BackpackBuddy sebagai teman perjalanan digital mereka.</p>
+                                <p>Hai, saya Niki, saya merupakan founder dari Backpack Buddy. Saya berpengalaman dari tahun 2015 mengelola Chagiya Korean Tour. Saya memiliki passion berpetualang dan bertemu orang baru, oleh karena itu saya suka jalan-jalan ke berbagai destinasi di dalam dan luar negeri. Lewat BackpackBuddy ini saya ingin berbagi rute-rute wisata baru di Bali yang kalian bisa akses sendiri. Saya ingin seluruh milenial saat jalan-jalan menggunakan BackpackBuddy sebagai teman perjalanan digital mereka.</p>
                             </Col>
                         </Row>
                         <Row className="mt-4 mt-md-5 align-items-center justify-content-center">

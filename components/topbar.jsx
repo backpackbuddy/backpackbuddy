@@ -25,7 +25,7 @@ function TopBar(props) {
             {...props}
         >
             <Container>
-                <span className="d-flex flex-nowrap align-items-center">
+                <div className="d-flex flex-nowrap align-items-center w-100">
                     <Navbar.Brand href="/">
                         <Image
                             className="img-fluid"
@@ -33,10 +33,8 @@ function TopBar(props) {
                             src="/images/default-logo.png"
                         />
                     </Navbar.Brand>
-                    <span>
-                        <Navbar.Toggle aria-controls="bb-navbar-nav" />
-                    </span>
-                </span>
+                    <Navbar.Toggle className="ml-auto" aria-controls="bb-navbar-nav" />
+                </div>
                 <Navbar.Collapse id="bb-navbar-nav">
                     <Nav className="ml-auto p-2 p-lg-0 font-weight-bold" defaultActiveKey={useRouter().pathname}>
                         {
@@ -46,8 +44,8 @@ function TopBar(props) {
                                     name: 'Home',
                                 },
                                 {
-                                    url: '/itinerary-lists',
-                                    name: 'Itinerary Lists',
+                                    url: '/destinasi',
+                                    name: 'Destinasi',
                                 },
                                 {
                                     url: 'http://blog.backpackbuddy.id',

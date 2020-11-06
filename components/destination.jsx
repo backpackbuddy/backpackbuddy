@@ -2,7 +2,7 @@ import toSlugCase from 'to-slug-case';
 import Link from 'next/link';
 import toTitleCase from 'to-title-case';
 import uniqueBy from 'unique-by';
-import '../styles/home.scss';
+import '../styles/destinasi.scss';
 
 // icons 
 import {
@@ -24,8 +24,8 @@ function Cards({ offset = 0, limit = data.length }) {
     return data.slice(offset, limit).map(({ ikonik, foto, is_free = false }) => (
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={ikonik}>
             <Card className="place__card">
-                <Link href={`/${is_free ? 'free' : 'premium'}-itinerary/${toSlugCase(ikonik)}`}>
-                    <a>
+                <Link href={`/destinasi/${toSlugCase(ikonik)}`}>
+                    <a className={[ is_free && "place__link-img--is-free", "place__link-img"].join(' ')}>
                         <Card.Img
                             className="place__img"
                             variant="top"
@@ -38,7 +38,7 @@ function Cards({ offset = 0, limit = data.length }) {
                         <LocationIcon />
                         <span>&nbsp;</span>
 
-                        <Link href={`/${is_free ? 'free' : 'premium'}-itinerary/${toSlugCase(ikonik)}`}>
+                        <Link href={`/destinasi/${toSlugCase(ikonik)}`}>
                             <a>{ toTitleCase(ikonik) }</a>
                         </Link>
                     </Card.Title>
