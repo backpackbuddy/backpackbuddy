@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import BasicTopBar from '../topbar';
 import Comments from './comments';
+import currencyFormatter from 'currency-formatter';
 import filterData from '../../utils/filter-data';
 import Layout from '../layout';
 import toSlugCase from 'to-slug-case';
@@ -31,7 +32,7 @@ import {
 const dataJson = require('../../premium-itinerary.json');
 
 function PremiumItinerary({ place }) {
-    const data = filterData(dataJson, place);
+    const data = filterData(dataJson, place)[0];
 
     return (
         <>
@@ -41,7 +42,7 @@ function PremiumItinerary({ place }) {
                     <Container className="py-4">
                         <Carousel className="premium__carousel mb-4">
                             {
-                                data.photos.split(';').map(photo => (
+                                data.foto.split(';').map(photo => (
                                     <Carousel.Item>
                                         <img
                                             className="premium__img d-block w-100"
@@ -61,8 +62,8 @@ function PremiumItinerary({ place }) {
                                 }}
                             >
                                 <div className="border p-4 bg-white">
-                                    <p className="premium__price--discount mb-0">{data.harga_ticket}</p>
-                                    <h3 className="premium__price">{data.discount}</h3>
+                                    <p className="premium__price--discount mb-0">{ currencyFormatter.format(data.ticket, { code: 'IDR' }) }</p>
+                                    <h3 className="premium__price">{ currencyFormatter.format(data.discount, { code: 'IDR' }) }</h3>
                                     <Button className="w-100 mt-4">Pesan Sekarang</Button>
 
                                     <hr />
@@ -75,11 +76,31 @@ function PremiumItinerary({ place }) {
                                             ))
                                         }
                                     </ul>
+
+                                    <hr/>
+                                    <h5>Tidak Termasuk</h5>
+                                    <ul>
+                                        {
+                                            data.excludes.split(';').map(exclude => (
+                                                <li>{exclude}</li>
+                                            ))
+                                        }
+                                    </ul>
+
+                                    <hr/>
+                                    <h5>Keterangan</h5>
+                                    <ul>
+                                        {
+                                            data.keterangan.split(';').map(k => (
+                                                <li>{k}</li>
+                                            ))
+                                        }
+                                    </ul>
                                 </div>
                             </Col>
                             <Col lg={8}>
                                 <div className="shadow-sm p-4 my-4 my-lg-0 bg-white">
-                                    <h2>{ toTitleCase(place) }</h2>
+                                    <h2>{ toTitleCase(data.ikonik) }</h2>
                                     <div className="premium__info d-sm-flex justify-content-between align-items-center">
                                         <div>
                                             <small className="premium__info">
@@ -96,7 +117,9 @@ function PremiumItinerary({ place }) {
                                         <p>{ data.description }</p>
                                     </div>
                                 </div>
+                                {/*}
                                 <Comments data={data} />
+                                {*/}
                             </Col>
                         </Row>
                     </Container>

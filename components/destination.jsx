@@ -30,7 +30,7 @@ function Cards({ offset = 0, limit = data.length }) {
                         <Card.Img
                             className="place__img"
                             variant="top"
-                            src={foto} alt={ikonik} 
+                            src={ is_free ? foto : foto.split(';')[0] } alt={ikonik} 
                         />
                     </a>
                 </Link>

@@ -4,5 +4,5 @@ module.exports = {
     whatsappLink: 'http://bit.ly/haichagiya',
     instagramLink: 'https://www.instagram.com/backpack.buddy/',
     youtubeLink: 'https://www.youtube.com/channel/UCS9pAKRfIfMZz8nbCKORxHA',
-    linkedinLink: 'https://linkedin.com',
+    linkedinLink: 'https://linkedin.com/in/backpackbuddy',
 }

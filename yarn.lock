@@ -1297,6 +1297,11 @@
   dependencies:
     "event-target-shim" "^5.0.0"
 
+"accounting@^0.4.1":
+  "integrity" "sha1-h91BA+/39EYPHhhvXGd+1s9WaIM="
+  "resolved" "https://registry.npmjs.org/accounting/-/accounting-0.4.1.tgz"
+  "version" "0.4.1"
+
 "acorn@^6.4.1":
   "integrity" "sha512-XtGIhXwF8YM8bJhGxG5kXgjkEuNGLTkoYqVE+KMR+aspr4KGYmKYg7yUe3KghyQ9yheNwLnjmzh/7+gfDBmHCQ=="
   "resolved" "https://registry.npmjs.org/acorn/-/acorn-6.4.2.tgz"
@@ -2310,6 +2315,15 @@
   "integrity" "sha512-jPl+wbWPOWJ7SXsWyqGRk3lGecbar0Cb0OvZF/r/ZU011R4YqiRehgkQ9p4eQfo9DSDLqLL3wHwfxeJiuIsNag=="
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.0.3.tgz"
   "version" "3.0.3"
+
+"currency-formatter@^1.5.6":
+  "integrity" "sha512-c8VV6bvRg+kwIvz5UYgWb2wNY7LN3bXcZqXgXn4vcdlcFTLSoh53RSa1kvruusxwlr6scu2BtF/cGEjkyL0tbg=="
+  "resolved" "https://registry.npmjs.org/currency-formatter/-/currency-formatter-1.5.6.tgz"
+  "version" "1.5.6"
+  dependencies:
+    "accounting" "^0.4.1"
+    "locale-currency" "0.0.2"
+    "object-assign" "^4.1.1"
 
 "cyclist@^1.0.1":
   "integrity" "sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk="
@@ -3732,6 +3746,11 @@
     "big.js" "^5.2.2"
     "emojis-list" "^2.0.0"
     "json5" "^1.0.1"
+
+"locale-currency@0.0.2":
+  "integrity" "sha1-4skGB1Y85HpZ+VWeRacOJOTbS20="
+  "resolved" "https://registry.npmjs.org/locale-currency/-/locale-currency-0.0.2.tgz"
+  "version" "0.0.2"
 
 "locate-path@^2.0.0":
   "integrity" "sha1-K1aLJl7slExtnA3pw9u7ygNUzY4="

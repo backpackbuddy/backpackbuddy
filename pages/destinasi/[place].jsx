@@ -5,7 +5,9 @@ import toSlugCase from 'to-slug-case';
 import uniqueBy from 'unique-by';
 import '../../styles/itinerary.scss';
 
-const dataJson = require('../../data.json');
+const dataFree = require('../../data.json');
+const dataPremium = require('../../premium-itinerary.json');
+const dataJson = [ ...uniqueBy(dataFree, 'ikonik'), ...dataPremium ];
 
 function Itinerary({ place }) {
     const data = filterData(dataJson, place);
