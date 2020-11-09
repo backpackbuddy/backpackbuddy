@@ -17,11 +17,12 @@ import {
 } from 'react-bootstrap';
 
 const dataJson = require('../data.json');
-const data = uniqueBy(dataJson, 'ikonik');
+const dataPremium = require('../premium-itinerary.json');
+const data = [ ...uniqueBy(dataJson, 'ikonik'), ...dataPremium ];
 
 function Cards({ offset = 0, limit = data.length }) {
 
-    return data.slice(offset, limit).map(({ ikonik, foto, is_free = false }) => (
+    return data.slice(offset, limit).map(({ ikonik, foto, is_free }) => (
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={ikonik}>
             <Card className="place__card">
                 <Link href={`/destinasi/${toSlugCase(ikonik)}`}>
@@ -39,7 +40,7 @@ function Cards({ offset = 0, limit = data.length }) {
                         <span>&nbsp;</span>
 
                         <Link href={`/destinasi/${toSlugCase(ikonik)}`}>
-                            <a>{ toTitleCase(ikonik) }</a>
+                            <a className="place__text-truncate" title={toTitleCase(ikonik)}>{ toTitleCase(ikonik) }</a>
                         </Link>
                     </Card.Title>
                 </Card.Body>

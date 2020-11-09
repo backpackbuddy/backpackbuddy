@@ -28,7 +28,7 @@ import {
     StarOutlineIcon,
 } from '../icons';
 
-const dataJson = require('../../data.json');
+const dataJson = require('../../premium-itinerary.json');
 
 function Itinerary({ place }) {
     const data = filterData(dataJson, place);
@@ -40,18 +40,14 @@ function Itinerary({ place }) {
                 <div className="bg-light premium">
                     <Container className="py-4">
                         <Carousel className="premium__carousel mb-4">
-                            {
-                                data.map(({ foto }) => (
-                                    <Carousel.Item key={foto}>
-                                        <img
-                                            className="premium__img d-block w-100"
-                                            src={foto}
-                                            alt={foto}
-                                            loading="lazy"
-                                        />
-                                    </Carousel.Item>
-                                ))
-                            }
+                            <Carousel.Item>
+                                <img
+                                    className="premium__img d-block w-100"
+                                    src={data.foto}
+                                    alt={data.foto}
+                                    loading="lazy"
+                                />
+                            </Carousel.Item>
                         </Carousel>
                         <Row>
                             <Col

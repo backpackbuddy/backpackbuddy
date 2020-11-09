@@ -52,5 +52,12 @@ $transition: .35s all ease;
             transform: scale(1.1);
         }
     }
+
+    &__text-truncate {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
 }
 

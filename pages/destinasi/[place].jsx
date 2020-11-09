@@ -7,10 +7,10 @@ import '../../styles/itinerary.scss';
 
 const dataJson = require('../../data.json');
 
-function Itinerary({ place, is_free }) {
+function Itinerary({ place }) {
     const data = filterData(dataJson, place);
 
-    return is_free
+    return data[0]?.is_free
         ? <FreeItinerary place={place} data={data} />
         : <PremiumItinerary place={place} data={data} />;
 }
@@ -20,7 +20,10 @@ function Itinerary({ place, is_free }) {
  * for nextjs export
  */
 export async function getStaticPaths() {
-    const uniqueData = uniqueBy(dataJson, 'ikonik');
+    const uniqueData = [
+        ...uniqueBy(dataJson, 'ikonik'),
+        ...require('../../premium-itinerary.json')
+    ];
 
     return {
         paths: uniqueData.map(({ ikonik }) => ({
