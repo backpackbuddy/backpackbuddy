@@ -23,8 +23,6 @@ import {
     Row,
 } from 'react-bootstrap';
 
-const instagram = '<div class=\'embedsocial-instagram\' data-ref="7eeddd96377ddbf1263e14695c8766c9ef00daf4"></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/in.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialInstagramScript"));</script>';
-
 function Contact() {
     return (
         <>
@@ -34,7 +32,6 @@ function Contact() {
                     <Container>
                         <h2 className="text-center mb-4">Let's Chat</h2>
                         <Row className="justify-content-center">
-                            <div dangerouslySetInnerHTML={{ __html: instagram }} />
                             
                             <Col className="bg-light shadow-sm p-4 mt-4 mt-lg-0" xs={12} lg={4}>
                                 <Col className="px-0" sm={6} md={12}>

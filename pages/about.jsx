@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import BasicTopBar from '../components/topbar';
 import Layout from '../components/layout';
 import Sosmed from '../components/sosmed';
@@ -12,6 +13,18 @@ import {
 } from 'react-bootstrap';
 
 function About() {
+
+    useEffect(() => {
+        let js;
+        const id = 'EmbedSocialInstagramScript';
+        const d = document;
+        if (d.getElementById(id)) { return; }
+        js = d.createElement('script');
+        js.id = id;
+        js.src = 'https://embedsocial.com/embedscript/in.js';
+        d.getElementsByTagName('head')[0].appendChild(js);
+    }, []);
+
     return (
         <>
             <BasicTopBar />
@@ -76,6 +89,15 @@ function About() {
                                 <p>Saya menyukai traveling dan bertualang ke tempat-tempat baru. Berpengalaman kerja di perhotelan dan pariwisata selama 11 tahun dan saat ini mengelola bisnis sendiri dan selalu menyempatkan diri untuk jalan-jalan. Saya menyukai petualangan di alam dan beberapa wisata adrenalin. Melalui BackpackBuddy saya ingin membagi pengalaman travelling secara mandiri and memperkenalkan tempat-tempat wisata baru yang belum banyak dikenal masyarakat. BackpackBuddy akan menjadi teman dan konsultan perjalanan kalian ketika mengunjungi Bali.</p>
                             </Col>
                         </Row>
+                    </Container>
+                </section>
+
+                <section>
+                    <Container>
+                        <div
+                            className="embedsocial-instagram"
+                            data-ref="7eeddd96377ddbf1263e14695c8766c9ef00daf4"
+                        />
                     </Container>
                 </section>
             </Layout>
