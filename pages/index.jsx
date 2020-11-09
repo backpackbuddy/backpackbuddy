@@ -224,16 +224,16 @@ function Home() {
                         <Row>
                             <Col xs={12} md={4}>
                                 {
-                                    data.slice(0, 5).map(({ ikonik }) => (
-                                        <a className="d-block my-3" href={toSlugCase(ikonik)}>{toTitleCase(ikonik)}</a>
+                                    data.slice(0, 4).map(({ ikonik }) => (
+                                        <a className="d-block my-3" href={toSlugCase(ikonik)} key={ikonik}>{toTitleCase(ikonik)}</a>
                                     ))
                                 }
                             </Col>
 
                             <Col xs={12} md={4}>
                                 {
-                                    data.slice(5, 10).map(({ ikonik }) => (
-                                        <a className="d-block my-3" href={toSlugCase(ikonik)}>{toTitleCase(ikonik)}</a>
+                                    data.slice(4, 8).map(({ ikonik }) => (
+                                        <a className="d-block my-3" href={toSlugCase(ikonik)} key={ikonik}>{toTitleCase(ikonik)}</a>
                                     ))
                                 }
                             </Col>
