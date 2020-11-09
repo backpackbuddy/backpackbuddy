@@ -7,7 +7,7 @@ import '../../styles/itinerary.scss';
 
 const dataFree = require('../../data.json');
 const dataPremium = require('../../premium-itinerary.json');
-const dataJson = [ ...uniqueBy(dataFree, 'ikonik'), ...dataPremium ];
+const dataJson = [ ...dataFree, ...dataPremium ];
 
 function Itinerary({ place }) {
     const data = filterData(dataJson, place);

@@ -60,16 +60,16 @@ function Contact() {
                             </Col>
                             <Col className="bg-light shadow-sm p-4" xs={{ span: 12, order: 'first' }} lg={{ offset: 1, span: 6, order: 'last' }}>
                                 <h4 className="text-center mb-4">Kirim Pesan</h4>
-                                <Form action="/" method="POST">
+                                <Form action="/api/sendmail" method="POST">
                                     <Row>
                                         <Col xs={12} sm={6}>
                                             <Form.Group controlId="name-input">
-                                                <Form.Control type="text" placeholder="Nama Lengkap" />
+                                                <Form.Control type="text" name="name" placeholder="Nama Lengkap" />
                                             </Form.Group>
                                         </Col>
                                         <Col xs={12} sm={6}>
                                             <Form.Group controlId="email-input">
-                                                <Form.Control type="email" placeholder="Alamat E-Mail" />
+                                                <Form.Control type="email" name="email" placeholder="Alamat E-Mail" />
                                             </Form.Group>
                                         </Col>
                                         <Col xs={12}>

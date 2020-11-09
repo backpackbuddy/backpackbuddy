@@ -50,3 +50,5 @@ fitur:
 TODO:
     - update navbar
     - free & premium itinerary jadi 1 page
+    - seen count
+    - wishlist

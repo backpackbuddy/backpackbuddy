@@ -40,10 +40,10 @@ function PremiumItinerary({ place }) {
             <Layout>
                 <div className="bg-light premium">
                     <Container className="py-4">
-                        <Carousel className="premium__carousel mb-4">
+                        <Carousel className="premium__carousel mb-4" pause={false}>
                             {
                                 data.foto.split(';').map(photo => (
-                                    <Carousel.Item>
+                                    <Carousel.Item key={photo}>
                                         <img
                                             className="premium__img d-block w-100"
                                             src={photo}
@@ -72,7 +72,7 @@ function PremiumItinerary({ place }) {
                                     <ul>
                                         {
                                             data.includes.split(';').map(include => (
-                                                <li>{include}</li>
+                                                <li key={include}>{include}</li>
                                             ))
                                         }
                                     </ul>
@@ -82,7 +82,7 @@ function PremiumItinerary({ place }) {
                                     <ul>
                                         {
                                             data.excludes.split(';').map(exclude => (
-                                                <li>{exclude}</li>
+                                                <li key={exclude}>{exclude}</li>
                                             ))
                                         }
                                     </ul>
@@ -92,7 +92,7 @@ function PremiumItinerary({ place }) {
                                     <ul>
                                         {
                                             data.keterangan.split(';').map(k => (
-                                                <li>{k}</li>
+                                                <li key={k}>{k}</li>
                                             ))
                                         }
                                     </ul>

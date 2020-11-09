@@ -99,8 +99,8 @@ function Home() {
                                 [
                                     {
                                         Icon: FreeIcon,
-                                            title: 'Gratis',
-                                            description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
+                                        title: 'Gratis',
+                                        description: 'Kita memberikan rute gratis untuk wisata harian di Bali.'
                                     },
                                     {
                                         Icon: ExperiencedIcon,
@@ -225,7 +225,7 @@ function Home() {
                             <Col xs={12} md={4}>
                                 {
                                     data.slice(0, 4).map(({ ikonik }) => (
-                                        <a className="d-block my-3" href={toSlugCase(ikonik)} key={ikonik}>{toTitleCase(ikonik)}</a>
+                                        <a className="d-block my-3" href={ '/destinasi/' + toSlugCase(ikonik) } key={ikonik}>{toTitleCase(ikonik)}</a>
                                     ))
                                 }
                             </Col>
@@ -233,26 +233,10 @@ function Home() {
                             <Col xs={12} md={4}>
                                 {
                                     data.slice(4, 8).map(({ ikonik }) => (
-                                        <a className="d-block my-3" href={toSlugCase(ikonik)} key={ikonik}>{toTitleCase(ikonik)}</a>
+                                        <a className="d-block my-3" href={ '/destinasi/' + toSlugCase(ikonik) } key={ikonik}>{toTitleCase(ikonik)}</a>
                                     ))
                                 }
                             </Col>
-                            {/*}
-                            <Col xs={12} md={4}>
-                                <a className="d-block my-3" href="#">Bertualang ke hutan</a>
-                                <a className="d-block my-3" href="#">Petualangan ke air terjun</a>
-                                <a className="d-block my-3" href="#">Itinerary untuk keluarga dan anak-anak</a>
-                                <a className="d-block my-3" href="#">Mengenal budaya Bali</a>
-                            </Col>
-
-                            <Col xs={12} md={4}>
-                                <a className="d-block my-3" href="#">City tour kota Denpasar</a>
-                                <a className="d-block my-3" href="#">Mencari sunset</a>
-                                <a className="d-block my-3" href="#">Naik Gunung Batur</a>
-                                <a className="d-block my-3" href="#">Petualangan penuh adrenalin</a>
-                            </Col>
-                            {*/}
-
                             <Col
                                 xs={12}
                                 md={4}

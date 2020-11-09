@@ -61,7 +61,7 @@ function TopBar(props) {
                                 }
                             ].map(({ url, name }) => (
                                 <Link href={url} key={name}>
-                                    <Nav.Link className="px-lg-3" href={url}>{name}</Nav.Link>
+                                    <Nav.Link className="px-lg-3" style={{ fontSize: '1.1em' }} href={url}>{name}</Nav.Link>
                                 </Link>
                         ))
                         }

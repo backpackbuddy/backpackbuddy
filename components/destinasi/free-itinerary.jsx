@@ -6,7 +6,7 @@ import toTitleCase from 'to-title-case';
 import toSentenceCase from 'to-sentence-case-with-dot';
 import Router from 'next/router';
 import sort from 'fast-sort';
-import '../../styles/itinerary.scss';
+import '../../styles/free-itinerary.scss';
 
 // react bootstrap components
 import {
@@ -31,10 +31,16 @@ function FreeItinerary({ place, data }) {
             <BasicTopBar />
             <Layout>
                 <div className="bg-light">
-                    <Container className="itinerary py-4">
+                    <Container className="free-itinerary py-4">
                         <h2 className="text-center py-3">Itinerary { toTitleCase(place) }</h2>
                         <Row>
-                            <Col xs={12} md={{ span: 6, offset: 3 }}>
+                            <Col xs={12} md={{ span: 4, order: 'last' }}>
+                                <div className="free-itinerary__action border p-4 bg-white mb-4">
+                                    <h5>FREE</h5>
+                                    <Button className="w-100 mt-4">Pesan Sekarang</Button>
+                                </div>
+                            </Col>
+                            <Col xs={12} md={{ span: 6, offset: 1 }}>
                                 <ItineraryLists data={data} />
                             </Col>
                         </Row>

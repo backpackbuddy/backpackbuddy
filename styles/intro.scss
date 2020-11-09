@@ -2,6 +2,12 @@
 
 .intro {
 
+    &__btn {
+        border-radius: 5em;
+        font-size: 1.1em;
+        padding: .5em 1.2em;
+    }
+
     &__carousel {
         
         &-item {

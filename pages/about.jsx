@@ -14,20 +14,16 @@ import {
 
 function About() {
 
-    /*
     useEffect(() => {
         let js, js2;
         const id = 'EmbedSocialInstagramScript';
         const d = document;
         if (d.getElementById(id)) { return; }
         js = d.createElement('script');
-        js2 = d.createElement('script').innerHTML = 'iFrameResize();';
         js.id = id;
-        js.src = 'https://embedsocial.com/js/iframe.js';
+        js.src = 'https://embedsocial.com/embedscript/in.js';
         d.getElementsByTagName('head')[0].appendChild(js);
-        d.getElementsByTagName('head')[0].appendChild(js2);
     }, []);
-    */
 
 
     return (
@@ -97,13 +93,11 @@ function About() {
                     </Container>
                 </section>
 
-                {/*}
                 <section>
                     <Container>
-                        <iframe style={{"border":"0","width":"100%","height":"100%"}} scrolling="no" src="https://embedsocial.com/facebook_album/pro_instagram/669041977dc968f9ba8f6133d7b56f26c865063e" />
+                        <div className="embedsocial-instagram" data-ref="669041977dc968f9ba8f6133d7b56f26c865063e" />
                     </Container>
                 </section>
-                {*/}
             </Layout>
         </>
     );

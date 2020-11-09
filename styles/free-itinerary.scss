@@ -1,0 +1,11 @@
+.free-itinerary {
+    &__img {
+        max-height: 312px;
+        object-fit: cover;
+    }
+
+    &__action {
+        position: sticky;
+        top: 5rem;
+    }
+}
