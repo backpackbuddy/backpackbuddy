@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BasicTopBar from '../topbar';
 import Comments from './comments';
 import currencyFormatter from 'currency-formatter';
@@ -34,6 +34,10 @@ const dataJson = require('../../premium-itinerary.json');
 function PremiumItinerary({ place }) {
     const data = filterData(dataJson, place)[0];
 
+    const orderHandler = () => {
+        window.location.href = 'https://toko.ly/backpackbuddy/products/4361320/2-hari-jelajah-alam-ubud-';
+    }
+
     return (
         <>
             <BasicTopBar />
@@ -64,7 +68,7 @@ function PremiumItinerary({ place }) {
                                 <div className="border p-4 bg-white">
                                     <p className="premium__price--discount mb-0">{ currencyFormatter.format(data.ticket, { code: 'IDR' }) }</p>
                                     <h3 className="premium__price">{ currencyFormatter.format(data.discount, { code: 'IDR' }) }</h3>
-                                    <Button className="w-100 mt-4">Pesan Sekarang</Button>
+                                    <Button className="w-100 mt-4" onClick={orderHandler}>Pesan Sekarang</Button>
 
                                     <hr />
 
