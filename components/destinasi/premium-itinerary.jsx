@@ -35,6 +35,9 @@ function PremiumItinerary({ place }) {
     const data = filterData(dataJson, place)[0];
 
     const orderHandler = () => {
+        /*
+         * TODO: ...
+         */
         window.location.href = 'https://toko.ly/backpackbuddy/products/4361320/2-hari-jelajah-alam-ubud-';
     }
 
