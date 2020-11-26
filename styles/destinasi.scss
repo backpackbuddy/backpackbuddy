@@ -26,18 +26,19 @@ $transition: .35s all ease;
     &__link-img {
         position: relative;
 
-        &--is-free {
+        &--is-premium {
 
             &::before {
-                content: 'FREE';
-                background-color: $blue;
+                content: 'PREMIUM';
+                background-color: $yellow;
+                border-radius: 15rem;
                 color: #fff;
                 font-size: .9em;
                 font-weight: bold;
-                padding: .3em .8em;
+                padding: .3em 1em;
                 position: absolute;
-                left: .8em;
-                bottom: .8em;
+                left: 1em;
+                top: 1em;
                 z-index: 3;
             }
         }

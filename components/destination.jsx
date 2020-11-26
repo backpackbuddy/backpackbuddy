@@ -26,7 +26,7 @@ function Cards({ offset = 0, limit = data.length }) {
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={ikonik}>
             <Card className="place__card">
                 <Link href={`/destinasi/${toSlugCase(ikonik)}`}>
-                    <a className={[ is_free && "place__link-img--is-free", "place__link-img"].join(' ')}>
+                    <a className={[ !is_free && "place__link-img--is-premium", "place__link-img"].join(' ')}>
                         <Card.Img
                             className="place__img"
                             variant="top"
