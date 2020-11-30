@@ -32,7 +32,7 @@ function FreeItinerary({ place, data }) {
             <Layout>
                 <div className="bg-light">
                     <Container className="free-itinerary py-4">
-                        <h2 className="text-center py-3">Itinerary { toTitleCase(place) }</h2>
+                        <h1 className="text-center py-3">Itinerary { toTitleCase(place) }</h1>
                         <Row>
                             <Col xs={12} md={{ span: 4, order: 'last' }}>
                                 <div className="free-itinerary__action border p-4 bg-white mb-4">

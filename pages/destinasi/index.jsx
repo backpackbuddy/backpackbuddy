@@ -15,7 +15,7 @@ function Destinasi() {
             <Layout>
                 <section className="pt-4">
                     <Container>
-                        <h2 className="text-center">Destinasi Wisata</h2>
+                        <h1 className="text-center">Destinasi Wisata</h1>
                         <p className="text-center">Pilihan Destinasi Wisata di Bali</p>
 
                         <Destination />

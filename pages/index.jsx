@@ -74,7 +74,7 @@ function Home() {
             <Layout>
                 <section className="place">
                     <Container>
-                        <h2 className="text-center">Mulai petualanganmu</h2>
+                        <h1 className="text-center">Mulai petualanganmu</h1>
                         <p className="text-center">Destinasi wisata populer di Bali</p>
 
                         <Destination limit={6} />

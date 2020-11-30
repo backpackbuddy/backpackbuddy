@@ -107,7 +107,7 @@ function PremiumItinerary({ place }) {
                             </Col>
                             <Col lg={8}>
                                 <div className="shadow-sm p-4 my-4 my-lg-0 bg-white">
-                                    <h2>{ toTitleCase(data.ikonik) }</h2>
+                                    <h1>{ toTitleCase(data.ikonik) }</h1>
                                     <div className="premium__info d-sm-flex justify-content-between align-items-center">
                                         <div>
                                             <small className="premium__info">

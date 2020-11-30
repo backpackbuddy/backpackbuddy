@@ -28,7 +28,7 @@ function Header() {
                 <Carousel.Item className="intro__carousel-item">
                     <div className="intro__caption">
                         <Container className="intro__caption-text">
-                            <h1>Butuh Rekomendasi Rute Lagi?</h1>
+                            <h2>Butuh Rekomendasi Rute Lagi?</h2>
                             <p className="intro__description">Konsultasikan dengan kami secara gratis!</p>
                             <Btn />
                         </Container>

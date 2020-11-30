@@ -30,7 +30,7 @@ function Contact() {
             <Layout>
                 <section className="pt-4">
                     <Container>
-                        <h2 className="text-center mb-4">Let's Chat</h2>
+                        <h1 className="text-center mb-4">Let's Chat</h1>
                         <Row className="justify-content-center">
                             
                             <Col className="bg-light shadow-sm p-4 mt-4 mt-lg-0" xs={12} lg={4}>
