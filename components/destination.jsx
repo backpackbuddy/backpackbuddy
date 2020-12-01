@@ -18,7 +18,7 @@ import {
 
 const dataJson = require('../data.json');
 const dataPremium = require('../premium-itinerary.json');
-const data = [ ...uniqueBy(dataJson, 'ikonik'), ...dataPremium ];
+const data = [ ...dataPremium, ...uniqueBy(dataJson, 'ikonik') ];
 
 function Cards({ offset = 0, limit = data.length }) {
 
