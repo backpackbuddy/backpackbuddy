@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import TopBar from '../components/topbar';
+import Banner from '../components/Banner';
 import Destination from '../components/destination';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
 import Link from 'next/link';
 import Sosmed from '../components/sosmed';
+import TopBar from '../components/topbar';
 import toTitleCase from 'to-title-case';
 import toSlugCase from 'to-slug-case';
 import uniqueBy from 'unique-by';
@@ -55,16 +56,16 @@ function Home() {
 
     return (
         <>
+            <Banner />
             {/* Mobile */}
             <TopBar
                 className="d-lg-none shadow-sm py-0"
-                fixed="top"
-                sticky={false}
+                sticky="top"
             />
 
             {/* Desktop */}
             <TopBar
-                className={[ shrink ? 'py-0 shadow-sm' : 'py-4 d-none d-lg-block' ].join(' ')}
+                className={[ shrink ? 'py-0 shadow-sm' : 'mt-4 py-4 d-none d-lg-block' ].join(' ')}
                 bg={ shrink ? 'white' : false }
                 fixed="top"
                 sticky={false}
