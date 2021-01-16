@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
+        "dev": "env API_URL=http://localhost/api next dev",
         "build": "next build",
         "preexport": "npm run build",
         "export": "next export",

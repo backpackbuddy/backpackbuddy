@@ -9,20 +9,7 @@ class MyDocument extends Document {
     render() {
         return (
             <Html lang="in-ID" style={{ fontSize: '.9em' }}>
-                <Head>
-                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNS3FH534Q"></script>
-                    <script
-                        dangerouslySetInnerHTML={{
-                            __html: `
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){ dataLayer.push(arguments); }
-                            gtag('js', new Date());
-
-                            gtag('config', 'G-PNS3FH534Q');
-                        `
-                        }}
-                    />
-                </Head>
+                <Head />
                 <body>
                     <Main />
                     <NextScript />

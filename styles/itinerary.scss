@@ -1,0 +1,19 @@
+.premium {
+    &__img {
+        min-height: 500px;
+        max-height: 500px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    &__info {
+        opacity: .8;
+    }
+
+    &__price {
+        &--discount {
+            text-decoration: line-through;
+            opacity: .8;
+        }
+    }
+}

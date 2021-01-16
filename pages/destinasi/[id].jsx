@@ -1,51 +1,36 @@
-import { useEffect, useState } from 'react';
-import BasicTopBar from '../topbar';
-import Comments from './comments';
+import BasicTopBar from '../../components/topbar';
 import currencyFormatter from 'currency-formatter';
-import filterData from '../../utils/filter-data';
-import Layout from '../layout';
-import toSlugCase from 'to-slug-case';
+import Layout from '../../components/layout';
 import toTitleCase from 'to-title-case';
-import Rating from 'react-rating';
-import uniqueBy from 'unique-by';
-import '../../styles/premium-itinerary.scss';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import '../../styles/itinerary.scss';
 
-// react bootstrap components
-import {
+import { 
     Button,
     Carousel,
-    Col,
     Container,
-    Form,
-    Image,
-    ListGroup,
-    ListGroupItem,
+    Col,
     Row,
 } from 'react-bootstrap';
 
-// const dataJson = require('../../premium-itinerary.json');
-
-function PremiumItinerary({ id }) {
+function Itinerary() {
+    const { id } = useRouter().query;
     const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
 
-        fetch(`http://localhost/api/itinerary/4`)
-            .then(res => res.json())
-            .then(res => setData(res))
-            .catch(err => console.error(err))
-            .finally(() => setIsLoading(false));
+        if (id) {
+            fetch(`http://localhost/api/itinerary/${id}`)
+                .then(res => res.json())
+                .then(res => setData(res))
+                .catch(err => console.error(err))
+                .finally(() => setIsLoading(false));
+        }
 
-    }, []);
-
-    const orderHandler = () => {
-        /*
-         * TODO: ...
-         */
-        window.location.href = 'https://toko.ly/backpackbuddy/products/4361320/2-hari-jelajah-alam-ubud-';
-    }
+    }, [id]);
 
     return (
         <>
@@ -58,7 +43,7 @@ function PremiumItinerary({ id }) {
                             <Carousel className="premium__carousel mb-4" pause={false} height="400px">
                                 <Carousel.Item>
                                     <img
-                                        class="premium__img d-block bg-secondary img-fluid"
+                                        className="premium__img d-block bg-secondary img-fluid"
                                         alt={data.place_name}
                                         loading="lazy"
                                         src={data.featured_picture}
@@ -96,38 +81,13 @@ function PremiumItinerary({ id }) {
                                                 </>
                                                 : <h3 className="premium__price mb-0">{ currencyFormatter.format(data.price, { code: 'IDR' }) }</h3>
                                         }
-                                        <Button className="w-100 mt-4" onClick={orderHandler}>Pesan Sekarang</Button>
+                                        <Button className="w-100 mt-4">Pesan Sekarang</Button>
 
                                         <hr />
 
-                                        <h5>Termasuk</h5>
-                                        <ul>
-                                            {/*
-                                                data.includes.split(';').map(include => (
-                                                    <li key={include}>{include}</li>
-                                                ))
-                                                */}
-                                        </ul>
-
-                                        <hr/>
-                                        <h5>Tidak Termasuk</h5>
-                                        <ul>
-                                            {/*
-                                                data.excludes.split(';').map(exclude => (
-                                                    <li key={exclude}>{exclude}</li>
-                                                ))
-                                                */}
-                                        </ul>
-
-                                        <hr/>
-                                        <h5>Keterangan</h5>
-                                        <ul>
-                                            {/*
-                                                data.keterangan.split(';').map(k => (
-                                                    <li key={k}>{k}</li>
-                                                ))
-                                                */}
-                                        </ul>
+                                        <div className="excerpt">
+                                            { data.excerpt }
+                                        </div>
                                     </div>
                                 </Col>
                                 <Col lg={8}>
@@ -136,7 +96,7 @@ function PremiumItinerary({ id }) {
                                         <div className="premium__info d-sm-flex justify-content-between align-items-center">
                                             <div>
                                                 <small className="premium__info">
-                                                    5.0 (0 Ulasan) | 1 kali dipesan
+                                                    5.0 (0 Ulasan) | { data.view } kali dilihat
                                                 </small>
                                             </div>
                                             <div>
@@ -163,4 +123,4 @@ function PremiumItinerary({ id }) {
     );
 }
 
-export default PremiumItinerary;
+export default Itinerary;
