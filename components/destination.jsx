@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
-import toSlugCase from 'to-slug-case';
 import Link from 'next/link';
-import toTitleCase from 'to-title-case';
-import uniqueBy from 'unique-by';
 import '../styles/destinasi.scss';
 
-// icons 
+// icons
 import {
     LocationIcon,
 } from './icons';
@@ -18,21 +15,21 @@ import {
 } from 'react-bootstrap';
 
 function Cards({ offset = 0, limit = 12 }) {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
 
-        fetch(`http://localhost/api/itinerary`)
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/itinerary`)
             .then(res => res.json())
-            .then(json => setData(json))
+            .then(json => setData(json.data))
             .finally(() => setIsLoading(false));
     }, []);
 
     return isLoading
         ? <h4>Loading ...</h4>
-        : data.slice(offset, limit).map(({ id, place_name, featured_picture }) => (
+        : data.slice(offset, limit).map(({ id, place_name, featured_picture_thumb, media }) => (
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={id}>
             <Card className="place__card">
                 <Link href={`/destinasi/${id}`}>
@@ -40,7 +37,7 @@ function Cards({ offset = 0, limit = 12 }) {
                         <Card.Img
                             className="place__img"
                             variant="top"
-                            src={featured_picture} alt={place_name} 
+                            src={featured_picture_thumb} alt={media.alt}
                         />
                     </a>
                 </Link>
@@ -50,7 +47,7 @@ function Cards({ offset = 0, limit = 12 }) {
                         <span>&nbsp;</span>
 
                         <Link href={`/destinasi/${id}`}>
-                            <a className="place__text-truncate" title={toTitleCase(place_name)}>{ toTitleCase(place_name) }</a>
+                            <a className="place__text-truncate" title={place_name}>{ place_name }</a>
                         </Link>
                     </Card.Title>
                 </Card.Body>
@@ -61,8 +58,8 @@ function Cards({ offset = 0, limit = 12 }) {
 
 function Destination(props) {
     return (
-        <Row className="my-2 my-md-0"> 
-            <Cards {...props} /> 
+        <Row className="my-2 my-md-0">
+            <Cards {...props} />
         </Row>
     );
 }

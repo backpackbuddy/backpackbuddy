@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import BasicTopBar from '../components/topbar';
 import Layout from '../components/layout';
 import Sosmed from '../components/sosmed';
@@ -13,18 +13,6 @@ import {
 } from 'react-bootstrap';
 
 function About() {
-
-    useEffect(() => {
-        let js, js2;
-        const id = 'EmbedSocialInstagramScript';
-        const d = document;
-        if (d.getElementById(id)) { return; }
-        js = d.createElement('script');
-        js.id = id;
-        js.src = 'https://embedsocial.com/embedscript/in.js';
-        d.getElementsByTagName('head')[0].appendChild(js);
-    }, []);
-
 
     return (
         <>
@@ -55,7 +43,7 @@ function About() {
                                 <p>Backpack Buddy adalah startup yang menyediakan rute wisata harian untuk Backpacker secara Gratis di Bali.</p>
                                 <p>Kami melayani konsultasi rute wisata harian dengan informasi yang lebih lengkap secara langsung bersama konsultan kami terutama wisata-wisata baru yang anti mainstream dan pengalaman yang berbeda saat berwisata ke Bali.</p>
                                 <p>Kami juga bisa membantu backpacker jika ingin menyewa kendaraan ataupun rute wisata beserta tiket masuknya. Hemat waktu, hemat budget dan jelajah lebih banyak tempat di Bali!</p>
-                                <strong style={{ fontSize: '1.2em' }}>Plan Now, Travel Soon!!</strong>
+                                <strong style={{fontSize: '1.2em'}}>Plan Now, Travel Soon!!</strong>
                                 <div className="mt-3">
                                     <Sosmed className="mx-2" fill="#444" height="50px" width="50px" />
                                 </div>
@@ -67,10 +55,10 @@ function About() {
                 <section className="bg-light person">
                     <Container>
                         <Row className="align-items-top justify-content-center">
-                            <Col xs={12} md={{ span: 4, order: 'last' }}>
+                            <Col xs={12} md={{span: 4, order: 'last'}}>
                                 <div
                                     className="img-fluid rounded person__img"
-                                    style={{ backgroundImage: 'url("/images/avatar/niken-pertiwi.jpg")' }}
+                                    style={{backgroundImage: 'url("/images/avatar/niken-pertiwi.jpg")'}}
                                 />
                             </Col>
                             <Col xs={12} md={6}>
@@ -82,7 +70,7 @@ function About() {
                             <Col xs={12} md={4}>
                                 <div
                                     className="img-fluid rounded person__img"
-                                    style={{ backgroundImage: 'url("/images/avatar/utary-dewi.jpg")' }}
+                                    style={{backgroundImage: 'url("/images/avatar/utary-dewi.jpg")'}}
                                 />
                             </Col>
                             <Col xs={12} md={6}>
@@ -90,12 +78,6 @@ function About() {
                                 <p>Saya menyukai traveling dan bertualang ke tempat-tempat baru. Berpengalaman kerja di perhotelan dan pariwisata selama 11 tahun dan saat ini mengelola bisnis sendiri dan selalu menyempatkan diri untuk jalan-jalan. Saya menyukai petualangan di alam dan beberapa wisata adrenalin. Melalui BackpackBuddy saya ingin membagi pengalaman travelling secara mandiri and memperkenalkan tempat-tempat wisata baru yang belum banyak dikenal masyarakat. BackpackBuddy akan menjadi teman dan konsultan perjalanan kalian ketika mengunjungi Bali.</p>
                             </Col>
                         </Row>
-                    </Container>
-                </section>
-
-                <section>
-                    <Container>
-                        <div className="embedsocial-instagram" data-ref="669041977dc968f9ba8f6133d7b56f26c865063e" />
                     </Container>
                 </section>
             </Layout>

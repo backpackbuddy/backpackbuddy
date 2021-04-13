@@ -1,18 +1,16 @@
-import BasicTopBar from '../../components/topbar';
-import currencyFormatter from 'currency-formatter';
-import Layout from '../../components/layout';
-import toTitleCase from 'to-title-case';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import '../../styles/itinerary.scss';
+import BasicTopBar from "../../components/topbar";
+import Reviews from "../../components/reviews";
+import NumberFormat from "react-number-format";
+import Layout from "../../components/layout";
+import Rating from "react-rating";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import "../../styles/itinerary.scss";
 
-import { 
-    Button,
-    Carousel,
-    Container,
-    Col,
-    Row,
-} from 'react-bootstrap';
+// Icons
+import { StarFilledIcon, StarOutlineIcon } from "../../components/icons";
+
+import { Button, Carousel, Container, Col, Row } from "react-bootstrap";
 
 function Itinerary() {
     const { id } = useRouter().query;
@@ -23,13 +21,12 @@ function Itinerary() {
         setIsLoading(true);
 
         if (id) {
-            fetch(`http://localhost/api/itinerary/${id}`)
-                .then(res => res.json())
-                .then(res => setData(res))
-                .catch(err => console.error(err))
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/itinerary/${id}`)
+                .then((res) => res.json())
+                .then((res) => setData(res.data))
+                .catch((err) => console.error(err))
                 .finally(() => setIsLoading(false));
         }
-
     }, [id]);
 
     return (
@@ -38,84 +35,123 @@ function Itinerary() {
             <Layout>
                 <div className="bg-light premium">
                     <Container className="py-4">
-                        { isLoading ? <h4>Loading ...</h4> :
-                        <>
-                            <Carousel className="premium__carousel mb-4" pause={false} height="400px">
-                                <Carousel.Item>
-                                    <img
-                                        className="premium__img d-block bg-secondary img-fluid"
-                                        alt={data.place_name}
-                                        loading="lazy"
-                                        src={data.featured_picture}
-                                    />
-                                </Carousel.Item>
-                                {/*
-                                    data.foto.split(';').map(photo => (
-                                        <Carousel.Item key={photo}>
+                        {isLoading ? (
+                            <h4>Loading ...</h4>
+                        ) : (
+                            <>
+                                <Carousel
+                                    className="premium__carousel mb-4"
+                                    pause={false}
+                                    height="400px"
+                                >
+                                    {data.media.map(({ id, url, alt }) => (
+                                        <Carousel.Item key={id}>
                                             <img
                                                 className="premium__img d-block w-100 bg-secondary"
-                                                src={photo}
-                                                alt={photo}
+                                                src={url}
+                                                alt={alt}
                                                 loading="lazy"
                                                 style={{
-                                                    objectFit: 'contain'
+                                                    objectFit: "contain",
                                                 }}
                                             />
                                         </Carousel.Item>
-                                    ))
-                                    */}
-                            </Carousel>
-                            <Row>
-                                <Col
-                                    lg={{
-                                        span: 4,
-                                        order: 'last',
-                                    }}
-                                >
-                                    <div className="border p-4 bg-white">
-                                        {
-                                            data.sale
-                                                ?  <>
-                                                    <p className="premium__price--discount mb-0">{ currencyFormatter.format(data.price, { code: 'IDR' }) }</p>
-                                                    <h3 className="premium__price">{ currencyFormatter.format(data.sale, { code: 'IDR' }) }</h3>
+                                    ))}
+                                </Carousel>
+                                <Row>
+                                    <Col
+                                        lg={{
+                                            span: 4,
+                                            order: "last",
+                                        }}
+                                    >
+                                        <div className="border p-4 bg-white">
+                                            {data.sale ? (
+                                                <>
+                                                    <p className="premium__price--discount mb-0">
+                                                        <NumberFormat
+                                                            displayType={"text"}
+                                                            value={data.price}
+                                                            thousandSeparator
+                                                            prefix={"Rp. "}
+                                                        />
+                                                    </p>
+                                                    <h3 className="premium__price">
+                                                        <NumberFormat
+                                                            displayType={"text"}
+                                                            value={data.sale}
+                                                            thousandSeparator
+                                                            prefix={"Rp. "}
+                                                        />
+                                                    </h3>
                                                 </>
-                                                : <h3 className="premium__price mb-0">{ currencyFormatter.format(data.price, { code: 'IDR' }) }</h3>
-                                        }
-                                        <Button className="w-100 mt-4">Pesan Sekarang</Button>
+                                            ) : (
+                                                <h3 className="premium__price mb-0">
+                                                    <NumberFormat
+                                                        displayType={"text"}
+                                                        value={data.price}
+                                                        thousandSeparator
+                                                        prefix={"Rp. "}
+                                                    />
+                                                </h3>
+                                            )}
+                                            <Button className="w-100 mt-4">
+                                                Pesan Sekarang
+                                            </Button>
 
-                                        <hr />
+                                            <hr />
 
-                                        <div className="excerpt">
-                                            { data.excerpt }
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col lg={8}>
-                                    <div className="shadow-sm p-4 my-4 my-lg-0 bg-white">
-                                        <h1>{ toTitleCase(data.place_name) }</h1>
-                                        <div className="premium__info d-sm-flex justify-content-between align-items-center">
-                                            <div>
-                                                <small className="premium__info">
-                                                    5.0 (0 Ulasan) | { data.view } kali dilihat
-                                                </small>
-                                            </div>
-                                            <div>
-                                                <a href="#">+ Wishlist</a>
+                                            <div className="excerpt">
+                                                {data.excerpt}
                                             </div>
                                         </div>
-                                        <hr/>
-                                        <div className="premium__description">
-                                            <h3>Deskripsi</h3>
-                                            <p>{ data.description }</p>
+                                    </Col>
+                                    <Col lg={8}>
+                                        <div className="shadow-sm p-4 my-4 my-lg-0 bg-white">
+                                            <h1> {data.place_name} </h1>
+                                            <Rating
+                                                readonly
+                                                emptySymbol={
+                                                    <StarOutlineIcon
+                                                        className="mr-1"
+                                                        height="1.3rem"
+                                                        width="1.3rem"
+                                                    />
+                                                }
+                                                fullSymbol={
+                                                    <StarFilledIcon
+                                                        className="mr-1"
+                                                        height="1.3rem"
+                                                        width="1.3rem"
+                                                    />
+                                                }
+                                                initialRating={
+                                                    data.average_rating
+                                                }
+                                            />
+                                            <div className="premium__info d-sm-flex justify-content-between align-items-center mt-2">
+                                                <div>
+                                                    <span className="premium__info">
+                                                        ({data.reviews.length}{" "}
+                                                        Ulasan) | {data.view}{" "}
+                                                        kali dilihat
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <a href="#">+ Wishlist</a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div className="premium__description">
+                                                <h3>Deskripsi</h3>
+                                                <p>{data.description}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    {/*}
-                                    <Comments data={data} />
-                                    {*/}
-                                </Col>
-                            </Row>
-                        </>
-                        }
+                                        <Reviews data={data.reviews} />
+                                    </Col>
+                                </Row>
+                            </>
+                        )}
                     </Container>
                 </div>
             </Layout>
