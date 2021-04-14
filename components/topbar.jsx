@@ -1,4 +1,3 @@
-import Banner from './Banner';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import '../styles/topbar.scss';
@@ -14,7 +13,6 @@ import {
 function TopBar(props) {
     return (
         <>
-            { useRouter().pathname !== '/' && <Banner /> }
             <Navbar
                 className="header--slim py-0 shadow-sm"
                 collapseOnSelect={true}

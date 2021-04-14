@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Banner from "../components/Banner";
 import Destination from "../components/destination";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
@@ -65,7 +64,6 @@ function Home() {
 
     return (
         <>
-            <Banner />
             {/* Mobile */}
             <TopBar className="d-lg-none shadow-sm py-0" sticky="top" />
 
