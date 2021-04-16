@@ -1,9 +1,7 @@
+import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import '../../../styles/topbar.scss';
-
-// react bootstrap components
-import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 
 function TopBar(props) {
   return (

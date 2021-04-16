@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import '../../../styles/intro.scss';
-
-// react bootstrap components
 import { Button, Carousel, Container } from 'react-bootstrap';
+import '../../../styles/intro.scss';
 
 function Header() {
   function Btn() {

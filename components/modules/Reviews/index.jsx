@@ -1,10 +1,8 @@
 import pt from 'prop-types';
 import { useState } from 'react';
 import Rating from 'react-rating';
-import '../../../styles/comments.scss';
-
-// react bootstrap components
 import { Button, Form } from 'react-bootstrap';
+import '../../../styles/comments.scss';
 
 // icons
 import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';

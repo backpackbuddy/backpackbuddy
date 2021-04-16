@@ -1,7 +1,9 @@
-import '../../../styles/footer.scss';
 import { Button, Container, Image } from 'react-bootstrap';
+
+// Components
 import Sosmed from '../../elements/Sosmed';
 import { FooterArrowIcon } from '../../elements/Icons';
+import '../../../styles/footer.scss';
 
 function Footer() {
   function scrollToTop() {

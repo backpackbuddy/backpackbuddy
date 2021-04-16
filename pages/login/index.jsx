@@ -1,8 +1,8 @@
 import { Button, Container, Form } from 'react-bootstrap';
+
+// Components
 import BasicTopBar from '../../components/modules/Header';
 import Layout from '../../components/layouts/app';
-
-// Bootstrap Components
 
 function Login() {
   return (

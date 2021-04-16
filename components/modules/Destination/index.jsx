@@ -1,14 +1,11 @@
 import pt from 'prop-types';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Card, Col, Row } from 'react-bootstrap';
 import '../../../styles/destinasi.scss';
 
-// icons
-import { Card, Col, Row } from 'react-bootstrap';
-
+// Icons
 import { LocationIcon } from '../../elements/Icons';
-
-// react bootstrap components
 
 function Cards({ offset = 0, limit = 12 }) {
   const [data, setData] = useState([]);
