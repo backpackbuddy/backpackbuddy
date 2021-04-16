@@ -45,9 +45,9 @@ function Home() {
       .finally(() => setFavLoading(false));
   }, []);
 
-  function toggleReadMore(index) {
+  function toggleReadMore(id) {
     setIsOpen(prevState =>
-      prevState.map((prev, i) => (i === index ? !prev : prev))
+      prevState.map((prev, i) => (i === id ? !prev : prev))
     );
   }
 
@@ -174,26 +174,29 @@ function Home() {
               <Row className="testimonials__row">
                 {[
                   {
-                    name: 'fredy',
+                    id: 0, 
+                    name: 'Fredy',
                     message:
                       'Terimakasih atas itinerary yang diberikan untuk tur hari pertama saya. Konsultannya sangat friendly dan mengerti rute yang harus diambil selanjutnya. Rekomendasi kulinernya juga enak-enak. Terimakasih Backpackbuddy sukses selalu',
                   },
                   {
-                    name: 'eira',
+                    id: 1,
+                    name: 'Eira',
                     message:
                       'Sebagai seorang yang sudah sering berwisata ke Bali saya masih kesulitan untuk menentukan rute wisata terbaru yang bisa saya tempuh seharian. Adanya konsultan Backpackbuddy membantu saya memilih tempat wisata sesuai dengan minat dan jalur yang akan saya tempuh.',
                   },
                   {
-                    name: 'lia',
+                    id: 2,
+                    name: 'Lia',
                     message:
                       'Saya dan suami sudah berusia 50 tahun dan kami backpackeran dari Bandung. Saya sudah sering mengunjungi Bali namun terbatas di pantai Kuta dan seminyak saya. Saya lega ada jasa konsultasi dari Backpackbuddy yang membuatkan rute dan ide-ide wisata yang bisa kami tempuh dengan motor tanpa harus kecapekan. saya baru tau kalau Bali gak cuma di Kuta saja. Next time kalau anak saya kesini minta di aturin rutenya sama Backpackbuddy saja.',
                   },
-                ].map(({ name, message }, index) => (
-                  <Col className="testimonials__col" xs={12} md={4} key={index}>
+                ].map(({ id, name, message }) => (
+                  <Col className="testimonials__col" xs={12} md={4} key={id}>
                     <div className="testimonials__img">
                       <Image
                         className="testimonials__img img-fluid"
-                        src={`/images/testimonials/${name}.jpeg`}
+                        src={`/images/testimonials/${name.toLowerCase()}.jpeg`}
                         alt={name}
                       />
                     </div>
@@ -207,7 +210,7 @@ function Home() {
                         <Card.Text
                           className={[
                             'testimonials__message',
-                            !isOpen[index] && 'testimonials__message--truncate',
+                            !isOpen[id] && 'testimonials__message--truncate',
                           ].join(' ')}
                         >
                           <QuoteIcon
@@ -221,7 +224,7 @@ function Home() {
                         <Card.Text>
                           <Button
                             className="d-block mx-auto shadow-none"
-                            onClick={() => toggleReadMore(index)}
+                            onClick={() => toggleReadMore(id)}
                             size="sm"
                             variant="default"
                           >
@@ -229,7 +232,7 @@ function Home() {
                               fill="#f2f2f2"
                               height="25px"
                               style={{
-                                transform: isOpen[index]
+                                transform: isOpen[id]
                                   ? 'rotate(0deg)'
                                   : 'rotate(180deg)',
                               }}
