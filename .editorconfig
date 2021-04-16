@@ -1,8 +1,8 @@
 root = true
 
-[*.{json,scss}]
+[**.{json,scss}]
 indent_style = space
 indent_size = 4
 
-[*.jsx]
+[**.jsx]
 indent_size = 2
