@@ -10,10 +10,10 @@ import { Button, Form } from 'react-bootstrap';
 import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';
 
 function Reviews({ data }) {
-  const [rating, setRating] = useState(0);
+  const [userRating, setUserRating] = useState(0);
 
   const ratingClickHandler = e => {
-    setRating(e);
+    setUserRating(e);
   };
 
   return (
@@ -29,7 +29,7 @@ function Reviews({ data }) {
                     className="text-warning mr-2"
                     style={{ fontSize: '3em' }}
                   >
-                    {rating}
+                    {userRating}
                   </div>
                   <Rating
                     className="mr-2"
@@ -47,7 +47,7 @@ function Reviews({ data }) {
                         width="2em"
                       />
                     }
-                    initialRating={rating}
+                    initialRating={userRating}
                     onClick={ratingClickHandler}
                   />
                 </div>
