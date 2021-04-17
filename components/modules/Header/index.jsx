@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import '../../../styles/header.scss';
 
 function TopBar (props) {
@@ -51,10 +51,20 @@ function TopBar (props) {
                 name: 'About',
               },
               {
-                url: '/register',
-                name: 'Join Us',
+                url: '',
+                name: '|',
+                classes: 'd-none d-lg-block'
+              },
+              {
+                url: '/login',
+                name: 'Log In',
                 classes: 'text-nowrap'
-              }
+              },
+              {
+                url: '/register',
+                name: 'Create Account',
+                classes: 'text-nowrap btn btn-primary text-white ml-2 px-3 w-100'
+              },
             ].map(({ url, name, classes = '' }) => (
               <Link href={url} key={name}>
                 <Nav.Link

@@ -23,7 +23,7 @@ import Sosmed from '../components/elements/Sosmed';
 import Layout from '../components/layouts/app';
 import Destination from '../components/modules/Destination';
 import TopBar from '../components/modules/Header';
-import Intro from '../components/templates/Intro';
+import Intro from '../components/modules/Intro';
 import '../styles/home.scss';
 
 
@@ -65,7 +65,7 @@ function Home () {
   return (
     <>
       {/* Mobile */}
-      <TopBar className="d-lg-none shadow-sm py-0" sticky="top" />
+      <TopBar className="d-lg-none shadow-sm py-2" sticky="top" />
 
       {/* Desktop */}
       <TopBar
