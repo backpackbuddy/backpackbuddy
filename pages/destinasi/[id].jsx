@@ -1,21 +1,21 @@
-import { useState, useEffect } from 'react';
-import Rating from 'react-rating';
-import { Button, Carousel, Container, Col, Row } from 'react-bootstrap';
-import { useRouter } from 'next/router';
-
-// Components
-import NumberFormat from 'react-number-format';
 import axios from 'axios';
-import BasicTopBar from '../../components/modules/Header';
-import Reviews from '../../components/modules/Reviews';
-import Layout from '../../components/layouts/app';
-import '../../styles/itinerary.scss';
-
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { Button, Carousel, Col, Container, Row } from 'react-bootstrap';
+import NumberFormat from 'react-number-format';
+import Rating from 'react-rating';
 // Icons
 import {
   StarFilledIcon,
-  StarOutlineIcon,
+  StarOutlineIcon
 } from '../../components/elements/Icons';
+// Components
+import Layout from '../../components/layouts/app';
+import BasicTopBar from '../../components/modules/Header';
+import Reviews from '../../components/modules/Reviews';
+import '../../styles/itinerary.scss';
+
+
 
 function Itinerary () {
   /* eslint no-shadow: "off" */

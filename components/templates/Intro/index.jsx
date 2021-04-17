@@ -6,7 +6,7 @@ function Header() {
   function Btn() {
     return (
       <Link href="/destinasi">
-        <Button className="intro__btn mt-5 shadow">Cari tau disini</Button>
+        <Button className="intro__btn mt-5">Cari tau disini</Button>
       </Link>
     );
   }

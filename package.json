@@ -46,6 +46,7 @@
         "react-floating-button-menu": "^2.0.8",
         "react-number-format": "^4.5.5",
         "react-rating": "^2.0.5",
-        "styled-components": "^5.2.0"
+        "styled-components": "^5.2.0",
+        "typeface-roboto": "^1.1.13"
     }
 }

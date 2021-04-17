@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Container, Image, Nav, Navbar } from 'react-bootstrap';
-import '../../../styles/topbar.scss';
+import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
+import '../../../styles/header.scss';
 
 function TopBar (props) {
   return (
     <Navbar
-      className="header--slim py-0 shadow-sm"
+      className="py-2 shadow-sm"
       collapseOnSelect
       bg="white"
       expand="lg"
@@ -30,7 +30,7 @@ function TopBar (props) {
         </div>
         <Navbar.Collapse id="bb-navbar-nav">
           <Nav
-            className="ml-auto p-2 p-lg-0 font-weight-bold"
+            className="ml-auto p-2 p-lg-0 align-items-center"
             defaultActiveKey={useRouter().pathname}
           >
             {[
@@ -51,14 +51,14 @@ function TopBar (props) {
                 name: 'About',
               },
               {
-                url: '/login',
-                name: 'Login',
-                classes: ''
-              },
+                url: '/register',
+                name: 'Join Us',
+                classes: 'text-nowrap'
+              }
             ].map(({ url, name, classes = '' }) => (
-              <Link href={url} key={name} className={classes}>
+              <Link href={url} key={name}>
                 <Nav.Link
-                  className="px-lg-3"
+                  className={`px-lg-3 text-nowrap ${classes}`}
                   style={{ fontSize: '1.1em' }}
                   href={url}
                 >

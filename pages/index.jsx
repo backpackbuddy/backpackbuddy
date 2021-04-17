@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+// Icons
+import axios from 'axios';
 import Link from 'next/link';
-
-// Bootstrap components
+import { useEffect, useState } from 'react';
 import {
   Button,
   Card,
@@ -9,28 +9,27 @@ import {
   Container,
   Form,
   Image,
-  Row,
+  Row
 } from 'react-bootstrap';
-
-// Icons
 import {
   CustomIcon,
   ExperiencedIcon,
   FreeIcon,
-  RightArrowIcon,
-  VCircleArrowIcon,
-  QuoteIcon,
+  QuoteIcon, RightArrowIcon,
+  VCircleArrowIcon
 } from '../components/elements/Icons';
-
 // Components
-import Destination from '../components/modules/Destination';
-import Intro from '../components/templates/Intro';
-import Layout from '../components/layouts/app';
 import Sosmed from '../components/elements/Sosmed';
+import Layout from '../components/layouts/app';
+import Destination from '../components/modules/Destination';
 import TopBar from '../components/modules/Header';
+import Intro from '../components/templates/Intro';
 import '../styles/home.scss';
 
-function Home() {
+
+
+
+function Home () {
   const [data, setData] = useState([]);
   const [favLoading, setFavLoading] = useState(false);
   const [shrink, setShrink] = useState(false);
@@ -39,13 +38,12 @@ function Home() {
   useEffect(() => {
     setFavLoading(true);
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/itinerary`)
-      .then(res => res.json())
-      .then(res => setData(res.data))
+    axios.get('/itinerary')
+      .then(res => setData(res.data.data))
       .finally(() => setFavLoading(false));
   }, []);
 
-  function toggleReadMore(id) {
+  function toggleReadMore (id) {
     setIsOpen(prevState =>
       prevState.map((prev, i) => (i === id ? !prev : prev))
     );
@@ -72,7 +70,7 @@ function Home() {
       {/* Desktop */}
       <TopBar
         className={[
-          shrink ? 'py-0 shadow-sm' : 'mt-4 py-4 d-none d-lg-block',
+          shrink ? 'py-2 shadow-sm' : 'mt-4 py-4 d-none d-lg-block',
         ].join(' ')}
         bg={shrink ? 'white' : false}
         fixed="top"
@@ -174,7 +172,7 @@ function Home() {
               <Row className="testimonials__row">
                 {[
                   {
-                    id: 0, 
+                    id: 0,
                     name: 'Fredy',
                     message:
                       'Terimakasih atas itinerary yang diberikan untuk tur hari pertama saya. Konsultannya sangat friendly dan mengerti rute yang harus diambil selanjutnya. Rekomendasi kulinernya juga enak-enak. Terimakasih Backpackbuddy sukses selalu',
