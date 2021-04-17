@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 // Components
 import NumberFormat from 'react-number-format';
+import axios from 'axios';
 import BasicTopBar from '../../components/modules/Header';
 import Reviews from '../../components/modules/Reviews';
 import Layout from '../../components/layouts/app';
@@ -16,7 +17,7 @@ import {
   StarOutlineIcon,
 } from '../../components/elements/Icons';
 
-function Itinerary() {
+function Itinerary () {
   /* eslint no-shadow: "off" */
   const { id } = useRouter().query;
   const [data, setData] = useState({});
@@ -26,10 +27,8 @@ function Itinerary() {
     setIsLoading(true);
 
     if (id) {
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/itinerary/${id}`)
-        .then(res => res.json())
-        .then(res => setData(res.data))
-        .catch(err => console.error(err))
+      axios.get(`/itinerary/${id}`)
+        .then(res => setData(res.data.data))
         .finally(() => setIsLoading(false));
     }
   }, [id]);
@@ -115,15 +114,15 @@ function Itinerary() {
                         emptySymbol={
                           <StarOutlineIcon
                             className="mr-1"
-                            height="1.3rem"
-                            width="1.3rem"
+                            height="1.3em"
+                            width="1.3em"
                           />
                         }
                         fullSymbol={
                           <StarFilledIcon
                             className="mr-1"
-                            height="1.3rem"
-                            width="1.3rem"
+                            height="1.3em"
+                            width="1.3em"
                           />
                         }
                         initialRating={data.average_rating}

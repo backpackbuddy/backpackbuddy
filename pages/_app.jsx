@@ -5,6 +5,12 @@ import Router from 'next/router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.scss';
 import 'nprogress/nprogress.css';
+import axios from 'axios';
+import { parseCookies } from 'nookies';
+
+axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_API_URL}`;
+axios.defaults.headers.common.Authorization = `Bearer ${parseCookies().token}`
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 NProgress.configure({
   easing: 'ease',
@@ -14,7 +20,7 @@ Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeComplete', NProgress.done);
 Router.events.on('routeChangeError', NProgress.done);
 
-function MyApp({ Component, pageProps, router }) {
+function MyApp ({ Component, pageProps, router }) {
   return (
     <AnimatePresence initial={false}>
       <motion.div

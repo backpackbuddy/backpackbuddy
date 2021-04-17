@@ -21,7 +21,7 @@ function LoginForm () {
       remember_me: rememberMe.current.checked
     }
 
-    axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, data)
+    axios.post('/login', data)
       .then((res) => {
         const { access_token, expires_at } = res.data;
 
