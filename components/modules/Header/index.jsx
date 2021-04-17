@@ -1,9 +1,9 @@
-import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import '../../../styles/topbar.scss';
 
-function TopBar(props) {
+function TopBar (props) {
   return (
     <Navbar
       className="header--slim py-0 shadow-sm"
@@ -18,11 +18,13 @@ function TopBar(props) {
       <Container>
         <div className="d-flex flex-nowrap align-items-center w-100">
           <Navbar.Brand href="/">
-            <Image
-              className="img-fluid"
-              alt="Backpack Buddy"
-              src="/images/default-logo.png"
-            />
+            <Link href="/">
+              <Image
+                className="img-fluid"
+                alt="Backpack Buddy"
+                src="/images/default-logo.png"
+              />
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle className="ml-auto" aria-controls="bb-navbar-nav" />
         </div>
@@ -41,10 +43,6 @@ function TopBar(props) {
                 name: 'Destinasi',
               },
               {
-                url: 'http://blog.backpackbuddy.id',
-                name: 'Blog',
-              },
-              {
                 url: '/contact',
                 name: 'Contact',
               },
@@ -52,8 +50,13 @@ function TopBar(props) {
                 url: '/about',
                 name: 'About',
               },
-            ].map(({ url, name }) => (
-              <Link href={url} key={name}>
+              {
+                url: '/login',
+                name: 'Login',
+                classes: ''
+              },
+            ].map(({ url, name, classes = '' }) => (
+              <Link href={url} key={name} className={classes}>
                 <Nav.Link
                   className="px-lg-3"
                   style={{ fontSize: '1.1em' }}

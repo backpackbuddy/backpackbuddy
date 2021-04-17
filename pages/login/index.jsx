@@ -1,37 +1,25 @@
-import { Button, Container, Form } from 'react-bootstrap';
-
+import { Col, Container } from "react-bootstrap";
 // Components
-import BasicTopBar from '../../components/modules/Header';
-import Layout from '../../components/layouts/app';
+import Layout from "../../components/layouts/app";
+import Header from "../../components/modules/Header";
+import LoginForm from "../../components/modules/LoginForm";
 
-function Login() {
+
+function Login () {
   return (
     <>
-      <BasicTopBar />
+      <Header />
       <Layout>
-        <Container>
-          <section>
-            <Form>
-              <Form.Group controlId="inputUsername">
-                <Form.Label>Email or Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Email or Username"
-                />
-              </Form.Group>
-
-              <Form.Group controlId="inputPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-              </Form.Group>
-              <Form.Group controlId="rememberMe">
-                <Form.Check type="checkbox" label="Remember Me" />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Login
-              </Button>
-            </Form>
-          </section>
+        <Container className="my-5">
+          <Col xs={12} md={{ span: 6, offset: 3 }}>
+            <h1 className="text-center mb-3">Login</h1>
+            <section className="shadow-sm p-5">
+              <LoginForm />
+              <div className="text-center mt-4">
+                Don&apos;t have an account? <a href="/register">Register</a>
+              </div>
+            </section>
+          </Col>
         </Container>
       </Layout>
     </>

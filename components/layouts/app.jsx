@@ -5,7 +5,7 @@ import pt from 'prop-types';
 import Footer from '../modules/Footer';
 import ContactBtn from '../elements/ContactBtn';
 
-function Layout(props) {
+function Layout (props) {
   const { children } = props;
   return (
     <>
@@ -36,7 +36,7 @@ function Layout(props) {
 }
 
 Layout.propTypes = {
-  children: pt.func.isRequired,
+  children: pt.instanceOf(Object).isRequired,
 };
 
 export default Layout;
