@@ -47,14 +47,14 @@ function LoginForm () {
     <Form onSubmit={submitHandler} method="POST">
       {error?.message && <Alert variant="danger">{error.message}</Alert>}
       <Form.Group controlId="inputUsername">
-        <Form.Label>Email or Username</Form.Label>
+        <Form.Label>Email atau Username</Form.Label>
         <Form.Control
           type="text"
           name="username"
           ref={username}
           disabled={loading}
           isInvalid={Boolean(error?.username)}
-          placeholder="Enter Email or Username"
+          placeholder="Masukkan Email atau Username"
         />
         {error?.username &&
           <Form.Control.Feedback type="invalid">
@@ -81,7 +81,7 @@ function LoginForm () {
           type="checkbox"
           ref={rememberMe}
           disabled={loading}
-          label="&nbsp;Remember Me"
+          label="&nbsp;Ingat Saya"
         />
       </Form.Group>
       <Button
@@ -90,7 +90,7 @@ function LoginForm () {
         variant="primary"
         type="submit"
       >
-        {loading ? 'Checking Credentials' : 'Login'}
+        {loading ? 'Sedang memproses' : 'Masuk'}
       </Button>
     </Form>
   );

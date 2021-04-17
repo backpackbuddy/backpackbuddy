@@ -18,9 +18,9 @@ function Login () {
               <section className="shadow-sm p-5">
                 <LoginForm />
                 <div className="text-center mt-4">
-                  Don&apos;t have an account?&nbsp;
+                  Belum punya akun?&nbsp;
                 <Link href="/register">
-                    <a className="text-primary" href="/register">Register Now</a>
+                    <a className="text-primary" href="/register">Daftar sekarang</a>
                   </Link>
                 </div>
               </section>
