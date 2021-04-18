@@ -3,7 +3,7 @@ import pt from 'prop-types';
 
 // Components
 import Footer from '../modules/Footer';
-import ContactBtn from '../elements/ContactBtn';
+import ContactBtn from '../elements/FloatBtn';
 
 function Layout (props) {
   const { children } = props;

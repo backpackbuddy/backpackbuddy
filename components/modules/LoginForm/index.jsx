@@ -1,14 +1,19 @@
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { setCookie } from 'nookies';
 import { useRef, useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
+import toTitleCase from 'to-title-case';
 
 function LoginForm () {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const username = useRef(null);
-  const password = useRef(null)
-  const rememberMe = useRef(false);
+  const inputRef = {
+    username: useRef(null),
+    password: useRef(null),
+    rememberMe: useRef(false)
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -16,9 +21,9 @@ function LoginForm () {
     setError(null);
 
     const data = {
-      username: username.current.value,
-      password: password.current.value,
-      remember_me: rememberMe.current.checked
+      username: inputRef.username.current.value,
+      password: inputRef.password.current.value,
+      remember_me: inputRef.rememberMe.current.checked
     }
 
     axios.post('/login', data)
@@ -30,6 +35,7 @@ function LoginForm () {
           expires: new Date(expires_at)
         });
 
+        router.push('/');
       })
       .catch((err) => {
         const { errors, message } = err.response.data;
@@ -43,43 +49,43 @@ function LoginForm () {
       .finally(() => setLoading(false));
   }
 
+  const inputAttributes = [
+    {
+      label: 'Username atau Email',
+      name: 'username',
+      placeholder: 'Masukkan username atau email'
+    },
+    {
+      name: 'password',
+      type: 'password'
+    }
+  ]
+
   return (
     <Form onSubmit={submitHandler} method="POST">
       {error?.message && <Alert variant="danger">{error.message}</Alert>}
-      <Form.Group controlId="inputUsername">
-        <Form.Label>Email atau Username</Form.Label>
-        <Form.Control
-          type="text"
-          name="username"
-          ref={username}
-          disabled={loading}
-          isInvalid={Boolean(error?.username)}
-          placeholder="Masukkan Email atau Username"
-        />
-        {error?.username &&
-          <Form.Control.Feedback type="invalid">
-            {error.username.map(e => <div>{e}</div>)}
-          </Form.Control.Feedback>}
-      </Form.Group>
-      <Form.Group controlId="inputPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          name="password"
-          ref={password}
-          disabled={loading}
-          isInvalid={Boolean(error?.password)}
-          placeholder="Password"
-        />
-        {error?.password &&
-          <Form.Control.Feedback type="invalid">
-            {error.password.map(e => <div>{e}</div>)}
-          </Form.Control.Feedback>}
-      </Form.Group>
+      {inputAttributes.map(({ label, name, type, placeholder }) => (
+        <Form.Group key={name} controlId={`input${toTitleCase(name)}`}>
+          <Form.Label>{label || toTitleCase(name)}</Form.Label>
+          <Form.Control
+            key={name}
+            type={type || 'text'}
+            name={name}
+            disabled={loading}
+            ref={inputRef[name]}
+            isInvalid={Boolean(error?.[name])}
+            placeholder={placeholder || `Masukkan ${name}`}
+          />
+          {error?.[name] &&
+            <Form.Control.Feedback type="invalid">
+              {error[name].map(err => <div>{err}</div>)}
+            </Form.Control.Feedback>}
+        </Form.Group>
+      ))}
       <Form.Group controlId="rememberMe">
         <Form.Check
           type="checkbox"
-          ref={rememberMe}
+          ref={inputRef.rememberMe}
           disabled={loading}
           label="&nbsp;Ingat Saya"
         />

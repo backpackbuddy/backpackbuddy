@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Button, Carousel, Container } from 'react-bootstrap';
 import '../../../styles/intro.scss';
 
-function Header() {
-  function Btn() {
+function Header () {
+  function Btn () {
     return (
       <Link href="/destinasi">
         <Button className="intro__btn mt-5">Cari tau disini</Button>
