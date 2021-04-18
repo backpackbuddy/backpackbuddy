@@ -1,35 +1,6 @@
 import axios from "axios";
-import { setCookie } from "nookies";
+import { destroyCookie, setCookie } from "nookies";
 import setAxiosConfig from "./axios-config";
-
-/**
- * Get the current user info from localStorage
- *
- * @return Object
- */
-export function getCurrentUserInfo () {
-  const user = localStorage.getItem('current_user');
-  return user && JSON.parse(user);
-}
-
-/**
- * Save the current user info to localStorage
- *
- * @param object
- * @return void
- */
-export function setCurrentUserInfo (data) {
-  localStorage.setItem('current_user', JSON.stringify(data));
-}
-
-/**
- * Remove current user info from localStorage
- *
- * @return void
- */
-export function removeCurrentUserInfo () {
-  localStorage.removeItem('current_user');
-}
 
 /**
  * Login the user by given creds
@@ -52,7 +23,10 @@ export async function loginUtils (data) {
 
     // save the current user info
     const user = await axios.get('/current-user');
-    setCurrentUserInfo(await user.data);
+    localStorage.app_state = JSON.stringify({
+      isLoggedIn: true,
+      currentUser: await user.data
+    });
   } catch (e) {
     return false;
   }
@@ -63,15 +37,11 @@ export async function loginUtils (data) {
 /**
  * Logout & remove the user token
  *
- * @return void;
+ * @return void
  */
-export async function logoutUtils () {
-  try {
-    await axios.post('/logout');
-    removeCurrentUserInfo();
-  } catch (e) {
-    return false;
-  }
-
-  return true;
+export function logoutUtils () {
+    localStorage.removeItem('app_state');
+    destroyCookie(null, 'user_token');
+    axios.post('/logout')
+      .finally(() => document.location.reload());
 }

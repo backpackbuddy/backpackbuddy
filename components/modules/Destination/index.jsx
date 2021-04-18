@@ -7,7 +7,6 @@ import '../../../styles/destinasi.scss';
 // Icons
 import { LocationIcon } from '../../elements/Icons';
 
-
 function Destination ({ offset, limit }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -3,11 +3,12 @@
 .intro {
 
     &__btn {
+        font-size: 1.1rem;
         padding: .5em 1.2em;
     }
 
     &__carousel {
-        
+
         &-item {
             pointer-events: none;
 
@@ -26,18 +27,11 @@
         background-repeat: no-repeat;
         background-position: center;
         color: #fff;
-        padding: 7rem 0rem;
-        text-align: center;
-        padding-bottom: 15rem;
-        padding-top: 18rem;
-
-        @media only screen and (max-width: 400px) {
-            padding-top: 8rem;
-            padding-bottom: 13rem;
-        }
+        height: 600px;
+        padding-top: 7rem;
 
         &:before {
-            background-color: rgba(0,0,0,.5);
+            background-color: rgba(0,0,0,.75);
             content: '';
             position: absolute;
             top: 0;
@@ -47,8 +41,13 @@
         }
 
         &-text {
+            margin-top: 8rem;
             position: relative;
-            z-index: 2;
+            z-index: 200;
+
+            @media only screen and (max-width: 500px) {
+                margin-top: 1rem;
+            }
         }
     }
 
@@ -68,6 +67,6 @@
         text-transform: uppercase;
         pointer-events: all;
         position: relative;
-        z-index: 9;
+        z-index: 900;
     }
 }

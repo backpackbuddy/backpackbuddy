@@ -1,22 +1,24 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Button, Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import '../../../styles/header.scss';
-import { getCurrentUserInfo, logoutUtils } from '../../../utils/auth';
+import { logoutUtils } from '../../../utils/auth';
 
 function Header (props) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const user = getCurrentUserInfo();
-    setCurrentUser(user);
-  }, []);
+    const state = localStorage.getItem('app_state');
 
-  const logoutHandler = () => {
-    logoutUtils();
-    setCurrentUser(null);
-  }
+    if (state) {
+      const appState = JSON.parse(state);
+      setIsLoggedIn(appState.isLoggedIn);
+      setCurrentUser(appState.currentUser);
+      console.log(appState);
+    }
+  }, []);
 
   return (
     <Navbar
@@ -75,21 +77,26 @@ function Header (props) {
                 </Nav.Link>
               </Link>
             ))}
-            <Nav.Link className="px-lg-3" style={{ fontSize: '1.2rem' }}> | </Nav.Link>
-            {currentUser?.username ? (
+            <div
+              className="px-lg-3 text-secondary d-none d-lg-block"
+              style={{ fontSize: '1.2rem' }}
+            >
+              |
+            </div>
+            {isLoggedIn ? (
               <NavDropdown title={currentUser?.username}>
                 <Link href="/profile">
                   <NavDropdown.Item href="/profile">
                     Profil
                 </NavDropdown.Item>
                 </Link>
-                <Link href="/profile/itinerary">
-                  <NavDropdown.Item href="/profile/itinerary">
+                <Link href="/backpack">
+                  <NavDropdown.Item href="/backpack">
                     Ransel
                 </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />
-                <NavDropdown.Item onClick={logoutHandler}>Keluar</NavDropdown.Item>
+                <NavDropdown.Item onClick={logoutUtils}>Keluar</NavDropdown.Item>
               </NavDropdown>
             ) : [
               {

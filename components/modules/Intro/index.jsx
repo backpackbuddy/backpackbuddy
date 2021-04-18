@@ -17,7 +17,7 @@ function Intro () {
         <Carousel.Item className="intro__carousel-item">
           <div className="intro__caption">
             <Container className="intro__caption-text">
-              <h1>Pertama Kali Ke Bali?</h1>
+              <h1 className="font-weight-bold">Pertama kali ke Bali?</h1>
               <p className="intro__description">
                 Gratis rute wisata harian untuk backpacker di Bali.
               </p>
@@ -28,7 +28,7 @@ function Intro () {
         <Carousel.Item className="intro__carousel-item">
           <div className="intro__caption">
             <Container className="intro__caption-text">
-              <h2>Butuh Rekomendasi Rute Lagi?</h2>
+              <h2 className="font-weight-bold">Butuh rekomendasi rute lagi?</h2>
               <p className="intro__description">
                 Konsultasikan dengan kami secara gratis!
               </p>
