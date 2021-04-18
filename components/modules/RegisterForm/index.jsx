@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import toTitleCase from 'to-title-case';
+import { loginUtils } from "../../../utils/auth";
 
 function RegisterForm () {
 	const router = useRouter();
@@ -16,7 +17,7 @@ function RegisterForm () {
 		confirmPassword: useRef(null),
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
 
@@ -28,13 +29,15 @@ function RegisterForm () {
 			password_confirmation: inputRef.confirmPassword.current.value,
 		}
 
-		axios.post('/register', data)
-			.then(() => router.push('/login'))
-			.catch(err => {
-				const { errors, message } = err.response.data;
-				setError({ ...errors, message });
-			})
-			.finally(() => setLoading(false))
+		try {
+			const res = await axios.post('/register', data);
+			await loginUtils(await res.data);
+		} catch (err) {
+			const { errors, message } = err.response.data;
+			setError({ ...errors, message });
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	const inputAttributes = [

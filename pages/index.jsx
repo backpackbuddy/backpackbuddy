@@ -40,6 +40,7 @@ function Home () {
 
     axios.get('/itinerary')
       .then(res => setData(res.data))
+      .catch(() => {/* TODO: Feedback */})
       .finally(() => setFavLoading(false));
   }, []);
 
@@ -84,7 +85,9 @@ function Home () {
             <h1 className="text-center">Mulai petualanganmu</h1>
             <p className="text-center">Destinasi wisata populer di Bali</p>
 
-            <Destination limit={6} />
+            <Row className="my-2 my-md-0">
+              <Destination limit={6} />
+            </Row>
             <Link href="/destinasi">
               <a
                 className="text-center d-flex align-items-center justify-content-center"

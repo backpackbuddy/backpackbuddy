@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button, Carousel, Container } from 'react-bootstrap';
 import '../../../styles/intro.scss';
 
-function Header () {
+function Intro () {
   function Btn () {
     return (
       <Link href="/destinasi">
@@ -41,4 +41,4 @@ function Header () {
   );
 }
 
-export default Header;
+export default Intro;

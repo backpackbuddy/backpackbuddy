@@ -1,14 +1,14 @@
+import axios from 'axios';
+import Link from 'next/link';
 import pt from 'prop-types';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import '../../../styles/destinasi.scss';
-
 // Icons
-import axios from 'axios';
 import { LocationIcon } from '../../elements/Icons';
 
-function Cards({ offset = 0, limit = 12 }) {
+
+function Destination ({ offset, limit }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -56,17 +56,14 @@ function Cards({ offset = 0, limit = 12 }) {
   );
 }
 
-Cards.propTypes = {
+Destination.defaultProp = {
+  offset: 0,
+  limit: 12
+}
+
+Destination.propTypes = {
   offset: pt.number.isRequired,
   limit: pt.number.isRequired,
 };
-
-function Destination(props) {
-  return (
-    <Row className="my-2 my-md-0">
-      <Cards {...props} />
-    </Row>
-  );
-}
 
 export default Destination;

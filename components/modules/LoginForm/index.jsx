@@ -1,11 +1,8 @@
-import axios from 'axios';
 import { useRouter } from 'next/router';
-import { setCookie } from 'nookies';
 import { useRef, useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
 import toTitleCase from 'to-title-case';
-import setAxiosConfig from '../../../utils/axios-config';
-import { setCurrentUserInfo } from '../../../utils/user-info';
+import { loginUtils } from '../../../utils/auth';
 
 function LoginForm () {
   const router = useRouter();
@@ -29,23 +26,8 @@ function LoginForm () {
     }
 
     try {
-      const res = await axios.post('/login', data);
-      const { access_token, expires_at } = await res.data;
-
-      setCookie(null, 'user_token', access_token, {
-        path: '/',
-        expires: new Date(expires_at)
-      });
-
-      // refresh token header config
-      setAxiosConfig();
-
-      // save the current user info
-      const user = await axios.get('/current-user');
-      setCurrentUserInfo(await user.data);
-
+      await loginUtils(data);
       router.back();
-
     } catch (err) {
       const { errors, message } = err.response.data;
       setError({ ...errors, message });

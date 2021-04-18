@@ -1,17 +1,22 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import '../../../styles/header.scss';
-import { getCurrentUserInfo } from '../../../utils/user-info';
+import { getCurrentUserInfo, logoutUtils } from '../../../utils/auth';
 
-function TopBar (props) {
+function Header (props) {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const user = getCurrentUserInfo();
     setCurrentUser(user);
   }, []);
+
+  const logoutHandler = () => {
+    logoutUtils();
+    setCurrentUser(null);
+  }
 
   return (
     <Navbar
@@ -46,57 +51,67 @@ function TopBar (props) {
               {
                 url: '/',
                 name: 'Home',
-                display: true
               },
               {
                 url: '/destinasi',
                 name: 'Destinasi',
-                display: true
               },
               {
                 url: '/contact',
                 name: 'Contact',
-                display: true
               },
               {
                 url: '/about',
                 name: 'About',
-                display: true
               },
-              {
-                url: '',
-                name: '|',
-                classes: 'd-none d-lg-block',
-                display: true
-              },
+            ].map(({ url, name, }) => (
+              <Link href={url} key={name}>
+                <Nav.Link
+                  className="px-lg-3 text-nowrap"
+                  style={{ fontSize: '1.1em' }}
+                  href={url}
+                >
+                  {name}
+                </Nav.Link>
+              </Link>
+            ))}
+            <Nav.Link className="px-lg-3" style={{ fontSize: '1.2rem' }}> | </Nav.Link>
+            {currentUser?.username ? (
+              <NavDropdown title={currentUser?.username}>
+                <Link href="/profile">
+                  <NavDropdown.Item href="/profile">
+                    Profil
+                </NavDropdown.Item>
+                </Link>
+                <Link href="/profile/itinerary">
+                  <NavDropdown.Item href="/profile/itinerary">
+                    Ransel
+                </NavDropdown.Item>
+                </Link>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={logoutHandler}>Keluar</NavDropdown.Item>
+              </NavDropdown>
+            ) : [
               {
                 url: '/login',
                 name: 'Login',
-                classes: 'text-nowrap',
-                display: Boolean(!currentUser?.username)
               },
               {
                 url: '/register',
                 name: 'Buat Akun',
-                classes: 'text-nowrap btn btn-primary text-white ml-2 px-3 w-100',
-                display: Boolean(!currentUser?.username)
+                classes: 'btn btn-primary text-white ml-2 px-3 w-100',
               },
-              {
-                url: '/profile',
-                name: currentUser?.username,
-                display: Boolean(currentUser?.username)
-              }
-            ].map(({ url, name, classes = '', display }) => display && (
-                <Link href={url} key={name}>
-                  <Nav.Link
-                    className={`px-lg-3 text-nowrap ${classes}`}
-                    style={{ fontSize: '1.1em' }}
-                    href={url}
-                  >
-                    {name}
-                  </Nav.Link>
-                </Link>
-              ))}
+            ].map(({ url, name, classes }) => (
+              <Link href={url} key={name}>
+                <Nav.Link
+                  className={`px-lg-3 text-nowrap ${classes}`}
+                  style={{ fontSize: '1.1em' }}
+                  href={url}
+                >
+                  {name}
+                </Nav.Link>
+              </Link>
+            ))}
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -104,4 +119,4 @@ function TopBar (props) {
   );
 }
 
-export default TopBar;
+export default Header;
