@@ -4,5 +4,6 @@ root = true
 indent_style = space
 indent_size = 4
 
-[**.jsx]
+[**.{js,jsx}]
+indent_style = space
 indent_size = 2

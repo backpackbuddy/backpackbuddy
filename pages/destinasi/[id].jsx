@@ -28,7 +28,7 @@ function Itinerary () {
 
     if (id) {
       axios.get(`/itinerary/${id}`)
-        .then(res => setData(res.data.data))
+        .then(res => setData(res.data))
         .finally(() => setIsLoading(false));
     }
   }, [id]);

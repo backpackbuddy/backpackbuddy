@@ -5,12 +5,9 @@ import Router from 'next/router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.scss';
 import 'nprogress/nprogress.css';
-import axios from 'axios';
-import { parseCookies } from 'nookies';
+import setAxiosConfig from '../utils/axios-config';
 
-axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_API_URL}`;
-axios.defaults.headers.common.Authorization = `Bearer ${parseCookies().token}`
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+setAxiosConfig();
 
 NProgress.configure({
   easing: 'ease',

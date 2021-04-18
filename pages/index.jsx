@@ -39,7 +39,7 @@ function Home () {
     setFavLoading(true);
 
     axios.get('/itinerary')
-      .then(res => setData(res.data.data))
+      .then(res => setData(res.data))
       .finally(() => setFavLoading(false));
   }, []);
 

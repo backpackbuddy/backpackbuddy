@@ -4,6 +4,8 @@ import { setCookie } from 'nookies';
 import { useRef, useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
 import toTitleCase from 'to-title-case';
+import setAxiosConfig from '../../../utils/axios-config';
+import { setCurrentUserInfo } from '../../../utils/user-info';
 
 function LoginForm () {
   const router = useRouter();
@@ -15,7 +17,7 @@ function LoginForm () {
     rememberMe: useRef(false)
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -26,27 +28,31 @@ function LoginForm () {
       remember_me: inputRef.rememberMe.current.checked
     }
 
-    axios.post('/login', data)
-      .then((res) => {
-        const { access_token, expires_at } = res.data;
+    try {
+      const res = await axios.post('/login', data);
+      const { access_token, expires_at } = await res.data;
 
-        setCookie(null, 'token', access_token, {
-          path: '/',
-          expires: new Date(expires_at)
-        });
+      setCookie(null, 'user_token', access_token, {
+        path: '/',
+        expires: new Date(expires_at)
+      });
 
-        router.push('/');
-      })
-      .catch((err) => {
-        const { errors, message } = err.response.data;
+      // refresh token header config
+      setAxiosConfig();
 
-        setError({
-          username: errors?.username,
-          password: errors?.password,
-          message
-        })
-      })
-      .finally(() => setLoading(false));
+      // save the current user info
+      const user = await axios.get('/user');
+      setCurrentUserInfo(await user.data);
+
+      router.back();
+
+    } catch (err) {
+      const { errors, message } = err.response.data;
+
+      setError({ ...errors, message });
+    } finally {
+      setLoading(false);
+    }
   }
 
   const inputAttributes = [

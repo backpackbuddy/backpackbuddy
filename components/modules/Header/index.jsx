@@ -1,9 +1,18 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import '../../../styles/header.scss';
+import { getCurrentUserInfo } from '../../../utils/user-info';
 
 function TopBar (props) {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const user = getCurrentUserInfo();
+    setCurrentUser(user);
+  }, []);
+
   return (
     <Navbar
       className="py-2 shadow-sm"
@@ -37,45 +46,57 @@ function TopBar (props) {
               {
                 url: '/',
                 name: 'Home',
+                display: true
               },
               {
                 url: '/destinasi',
                 name: 'Destinasi',
+                display: true
               },
               {
                 url: '/contact',
                 name: 'Contact',
+                display: true
               },
               {
                 url: '/about',
                 name: 'About',
+                display: true
               },
               {
                 url: '',
                 name: '|',
-                classes: 'd-none d-lg-block'
+                classes: 'd-none d-lg-block',
+                display: true
               },
               {
                 url: '/login',
-                name: 'Log In',
-                classes: 'text-nowrap'
+                name: 'Login',
+                classes: 'text-nowrap',
+                display: Boolean(!currentUser?.username)
               },
               {
                 url: '/register',
-                name: 'Create Account',
-                classes: 'text-nowrap btn btn-primary text-white ml-2 px-3 w-100'
+                name: 'Buat Akun',
+                classes: 'text-nowrap btn btn-primary text-white ml-2 px-3 w-100',
+                display: Boolean(!currentUser?.username)
               },
-            ].map(({ url, name, classes = '' }) => (
-              <Link href={url} key={name}>
-                <Nav.Link
-                  className={`px-lg-3 text-nowrap ${classes}`}
-                  style={{ fontSize: '1.1em' }}
-                  href={url}
-                >
-                  {name}
-                </Nav.Link>
-              </Link>
-            ))}
+              {
+                url: '/profile',
+                name: currentUser?.username,
+                display: Boolean(currentUser?.username)
+              }
+            ].map(({ url, name, classes = '', display }) => display && (
+                <Link href={url} key={name}>
+                  <Nav.Link
+                    className={`px-lg-3 text-nowrap ${classes}`}
+                    style={{ fontSize: '1.1em' }}
+                    href={url}
+                  >
+                    {name}
+                  </Nav.Link>
+                </Link>
+              ))}
           </Nav>
         </Navbar.Collapse>
       </Container>

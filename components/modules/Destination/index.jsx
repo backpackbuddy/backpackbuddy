@@ -5,6 +5,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 import '../../../styles/destinasi.scss';
 
 // Icons
+import axios from 'axios';
 import { LocationIcon } from '../../elements/Icons';
 
 function Cards({ offset = 0, limit = 12 }) {
@@ -14,9 +15,8 @@ function Cards({ offset = 0, limit = 12 }) {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/itinerary`)
-      .then(res => res.json())
-      .then(json => setData(json.data))
+    axios.get('/itinerary')
+      .then(res => setData(res.data))
       .finally(() => setIsLoading(false));
   }, []);
 
