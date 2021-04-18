@@ -32,6 +32,7 @@ function RegisterForm () {
 		try {
 			const res = await axios.post('/register', data);
 			await loginUtils(await res.data);
+			router.back();
 		} catch (err) {
 			const { errors, message } = err.response.data;
 			setError({ ...errors, message });

@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
 import toTitleCase from 'to-title-case';
-import { loginUtils } from '../../../utils/auth';
+import { getToken, loginUtils } from '../../../utils/auth';
 
 function LoginForm () {
   const router = useRouter();
@@ -26,7 +26,8 @@ function LoginForm () {
     }
 
     try {
-      await loginUtils(data);
+      const token = await getToken(data);
+      await loginUtils(token);
       router.back();
     } catch (err) {
       const { errors, message } = err.response.data;
