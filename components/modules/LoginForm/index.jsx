@@ -41,14 +41,13 @@ function LoginForm () {
       setAxiosConfig();
 
       // save the current user info
-      const user = await axios.get('/user');
+      const user = await axios.get('/current-user');
       setCurrentUserInfo(await user.data);
 
       router.back();
 
     } catch (err) {
       const { errors, message } = err.response.data;
-
       setError({ ...errors, message });
     } finally {
       setLoading(false);
