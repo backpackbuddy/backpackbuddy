@@ -4,7 +4,6 @@ import pt from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Card, Col } from 'react-bootstrap';
 import '../../../styles/destinasi.scss';
-// Icons
 import { LocationIcon } from '../../elements/Icons';
 
 function Destination ({ offset, limit }) {
@@ -43,7 +42,11 @@ function Destination ({ offset, limit }) {
                 <span>&nbsp;</span>
 
                 <Link href={`/destinasi/${id}`}>
-                  <a className="place__text-truncate" title={place_name} href={`/destinasi/${id}`}>
+                  <a
+                    className="place__text-truncate"
+                    title={place_name}
+                    href={`/destinasi/${id}`}
+                  >
                     {place_name}
                   </a>
                 </Link>
@@ -55,14 +58,14 @@ function Destination ({ offset, limit }) {
   );
 }
 
-Destination.defaultProp = {
+Destination.defaultProps = {
   offset: 0,
   limit: 12
 }
 
 Destination.propTypes = {
-  offset: pt.number.isRequired,
-  limit: pt.number.isRequired,
+  offset: pt.number,
+  limit: pt.number,
 };
 
 export default Destination;

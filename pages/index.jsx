@@ -1,4 +1,3 @@
-// Icons
 import axios from 'axios';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -11,6 +10,8 @@ import {
   Image,
   Row
 } from 'react-bootstrap';
+
+// Icons
 import {
   CustomIcon,
   ExperiencedIcon,
@@ -18,6 +19,7 @@ import {
   QuoteIcon, RightArrowIcon,
   VCircleArrowIcon
 } from '../components/elements/Icons';
+
 // Components
 import Sosmed from '../components/elements/Sosmed';
 import Layout from '../components/layouts/app';
@@ -25,8 +27,6 @@ import Destination from '../components/modules/Destination';
 import TopBar from '../components/modules/Header';
 import Intro from '../components/modules/Intro';
 import '../styles/home.scss';
-
-
 
 
 function Home () {
@@ -45,9 +45,7 @@ function Home () {
   }, []);
 
   function toggleReadMore (id) {
-    setIsOpen(prevState =>
-      prevState.map((prev, i) => (i === id ? !prev : prev))
-    );
+    setIsOpen(prevState => prevState.map((prev, i) => (i === id ? !prev : prev)));
   }
 
   useEffect(() => {
@@ -103,7 +101,7 @@ function Home () {
 
         <section className="why bg-light">
           <Container>
-            <h2 className="text-center">Mengapa memilih Backpack Buddy?</h2>
+            <h2 className="text-center">Kenapa Backpack Buddy?</h2>
             <p className="description text-center font-weight-normal mx-auto mb-4">
               Kami melayani konsultasi rute wisata harian dengan informasi yang
               lebih lengkap secara langsung bersama konsultan kami
@@ -115,8 +113,7 @@ function Home () {
                   id: 0,
                   Icon: FreeIcon,
                   title: 'Gratis',
-                  description:
-                    'Kita memberikan rute gratis untuk wisata harian di Bali.',
+                  description: 'Kita memberikan rute gratis untuk wisata harian di Bali.',
                 },
                 {
                   id: 1,
@@ -128,8 +125,7 @@ function Home () {
                   id: 2,
                   Icon: CustomIcon,
                   title: 'Customize itinerary',
-                  description:
-                    'Kami melayani request itinerary sesuai keinginan pelanggan.',
+                  description: 'Kami melayani request itinerary sesuai keinginan pelanggan.',
                 },
               ].map(({ id, Icon, title, description }) => (
                 <Col
