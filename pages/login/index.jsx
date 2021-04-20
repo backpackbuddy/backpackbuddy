@@ -13,17 +13,18 @@ function Login () {
       <Layout>
         <Container className="my-5">
           <Row>
-            <Col xs={12} md={{ span: 6, offset: 3 }}>
-              <h1 className="text-center mb-3">Login</h1>
-              <section className="shadow-sm p-5">
-                <LoginForm />
-                <div className="text-center mt-4">
-                  Belum punya akun?&nbsp;
-                <Link href="/register">
-                    <a className="text-primary" href="/register">Daftar sekarang</a>
-                  </Link>
-                </div>
-              </section>
+            <Col
+              className="bg-white shadow-sm py-5 px-4 px-sm-5"
+              md={{ span: 6, offset: 3 }}
+            >
+              <h1 className="text-center mb-5">Login</h1>
+              <LoginForm />
+              <div className="text-center mt-4">
+                Belum punya akun?&nbsp;
+                  <Link href="/register">
+                  <a className="text-primary" href="/register">Daftar sekarang</a>
+                </Link>
+              </div>
             </Col>
           </Row>
         </Container>
