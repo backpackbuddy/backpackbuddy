@@ -60,11 +60,11 @@ function Header (props) {
               },
               {
                 url: '/contact',
-                name: 'Contact',
+                name: 'Kontak',
               },
               {
                 url: '/about',
-                name: 'About',
+                name: 'Tentang',
               },
             ].map(({ url, name, }) => (
               <Link href={url} key={name}>

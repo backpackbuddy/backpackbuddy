@@ -36,7 +36,7 @@ export async function loginUtils ({ access_token, expires_at }) {
     setAxiosConfig();
 
     // save the current user info
-    const user = await axios.get('/current-user');
+    const user = await axios.get('/customer/me');
     localStorage.app_state = JSON.stringify({
       isLoggedIn: true,
       currentUser: await user.data
@@ -54,8 +54,8 @@ export async function loginUtils ({ access_token, expires_at }) {
  * @return void
  */
 export function logoutUtils () {
-    localStorage.removeItem('app_state');
-    destroyCookie(null, 'user_token');
-    axios.post('/logout')
-      .finally(() => document.location.reload());
+  localStorage.removeItem('app_state');
+  destroyCookie(null, 'user_token');
+  axios.post('/logout')
+      .finally(() => { document.location.href = '/' });
 }

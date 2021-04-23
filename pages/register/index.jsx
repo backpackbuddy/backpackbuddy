@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 // Components
 import Layout from '../../components/layouts/app';
@@ -7,6 +9,16 @@ import RegisterForm from '../../components/modules/RegisterForm';
 
 
 function Register () {
+  const router = useRouter();
+
+  useEffect(() => {
+    const isLoggedIn = JSON.parse(localStorage.getItem('app_state'));
+
+    if (isLoggedIn) {
+      router.push('/');
+    }
+  }, []);
+
   return (
     <>
       <Header />

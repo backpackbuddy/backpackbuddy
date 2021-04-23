@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Button, Carousel, Col, Container, Row } from 'react-bootstrap';
@@ -18,20 +19,19 @@ import '../../styles/itinerary.scss';
 
 
 function Itinerary () {
-  /* eslint no-shadow: "off" */
-  const { id } = useRouter().query;
+  const { itineraryId } = useRouter().query;
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
 
-    if (id) {
-      axios.get(`/itinerary/${id}`)
+    if (itineraryId) {
+      axios.get(`/itinerary/${itineraryId}`)
         .then(res => setData(res.data))
         .finally(() => setIsLoading(false));
     }
-  }, [id]);
+  }, [itineraryId]);
 
   return (
     <>
@@ -48,8 +48,8 @@ function Itinerary () {
                   pause={false}
                   height="400px"
                 >
-                  {data.media.map(({ id, url, alt }) => (
-                    <Carousel.Item key={id}>
+                  {data.media.map(({ url, alt }) => (
+                    <Carousel.Item key={url}>
                       <img
                         className="premium__img d-block w-100 bg-secondary"
                         src={url}
@@ -99,7 +99,11 @@ function Itinerary () {
                           />
                         </h3>
                       )}
-                      <Button className="w-100 mt-4">Pesan Sekarang</Button>
+                      <Link href={`/order/${itineraryId}`}>
+                        <a className="w-100 mt-4 btn btn-primary" href={`/order/${itineraryId}`}>
+                          Pesan Sekarang
+                        </a>
+                      </Link>
 
                       <hr />
 

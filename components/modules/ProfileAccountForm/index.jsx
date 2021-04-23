@@ -1,20 +1,15 @@
 import axios from "axios";
-import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import toTitleCase from 'to-title-case';
-import { loginUtils } from "../../../utils/auth";
+import toTitleCase from "to-title-case";
 
-function RegisterForm () {
-	const router = useRouter();
+function ProfileAccountForm () {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const [defaultValue, setDefaultValue] = useState(null);
+	const [onChange, setOnChange] = useState(false);
 	const inputRef = {
 		name: useRef(null),
-		username: useRef(null),
-		email: useRef(null),
-		password: useRef(null),
-		confirmPassword: useRef(null),
 		address_1: useRef(null),
 		address_2: useRef(null),
 		postcode: useRef(null),
@@ -23,16 +18,20 @@ function RegisterForm () {
 		telp: useRef(null),
 	}
 
-	const handleSubmit = async (e) => {
+	useEffect(() => {
+		setLoading(true);
+
+		axios.get('/customer/me/info')
+			.then(res => setDefaultValue(res.data))
+			.finally(() => setLoading(false));
+	}, []);
+
+	const onSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
 
 		const data = {
 			name: inputRef.name.current.value,
-			username: inputRef.username.current.value,
-			email: inputRef.email.current.value,
-			password: inputRef.password.current.value,
-			password_confirmation: inputRef.confirmPassword.current.value,
 			address_1: inputRef.address_1.current.value,
 			address_2: inputRef.address_2.current.value,
 			postcode: inputRef.postcode.current.value,
@@ -42,9 +41,9 @@ function RegisterForm () {
 		}
 
 		try {
-			const res = await axios.post('/register', data);
-			await loginUtils(await res.data);
-			router.back();
+			await axios.put('customer/info', data)
+			setOnChange(false);
+			setError(null);
 		} catch (err) {
 			const { errors, message } = err.response.data;
 			setError({ ...errors, message });
@@ -55,62 +54,51 @@ function RegisterForm () {
 
 	const inputAttributes = [
 		{
-			label: 'Nama lengkap',
 			name: 'name',
-			placeholder: 'Masukkan nama lengkap'
-		},
-		{
-			name: 'username',
-		},
-		{
-			name: 'email',
-			type: 'email',
-			placeholder: 'Cth: example@email.com'
-		},
-		{
-			name: 'password',
-			type: 'password',
-		},
-		{
-			label: 'Konfirmasi password',
-			name: 'confirmPassword',
-			type: 'password',
-			placeholder: ' '
+			label: 'Nama',
+			placeholder: 'Masukkan nama lengkap',
+			value: defaultValue?.name,
 		},
 		{
 			name: 'address_1',
 			label: 'Alamat 1',
-			placeholder: 'Masukkan alamat 1'
+			placeholder: 'Masukkan alamat 1',
+			value: defaultValue?.address_1
 		},
 		{
 			name: 'address_2',
 			label: 'Alamat 2 (optional)',
-			placeholder: 'Masukkan alamat 2 (optional)'
+			placeholder: 'Masukkan alamat 2 (optional)',
+			value: defaultValue?.address_2
 		},
 		{
 			name: 'postcode',
-			label: 'Kode pos'
+			label: 'Kode pos',
+			value: defaultValue?.postcode
 		},
 		{
 			name: 'city',
 			label: 'Kota',
 			placeholder: 'Masukkan kota asal',
+			value: defaultValue?.city
 		},
 		{
 			name: 'identity',
 			label: 'Nomor Identitas',
-			placeholder: 'Nomor Identitas KTP/Akta Kelahiran/Pasport'
+			placeholder: 'Nomor Identitas KTP/Akta Kelahiran/Pasport',
+			value: defaultValue?.identity
 		},
 		{
 			name: 'telp',
 			label: 'Nomor Telepon',
-			placeholder: 'Masukkan nomor telepon yang bisa dihubungi'
+			placeholder: 'Masukkan nomor telepon yang bisa dihubungi',
+			value: defaultValue?.telp
 		}
-	]
+	];
 
 	return (
-		<Form onSubmit={handleSubmit} method="POST">
-			{inputAttributes.map(({ label, name, type, placeholder = null }) => (
+		<Form onSubmit={onSubmit} method="POST">
+			{inputAttributes.map(({ label, name, type, placeholder = null, value }) => (
 				<Form.Group key={name} controlId={`input${toTitleCase(name)}`}>
 					<Form.Label>{label || toTitleCase(name)}</Form.Label>
 					<Form.Control
@@ -118,6 +106,8 @@ function RegisterForm () {
 						type={type || 'text'}
 						name={name}
 						disabled={loading}
+						defaultValue={value}
+						onChange={setOnChange}
 						ref={inputRef[name]}
 						isInvalid={Boolean(error?.[name])}
 						placeholder={placeholder || `Masukkan ${name}`}
@@ -129,15 +119,14 @@ function RegisterForm () {
 				</Form.Group>
 			))}
 			<Button
-				className="d-block w-100 mt-4"
-				disabled={loading}
+				disabled={!onChange}
 				variant="primary"
 				type="submit"
 			>
-				{loading ? 'Memproses...' : 'Daftar sekarang'}
+				{loading ? 'Loading...' : 'Simpan'}
 			</Button>
 		</Form>
 	);
 }
 
-export default RegisterForm;
+export default ProfileAccountForm;
