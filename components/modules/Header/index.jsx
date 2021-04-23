@@ -83,17 +83,14 @@ function Header (props) {
             >
               |
             </div>
+            <hr className="text-secondary d-lg-none" />
             {isLoggedIn ? (
               <NavDropdown title={currentUser?.username}>
                 <Link href="/profile">
-                  <NavDropdown.Item href="/profile">
-                    Profil
-                </NavDropdown.Item>
+                  <NavDropdown.Item href="/profile">Profil</NavDropdown.Item>
                 </Link>
                 <Link href="/backpack">
-                  <NavDropdown.Item href="/backpack">
-                    Ransel
-                </NavDropdown.Item>
+                  <NavDropdown.Item href="/backpack">Ransel</NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={logoutUtils}>Keluar</NavDropdown.Item>

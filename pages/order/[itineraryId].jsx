@@ -1,20 +1,13 @@
-import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Layout from "../../components/layouts/app";
+import ProfileAccountForm from "../../components/modules/ProfileAccountForm";
 import Header from "../../components/modules/Header";
+import OrderForm from "../../components/modules/OrderForm";
 
 function Order () {
   const router = useRouter();
   const { itineraryId } = router.query;
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    axios.get('/customer/current')
-      .then(res => setCurrentUser(res.data))
-      .catch(() => router.push('/login'))
-  }, []);
 
   return (
     <>
@@ -22,14 +15,16 @@ function Order () {
       <Layout>
         <Container className="my-5">
           <Row>
-            <Col>
-              <section className="px-4">
-                <h5>Lengkapi data diri anda dengan benar</h5>
+            <Col md="7">
+              <section className="p-5 shadow-sm">
+                <h5 className="mb-3">Pastikan data sudah benar</h5>
+                <ProfileAccountForm />
               </section>
             </Col>
-            <Col>
-              <section>
-                <h1>Form</h1>
+            <Col md="5">
+              <section className="p-5 shadow-sm">
+                <h5 className="mb-3">Pilih metode pembayaran</h5>
+                <OrderForm itineraryId={itineraryId} />
               </section>
             </Col>
           </Row>

@@ -48,7 +48,7 @@ function Itinerary () {
                   pause={false}
                   height="400px"
                 >
-                  {data.media.map(({ url, alt }) => (
+                  {data.media.reverse().map(({ url, alt }) => (
                     <Carousel.Item key={url}>
                       <img
                         className="premium__img d-block w-100 bg-secondary"
