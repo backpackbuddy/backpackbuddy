@@ -22,7 +22,16 @@ function Itinerary () {
   const { itineraryId } = useRouter().query;
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [isAlreadyOrdered, setIsAlreadyOrdered] = useState(true);
+  const [isAlreadyOrdered, setIsAlreadyOrdered] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const appState = JSON.parse(localStorage.getItem('app_state'));
+
+    if (appState) {
+      setIsLoggedIn(appState.isLoggedIn);
+    }
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,12 +44,12 @@ function Itinerary () {
   }, [itineraryId]);
 
   useEffect(() => {
-    if (typeof itineraryId === 'string') {
+    if (typeof itineraryId === 'string' && isLoggedIn) {
       axios.get(`order/exist/${itineraryId}`)
         .then((res) => setIsAlreadyOrdered(res.data.exist))
-        .catch()
+        .catch(() => { })
     }
-  });
+  }, [itineraryId, isLoggedIn]);
 
   return (
     <>
@@ -111,7 +120,7 @@ function Itinerary () {
                       <Link href={`/order/${itineraryId}`}>
                         <Button
                           className="w-100 mt-4"
-                          disabled={isAlreadyOrdered}
+                          disabled={isAlreadyOrdered || !isLoggedIn}
                         >
                           {isAlreadyOrdered ? 'Sudah ada di ransel' : 'Pesan Sekarang'}
                         </Button>
@@ -157,7 +166,7 @@ function Itinerary () {
                         <p>{data.description}</p>
                       </div>
                     </div>
-                    <Reviews data={data.reviews} />
+                    <Reviews data={data.reviews} itineraryId={itineraryId} />
                   </Col>
                 </Row>
               </>

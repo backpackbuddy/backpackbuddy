@@ -1,70 +1,17 @@
 import pt from 'prop-types';
-import { useState } from 'react';
 import Rating from 'react-rating';
-import { Button, Form } from 'react-bootstrap';
+import ReviewForm from '../ReviewForm';
+import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';
 import '../../../styles/comments.scss';
 
-// icons
-import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';
-
-function Reviews({ data }) {
-  const [userRating, setUserRating] = useState(0);
-
-  const ratingClickHandler = e => {
-    setUserRating(e);
-  };
+function Reviews ({ data, itineraryId }) {
 
   return (
     <>
       <div className="shadow-sm p-4 bg-white mt-4">
         <div className="comment__ulasan">
           <h3>Ulasan</h3>
-          <Form action="#" method="POST">
-            <Form.Group>
-              <div className="mb-4 d-flex align-items-center flex-wrap">
-                <div className="comment__rating d-flex flex-wrap align-items-center">
-                  <div
-                    className="text-warning mr-2"
-                    style={{ fontSize: '3em' }}
-                  >
-                    {userRating}
-                  </div>
-                  <Rating
-                    className="mr-2"
-                    emptySymbol={
-                      <StarOutlineIcon
-                        className="mr-2"
-                        height="2em"
-                        width="2em"
-                      />
-                    }
-                    fullSymbol={
-                      <StarFilledIcon
-                        className="mr-2"
-                        height="2em"
-                        width="2em"
-                      />
-                    }
-                    initialRating={userRating}
-                    onClick={ratingClickHandler}
-                  />
-                </div>
-                <div>{data.length} Ulasan</div>
-              </div>
-            </Form.Group>
-            <Form.Group controlId="ulasan">
-              <Form.Control
-                as="textarea"
-                type="text"
-                rows={4}
-                placeholder="Tulis ulasan"
-              />
-            </Form.Group>
-
-            <Button variant="outline-primary" type="submit">
-              Kirim Ulasan
-            </Button>
-          </Form>
+          <ReviewForm data={data} itineraryId={itineraryId} />
         </div>
         <div className="comment__comments">
           {data.map(({ name, is_edited, updated_at, rating, content }) => (
@@ -113,7 +60,8 @@ function Reviews({ data }) {
 }
 
 Reviews.propTypes = {
-    data: pt.instanceOf(Array).isRequired
+  data: pt.instanceOf(Array).isRequired,
+  itineraryId: pt.number.isRequired,
 }
 
 export default Reviews;
