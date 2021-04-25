@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import toTitleCase from "to-title-case";
@@ -8,6 +9,7 @@ function ProfileAccountForm () {
 	const [error, setError] = useState(null);
 	const [defaultValue, setDefaultValue] = useState(null);
 	const [onChange, setOnChange] = useState(false);
+	const router = useRouter();
 	const inputRef = {
 		name: useRef(null),
 		address_1: useRef(null),
@@ -23,6 +25,7 @@ function ProfileAccountForm () {
 
 		axios.get('/customer/me/info')
 			.then(res => setDefaultValue(res.data))
+			.catch(() => router.push('/login'))
 			.finally(() => setLoading(false));
 	}, []);
 

@@ -19,7 +19,7 @@ function Destination ({ offset, limit }) {
   }, []);
 
   return isLoading ? (
-    <h4>Loading ...</h4>
+    <h5>Loading ...</h5>
   ) : (
     data
       .slice(offset, limit)
