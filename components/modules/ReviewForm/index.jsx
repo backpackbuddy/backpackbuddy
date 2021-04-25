@@ -79,6 +79,7 @@ function ReviewForm ({ data, itineraryId }) {
           placeholder="Tulis ulasan"
           disabled={!isLoggedIn}
           ref={content}
+          required
         />
       </Form.Group>
 
