@@ -12,11 +12,11 @@ function BackpackItem ({ orders, loading }) {
 
   return !orders.length
     ? <div className="w-100 text-center">Tidak ada data yang ditampilkan</div>
-    : orders.map(({ code, status, price, featured_picture, place_name }) => (
+    : orders.map(({ itinerary_id, code, status, price, featured_picture, place_name }) => (
       <Col className="mb-4" md={6} lg={4} xl={3}>
         <Card>
-          <Link href={`backpack/${code}`}>
-            <a href={`backpack/${code}`}>
+          <Link href={`destinasi/${itinerary_id}`}>
+            <a href={`destinasi/${itinerary_id}`}>
               <Card.Img
                 className="backpack__img"
                 variant="top"
@@ -26,7 +26,7 @@ function BackpackItem ({ orders, loading }) {
           </Link>
           <Card.Body>
             <Card.Title>
-              <Link href={`backpack/${code}`}>{place_name}</Link>
+              <Link href={`destinasi/${itinerary_id}`}>{place_name}</Link>
             </Card.Title>
             <Card.Text>
               <small>{code}</small>

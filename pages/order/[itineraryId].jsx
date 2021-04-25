@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Layout from "../../components/layouts/app";
 import Header from "../../components/modules/Header";
@@ -8,6 +10,19 @@ import ProfileAccountForm from "../../components/modules/ProfileAccountForm";
 function Order () {
   const router = useRouter();
   const { itineraryId } = router.query;
+
+  useEffect(() => {
+    if (typeof itineraryId === 'string') {
+      axios.get(`order/exist/${itineraryId}`)
+        .then((res) => {
+          if (res.data.exist) {
+            alert('You already oldered this');
+            router.back();
+          }
+        })
+        .catch()
+    }
+  }, [itineraryId]);
 
   return (
     <>

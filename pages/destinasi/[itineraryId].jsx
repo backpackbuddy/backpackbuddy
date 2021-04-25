@@ -22,6 +22,7 @@ function Itinerary () {
   const { itineraryId } = useRouter().query;
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isAlreadyOrdered, setIsAlreadyOrdered] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,6 +33,14 @@ function Itinerary () {
         .finally(() => setIsLoading(false));
     }
   }, [itineraryId]);
+
+  useEffect(() => {
+    if (typeof itineraryId === 'string') {
+      axios.get(`order/exist/${itineraryId}`)
+        .then((res) => setIsAlreadyOrdered(res.data.exist))
+        .catch()
+    }
+  });
 
   return (
     <>
@@ -100,9 +109,12 @@ function Itinerary () {
                         </h3>
                       )}
                       <Link href={`/order/${itineraryId}`}>
-                        <a className="w-100 mt-4 btn btn-primary" href={`/order/${itineraryId}`}>
-                          Pesan Sekarang
-                        </a>
+                        <Button
+                          className="w-100 mt-4"
+                          disabled={isAlreadyOrdered}
+                        >
+                          {isAlreadyOrdered ? 'Sudah ada di ransel' : 'Pesan Sekarang'}
+                        </Button>
                       </Link>
 
                       <hr />
@@ -137,9 +149,6 @@ function Itinerary () {
                             ({data.reviews.length} Ulasan) | {data.view} kali
                             dilihat
                           </span>
-                        </div>
-                        <div>
-                          <a href="#">+ Wishlist</a>
                         </div>
                       </div>
                       <hr />
