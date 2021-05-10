@@ -84,7 +84,7 @@ function Home () {
             <p className="text-center">Destinasi wisata populer di Bali</p>
 
             <Row className="my-2 my-md-0">
-              <Destination limit={6} />
+              <Destination limit={6} loadMore={false} />
             </Row>
             <Link href="/destinasi">
               <a

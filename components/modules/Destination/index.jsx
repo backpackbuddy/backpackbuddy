@@ -2,28 +2,36 @@ import axios from 'axios';
 import Link from 'next/link';
 import pt from 'prop-types';
 import { useEffect, useState } from 'react';
-import { Card, Col } from 'react-bootstrap';
+import { Button, Card, Col } from 'react-bootstrap';
 import '../../../styles/destinasi.scss';
 import { LocationIcon } from '../../elements/Icons';
+import Loading from '../../elements/Loading';
 
-function Destination ({ offset, limit }) {
+function Destination ({ offset, limit, loadMore }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [offsetState, setOffsetState] = useState(offset);
+  const [isLimit, setIsLimit] = useState(!loadMore);
 
   useEffect(() => {
     setIsLoading(true);
 
-    axios.get('/itinerary')
-      .then(res => setData(res.data))
-      .finally(() => setIsLoading(false));
-  }, []);
+    axios.get(`/itinerary/${offsetState}/${limit}`)
+      .then(res => {
+        setData((prev) => [...prev, ...res.data]);
 
-  return isLoading ? (
-    <h5>Loading ...</h5>
-  ) : (
-    data
-      .slice(offset, limit)
-      .map(({ id, place_name, featured_picture_thumb, media }) => (
+        if (res.data.length < limit) setIsLimit(true);
+      })
+      .finally(() => setIsLoading(false));
+  }, [offsetState]);
+
+  const doLoadMore = () => {
+    setOffsetState((prev) => prev + limit);
+  }
+
+  return !data.length ? <Loading /> : (
+    <>
+      {data.map(({ id, place_name, featured_picture_thumb, media }) => (
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={id}>
           <Card className="place__card">
             <Link href={`/destinasi/${id}`}>
@@ -54,18 +62,31 @@ function Destination ({ offset, limit }) {
             </Card.Body>
           </Card>
         </Col>
-      ))
+      ))}
+      {isLimit || (
+        <Button
+          className="mx-auto"
+          onClick={doLoadMore}
+          disabled={isLoading}
+          variant="link"
+        >
+          { isLoading ? 'Loading ...' : 'Load More'}
+        </Button>
+      )}
+    </>
   );
 }
 
 Destination.defaultProps = {
   offset: 0,
-  limit: 12
+  limit: 12,
+  loadMore: true,
 }
 
 Destination.propTypes = {
   offset: pt.number,
   limit: pt.number,
-};
+  loadMore: pt.bool,
+}
 
 export default Destination;

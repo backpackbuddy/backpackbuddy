@@ -6,7 +6,7 @@ import Layout from '../components/layouts/app';
 import Sosmed from '../components/elements/Sosmed';
 import '../styles/about.scss';
 
-function About() {
+function About () {
   return (
     <>
       <BasicTopBar />

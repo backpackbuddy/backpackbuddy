@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import '../../../styles/header.scss';
 import { logoutUtils } from '../../../utils/auth';
+import { BackpackIcon, LogoutIcon, ProfileIcon } from '../../elements/Icons';
 
 function Header (props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -87,13 +88,19 @@ function Header (props) {
             {isLoggedIn ? (
               <NavDropdown title={currentUser?.username}>
                 <Link href="/profile">
-                  <NavDropdown.Item href="/profile">Profil</NavDropdown.Item>
+                  <NavDropdown.Item className="d-flex align-items-center" href="/profile">
+                    <ProfileIcon />&nbsp;Profil
+                  </NavDropdown.Item>
                 </Link>
                 <Link href="/backpack">
-                  <NavDropdown.Item href="/backpack">Ransel</NavDropdown.Item>
+                  <NavDropdown.Item className="d-flex align-items-center" href="/backpack">
+                    <BackpackIcon />&nbsp;Ransel
+                  </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />
-                <NavDropdown.Item onClick={logoutUtils}>Keluar</NavDropdown.Item>
+                <NavDropdown.Item className="d-flex align-items-center" onClick={logoutUtils}>
+                  <LogoutIcon />&nbsp;Keluar
+                </NavDropdown.Item>
               </NavDropdown>
             ) : [
               {
