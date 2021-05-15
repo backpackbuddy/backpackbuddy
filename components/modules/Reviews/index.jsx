@@ -21,7 +21,7 @@ function Reviews ({ data, itineraryId }) {
                 <div className="ml-4">
                   <div className="d-flex align-text-center flex-wrap justify-content-between">
                     <h5>{name}</h5>
-                    <span>{updated_at}</span>
+                    <span>&nbsp;{updated_at}</span>
                   </div>
                   <h6>
                     <Rating

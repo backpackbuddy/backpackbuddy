@@ -38,7 +38,7 @@ function Home () {
   useEffect(() => {
     setFavLoading(true);
 
-    axios.get('/itinerary')
+    axios.get('/itineraries')
       .then(res => setData(res.data))
       .catch(() => {/* TODO: Feedback */})
       .finally(() => setFavLoading(false));

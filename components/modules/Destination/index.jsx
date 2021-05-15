@@ -2,9 +2,9 @@ import axios from 'axios';
 import Link from 'next/link';
 import pt from 'prop-types';
 import { useEffect, useState } from 'react';
-import { Button, Card, Col } from 'react-bootstrap';
+import { Button, Card, Col, Spinner } from 'react-bootstrap';
 import '../../../styles/destinasi.scss';
-import { LocationIcon } from '../../elements/Icons';
+import { LoadMoreIcon, LocationIcon } from '../../elements/Icons';
 import Loading from '../../elements/Loading';
 
 function Destination ({ offset, limit, loadMore }) {
@@ -16,7 +16,7 @@ function Destination ({ offset, limit, loadMore }) {
   useEffect(() => {
     setIsLoading(true);
 
-    axios.get(`/itinerary/${offsetState}/${limit}`)
+    axios.get(`/itineraries/${offsetState}/${limit}`)
       .then(res => {
         setData((prev) => [...prev, ...res.data]);
 
@@ -29,7 +29,7 @@ function Destination ({ offset, limit, loadMore }) {
     setOffsetState((prev) => prev + limit);
   }
 
-  return !data.length ? <Loading /> : (
+  return !data.length ? <Loading className="my-5" /> : (
     <>
       {data.map(({ id, place_name, featured_picture_thumb, media }) => (
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={id}>
@@ -65,12 +65,23 @@ function Destination ({ offset, limit, loadMore }) {
       ))}
       {isLimit || (
         <Button
-          className="mx-auto"
+          className="mx-auto d-flex align-items-center shadow-none text-decoration-none"
           onClick={doLoadMore}
           disabled={isLoading}
           variant="link"
+          style={{ outline: 'none' }}
         >
-          { isLoading ? 'Loading ...' : 'Load More'}
+          { isLoading ? (
+            <>
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />&nbsp;Loading
+            </>
+          ) : 'Load more'}
         </Button>
       )}
     </>

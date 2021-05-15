@@ -3,11 +3,12 @@ import NumberFormat from "react-number-format";
 import pt from 'prop-types';
 import '../../../styles/backpack.scss';
 import Link from "next/link";
+import Loading from "../../elements/Loading";
 
 function BackpackItem ({ orders, loading }) {
 
   if (loading) {
-    return <h5 className="w-100 text-center">Loading ...</h5>;
+    return <Loading />
   }
 
   return !orders.length

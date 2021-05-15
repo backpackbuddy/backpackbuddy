@@ -7,6 +7,7 @@ import ProfileAccountForm from "../../components/modules/ProfileAccountForm";
 import ProfileSecurityForm from '../../components/modules/ProfileSecurityForm';
 import Header from "../../components/modules/Header";
 import { logoutUtils } from "../../utils/auth";
+import Loading from "../../components/elements/Loading";
 
 function Profile () {
   const router = useRouter();
@@ -26,7 +27,7 @@ function Profile () {
       <Header />
       <Layout>
         <Container className="my-5">
-          {loading ? <h5>Loading ...</h5> :
+          {loading ? <Loading className="my-5" /> :
             (<Tab.Container id="menu-settings" defaultActiveKey={asPath}>
               <Row>
                 <Col md={4}>

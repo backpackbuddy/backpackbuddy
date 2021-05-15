@@ -10,6 +10,7 @@ import {
   StarFilledIcon,
   StarOutlineIcon
 } from '../../components/elements/Icons';
+import Loading from '../../components/elements/Loading';
 // Components
 import Layout from '../../components/layouts/app';
 import BasicTopBar from '../../components/modules/Header';
@@ -57,9 +58,7 @@ function Itinerary () {
       <Layout>
         <div className="bg-light premium">
           <Container className="py-4">
-            {isLoading ? (
-              <h4>Loading ...</h4>
-            ) : (
+            {isLoading ? <Loading className="my-5" /> : (
               <>
                 <Carousel
                   className="premium__carousel mb-4"
