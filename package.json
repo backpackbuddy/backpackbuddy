@@ -8,7 +8,7 @@
         "build": "next build",
         "preexport": "npm run build",
         "export": "next export",
-        "start": "next start"
+        "start": "next start -p $PORT"
     },
     "devDependencies": {
         "eslint": "^7.24.0",
@@ -46,5 +46,6 @@
         "sass": "^1.32.13",
         "styled-components": "^5.2.0",
         "to-title-case": "^1.0.0"
-    }
+    },
+    "cacheDirectories": [".next/cache"]
 }
