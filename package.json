@@ -8,7 +8,7 @@
         "build": "next build",
         "preexport": "npm run build",
         "export": "next export",
-        "start": "next start",
+        "start": "next start -p $PORT",
         "predeploy": "npm run export",
         "deploy": "gh-pages -d out"
     },
