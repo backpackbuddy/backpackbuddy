@@ -1,10 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import NProgress from 'nprogress';
-import pt from 'prop-types';
-import Router from 'next/router';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/globals.scss';
+import { AnimatePresence, motion } from 'framer-motion';
+import Router from 'next/router';
+import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import pt from 'prop-types';
+import '../styles/globals.scss';
 import setAxiosConfig from '../utils/axios-config';
 
 setAxiosConfig();

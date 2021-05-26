@@ -4,8 +4,10 @@ import pt from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Button, Card, Col, Spinner } from 'react-bootstrap';
 import '../../../styles/destinasi.scss';
-import { LoadMoreIcon, LocationIcon } from '../../elements/Icons';
+import { LocationIcon } from '../../elements/Icons';
 import Loading from '../../elements/Loading';
+import PriceTag from '../../elements/PriceTag';
+import Stars from '../../elements/Stars';
 
 function Destination ({ offset, limit, loadMore }) {
   const [data, setData] = useState([]);
@@ -31,7 +33,7 @@ function Destination ({ offset, limit, loadMore }) {
 
   return !data.length ? <Loading className="my-5" /> : (
     <>
-      {data.map(({ id, place_name, featured_picture_thumb, media }) => (
+      {data.map(({ id, place_name, featured_picture_thumb, media, price, sale, average_rating }) => (
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={id}>
           <Card className="place__card">
             <Link href={`/destinasi/${id}`}>
@@ -59,6 +61,13 @@ function Destination ({ offset, limit, loadMore }) {
                   </a>
                 </Link>
               </Card.Title>
+              <PriceTag
+                className="my-3"
+                sale={sale}
+                price={price}
+                style={{ fontSize: '1.3rem' }}
+              />
+              <Stars rating={average_rating} />
             </Card.Body>
           </Card>
         </Col>

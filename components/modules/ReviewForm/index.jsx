@@ -1,9 +1,9 @@
+import axios from "axios";
 import { useRouter } from "next/router";
+import pt from 'prop-types';
 import { useEffect, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Rating from "react-rating";
-import pt from 'prop-types';
-import axios from "axios";
 import { StarFilledIcon, StarOutlineIcon } from "../../elements/Icons";
 
 function ReviewForm ({ data, itineraryId }) {
