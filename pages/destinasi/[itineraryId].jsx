@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react';
 import { Button, Carousel, Col, Container, Row } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import Rating from 'react-rating';
+import ReactMarkdown from 'react-markdown';
 // Icons
+import rehypeRaw from 'rehype-raw';
 import {
   StarFilledIcon,
   StarOutlineIcon
@@ -127,7 +129,9 @@ function Itinerary () {
 
                       <hr />
 
-                      <div className="excerpt">{data.excerpt}</div>
+                      <div className="excerpt">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{data.excerpt}</ReactMarkdown>
+                      </div>
                     </div>
                   </Col>
                   <Col lg={8}>
@@ -162,7 +166,7 @@ function Itinerary () {
                       <hr />
                       <div className="premium__description">
                         <h3>Deskripsi</h3>
-                        <p>{data.description}</p>
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{data.description}</ReactMarkdown>
                       </div>
                     </div>
                     <Reviews data={data.reviews} itineraryId={itineraryId} />
