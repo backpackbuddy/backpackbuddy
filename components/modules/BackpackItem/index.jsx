@@ -1,4 +1,4 @@
-import { Button, Card, Col } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import NumberFormat from "react-number-format";
 import pt from 'prop-types';
 import '../../../styles/backpack.scss';

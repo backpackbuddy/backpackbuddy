@@ -34,7 +34,7 @@ function Backpack () {
             >
               {['pending', 'completed', 'failed'].map(key => (
                 <Tab eventKey={key} title={toTitleCase(key)}>
-                  <section className="p-0 p-sm-4 border border-top-0">
+                  <section className="border border-top-0">
                     <Row>
                       <BackpackItem
                         orders={orders}
