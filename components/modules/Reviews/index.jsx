@@ -17,7 +17,7 @@ function Reviews ({ data, itineraryId }) {
           {data.map(({ name, is_edited, updated_at, rating, content }) => (
             <>
               <hr />
-              <div className="d-flex align-items-start">
+              <div>
                 <div className="ml-4">
                   <div className="d-flex align-text-center flex-wrap justify-content-between">
                     <h5>{name}</h5>
