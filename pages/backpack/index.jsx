@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container, Row, Tab, Tabs } from "react-bootstrap";
+import { Col, Container, Row, Tab, Tabs } from "react-bootstrap";
 import toTitleCase from "to-title-case";
 import Layout from "../../components/layouts/app";
 import BackpackItem from "../../components/modules/BackpackItem";
@@ -34,14 +34,14 @@ function Backpack () {
             >
               {['pending', 'completed', 'failed'].map(key => (
                 <Tab eventKey={key} title={toTitleCase(key)}>
-                  <section className="border border-top-0">
+                  <div className="border border-top-0 bg-white p-4">
                     <Row>
                       <BackpackItem
                         orders={orders}
                         loading={loading}
                       />
                     </Row>
-                  </section>
+                  </div>
                 </Tab>
               ))}
             </Tabs>

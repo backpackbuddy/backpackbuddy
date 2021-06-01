@@ -47,7 +47,7 @@ function Header (props) {
         </div>
         <Navbar.Collapse id="bb-navbar-nav">
           <Nav
-            className="ml-auto p-2 p-lg-0 align-items-center"
+            className="header__nav ml-auto p-2 p-lg-0"
             defaultActiveKey={useRouter().pathname}
           >
             {[

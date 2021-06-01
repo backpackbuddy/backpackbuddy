@@ -1,17 +1,9 @@
 .header {
 
-    &__dropdown-toggle {
-        align-items: center;
-        display: flex;
-
-        &::after {
-            content: '';
-            display: inline-block;
-            border-top: .3em solid currentColor;
-            border-left: .3em solid transparent;
-            border-right: .3em solid transparent;
-            border-bottom: 0;
-            margin-left: .25em;
+    &__nav {
+        @media only screen and (min-width: 990px) {
+            align-items: center;
+            display: flex;
         }
     }
 
