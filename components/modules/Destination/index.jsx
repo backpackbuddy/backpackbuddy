@@ -18,6 +18,12 @@ function Destination ({ offset, limit, loadMore }) {
   useEffect(() => {
     setIsLoading(true);
 
+    // retrieve data from cache
+    const localData = JSON.parse(localStorage.getItem('destinations'));
+    if (localData) {
+      setData(localData);
+    }
+
     axios.get(`/itineraries/${offsetState}/${limit}`)
       .then(res => {
         setData((prev) => [...prev, ...res.data]);
@@ -25,6 +31,11 @@ function Destination ({ offset, limit, loadMore }) {
         if (res.data.length < limit) setIsLimit(true);
       })
       .finally(() => setIsLoading(false));
+
+    // componentWillUnmount
+    return () => {
+      localStorage.setItem('destinations', JSON.stringify(data));
+    }
   }, [offsetState]);
 
   const doLoadMore = () => {
@@ -80,7 +91,7 @@ function Destination ({ offset, limit, loadMore }) {
           variant="link"
           style={{ outline: 'none' }}
         >
-          { isLoading ? (
+          {isLoading ? (
             <>
               <Spinner
                 as="span"

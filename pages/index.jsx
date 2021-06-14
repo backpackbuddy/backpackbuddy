@@ -8,7 +8,7 @@ import {
   Container,
   Form,
   Image,
-  Row
+  Row,
 } from 'react-bootstrap';
 
 // Icons
@@ -17,7 +17,7 @@ import {
   ExperiencedIcon,
   FreeIcon,
   QuoteIcon, RightArrowIcon,
-  VCircleArrowIcon
+  VCircleArrowIcon,
 } from '../components/elements/Icons';
 
 // Components
@@ -28,8 +28,7 @@ import TopBar from '../components/modules/Header';
 import Intro from '../components/modules/Intro';
 import '../styles/home.scss';
 
-
-function Home () {
+function Home() {
   const [data, setData] = useState([]);
   const [favLoading, setFavLoading] = useState(false);
   const [shrink, setShrink] = useState(false);
@@ -39,21 +38,18 @@ function Home () {
     setFavLoading(true);
 
     axios.get('/itineraries')
-      .then(res => setData(res.data))
-      .catch(() => {/* TODO: Feedback */})
+      .then((res) => setData(res.data))
+      .catch(() => { /* TODO: Feedback */ })
       .finally(() => setFavLoading(false));
   }, []);
 
-  function toggleReadMore (id) {
-    setIsOpen(prevState => prevState.map((prev, i) => (i === id ? !prev : prev)));
+  function toggleReadMore(id) {
+    setIsOpen((prevState) => prevState.map((prev, i) => (i === id ? !prev : prev)));
   }
 
   useEffect(() => {
     window.onscroll = () => {
-      if (
-        document.body.scrollTop > 50 ||
-        document.documentElement.scrollTop > 50
-      ) {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         setShrink(true);
       } else {
         setShrink(false);
@@ -127,7 +123,9 @@ function Home () {
                   title: 'Customize itinerary',
                   description: 'Kami melayani request itinerary sesuai keinginan pelanggan.',
                 },
-              ].map(({ id, Icon, title, description }) => (
+              ].map(({
+                id, Icon, title, description,
+              }) => (
                 <Col
                   key={id}
                   className="why__col text-center text-white mt-4 mt-md-0"

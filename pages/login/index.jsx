@@ -1,14 +1,12 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-// Components
-import Layout from "../../components/layouts/app";
-import Header from "../../components/modules/Header";
-import LoginForm from "../../components/modules/LoginForm";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import Layout from '../../components/layouts/app';
+import Header from '../../components/modules/Header';
+import LoginForm from '../../components/modules/LoginForm';
 
-
-function Login () {
+function Login() {
   const router = useRouter();
 
   useEffect(() => {
@@ -33,7 +31,7 @@ function Login () {
               <LoginForm />
               <div className="text-center mt-4">
                 Belum punya akun?&nbsp;
-                  <Link href="/register">
+                <Link href="/register">
                   <a className="text-primary" href="/register">Daftar sekarang</a>
                 </Link>
               </div>

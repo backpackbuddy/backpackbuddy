@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Col, Container, Row, Tab, Tabs } from "react-bootstrap";
+import { Container, Row, Tab, Tabs } from "react-bootstrap";
 import toTitleCase from "to-title-case";
 import Layout from "../../components/layouts/app";
 import BackpackItem from "../../components/modules/BackpackItem";
@@ -16,7 +16,6 @@ function Backpack () {
 
     axios.get(`/order/${tab}`)
       .then(res => setOrders(res.data))
-      // eslint-disable-next-line no-alert
       .catch(err => alert(err.response.data.message))
       .finally(() => setLoading(false));
   }, [tab]);

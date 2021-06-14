@@ -1,25 +1,16 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import '../../../styles/header.scss';
+import {
+  Container, Image, Nav, Navbar, NavDropdown,
+} from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import { logoutUtils } from '../../../utils/auth';
 import { BackpackIcon, LogoutIcon, ProfileIcon } from '../../elements/Icons';
+import '../../../styles/header.scss';
+import { selectAuth } from '../../../store/selector';
 
-function Header (props) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    const state = localStorage.getItem('app_state');
-
-    if (state) {
-      const appState = JSON.parse(state);
-      setIsLoggedIn(appState.isLoggedIn);
-      setCurrentUser(appState.currentUser);
-      console.log(appState);
-    }
-  }, []);
+function Header(props) {
+  const { isLoggedIn, user } = useSelector(selectAuth);
 
   return (
     <Navbar
@@ -67,7 +58,7 @@ function Header (props) {
                 url: '/about',
                 name: 'Tentang',
               },
-            ].map(({ url, name, }) => (
+            ].map(({ url, name }) => (
               <Link href={url} key={name}>
                 <Nav.Link
                   className="px-lg-3 text-nowrap"
@@ -86,20 +77,23 @@ function Header (props) {
             </div>
             <hr className="text-secondary d-lg-none" />
             {isLoggedIn ? (
-              <NavDropdown title={currentUser?.username}>
+              <NavDropdown title={user?.username}>
                 <Link href="/profile">
                   <NavDropdown.Item className="d-flex align-items-center" href="/profile">
-                    <ProfileIcon />&nbsp;Profil
+                    <ProfileIcon />
+                    &nbsp;Profil
                   </NavDropdown.Item>
                 </Link>
                 <Link href="/backpack">
                   <NavDropdown.Item className="d-flex align-items-center" href="/backpack">
-                    <BackpackIcon />&nbsp;Ransel
+                    <BackpackIcon />
+                    &nbsp;Ransel
                   </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />
                 <NavDropdown.Item className="d-flex align-items-center" onClick={logoutUtils}>
-                  <LogoutIcon />&nbsp;Keluar
+                  <LogoutIcon />
+                  &nbsp;Keluar
                 </NavDropdown.Item>
               </NavDropdown>
             ) : [

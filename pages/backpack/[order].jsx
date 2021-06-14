@@ -1,4 +1,4 @@
-import { Container, } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Layout from "../../components/layouts/app";
 import Header from "../../components/modules/Header";
 
