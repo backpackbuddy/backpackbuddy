@@ -1,41 +1,35 @@
-import axios from "axios";
-import { useRouter } from "next/router";
+import axios from 'axios';
+import { useRouter } from 'next/router';
 import pt from 'prop-types';
-import { useEffect, useRef, useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import Rating from "react-rating";
-import { StarFilledIcon, StarOutlineIcon } from "../../elements/Icons";
+import { useRef, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import Rating from 'react-rating';
+import { useSelector } from 'react-redux';
+import { selectAuth } from '../../../store/selector';
+import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';
 
-function ReviewForm ({ data, itineraryId }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+function ReviewForm({ data, itineraryId }) {
+  const { isLoggedIn } = useSelector(selectAuth);
   const [userRating, setUserRating] = useState(5);
   const content = useRef(null);
   const router = useRouter();
 
-  const ratingClickHandler = e => {
+  const ratingClickHandler = (e) => {
     setUserRating(e);
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     const formData = {
       content: content.current.value,
-      rating: userRating
-    }
+      rating: userRating,
+    };
 
     axios.post(`/review/${itineraryId}`, formData)
       .then(router.reload)
-      .catch((err) => alert(err.response.data.message))
-  }
-
-  useEffect(() => {
-    const appState = JSON.parse(localStorage.getItem('app_state'));
-
-    if (appState) {
-      setIsLoggedIn(appState.isLoggedIn);
-    }
-  }, []);
+      .catch((err) => alert(err.response.data.message));
+  };
 
   return (
     <Form onSubmit={onSubmit} method="POST">
@@ -50,25 +44,29 @@ function ReviewForm ({ data, itineraryId }) {
             </div>
             <Rating
               className="mr-2"
-              emptySymbol={
+              emptySymbol={(
                 <StarOutlineIcon
                   className="mr-2"
                   height="2em"
                   width="2em"
                 />
-              }
-              fullSymbol={
+              )}
+              fullSymbol={(
                 <StarFilledIcon
                   className="mr-2"
                   height="2em"
                   width="2em"
                 />
-              }
+              )}
               initialRating={userRating}
               onClick={ratingClickHandler}
             />
           </div>
-          <div>{data.length} Ulasan</div>
+          <div>
+            {data.length}
+            {' '}
+            Ulasan
+          </div>
         </div>
       </Form.Group>
       <Form.Group controlId="ulasan">
@@ -92,19 +90,18 @@ function ReviewForm ({ data, itineraryId }) {
           <Button variant="outline-primary" onClick={() => router.push('/login')}>
             Login
           </Button>
-        )
-      }
+        )}
     </Form>
   );
 }
 
 ReviewForm.defaultProps = {
   data: [],
-}
+};
 
 ReviewForm.propTypes = {
   data: pt.instanceOf(Array),
   itineraryId: pt.number.isRequired,
-}
+};
 
 export default ReviewForm;

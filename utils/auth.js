@@ -30,5 +30,5 @@ export function logoutUtils() {
   localStorage.removeItem('persist:backpackbuddy');
   destroyCookie(null, 'user_token');
   axios.post('/logout')
-    .finally(() => { document.location.href = '/'; });
+    .finally(() => { document.location.reload(); });
 }

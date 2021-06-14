@@ -2,14 +2,16 @@ import axios from 'axios';
 import Link from 'next/link';
 import pt from 'prop-types';
 import { useEffect, useState } from 'react';
-import { Button, Card, Col, Spinner } from 'react-bootstrap';
+import {
+  Button, Card, Col, Spinner,
+} from 'react-bootstrap';
 import '../../../styles/destinasi.scss';
 import { LocationIcon } from '../../elements/Icons';
 import Loading from '../../elements/Loading';
 import PriceTag from '../../elements/PriceTag';
 import Stars from '../../elements/Stars';
 
-function Destination ({ offset, limit, loadMore }) {
+function Destination({ offset, limit, loadMore }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [offsetState, setOffsetState] = useState(offset);
@@ -25,7 +27,7 @@ function Destination ({ offset, limit, loadMore }) {
     }
 
     axios.get(`/itineraries/${offsetState}/${limit}`)
-      .then(res => {
+      .then((res) => {
         setData((prev) => [...prev, ...res.data]);
 
         if (res.data.length < limit) setIsLimit(true);
@@ -35,16 +37,18 @@ function Destination ({ offset, limit, loadMore }) {
     // componentWillUnmount
     return () => {
       localStorage.setItem('destinations', JSON.stringify(data));
-    }
+    };
   }, [offsetState]);
 
   const doLoadMore = () => {
     setOffsetState((prev) => prev + limit);
-  }
+  };
 
   return !data.length ? <Loading className="my-5" /> : (
     <>
-      {data.map(({ id, place_name, featured_picture_thumb, media, price, sale, average_rating }) => (
+      {data.map(({
+        id, place_name, featured_picture_thumb, media, price, sale, average_rating,
+      }) => (
         <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={id}>
           <Card className="place__card">
             <Link href={`/destinasi/${id}`}>
@@ -99,7 +103,8 @@ function Destination ({ offset, limit, loadMore }) {
                 size="sm"
                 role="status"
                 aria-hidden="true"
-              />&nbsp;Loading
+              />
+&nbsp;Loading
             </>
           ) : 'Load more'}
         </Button>
@@ -112,12 +117,12 @@ Destination.defaultProps = {
   offset: 0,
   limit: 12,
   loadMore: true,
-}
+};
 
 Destination.propTypes = {
   offset: pt.number,
   limit: pt.number,
   loadMore: pt.bool,
-}
+};
 
 export default Destination;

@@ -2,46 +2,38 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Button, Carousel, Col, Container, Row } from 'react-bootstrap';
+import {
+  Button, Carousel, Col, Container, Row,
+} from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import Rating from 'react-rating';
 import ReactMarkdown from 'react-markdown';
-// Icons
 import rehypeRaw from 'rehype-raw';
+import { useSelector } from 'react-redux';
 import {
   StarFilledIcon,
-  StarOutlineIcon
+  StarOutlineIcon,
 } from '../../components/elements/Icons';
 import Loading from '../../components/elements/Loading';
-// Components
 import Layout from '../../components/layouts/app';
 import BasicTopBar from '../../components/modules/Header';
 import Reviews from '../../components/modules/Reviews';
 import '../../styles/itinerary.scss';
+import { selectAuth } from '../../store/selector';
 
-
-
-function Itinerary () {
+function Itinerary() {
   const { itineraryId } = useRouter().query;
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isAlreadyOrdered, setIsAlreadyOrdered] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const appState = JSON.parse(localStorage.getItem('app_state'));
-
-    if (appState) {
-      setIsLoggedIn(appState.isLoggedIn);
-    }
-  }, []);
+  const { isLoggedIn } = useSelector(selectAuth);
 
   useEffect(() => {
     setIsLoading(true);
 
     if (itineraryId) {
       axios.get(`/itinerary/${itineraryId}`)
-        .then(res => setData(res.data))
+        .then((res) => setData(res.data))
         .finally(() => setIsLoading(false));
     }
   }, [itineraryId]);
@@ -50,7 +42,7 @@ function Itinerary () {
     if (typeof itineraryId === 'string' && isLoggedIn) {
       axios.get(`order/exist/${itineraryId}`)
         .then((res) => setIsAlreadyOrdered(res.data.exist))
-        .catch(() => { })
+        .catch(() => { });
     }
   }, [itineraryId, isLoggedIn]);
 
@@ -136,29 +128,40 @@ function Itinerary () {
                   </Col>
                   <Col lg={8}>
                     <div className="shadow-sm p-4 my-4 my-lg-0 bg-white">
-                      <h1> {data.place_name} </h1>
+                      <h1>
+                        {' '}
+                        {data.place_name}
+                        {' '}
+                      </h1>
                       <Rating
                         readonly
-                        emptySymbol={
+                        emptySymbol={(
                           <StarOutlineIcon
                             className="mr-1"
                             height="1.3em"
                             width="1.3em"
                           />
-                        }
-                        fullSymbol={
+                        )}
+                        fullSymbol={(
                           <StarFilledIcon
                             className="mr-1"
                             height="1.3em"
                             width="1.3em"
                           />
-                        }
+                        )}
                         initialRating={data.average_rating}
                       />
                       <div className="premium__info d-sm-flex justify-content-between align-items-center mt-2">
                         <div>
                           <span className="premium__info">
-                            ({data.reviews.length} Ulasan) | {data.view} kali
+                            (
+                            {data.reviews.length}
+                            {' '}
+                            Ulasan) |
+                            {' '}
+                            {data.view}
+                            {' '}
+                            kali
                             dilihat
                           </span>
                         </div>
