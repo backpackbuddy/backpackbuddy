@@ -80,7 +80,7 @@ function Home() {
             <p className="text-center">Destinasi wisata populer di Bali</p>
 
             <Row className="my-2 my-md-0">
-              <Destination limit={6} loadMore={false} />
+              <Destination limit={4} loadMore={false} />
             </Row>
             <Link href="/destinasi">
               <a
@@ -197,7 +197,6 @@ function Home() {
                     </div>
                     <Card
                       className="testimonials__card shadow"
-                      bg="info"
                       text="light"
                     >
                       <Card.Body>

@@ -1,4 +1,6 @@
-import { Container, Col, Image, Row } from 'react-bootstrap';
+import {
+  Container, Col, Image, Row,
+} from 'react-bootstrap';
 
 // Components
 import BasicTopBar from '../components/modules/Header';
@@ -6,7 +8,7 @@ import Layout from '../components/layouts/app';
 import Sosmed from '../components/elements/Sosmed';
 import '../styles/about.scss';
 
-function About () {
+function About() {
   return (
     <>
       <BasicTopBar />
@@ -29,7 +31,7 @@ function About () {
               </Col>
               <Col xs={12} md={5}>
                 <Image
-                  className="mx-auto d-block img-fluid"
+                  className="d-block img-fluid logo mb-1"
                   src="/images/default-logo.png"
                   alt="backpack buddy logo"
                 />

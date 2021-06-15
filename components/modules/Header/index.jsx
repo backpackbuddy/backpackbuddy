@@ -1,16 +1,34 @@
+import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import {
   Container, Image, Nav, Navbar, NavDropdown,
 } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { logoutUtils } from '../../../utils/auth';
-import { BackpackIcon, LogoutIcon, ProfileIcon } from '../../elements/Icons';
-import '../../../styles/header.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { deauthenticate } from '../../../store/actions/auth';
 import { selectAuth } from '../../../store/selector';
+import '../../../styles/header.scss';
+import { BackpackIcon, LogoutIcon, ProfileIcon } from '../../elements/Icons';
 
 function Header(props) {
   const { isLoggedIn, user } = useSelector(selectAuth);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      axios.get('/customer/me/info')
+        .catch(() => {
+          dispatch(deauthenticate());
+        });
+    }
+  }, []);
+
+  const logoutHandler = () => {
+    dispatch(deauthenticate());
+    router.push('/');
+  };
 
   return (
     <Navbar
@@ -27,11 +45,18 @@ function Header(props) {
         <div className="d-flex flex-nowrap align-items-center w-100">
           <Navbar.Brand href="/">
             <Link href="/">
-              <Image
-                className="img-fluid"
-                alt="Backpack Buddy"
-                src="/images/default-logo.png"
-              />
+              <>
+                <Image
+                  className="img-fluid logo d-none d-sm-block"
+                  alt="Backpack Buddy"
+                  src="/images/default-logo.png"
+                />
+                <Image
+                  className="img-fluid logo d-sm-none"
+                  alt="Backpack Buddy"
+                  src="/images/default-logo-mobile.png"
+                />
+              </>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle className="ml-auto" aria-controls="bb-navbar-nav" />
@@ -91,7 +116,7 @@ function Header(props) {
                   </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />
-                <NavDropdown.Item className="d-flex align-items-center" onClick={logoutUtils}>
+                <NavDropdown.Item className="d-flex align-items-center" onClick={logoutHandler}>
                   <LogoutIcon />
                   &nbsp;Keluar
                 </NavDropdown.Item>

@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { selectAuth } from '../../../store/selector';
 import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';
 
-function ReviewForm({ data, itineraryId }) {
+function ReviewForm({ data = [], itineraryId }) {
   const { isLoggedIn } = useSelector(selectAuth);
   const [userRating, setUserRating] = useState(5);
   const content = useRef(null);
@@ -95,13 +95,9 @@ function ReviewForm({ data, itineraryId }) {
   );
 }
 
-ReviewForm.defaultProps = {
-  data: [],
-};
-
 ReviewForm.propTypes = {
   data: pt.instanceOf(Array),
-  itineraryId: pt.number.isRequired,
+  itineraryId: pt.string.isRequired,
 };
 
 export default ReviewForm;

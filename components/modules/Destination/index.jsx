@@ -20,12 +20,6 @@ function Destination({ offset, limit, loadMore }) {
   useEffect(() => {
     setIsLoading(true);
 
-    // retrieve data from cache
-    const localData = JSON.parse(localStorage.getItem('destinations'));
-    if (localData) {
-      setData(localData);
-    }
-
     axios.get(`/itineraries/${offsetState}/${limit}`)
       .then((res) => {
         setData((prev) => [...prev, ...res.data]);
@@ -33,11 +27,6 @@ function Destination({ offset, limit, loadMore }) {
         if (res.data.length < limit) setIsLimit(true);
       })
       .finally(() => setIsLoading(false));
-
-    // componentWillUnmount
-    return () => {
-      localStorage.setItem('destinations', JSON.stringify(data));
-    };
   }, [offsetState]);
 
   const doLoadMore = () => {
@@ -49,7 +38,7 @@ function Destination({ offset, limit, loadMore }) {
       {data.map(({
         id, place_name, featured_picture_thumb, media, price, sale, average_rating,
       }) => (
-        <Col className="place__destination mb-4" xs={12} sm={6} md={4} key={id}>
+        <Col className="place__destination mb-4" xs={12} sm={6} md={4} lg={3} key={id}>
           <Card className="place__card">
             <Link href={`/destinasi/${id}`}>
               <a className="place__img--link" href={`/destinasi/${id}`}>

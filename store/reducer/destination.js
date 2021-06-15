@@ -2,7 +2,7 @@ import { DESTINATION } from '../actions/actionTypes';
 
 export const initialState = {
   lastUpdate: 0,
-  destination: {},
+  destinations: [],
 };
 
 const destinationReducer = (state = initialState, action) => {
@@ -10,8 +10,8 @@ const destinationReducer = (state = initialState, action) => {
     case DESTINATION:
       return {
         ...state,
-        lastUpdate: action.lastUpdate,
-        destinations: action.destinations,
+        lastUpdate: action.payload.lastUpdate,
+        destinations: [...state.destinations, action.payload.destination],
       };
     default:
       return state;

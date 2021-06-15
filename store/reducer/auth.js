@@ -1,4 +1,4 @@
-import { AUTHENTICATE } from '../actions/actionTypes';
+import { AUTHENTICATE, DEAUTHENTICATE } from '../actions/actionTypes';
 
 const initialState = {
   isLoggedIn: false,
@@ -12,6 +12,8 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: true,
         user: action.payload,
       };
+    case DEAUTHENTICATE:
+      return initialState;
     default:
       return state;
   }

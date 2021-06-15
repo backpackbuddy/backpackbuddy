@@ -16,7 +16,7 @@ function Reviews({ data, itineraryId }) {
           {data.map(({
             name, is_edited, updated_at, rating, content,
           }) => (
-            <>
+            <div key={name}>
               <hr />
               <div>
                 <div className="ml-4">
@@ -29,18 +29,10 @@ function Reviews({ data, itineraryId }) {
                   <h6>
                     <Rating
                       emptySymbol={(
-                        <StarOutlineIcon
-                          className="mr-1"
-                          height="1em"
-                          width="1em"
-                        />
+                        <StarOutlineIcon className="mr-1" />
                       )}
                       fullSymbol={(
-                        <StarFilledIcon
-                          className="mr-1"
-                          height="1em"
-                          width="1em"
-                        />
+                        <StarFilledIcon className="mr-1" />
                       )}
                       initialRating={rating}
                       readonly
@@ -54,7 +46,7 @@ function Reviews({ data, itineraryId }) {
                   </p>
                 </div>
               </div>
-            </>
+            </div>
           ))}
         </div>
       </div>
@@ -64,7 +56,7 @@ function Reviews({ data, itineraryId }) {
 
 Reviews.propTypes = {
   data: pt.instanceOf(Array).isRequired,
-  itineraryId: pt.number.isRequired,
+  itineraryId: pt.string.isRequired,
 };
 
 export default Reviews;

@@ -17,7 +17,7 @@ function Footer() {
     <footer className="footer text-light text-center py-5 bg-dark">
       <Container>
         <a className="d-block mx-auto" href="/">
-          <Image src="/images/default-logo.png" alt="backpackbuddy logo" />
+          <Image className="logo mb-2" src="/images/default-logo.png" alt="backpackbuddy logo" />
         </a>
         <Sosmed className="m-2" fill="#fff" height="2em" width="2em" />
         <p className="mt-2">

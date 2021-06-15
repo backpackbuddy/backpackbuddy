@@ -23,6 +23,15 @@ export const authenticate = (creds) => async (dispatch) => {
   }
 };
 
-export const deauthenticate = {
-  type: DEAUTHENTICATE,
+export const deauthenticate = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: DEAUTHENTICATE,
+    });
+
+    await axios.post('/logout');
+  } catch (_) {
+    // eslint-disable-next-line no-console
+    console.error('Deauthenticate failed, probably the user was not authenticated');
+  }
 };

@@ -1,11 +1,9 @@
 import { Container, Row } from 'react-bootstrap';
-// Components
 import Layout from '../../components/layouts/app';
 import Destination from '../../components/modules/Destination';
 import BasicTopBar from '../../components/modules/Header';
 
-
-function Destinasi () {
+function Destinasi() {
   return (
     <>
       <BasicTopBar />
