@@ -12,6 +12,9 @@ export async function getToken(creds) {
 
 /**
  * Login the user by given creds
+ *
+ * @export
+ * @param {*} { access_token, expires_at }
  */
 export function setAuthenticated({ access_token, expires_at }) {
   setCookie(null, 'user_token', access_token, {

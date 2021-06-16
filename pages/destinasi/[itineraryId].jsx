@@ -22,7 +22,8 @@ import '../../styles/itinerary.scss';
 import { selectAuth } from '../../store/selector';
 
 function Itinerary() {
-  const { itineraryId } = useRouter().query;
+  const router = useRouter();
+  const { itineraryId } = router.query;
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isAlreadyOrdered, setIsAlreadyOrdered] = useState(false);
@@ -55,21 +56,29 @@ function Itinerary() {
             {isLoading ? <Loading className="my-5" /> : (
               <>
                 <Carousel
-                  className="premium__carousel mb-4"
+                  className="premium__carousel mb-4 shadow"
                   pause={false}
                   height="400px"
                 >
                   {data.media.reverse().map(({ url, alt }) => (
                     <Carousel.Item key={url}>
-                      <img
-                        className="premium__img d-block w-100 bg-secondary"
-                        src={url}
-                        alt={alt}
-                        loading="lazy"
-                        style={{
-                          objectFit: 'contain',
-                        }}
-                      />
+                      <div className="position-relative">
+                        <div
+                          className="premium__img--bg"
+                          style={{
+                            backgroundImage: `url('${url}')`,
+                          }}
+                        />
+                        <img
+                          className="premium__img d-block w-100 p-2"
+                          src={url}
+                          alt={alt}
+                          loading="lazy"
+                          style={{
+                            objectFit: 'contain',
+                          }}
+                        />
+                      </div>
                     </Carousel.Item>
                   ))}
                 </Carousel>

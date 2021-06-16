@@ -14,20 +14,20 @@ import { BackpackIcon, LogoutIcon, ProfileIcon } from '../../elements/Icons';
 function Header(props) {
   const { isLoggedIn, user } = useSelector(selectAuth);
   const dispatch = useDispatch();
-  const router = useRouter();
 
   useEffect(() => {
+    axios.defaults.headers.common.Authorization = `Bearer ${user.access_token}`;
+
     if (isLoggedIn) {
       axios.get('/customer/me/info')
         .catch(() => {
           dispatch(deauthenticate());
         });
     }
-  }, []);
+  }, [user.access_token]);
 
   const logoutHandler = () => {
     dispatch(deauthenticate());
-    router.push('/');
   };
 
   return (

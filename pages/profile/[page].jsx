@@ -28,7 +28,6 @@ function Profile() {
 
   const logoutHandler = () => {
     dispatch(deauthenticate());
-    router.push('/');
   };
 
   return (

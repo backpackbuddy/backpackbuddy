@@ -2,22 +2,21 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-// Components
+import { useSelector } from 'react-redux';
 import Layout from '../../components/layouts/app';
 import Header from '../../components/modules/Header';
 import RegisterForm from '../../components/modules/RegisterForm';
+import { selectAuth } from '../../store/selector';
 
-
-function Register () {
+function Register() {
   const router = useRouter();
+  const { isLoggedIn, user } = useSelector(selectAuth);
 
   useEffect(() => {
-    const isLoggedIn = JSON.parse(localStorage.getItem('app_state'));
-
     if (isLoggedIn) {
       router.push('/');
     }
-  }, []);
+  }, [user.access_token]);
 
   return (
     <>
@@ -33,7 +32,7 @@ function Register () {
               <RegisterForm />
               <div className="text-center mt-4">
                 Sudah terdaftar?&nbsp;
-                  <Link href="/login">
+                <Link href="/login">
                   <a className="text-primary" href="/login">Masuk</a>
                 </Link>
               </div>

@@ -93,7 +93,7 @@ function Destination({ offset, limit, loadMore }) {
                 role="status"
                 aria-hidden="true"
               />
-&nbsp;Loading
+              &nbsp;Loading
             </>
           ) : 'Load more'}
         </Button>

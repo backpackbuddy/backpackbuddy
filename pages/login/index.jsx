@@ -2,20 +2,21 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import Layout from '../../components/layouts/app';
 import Header from '../../components/modules/Header';
 import LoginForm from '../../components/modules/LoginForm';
+import { selectAuth } from '../../store/selector';
 
 function Login() {
   const router = useRouter();
+  const { isLoggedIn } = useSelector(selectAuth);
 
   useEffect(() => {
-    const isLoggedIn = JSON.parse(localStorage.getItem('app_state'));
-
     if (isLoggedIn) {
       router.push('/');
     }
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <>
