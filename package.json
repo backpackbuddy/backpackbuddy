@@ -23,6 +23,7 @@
         "stylelint-config-standard": "^21.0.0"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.3",
         "@zeit/next-css": "^1.0.1",
         "@zeit/next-sass": "^1.0.1",
         "axios": "^0.21.1",

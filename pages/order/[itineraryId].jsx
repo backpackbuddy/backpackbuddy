@@ -1,13 +1,13 @@
-import axios from "axios";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import Layout from "../../components/layouts/app";
-import Header from "../../components/modules/Header";
-import OrderForm from "../../components/modules/OrderForm";
-import ProfileAccountForm from "../../components/modules/ProfileAccountForm";
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import Layout from '../../components/layouts/app';
+import Header from '../../components/modules/Header';
+import OrderForm from '../../components/modules/OrderForm';
+import ProfileAccountForm from '../../components/modules/ProfileAccountForm';
 
-function Order () {
+function Order() {
   const router = useRouter();
   const { itineraryId } = router.query;
 
@@ -20,7 +20,7 @@ function Order () {
             router.back();
           }
         })
-        .catch()
+        .catch();
     }
   }, [itineraryId]);
 

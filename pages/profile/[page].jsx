@@ -4,27 +4,34 @@ import { useEffect, useState } from 'react';
 import {
   Col, Container, ListGroup, ListGroupItem, Row, Tab,
 } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../../components/elements/Loading';
 import Layout from '../../components/layouts/app';
 import Header from '../../components/modules/Header';
 import ProfileAccountForm from '../../components/modules/ProfileAccountForm';
 import ProfileSecurityForm from '../../components/modules/ProfileSecurityForm';
 import { deauthenticate } from '../../store/actions/auth';
+import { selectAuth } from '../../store/selector';
 
 function Profile() {
   const router = useRouter();
   const { page } = router.query;
   const { asPath } = router;
   const [loading, setLoading] = useState(true);
+  const { isLoggedIn } = useSelector(selectAuth);
   const dispatch = useDispatch();
 
   useEffect(() => {
     setLoading(true);
+
+    if (!isLoggedIn) {
+      router.push('/login');
+    }
+
     if (page) {
       setLoading(false);
     }
-  }, [router]);
+  }, [router, isLoggedIn]);
 
   const logoutHandler = () => {
     dispatch(deauthenticate());

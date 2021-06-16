@@ -103,16 +103,16 @@ function Header(props) {
             <hr className="text-secondary d-lg-none" />
             {isLoggedIn ? (
               <NavDropdown title={user?.username}>
-                <Link href="/profile">
-                  <NavDropdown.Item className="d-flex align-items-center" href="/profile">
+                <Link href="/profile/account">
+                  <NavDropdown.Item className="d-flex align-items-center" href="/profile/account">
                     <ProfileIcon />
                     &nbsp;Profil
                   </NavDropdown.Item>
                 </Link>
-                <Link href="/backpack">
-                  <NavDropdown.Item className="d-flex align-items-center" href="/backpack">
+                <Link href="/order">
+                  <NavDropdown.Item className="d-flex align-items-center" href="/order">
                     <BackpackIcon />
-                    &nbsp;Ransel
+                    &nbsp;Pesanan
                   </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />

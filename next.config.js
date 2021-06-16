@@ -7,15 +7,6 @@ module.exports = {
     sassOptions: {
       includePaths: [path.join(__dirname, 'styles')],
     },
-    async redirects() {
-      return [
-        {
-          source: '/profile',
-          destination: '/profile/account',
-          permanent: true,
-        },
-      ];
-    },
     future: {
       webpack5: true,
     },
