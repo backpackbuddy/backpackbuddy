@@ -1,7 +1,7 @@
-import NumberFormat from "react-number-format";
+import NumberFormat from 'react-number-format';
 import pt from 'prop-types';
 
-function PriceTag (props) {
+function PriceTag(props) {
   const { price, sale } = props;
   return (
     <div {...props}>
@@ -27,12 +27,12 @@ function PriceTag (props) {
 
 PriceTag.defaultProps = {
   price: null,
-  sale: null
-}
+  sale: null,
+};
 
 PriceTag.propTypes = {
   price: pt.number,
-  sale: pt.number
-}
+  sale: pt.number,
+};
 
 export default PriceTag;

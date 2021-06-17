@@ -8,15 +8,16 @@
         z-index: 1;
 
         &--bg {
+            $blur: 3rem;
             background-size: cover;
+            background-position: center;
             content: '';
-            filter: blur(8px);
-            -webkit-filter: blur(8px);
+            filter: blur($blur);
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: -$blur;
+            left: -$blur;
+            right: -$blur;
+            bottom: -$blur;
         }
     }
 

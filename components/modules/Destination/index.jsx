@@ -3,15 +3,15 @@ import Link from 'next/link';
 import pt from 'prop-types';
 import { useEffect, useState } from 'react';
 import {
-  Button, Card, Col, Spinner,
+  Button, Card, Col,
 } from 'react-bootstrap';
 import '../../../styles/destinasi.scss';
 import { LocationIcon } from '../../elements/Icons';
-import Loading from '../../elements/Loading';
 import PriceTag from '../../elements/PriceTag';
 import Stars from '../../elements/Stars';
+import DestinationCardLoader from '../../Loading/DestinationCard';
 
-function Destination({ offset, limit, loadMore }) {
+function Destination({ offset = 0, limit = 12, loadMore = true }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [offsetState, setOffsetState] = useState(offset);
@@ -29,11 +29,17 @@ function Destination({ offset, limit, loadMore }) {
       .finally(() => setIsLoading(false));
   }, [offsetState]);
 
+  const Loader = () => Array.from(Array(limit)).map(() => (
+    <Col className="mb-4" xs={12} sm={6} md={4} lg={3}>
+      <DestinationCardLoader />
+    </Col>
+  ));
+
   const doLoadMore = () => {
     setOffsetState((prev) => prev + limit);
   };
 
-  return !data.length ? <Loading className="my-5" /> : (
+  return (
     <>
       {data.map(({
         id, place_name, featured_picture_thumb, media, price, sale, average_rating,
@@ -67,8 +73,8 @@ function Destination({ offset, limit, loadMore }) {
               </Card.Title>
               <PriceTag
                 className="my-3"
-                sale={sale}
-                price={price}
+                sale={Number(sale)}
+                price={Number(price)}
                 style={{ fontSize: '1.3rem' }}
               />
               <Stars rating={average_rating} />
@@ -76,6 +82,7 @@ function Destination({ offset, limit, loadMore }) {
           </Card>
         </Col>
       ))}
+      {isLoading && <Loader />}
       {isLimit || (
         <Button
           className="mx-auto d-flex align-items-center shadow-none text-decoration-none"
@@ -84,29 +91,12 @@ function Destination({ offset, limit, loadMore }) {
           variant="link"
           style={{ outline: 'none' }}
         >
-          {isLoading ? (
-            <>
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
-              &nbsp;Loading
-            </>
-          ) : 'Load more'}
+          Load More
         </Button>
       )}
     </>
   );
 }
-
-Destination.defaultProps = {
-  offset: 0,
-  limit: 12,
-  loadMore: true,
-};
 
 Destination.propTypes = {
   offset: pt.number,

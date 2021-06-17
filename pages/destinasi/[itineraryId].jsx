@@ -20,6 +20,7 @@ import BasicTopBar from '../../components/modules/Header';
 import Reviews from '../../components/modules/Reviews';
 import '../../styles/itinerary.scss';
 import { selectAuth } from '../../store/selector';
+import DestinationLoader from '../../components/Loading/Destination';
 
 function Itinerary() {
   const router = useRouter();
@@ -53,7 +54,7 @@ function Itinerary() {
       <Layout>
         <div className="bg-light premium">
           <Container className="py-4">
-            {isLoading ? <Loading className="my-5" /> : (
+            {isLoading ? <DestinationLoader /> : (
               <>
                 <Carousel
                   className="premium__carousel mb-4 shadow"

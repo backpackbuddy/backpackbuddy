@@ -1,19 +1,28 @@
-import { Card, Col } from "react-bootstrap";
-import NumberFormat from "react-number-format";
+import Link from 'next/link';
 import pt from 'prop-types';
+import { Card, Col } from 'react-bootstrap';
+import NumberFormat from 'react-number-format';
 import '../../../styles/backpack.scss';
-import Link from "next/link";
-import Loading from "../../elements/Loading";
+import DestinationCardLoader from '../../Loading/DestinationCard';
 
-function BackpackItem ({ orders, loading }) {
-
+function BackpackItem({ orders, loading }) {
   if (loading) {
-    return <Loading />
+    return Array.from(Array(4)).map(() => (
+      <Col className="mb-4" md={6} lg={4} xl={3}>
+        <DestinationCardLoader />
+      </Col>
+    ));
   }
 
   return !orders.length
-    ? <div className="w-100 text-center">Tidak ada data yang ditampilkan</div>
-    : orders.map(({ itinerary_id, code, status, price, featured_picture, place_name }) => (
+    ? (
+      <div className="w-100 text-center text-danger d-flex align-items-center justify-content-center" style={{ minHeight: '300px' }}>
+        Tidak ada data yang dapat ditampilkan
+      </div>
+    )
+    : orders.map(({
+      itinerary_id, code, status, price, featured_picture, place_name,
+    }) => (
       <Col className="mb-4" md={6} lg={4} xl={3}>
         <Card>
           <Link href={`destinasi/${itinerary_id}`}>
@@ -49,7 +58,7 @@ function BackpackItem ({ orders, loading }) {
 
 BackpackItem.propTypes = {
   orders: pt.instanceOf(Array).isRequired,
-  loading: pt.bool.isRequired
-}
+  loading: pt.bool.isRequired,
+};
 
 export default BackpackItem;

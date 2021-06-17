@@ -1,22 +1,28 @@
+import '../../../styles/header.scss';
+import {
+  faCartArrowDown, faSignOutAlt, faSuitcaseRolling, faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Container, Image, Nav, Navbar, NavDropdown,
 } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
 import { deauthenticate } from '../../../store/actions/auth';
 import { selectAuth } from '../../../store/selector';
-import '../../../styles/header.scss';
-import { BackpackIcon, LogoutIcon, ProfileIcon } from '../../elements/Icons';
+import { BackpackIcon } from '../../elements/Icons';
+import setAxiosConfig from '../../../utils/axios-config';
 
 function Header(props) {
   const { isLoggedIn, user } = useSelector(selectAuth);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
-    axios.defaults.headers.common.Authorization = `Bearer ${user.access_token}`;
+    setAxiosConfig(user.access_token);
 
     if (isLoggedIn) {
       axios.get('/customer/me/info')
@@ -64,7 +70,7 @@ function Header(props) {
         <Navbar.Collapse id="bb-navbar-nav">
           <Nav
             className="header__nav ml-auto p-2 p-lg-0"
-            defaultActiveKey={useRouter().pathname}
+            defaultActiveKey={router.pathname}
           >
             {[
               {
@@ -104,21 +110,52 @@ function Header(props) {
             {isLoggedIn ? (
               <NavDropdown title={user?.username}>
                 <Link href="/profile/account">
-                  <NavDropdown.Item className="d-flex align-items-center" href="/profile/account">
-                    <ProfileIcon />
+                  <NavDropdown.Item
+                    className="d-flex align-items-center"
+                    href="/profile/account"
+                    active={router.pathname.includes('profile')}
+                  >
+                    <FontAwesomeIcon
+                      fixedWidth
+                      icon={faUser}
+                    />
                     &nbsp;Profil
                   </NavDropdown.Item>
                 </Link>
+                <Link href="/backpack">
+                  <NavDropdown.Item
+                    className="d-flex align-items-center"
+                    href="/backpack"
+                  >
+                    <FontAwesomeIcon
+                      fixedWidth
+                      icon={faSuitcaseRolling}
+                    />
+                    &nbsp;Backpack
+                  </NavDropdown.Item>
+                </Link>
                 <Link href="/order">
-                  <NavDropdown.Item className="d-flex align-items-center" href="/order">
-                    <BackpackIcon />
+                  <NavDropdown.Item
+                    className="d-flex align-items-center"
+                    href="/order"
+                  >
+                    <FontAwesomeIcon
+                      fixedWidth
+                      icon={faCartArrowDown}
+                    />
                     &nbsp;Pesanan
                   </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />
-                <NavDropdown.Item className="d-flex align-items-center" onClick={logoutHandler}>
-                  <LogoutIcon />
-                  &nbsp;Keluar
+                <NavDropdown.Item
+                  className="d-flex align-items-center text-danger"
+                  onClick={logoutHandler}
+                >
+                  <FontAwesomeIcon
+                    fixedWidth
+                    icon={faSignOutAlt}
+                  />
+                  &nbsp;Logout
                 </NavDropdown.Item>
               </NavDropdown>
             ) : [

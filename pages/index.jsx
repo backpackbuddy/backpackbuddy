@@ -258,13 +258,13 @@ function Home() {
             <Row>
               <Col xs={12} md={4}>
                 {favLoading ? (
-                  <h4>Loading ...</h4>
+                  <p>Loading ..</p>
                 ) : (
                   data.slice(0, 4).map(({ id, place_name }) => (
                     <a
                       className="d-block my-3"
                       href={`/destinasi/${id}`}
-                      key={id}
+                      key={place_name}
                     >
                       {place_name}
                     </a>
