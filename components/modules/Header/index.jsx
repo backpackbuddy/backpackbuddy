@@ -13,7 +13,6 @@ import {
 } from 'react-bootstrap';
 import { deauthenticate } from '../../../store/actions/auth';
 import { selectAuth } from '../../../store/selector';
-import { BackpackIcon } from '../../elements/Icons';
 import setAxiosConfig from '../../../utils/axios-config';
 
 function Header(props) {
@@ -65,7 +64,12 @@ function Header(props) {
               </>
             </Link>
           </Navbar.Brand>
-          <Navbar.Toggle className="ml-auto" aria-controls="bb-navbar-nav" />
+          {isLoggedIn || (
+          <Link href="/login">
+            <a className="ml-auto mr-3 d-lg-none" href="/login">Login</a>
+          </Link>
+          )}
+          <Navbar.Toggle className={isLoggedIn && 'ml-auto'} aria-controls="bb-navbar-nav" />
         </div>
         <Navbar.Collapse id="bb-navbar-nav">
           <Nav
@@ -162,11 +166,12 @@ function Header(props) {
               {
                 url: '/login',
                 name: 'Login',
+                classes: 'mr-2 d-none d-lg-block',
               },
               {
                 url: '/register',
                 name: 'Buat Akun',
-                classes: 'btn btn-primary text-white ml-2 px-3 w-100',
+                classes: 'btn btn-primary text-white px-3 w-100',
               },
             ].map(({ url, name, classes }) => (
               <Link href={url} key={name}>

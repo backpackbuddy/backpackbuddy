@@ -45,6 +45,7 @@ function LoginForm() {
       label: 'Username atau Email',
       name: 'username',
       placeholder: 'Masukkan username atau email',
+      autofocus: true,
     },
     {
       name: 'password',
@@ -56,7 +57,7 @@ function LoginForm() {
     <Form onSubmit={submitHandler} method="POST">
       {error?.message && <Alert variant="danger">{error.message}</Alert>}
       {inputAttributes.map(({
-        label, name, type, placeholder,
+        label, name, type, placeholder, autofocus = false,
       }) => (
         <Form.Group key={name} controlId={`input${toTitleCase(name)}`}>
           <Form.Label>{label || toTitleCase(name)}</Form.Label>
@@ -68,6 +69,7 @@ function LoginForm() {
             ref={inputRef[name]}
             isInvalid={Boolean(error?.[name])}
             placeholder={placeholder || `Masukkan ${name}`}
+            autoFocus={autofocus}
           />
           {error?.[name]
             && (
