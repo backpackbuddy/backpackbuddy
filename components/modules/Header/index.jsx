@@ -66,7 +66,7 @@ function Header(props) {
           </Navbar.Brand>
           {isLoggedIn || (
           <Link href="/login">
-            <a className="ml-auto mr-3 d-lg-none" href="/login">Login</a>
+            <a className="ml-auto mr-3 d-lg-none btn btn-outline-secondary" href="/login">Login</a>
           </Link>
           )}
           <Navbar.Toggle className={isLoggedIn && 'ml-auto'} aria-controls="bb-navbar-nav" />
@@ -82,7 +82,7 @@ function Header(props) {
                 name: 'Home',
               },
               {
-                url: '/destinasi',
+                url: '/destination',
                 name: 'Destinasi',
               },
               {

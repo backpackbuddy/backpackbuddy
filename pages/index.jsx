@@ -23,7 +23,7 @@ import {
 // Components
 import Sosmed from '../components/elements/Sosmed';
 import Layout from '../components/layouts/app';
-import Destination from '../components/modules/Destination';
+import DestinationList from '../components/modules/DestinationList';
 import TopBar from '../components/modules/Header';
 import Intro from '../components/modules/Intro';
 import '../styles/home.scss';
@@ -37,7 +37,7 @@ function Home() {
   useEffect(() => {
     setFavLoading(true);
 
-    axios.get('/itineraries')
+    axios.get('/itineraries?offset=4&limit=8')
       .then((res) => setData(res.data))
       .catch(() => { /* TODO: Feedback */ })
       .finally(() => setFavLoading(false));
@@ -80,12 +80,12 @@ function Home() {
             <p className="text-center">Destinasi wisata populer di Bali</p>
 
             <Row className="my-2 my-md-0">
-              <Destination limit={4} loadMore={false} />
+              <DestinationList limit={4} loadMore={false} />
             </Row>
-            <Link href="/destinasi">
+            <Link href="/destination">
               <a
                 className="text-center d-flex align-items-center justify-content-center"
-                href="/destinasi"
+                href="/destination"
               >
                 <span>Destinasi Lainnya</span>
                 &nbsp;
@@ -263,7 +263,7 @@ function Home() {
                   data.slice(0, 4).map(({ id, place_name }) => (
                     <a
                       className="d-block my-3"
-                      href={`/destinasi/${id}`}
+                      href={`/destination/${id}`}
                       key={place_name}
                     >
                       {place_name}
@@ -276,7 +276,7 @@ function Home() {
                 {data.slice(4, 8).map(({ id, place_name }) => (
                   <a
                     className="d-block my-3"
-                    href={`/destinasi/${id}`}
+                    href={`/destination/${id}`}
                     key={id}
                   >
                     {place_name}

@@ -14,13 +14,12 @@ import {
   StarFilledIcon,
   StarOutlineIcon,
 } from '../../components/elements/Icons';
-import Loading from '../../components/elements/Loading';
 import Layout from '../../components/layouts/app';
 import BasicTopBar from '../../components/modules/Header';
 import Reviews from '../../components/modules/Reviews';
 import '../../styles/itinerary.scss';
 import { selectAuth } from '../../store/selector';
-import DestinationLoader from '../../components/Loading/Destination';
+import DestinationLoader from '../../components/Loading/DestinationLoader';
 
 function Itinerary() {
   const router = useRouter();

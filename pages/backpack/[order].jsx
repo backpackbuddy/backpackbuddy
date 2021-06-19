@@ -1,8 +1,8 @@
-import { Container } from "react-bootstrap";
-import Layout from "../../components/layouts/app";
-import Header from "../../components/modules/Header";
+import { Container } from 'react-bootstrap';
+import Layout from '../../components/layouts/app';
+import Header from '../../components/modules/Header';
 
-function BackpackDetails () {
+function BackpackDetails() {
   return (
     <>
       <Header />

@@ -3,7 +3,7 @@ import pt from 'prop-types';
 import { Card, Col } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import '../../../styles/backpack.scss';
-import DestinationCardLoader from '../../Loading/DestinationCard';
+import DestinationCardLoader from '../../Loading/DestinationCardLoader';
 
 function BackpackItem({ orders, loading }) {
   if (loading) {

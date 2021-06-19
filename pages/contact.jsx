@@ -1,4 +1,6 @@
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import {
+  Button, Col, Container, Form, Row,
+} from 'react-bootstrap';
 
 // icons
 import { MessengerIcon, WhatsappIcon } from '../components/elements/Icons';
@@ -11,8 +13,7 @@ import Layout from '../components/layouts/app';
 import BasicTopBar from '../components/modules/Header';
 import Sosmed from '../components/elements/Sosmed';
 
-
-function Contact () {
+function Contact() {
   return (
     <>
       <BasicTopBar />
@@ -36,7 +37,8 @@ function Contact () {
               <Col className="px-0" sm={6} md={12}>
                 <h5>Jam Kerja</h5>
                 <p>
-                  Senin - Jumat: 9:00 AM – 5:00 PM <br />
+                  Senin - Jumat: 9:00 AM – 5:00 PM
+                  <br />
                   Sabtu : 11:00 AM – 3:00 PM
                 </p>
               </Col>
