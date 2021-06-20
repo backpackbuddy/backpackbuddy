@@ -8,12 +8,12 @@ import rootReducers from './reducer';
 
 let store;
 
-const bindMiddleware = (middleware = []) => {
+const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
-    return composeWithDevTools(applyMiddleware(...middleware));
+    return composeWithDevTools(applyMiddleware(middleware));
   }
 
-  return applyMiddleware(...middleware);
+  return applyMiddleware(middleware);
 };
 
 const persistConfig = {
@@ -27,7 +27,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducers);
 const makeStore = (initialState = {}) => createStore(
   persistedReducer,
   initialState,
-  bindMiddleware([thunk]),
+  bindMiddleware(thunk),
 );
 
 export const initializeStore = (preloadedState) => {

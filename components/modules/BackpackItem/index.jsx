@@ -2,8 +2,8 @@ import Link from 'next/link';
 import pt from 'prop-types';
 import { Card, Col } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
-import '../../../styles/backpack.scss';
 import DestinationCardLoader from '../../Loading/DestinationCardLoader';
+import '../../../styles/backpack.scss';
 
 function BackpackItem({ orders, loading }) {
   if (loading) {
@@ -25,8 +25,8 @@ function BackpackItem({ orders, loading }) {
     }) => (
       <Col className="mb-4" md={6} lg={4} xl={3}>
         <Card>
-          <Link href={`destinasi/${itinerary_id}`}>
-            <a href={`destinasi/${itinerary_id}`}>
+          <Link href={`destination/${itinerary_id}`}>
+            <a href={`destination/${itinerary_id}`}>
               <Card.Img
                 className="backpack__img"
                 variant="top"
@@ -36,7 +36,7 @@ function BackpackItem({ orders, loading }) {
           </Link>
           <Card.Body>
             <Card.Title>
-              <Link href={`destinasi/${itinerary_id}`}>{place_name}</Link>
+              <Link href={`destination/${itinerary_id}`}>{place_name}</Link>
             </Card.Title>
             <Card.Text>
               <small>{code}</small>

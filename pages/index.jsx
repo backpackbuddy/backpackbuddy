@@ -10,8 +10,6 @@ import {
   Image,
   Row,
 } from 'react-bootstrap';
-
-// Icons
 import {
   CustomIcon,
   ExperiencedIcon,
@@ -19,33 +17,37 @@ import {
   QuoteIcon, RightArrowIcon,
   VCircleArrowIcon,
 } from '../components/elements/Icons';
-
-// Components
 import Sosmed from '../components/elements/Sosmed';
 import Layout from '../components/layouts/app';
-import DestinationList from '../components/modules/DestinationList';
+import DestinationCardLoader from '../components/Loading/DestinationCardLoader';
+import DestinationCard from '../components/modules/DestinationCard';
 import TopBar from '../components/modules/Header';
 import Intro from '../components/modules/Intro';
 import '../styles/home.scss';
 
 function Home() {
-  const [data, setData] = useState([]);
-  const [favLoading, setFavLoading] = useState(false);
+  const [destinations, selectDestinations] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [shrink, setShrink] = useState(false);
   const [isOpen, setIsOpen] = useState([false, false, false]);
 
-  useEffect(() => {
-    setFavLoading(true);
-
-    axios.get('/itineraries?offset=4&limit=8')
-      .then((res) => setData(res.data))
-      .catch(() => { /* TODO: Feedback */ })
-      .finally(() => setFavLoading(false));
-  }, []);
-
-  function toggleReadMore(id) {
+  const toggleReadMore = (id) => {
     setIsOpen((prevState) => prevState.map((prev, i) => (i === id ? !prev : prev)));
-  }
+  };
+
+  const Loader = () => Array.from(Array(4)).map((i) => (
+    <Col className="mb-4" xs={6} md={4} lg={3} key={i}>
+      <DestinationCardLoader />
+    </Col>
+  ));
+
+  useEffect(() => {
+    setLoading(true);
+
+    axios.get('/itineraries')
+      .then((res) => selectDestinations(res.data))
+      .finally(() => setLoading(false));
+  }, []);
 
   useEffect(() => {
     window.onscroll = () => {
@@ -80,7 +82,18 @@ function Home() {
             <p className="text-center">Destinasi wisata populer di Bali</p>
 
             <Row className="my-2 my-md-0">
-              <DestinationList limit={4} loadMore={false} />
+              {loading ? <Loader /> : destinations.slice(0, 4).map((props) => (
+                <Col
+                  className="place__destination mb-4 px-1 px-sm-3"
+                  xs={6}
+                  md={4}
+                  lg={3}
+                  // eslint-disable-next-line react/prop-types
+                  key={props.place_name}
+                >
+                  <DestinationCard {...props} />
+                </Col>
+              ))}
             </Row>
             <Link href="/destination">
               <a
@@ -257,23 +270,19 @@ function Home() {
             </Row>
             <Row>
               <Col xs={12} md={4}>
-                {favLoading ? (
-                  <p>Loading ..</p>
-                ) : (
-                  data.slice(0, 4).map(({ id, place_name }) => (
-                    <a
-                      className="d-block my-3"
-                      href={`/destination/${id}`}
-                      key={place_name}
-                    >
-                      {place_name}
-                    </a>
-                  ))
-                )}
+                {destinations.slice(0, 4).map(({ id, place_name }) => (
+                  <a
+                    className="d-block my-3"
+                    href={`/destination/${id}`}
+                    key={place_name}
+                  >
+                    {place_name}
+                  </a>
+                ))}
               </Col>
 
               <Col xs={12} md={4}>
-                {data.slice(4, 8).map(({ id, place_name }) => (
+                {destinations.slice(4, 8).map(({ id, place_name }) => (
                   <a
                     className="d-block my-3"
                     href={`/destination/${id}`}

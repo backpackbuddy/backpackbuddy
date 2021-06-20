@@ -1,5 +1,5 @@
 import authReducer from './auth';
-import destinationReducer from './destination';
+import destinationReducer from './destinations';
 
 const { combineReducers } = require('redux');
 

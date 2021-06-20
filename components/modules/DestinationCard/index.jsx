@@ -41,7 +41,6 @@ function DestinationCard({
           className="my-3"
           sale={Number(sale)}
           price={Number(price)}
-          style={{ fontSize: '1.3rem' }}
         />
         <Stars rating={average_rating} />
       </Card.Body>
