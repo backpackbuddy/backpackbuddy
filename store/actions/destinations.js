@@ -30,33 +30,11 @@ export const fetchDestinations = () => async (dispatch, getState) => {
       type: DESTINATION_LIST_FETCH,
       payload: {
         destinations: res.data,
-        loading: false,
+        filter: { offset: 0 },
         thereIsMore: res.data.length >= limit,
       },
     });
   }
-
-  dispatch(setLoading(false));
-};
-
-export const loadMoreDestinations = (offsetFilter) => async (dispatch, getState) => {
-  dispatch(setLoading(true));
-
-  const { filter } = getState().destinations;
-  // merge the current filter with new filter
-  const newFilter = { ...filter, ...offsetFilter };
-  // make request
-  const res = await getDestinations(newFilter);
-
-  dispatch({
-    type: DESTINATION_LIST_LOAD_MORE,
-    payload: {
-      destinations: res.data,
-      filter: newFilter,
-      loading: false,
-      thereIsMore: res.data.length >= filter.limit,
-    },
-  });
 
   dispatch(setLoading(false));
 };
@@ -82,7 +60,28 @@ export const filterDestinations = (payload) => async (dispatch, getState) => {
     payload: {
       destinations: res.data,
       filter: newFilter,
-      loading: false,
+      thereIsMore: res.data.length >= filter.limit,
+    },
+  });
+
+  dispatch(setLoading(false));
+};
+
+export const loadMoreDestinations = () => async (dispatch, getState) => {
+  dispatch(setLoading(true));
+
+  const { filter } = getState().destinations;
+  const filterOffset = { offset: filter.offset + filter.limit };
+  // merge the current filter with new filter
+  const newFilter = { ...filter, ...filterOffset };
+  // make request
+  const res = await getDestinations(newFilter);
+
+  dispatch({
+    type: DESTINATION_LIST_LOAD_MORE,
+    payload: {
+      destinations: res.data,
+      filter: newFilter,
       thereIsMore: res.data.length >= filter.limit,
     },
   });

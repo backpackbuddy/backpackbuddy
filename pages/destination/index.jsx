@@ -1,6 +1,6 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import {
   Col, Container, Row, Button, InputGroup, FormControl,
 } from 'react-bootstrap';
@@ -11,30 +11,30 @@ import BasicTopBar from '../../components/modules/Header';
 import { filterDestinations } from '../../store/actions/destinations';
 import { selectFilterDestinations } from '../../store/selector';
 
-const ORDER_RELEVANT = 'place_name';
 const ORDER_NEWEST = 'created_at';
-const ORDER_BEST_SELLER = 'sold_count';
+const ORDER_BEST_SELLER = 'orders_count';
+const ORDER_HIGHEST_TO_LOWER = 'ORDER_HIGHEST_TO_LOWER';
 
 function Destination() {
-  const { search } = useSelector(selectFilterDestinations);
+  const { search, orderBy } = useSelector(selectFilterDestinations);
   const inputSearch = useRef(search);
-  const [orderBy, setOrderBy] = useState('id');
-  const [order, setOrder] = useState('DESC');
   const dispatch = useDispatch();
 
-  const updateSearch = (e) => {
+  const setOrderBy = (value) => {
+    dispatch(filterDestinations({ orderBy: value, order: 'DESC' }));
+  };
+
+  const setSearch = (e) => {
     e.preventDefault();
     dispatch(filterDestinations({ search: inputSearch.current.value }));
   };
 
-  const updateOrder = (ordBy, ord) => {
-    setOrderBy(ordBy);
-    setOrder(ord);
-  };
-
-  const updatePriceOrder = (e) => {
-    const o = e.target.value === 1 ? 'DESC' : 'ASC';
-    updateOrder('sale', o);
+  const setPriceOrder = (e) => {
+    if (e.target.value === ORDER_HIGHEST_TO_LOWER) {
+      dispatch(filterDestinations({ orderBy: 'sale', order: 'DESC' }));
+    } else {
+      dispatch(filterDestinations({ orderBy: 'sale', order: 'ASC' }));
+    }
   };
 
   return (
@@ -55,23 +55,32 @@ function Destination() {
                   <div className="d-flex align-items-center flex-wrap" style={{ gap: '.5rem' }}>
                     <span>Urutkan</span>
                     <span className="d-flex flex-wrap" style={{ gap: '.5rem' }}>
-                      <Button variant={orderBy === ORDER_RELEVANT ? 'primary' : 'outline-primary'}>Terkait</Button>
-                      <Button variant={orderBy === ORDER_NEWEST ? 'primary' : 'outline-primary'}>Terbaru</Button>
-                      <Button variant={orderBy === ORDER_BEST_SELLER ? 'primary' : 'outline-primary'}>Terlaris</Button>
+                      <Button
+                        onClick={() => setOrderBy(ORDER_NEWEST)}
+                        variant={orderBy === ORDER_NEWEST ? 'primary' : 'outline-primary'}
+                      >
+                        Terbaru
+                      </Button>
+                      <Button
+                        onClick={() => setOrderBy(ORDER_BEST_SELLER)}
+                        variant={orderBy === ORDER_BEST_SELLER ? 'primary' : 'outline-primary'}
+                      >
+                        Terlaris
+                      </Button>
                     </span>
                   </div>
                 </Col>
                 <Col xs={12} sm md={3} lg="auto">
                   <div className="input-group">
-                    <select className="custom-select" id="selectHarga" onChange={updatePriceOrder}>
+                    <select className="custom-select" id="selectHarga" onChange={setPriceOrder}>
                       <option disabled selected>Harga</option>
-                      <option value="1">Harga: Tinggi ke Rendah</option>
-                      <option value="2">Harga: Rendah ke Tinggi</option>
+                      <option value={ORDER_HIGHEST_TO_LOWER}>Harga: Tinggi ke Rendah</option>
+                      <option>Harga: Rendah ke Tinggi</option>
                     </select>
                   </div>
                 </Col>
                 <Col xs={12} md>
-                  <form onSubmit={updateSearch} method="get">
+                  <form onSubmit={setSearch} method="get">
                     <InputGroup>
                       <FormControl
                         defaultValue={search}
@@ -80,7 +89,7 @@ function Destination() {
                         aria-label="Search"
                         type="search"
                       />
-                      <InputGroup.Append onClick={updateSearch} style={{ cursor: 'pointer' }}>
+                      <InputGroup.Append onClick={setSearch} style={{ cursor: 'pointer' }}>
                         <InputGroup.Text>
                           <FontAwesomeIcon icon={faSearch} />
                         </InputGroup.Text>

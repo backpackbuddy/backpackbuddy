@@ -10,8 +10,8 @@ export const initialState = {
   filter: {
     offset: 0,
     limit: 12,
-    orderBy: '',
-    order: '',
+    orderBy: 'created_at',
+    order: 'DESC',
     search: '',
   },
   loading: false,
@@ -28,21 +28,30 @@ const destinationReducer = (state = initialState, action) => {
     case DESTINATION_LIST_FETCH:
       return {
         ...state,
-        ...action.payload,
+        filter: {
+          ...state.filter,
+          ...action.payload.filter,
+        },
         destinations: [...action.payload.destinations],
+        thereIsMore: action.payload.thereIsMore,
       };
     case DESTINATION_LIST_LOAD_MORE:
       return {
         ...state,
-        ...action.payload,
+        filter: {
+          ...state.filter,
+          ...action.payload.filter,
+        },
         destinations: [
           ...state.destinations,
           ...action.payload.destinations,
         ],
+        thereIsMore: action.payload.thereIsMore,
       };
     case DESTINATION_LIST_SET_FILTER:
       return {
         ...state,
+        ...action.payload,
         filter: {
           ...state.filter,
           ...action.payload.filter,

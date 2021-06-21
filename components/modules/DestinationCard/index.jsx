@@ -8,7 +8,7 @@ import { LocationIcon } from '../../elements/Icons';
 function DestinationCard({
   id, featured_picture_thumb,
   media, place_name,
-  average_rating, sale, price,
+  average_rating, sale, price, orders_count,
 }) {
   return (
     <Card className="place__card">
@@ -42,7 +42,10 @@ function DestinationCard({
           sale={Number(sale)}
           price={Number(price)}
         />
-        <Stars rating={average_rating} />
+        <div className="d-flex align-items-center justify-content-between">
+          <Stars rating={average_rating} />
+          <small className="text-secondary">{orders_count} Terjual</small>
+        </div>
       </Card.Body>
     </Card>
   );
@@ -56,6 +59,7 @@ DestinationCard.propTypes = {
   average_rating: PropTypes.number,
   sale: PropTypes.string,
   price: PropTypes.string.isRequired,
+  orders_count: PropTypes.number.isRequired,
 };
 
 export default DestinationCard;

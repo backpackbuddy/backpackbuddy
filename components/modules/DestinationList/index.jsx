@@ -1,23 +1,16 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import {
-  Button, Col,
-} from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDestinations, loadMoreDestinations } from '../../../store/actions/destinations';
-import { selectDestinations } from '../../../store/selector';
+import { selectDestinations, selectFilterDestinations } from '../../../store/selector';
 import '../../../styles/destination.scss';
 import DestinationCardLoader from '../../Loading/DestinationCardLoader';
 import DestinationCard from '../DestinationCard';
 
 function DestinationList() {
-  const {
-    destinations,
-    filter,
-    thereIsMore,
-    loading,
-  } = useSelector(selectDestinations);
-  const { offset, limit, search } = filter;
+  const { destinations, thereIsMore, loading } = useSelector(selectDestinations);
+  const { limit, search } = useSelector(selectFilterDestinations);
   const dispatch = useDispatch();
 
   const Loader = () => Array.from(Array(limit)).map((i) => (
@@ -27,7 +20,7 @@ function DestinationList() {
   ));
 
   const loadMoreHandler = () => {
-    dispatch(loadMoreDestinations({ offset: offset + limit }));
+    dispatch(loadMoreDestinations());
   };
 
   useEffect(() => {
