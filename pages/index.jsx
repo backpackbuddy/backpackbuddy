@@ -19,7 +19,7 @@ import {
 } from '../components/elements/Icons';
 import Sosmed from '../components/elements/Sosmed';
 import Layout from '../components/layouts/app';
-import DestinationCardLoader from '../components/Loading/DestinationCardLoader';
+import DestinationCardLoader from '../components/loader/DestinationCardLoader';
 import DestinationCard from '../components/modules/DestinationCard';
 import TopBar from '../components/modules/Header';
 import Intro from '../components/modules/Intro';

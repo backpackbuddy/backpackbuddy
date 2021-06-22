@@ -4,7 +4,7 @@ import { Button, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDestinations, loadMoreDestinations } from '../../../store/actions/destinations';
 import { selectDestinations, selectFilterDestinations } from '../../../store/selector';
-import DestinationCardLoader from '../../Loading/DestinationCardLoader';
+import DestinationCardLoader from '../../loader/DestinationCardLoader';
 import DestinationCard from '../DestinationCard';
 
 function DestinationList() {

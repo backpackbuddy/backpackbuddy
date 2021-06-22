@@ -25,8 +25,10 @@ function Header(props) {
 
     if (isLoggedIn) {
       axios.get('/customer/me/info')
-        .catch(() => {
-          dispatch(deauthenticate());
+        .catch(({ response }) => {
+          if (response.data.message === 'Unauthenticated.') {
+            dispatch(deauthenticate());
+          }
         });
     }
   }, [user.access_token]);

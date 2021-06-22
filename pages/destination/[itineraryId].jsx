@@ -15,7 +15,7 @@ import {
   StarOutlineIcon,
 } from '../../components/elements/Icons';
 import Layout from '../../components/layouts/app';
-import DestinationLoader from '../../components/Loading/DestinationLoader';
+import DestinationLoader from '../../components/loader/DestinationLoader';
 import BasicTopBar from '../../components/modules/Header';
 import Reviews from '../../components/modules/Reviews';
 import { selectAuth } from '../../store/selector';

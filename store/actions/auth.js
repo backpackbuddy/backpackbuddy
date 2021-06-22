@@ -12,11 +12,8 @@ export const authenticate = (creds) => async (dispatch) => {
 };
 
 export const deauthenticate = () => async (dispatch) => {
-  dispatch({
-    type: DEAUTHENTICATE,
-  });
-
   await axios.post('/logout');
+  dispatch({ type: DEAUTHENTICATE });
 };
 
 export const setAuth = (username) => ({
