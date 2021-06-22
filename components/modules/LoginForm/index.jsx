@@ -4,7 +4,6 @@ import { Alert, Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import toTitleCase from 'to-title-case';
 import { authenticate } from '../../../store/actions/auth';
-import { setAuthenticated } from '../../../utils/auth';
 
 function LoginForm() {
   const [loading, setLoading] = useState(false);
@@ -27,17 +26,15 @@ function LoginForm() {
       remember_me: inputRef.rememberMe.current.checked,
     };
 
-    const res = await dispatch(authenticate(data));
-
-    if (res.success) {
-      setAuthenticated(res.data);
+    try {
+      await dispatch(authenticate(data));
       Router.back();
-    } else {
-      const { errors, message } = res.err;
+    } catch (err) {
+      const { errors, message } = err.response.data;
       setError({ ...errors, message });
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   const inputAttributes = [

@@ -1,32 +1,18 @@
 import axios from 'axios';
-import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useRef, useState } from 'react';
+import { Form } from 'react-bootstrap';
 import toTitleCase from 'to-title-case';
-import { setAuth } from '../../../store/actions/auth';
 import SaveBtn from '../../elements/SaveBtn';
 
-function ProfileAccountForm() {
+function ProfilePasswordForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [defaultValue, setDefaultValue] = useState(null);
   const [onChange, setOnChange] = useState(false);
-  const dispatch = useDispatch();
-  const router = useRouter();
   const inputRef = {
-    username: useRef(null),
-    email: useRef(null),
+    old_password: useRef(null),
+    password: useRef(null),
+    password_confirmation: useRef(null),
   };
-
-  useEffect(() => {
-    setLoading(true);
-
-    axios.get('/customer/me')
-      .then((res) => setDefaultValue(res.data))
-      .catch(() => router.push('/login'))
-      .finally(() => setLoading(false));
-  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -34,15 +20,15 @@ function ProfileAccountForm() {
     setError(null);
 
     const data = {
-      username: inputRef.username.current.value,
-      email: inputRef.email.current.value,
+      old_password: inputRef.old_password.current.value,
+      password: inputRef.password.current.value,
+      password_confirmation: inputRef.password_confirmation.current.value,
     };
 
     try {
-      await axios.put('customer', data);
+      await axios.put('customer/password', data);
       setOnChange(false);
       setError(null);
-      dispatch(setAuth(data.username));
     } catch (err) {
       const { errors, message } = err.response.data;
       setError({ ...errors, message });
@@ -53,19 +39,24 @@ function ProfileAccountForm() {
 
   const inputAttributes = [
     {
-      name: 'username',
-      value: defaultValue?.username,
+      name: 'old_password',
+      label: 'Password Lama',
+      placeholder: 'Masukkan password lama',
     },
     {
-      name: 'email',
-      value: defaultValue?.email,
+      name: 'password',
+      placeholder: 'Masukkan password baru',
+    },
+    {
+      name: 'password_confirmation',
+      label: 'Konfirmasi Password',
     },
   ];
 
   return (
     <Form onSubmit={onSubmit} method="POST">
       {inputAttributes.map(({
-        label, name, type, placeholder = null, value,
+        label, name, type, placeholder, value,
       }) => (
         <Form.Group
           className="row align-items-center"
@@ -78,21 +69,21 @@ function ProfileAccountForm() {
           <div className="col-12 col-sm-6">
             <Form.Control
               key={name}
-              type={type || 'text'}
+              type={type || 'password'}
               name={name}
               disabled={loading}
               defaultValue={value}
               onChange={setOnChange}
               ref={inputRef[name]}
               isInvalid={Boolean(error?.[name])}
-              placeholder={placeholder || `Masukkan ${name}`}
+              placeholder={placeholder}
             />
+            {error?.[name] && (
+              <Form.Control.Feedback type="invalid">
+                {error[name].map((err) => <div>{err}</div>)}
+              </Form.Control.Feedback>
+            )}
           </div>
-          {error?.[name] && (
-          <Form.Control.Feedback type="invalid">
-            {error[name].map((err) => <div>{err}</div>)}
-          </Form.Control.Feedback>
-          )}
         </Form.Group>
       ))}
       <div className="row">
@@ -104,4 +95,4 @@ function ProfileAccountForm() {
   );
 }
 
-export default ProfileAccountForm;
+export default ProfilePasswordForm;

@@ -1,3 +1,4 @@
+import { ORDER_BY_NEWEST } from '../../constants/filter-destination';
 import {
   DESTINATION_LIST_LOADING,
   DESTINATION_LIST_FETCH,
@@ -10,7 +11,7 @@ export const initialState = {
   filter: {
     offset: 0,
     limit: 12,
-    orderBy: 'created_at',
+    orderBy: ORDER_BY_NEWEST,
     order: 'DESC',
     search: '',
   },
@@ -31,6 +32,7 @@ const destinationReducer = (state = initialState, action) => {
         filter: {
           ...state.filter,
           ...action.payload.filter,
+          ...{ offset: 0 },
         },
         destinations: [...action.payload.destinations],
         thereIsMore: action.payload.thereIsMore,

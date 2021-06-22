@@ -1,14 +1,20 @@
-import { Card } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
-import Stars from '../../elements/Stars';
-import PriceTag from '../../elements/PriceTag';
+import PropTypes from 'prop-types';
+import { Card } from 'react-bootstrap';
 import { LocationIcon } from '../../elements/Icons';
+import PriceTag from '../../elements/PriceTag';
+import Stars from '../../elements/Stars';
+import '../../../styles/destination.scss';
 
 function DestinationCard({
-  id, featured_picture_thumb,
-  media, place_name,
-  average_rating, sale, price, orders_count,
+  id,
+  featured_picture_thumb,
+  media,
+  place_name,
+  average_rating,
+  sale,
+  price,
+  orders_count,
 }) {
   return (
     <Card className="place__card">
@@ -54,7 +60,7 @@ function DestinationCard({
 DestinationCard.propTypes = {
   id: PropTypes.number.isRequired,
   featured_picture_thumb: PropTypes.string.isRequired,
-  media: PropTypes.string.isRequired,
+  media: PropTypes.instanceOf(Array).isRequired,
   place_name: PropTypes.string.isRequired,
   average_rating: PropTypes.number,
   sale: PropTypes.string,

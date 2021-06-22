@@ -13,9 +13,7 @@ function Login() {
   const { isLoggedIn } = useSelector(selectAuth);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      router.push('/');
-    }
+    if (isLoggedIn) router.push('/');
   }, [isLoggedIn]);
 
   return (

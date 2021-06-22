@@ -35,8 +35,9 @@ function Home() {
     setIsOpen((prevState) => prevState.map((prev, i) => (i === id ? !prev : prev)));
   };
 
-  const Loader = () => Array.from(Array(4)).map((i) => (
-    <Col className="mb-4" xs={6} md={4} lg={3} key={i}>
+  const Loader = () => Array.from(Array(4)).map((_, i) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <Col className="mb-4" xs={6} md={4} lg={3} key={`Loader-${i}`}>
       <DestinationCardLoader />
     </Col>
   ));
@@ -140,10 +141,10 @@ function Home() {
                 id, Icon, title, description,
               }) => (
                 <Col
-                  key={id}
                   className="why__col text-center text-white mt-4 mt-md-0"
                   xs={12}
                   md={4}
+                  key={id}
                 >
                   <Card className="why__card">
                     <Image
@@ -200,7 +201,7 @@ function Home() {
                       'Saya dan suami sudah berusia 50 tahun dan kami backpackeran dari Bandung. Saya sudah sering mengunjungi Bali namun terbatas di pantai Kuta dan seminyak saya. Saya lega ada jasa konsultasi dari Backpackbuddy yang membuatkan rute dan ide-ide wisata yang bisa kami tempuh dengan motor tanpa harus kecapekan. saya baru tau kalau Bali gak cuma di Kuta saja. Next time kalau anak saya kesini minta di aturin rutenya sama Backpackbuddy saja.',
                   },
                 ].map(({ id, name, message }) => (
-                  <Col className="testimonials__col" xs={12} md={4} key={id}>
+                  <Col className="testimonials__col" xs={12} md={4} key={message}>
                     <div className="testimonials__img">
                       <Image
                         className="testimonials__img img-fluid"
@@ -286,7 +287,7 @@ function Home() {
                   <a
                     className="d-block my-3"
                     href={`/destination/${id}`}
-                    key={id}
+                    key={place_name}
                   >
                     {place_name}
                   </a>

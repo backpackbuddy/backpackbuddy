@@ -1,18 +1,18 @@
-import '../../../styles/header.scss';
 import {
   faCartArrowDown, faSignOutAlt, faSuitcaseRolling, faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Container, Image, Nav, Navbar, NavDropdown,
 } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { deauthenticate } from '../../../store/actions/auth';
 import { selectAuth } from '../../../store/selector';
+import '../../../styles/header.scss';
 import setAxiosConfig from '../../../utils/axios-config';
 
 function Header(props) {
@@ -113,17 +113,17 @@ function Header(props) {
             <hr className="text-secondary d-lg-none" />
             {isLoggedIn ? (
               <NavDropdown title={user?.username}>
-                <Link href="/profile/account">
+                <Link href="/me/profile">
                   <NavDropdown.Item
                     className="d-flex align-items-center"
-                    href="/profile/account"
-                    active={router.pathname.includes('profile')}
+                    href="/me/profile"
+                    active={router.pathname.includes('/me/')}
                   >
                     <FontAwesomeIcon
+                      className="mr-2"
                       fixedWidth
                       icon={faUser}
-                    />
-                    &nbsp;Profil
+                    /> Profil
                   </NavDropdown.Item>
                 </Link>
                 <Link href="/backpack">
@@ -132,10 +132,10 @@ function Header(props) {
                     href="/backpack"
                   >
                     <FontAwesomeIcon
+                      className="mr-2"
                       fixedWidth
                       icon={faSuitcaseRolling}
-                    />
-                    &nbsp;Backpack
+                    /> Backpack
                   </NavDropdown.Item>
                 </Link>
                 <Link href="/order">
@@ -144,10 +144,10 @@ function Header(props) {
                     href="/order"
                   >
                     <FontAwesomeIcon
+                      className="mr-2"
                       fixedWidth
                       icon={faCartArrowDown}
-                    />
-                    &nbsp;Pesanan
+                    /> Pesanan
                   </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />
@@ -156,10 +156,10 @@ function Header(props) {
                   onClick={logoutHandler}
                 >
                   <FontAwesomeIcon
+                    className="mr-2"
                     fixedWidth
                     icon={faSignOutAlt}
-                  />
-                  &nbsp;Logout
+                  /> Log out
                 </NavDropdown.Item>
               </NavDropdown>
             ) : [

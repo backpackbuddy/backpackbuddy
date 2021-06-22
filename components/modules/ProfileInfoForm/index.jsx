@@ -2,27 +2,29 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
 import toTitleCase from 'to-title-case';
-import { setAuth } from '../../../store/actions/auth';
 import SaveBtn from '../../elements/SaveBtn';
 
-function ProfileAccountForm() {
+function ProfileInfoForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [defaultValue, setDefaultValue] = useState(null);
   const [onChange, setOnChange] = useState(false);
-  const dispatch = useDispatch();
   const router = useRouter();
   const inputRef = {
-    username: useRef(null),
-    email: useRef(null),
+    name: useRef(null),
+    address_1: useRef(null),
+    address_2: useRef(null),
+    postcode: useRef(null),
+    city: useRef(null),
+    identity: useRef(null),
+    telp: useRef(null),
   };
 
   useEffect(() => {
     setLoading(true);
 
-    axios.get('/customer/me')
+    axios.get('/customer/me/info')
       .then((res) => setDefaultValue(res.data))
       .catch(() => router.push('/login'))
       .finally(() => setLoading(false));
@@ -31,18 +33,21 @@ function ProfileAccountForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(null);
 
     const data = {
-      username: inputRef.username.current.value,
-      email: inputRef.email.current.value,
+      name: inputRef.name.current.value,
+      address_1: inputRef.address_1.current.value,
+      address_2: inputRef.address_2.current.value,
+      postcode: inputRef.postcode.current.value,
+      city: inputRef.city.current.value,
+      identity: inputRef.identity.current.value,
+      telp: inputRef.telp.current.value,
     };
 
     try {
-      await axios.put('customer', data);
+      await axios.put('customer/info', data);
       setOnChange(false);
       setError(null);
-      dispatch(setAuth(data.username));
     } catch (err) {
       const { errors, message } = err.response.data;
       setError({ ...errors, message });
@@ -53,12 +58,45 @@ function ProfileAccountForm() {
 
   const inputAttributes = [
     {
-      name: 'username',
-      value: defaultValue?.username,
+      name: 'name',
+      label: 'Nama Lengkap',
+      placeholder: 'Masukkan nama lengkap',
+      value: defaultValue?.name,
     },
     {
-      name: 'email',
-      value: defaultValue?.email,
+      name: 'address_1',
+      label: 'Alamat 1',
+      placeholder: 'Masukkan alamat 1',
+      value: defaultValue?.address_1,
+    },
+    {
+      name: 'address_2',
+      label: 'Alamat 2 (optional)',
+      placeholder: 'Masukkan alamat 2 (optional)',
+      value: defaultValue?.address_2,
+    },
+    {
+      name: 'postcode',
+      label: 'Kode pos',
+      value: defaultValue?.postcode,
+    },
+    {
+      name: 'city',
+      label: 'Kota',
+      placeholder: 'Masukkan kota asal',
+      value: defaultValue?.city,
+    },
+    {
+      name: 'identity',
+      label: 'Nomor Identitas',
+      placeholder: 'Nomor Identitas KTP/Akta Kelahiran/Pasport',
+      value: defaultValue?.identity,
+    },
+    {
+      name: 'telp',
+      label: 'Nomor Telepon',
+      placeholder: 'Masukkan nomor telepon yang bisa dihubungi',
+      value: defaultValue?.telp,
     },
   ];
 
@@ -89,9 +127,9 @@ function ProfileAccountForm() {
             />
           </div>
           {error?.[name] && (
-          <Form.Control.Feedback type="invalid">
-            {error[name].map((err) => <div>{err}</div>)}
-          </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              {error[name].map((err) => <div>{err}</div>)}
+            </Form.Control.Feedback>
           )}
         </Form.Group>
       ))}
@@ -104,4 +142,4 @@ function ProfileAccountForm() {
   );
 }
 
-export default ProfileAccountForm;
+export default ProfileInfoForm;

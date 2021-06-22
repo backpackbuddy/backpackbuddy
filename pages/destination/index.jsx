@@ -8,12 +8,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../components/layouts/app';
 import DestinationList from '../../components/modules/DestinationList';
 import BasicTopBar from '../../components/modules/Header';
+import {
+  ORDER_BY_NEWEST,
+  ORDER_BY_BEST_SELLER,
+  ORDER_BY_PRICE,
+  ORDER_HIGHEST_TO_LOWEST,
+  ORDER_LOWEST_TO_HIGHEST,
+} from '../../constants/filter-destination';
 import { filterDestinations } from '../../store/actions/destinations';
 import { selectFilterDestinations } from '../../store/selector';
-
-const ORDER_NEWEST = 'created_at';
-const ORDER_BEST_SELLER = 'orders_count';
-const ORDER_HIGHEST_TO_LOWER = 'ORDER_HIGHEST_TO_LOWER';
 
 function Destination() {
   const { search, orderBy } = useSelector(selectFilterDestinations);
@@ -21,7 +24,10 @@ function Destination() {
   const dispatch = useDispatch();
 
   const setOrderBy = (value) => {
-    dispatch(filterDestinations({ orderBy: value, order: 'DESC' }));
+    dispatch(filterDestinations({
+      orderBy: value,
+      order: 'DESC',
+    }));
   };
 
   const setSearch = (e) => {
@@ -30,10 +36,10 @@ function Destination() {
   };
 
   const setPriceOrder = (e) => {
-    if (e.target.value === ORDER_HIGHEST_TO_LOWER) {
-      dispatch(filterDestinations({ orderBy: 'sale', order: 'DESC' }));
-    } else {
-      dispatch(filterDestinations({ orderBy: 'sale', order: 'ASC' }));
+    if (e.target.value === ORDER_HIGHEST_TO_LOWEST) {
+      dispatch(filterDestinations({ orderBy: ORDER_BY_PRICE, order: 'DESC' }));
+    } else if (e.target.value === ORDER_LOWEST_TO_HIGHEST) {
+      dispatch(filterDestinations({ orderBy: ORDER_BY_PRICE, order: 'ASC' }));
     }
   };
 
@@ -56,26 +62,26 @@ function Destination() {
                     <span>Urutkan</span>
                     <span className="d-flex flex-wrap" style={{ gap: '.5rem' }}>
                       <Button
-                        onClick={() => setOrderBy(ORDER_NEWEST)}
-                        variant={orderBy === ORDER_NEWEST ? 'primary' : 'outline-primary'}
+                        onClick={() => setOrderBy(ORDER_BY_NEWEST)}
+                        variant={orderBy === ORDER_BY_NEWEST ? 'primary' : 'outline-primary'}
                       >
                         Terbaru
                       </Button>
                       <Button
-                        onClick={() => setOrderBy(ORDER_BEST_SELLER)}
-                        variant={orderBy === ORDER_BEST_SELLER ? 'primary' : 'outline-primary'}
+                        onClick={() => setOrderBy(ORDER_BY_BEST_SELLER)}
+                        variant={orderBy === ORDER_BY_BEST_SELLER ? 'primary' : 'outline-primary'}
                       >
                         Terlaris
                       </Button>
                     </span>
                   </div>
                 </Col>
-                <Col xs={12} sm md={3} lg="auto">
+                <Col xs={12} sm md={3} lg="auto" className="pl-sm-0">
                   <div className="input-group">
-                    <select className="custom-select" id="selectHarga" onChange={setPriceOrder}>
-                      <option disabled selected>Harga</option>
-                      <option value={ORDER_HIGHEST_TO_LOWER}>Harga: Tinggi ke Rendah</option>
-                      <option>Harga: Rendah ke Tinggi</option>
+                    <select className="custom-select" onChange={setPriceOrder}>
+                      <option disabled selected={orderBy !== ORDER_BY_PRICE}>Harga</option>
+                      <option value={ORDER_HIGHEST_TO_LOWEST}>Harga: Tinggi ke Rendah </option>
+                      <option value={ORDER_LOWEST_TO_HIGHEST}>Harga: Rendah ke Tinggi</option>
                     </select>
                   </div>
                 </Col>

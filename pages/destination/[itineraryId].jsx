@@ -5,21 +5,21 @@ import { useEffect, useState } from 'react';
 import {
   Button, Carousel, Col, Container, Row,
 } from 'react-bootstrap';
+import ReactMarkdown from 'react-markdown';
 import NumberFormat from 'react-number-format';
 import Rating from 'react-rating';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
 import { useSelector } from 'react-redux';
+import rehypeRaw from 'rehype-raw';
 import {
   StarFilledIcon,
   StarOutlineIcon,
 } from '../../components/elements/Icons';
 import Layout from '../../components/layouts/app';
+import DestinationLoader from '../../components/Loading/DestinationLoader';
 import BasicTopBar from '../../components/modules/Header';
 import Reviews from '../../components/modules/Reviews';
-import '../../styles/itinerary.scss';
 import { selectAuth } from '../../store/selector';
-import DestinationLoader from '../../components/Loading/DestinationLoader';
+import '../../styles/itinerary.scss';
 
 function Itinerary() {
   const router = useRouter();
@@ -163,22 +163,18 @@ function Itinerary() {
                       <div className="premium__info d-sm-flex justify-content-between align-items-center mt-2">
                         <div>
                           <span className="premium__info">
-                            (
-                            {data.reviews.length}
-                            {' '}
-                            Ulasan) |
-                            {' '}
-                            {data.view}
-                            {' '}
-                            kali
-                            dilihat
+                            {`(${data.reviews.length} Ulasan) | ${data.view} kali dilihat`}
                           </span>
                         </div>
                       </div>
                       <hr />
                       <div className="premium__description">
                         <h3>Deskripsi</h3>
-                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{data.description}</ReactMarkdown>
+                        <ReactMarkdown
+                          rehypePlugins={[rehypeRaw]}
+                        >
+                          {data.description}
+                        </ReactMarkdown>
                       </div>
                     </div>
                     <Reviews data={data.reviews} itineraryId={itineraryId} />

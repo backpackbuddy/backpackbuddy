@@ -30,7 +30,6 @@ export const fetchDestinations = () => async (dispatch, getState) => {
       type: DESTINATION_LIST_FETCH,
       payload: {
         destinations: res.data,
-        filter: { offset: 0 },
         thereIsMore: res.data.length >= limit,
       },
     });

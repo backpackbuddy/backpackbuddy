@@ -5,7 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Layout from '../../components/layouts/app';
 import Header from '../../components/modules/Header';
 import OrderForm from '../../components/modules/OrderForm';
-import ProfileAccountForm from '../../components/modules/ProfileAccountForm';
+import ProfileInfoForm from '../../components/modules/ProfileInfoForm';
 
 function Order() {
   const router = useRouter();
@@ -32,13 +32,17 @@ function Order() {
           <Row>
             <Col md="7">
               <section className="p-5 shadow-sm">
-                <h5 className="mb-3">Pastikan data sudah benar</h5>
-                <ProfileAccountForm />
+                <h5 className="mb-4 text-uppercase font-weight-bold text-primary">
+                  Pastikan data sudah benar
+                </h5>
+                <ProfileInfoForm />
               </section>
             </Col>
             <Col md="5">
               <section className="p-5 shadow-sm">
-                <h5 className="mb-3">Pilih metode pembayaran</h5>
+                <h5 className="mb-3 text-uppercase font-weight-bold text-primary">
+                  Pilih metode pembayaran
+                </h5>
                 <OrderForm itineraryId={itineraryId} />
               </section>
             </Col>
