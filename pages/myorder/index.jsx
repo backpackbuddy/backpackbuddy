@@ -7,7 +7,7 @@ import {
 import { useSelector } from 'react-redux';
 import toTitleCase from 'to-title-case';
 import Layout from '../../components/layouts/app';
-import BackpackItem from '../../components/modules/BackpackItem';
+import MyOrder from '../../components/modules/MyOrder';
 import Header from '../../components/modules/Header';
 import {
   TAB_COMPLETED,
@@ -63,7 +63,7 @@ function Backpack() {
                 <Tab eventKey={key} title={toTitleCase(title)}>
                   <div className="border border-top-0 bg-white p-4">
                     <Row>
-                      <BackpackItem
+                      <MyOrder
                         orders={orders}
                         loading={loading}
                       />

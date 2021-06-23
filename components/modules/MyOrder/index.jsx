@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Card, Col } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 import '../../../styles/backpack.scss';
-import BackpackItemLoader from './BackpackItemLoader';
+import MyOrderLoader from './MyOrderLoader';
 
-function BackpackItem({ orders, loading }) {
-  if (loading) return <BackpackItemLoader />;
+function MyOrder({ orders, loading }) {
+  if (loading) return <MyOrderLoader />;
 
   return !orders.length
     ? (
@@ -53,9 +53,9 @@ function BackpackItem({ orders, loading }) {
     ));
 }
 
-BackpackItem.propTypes = {
+MyOrder.propTypes = {
   orders: PropTypes.instanceOf(Array).isRequired,
   loading: PropTypes.bool.isRequired,
 };
 
-export default BackpackItem;
+export default MyOrder;
