@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import toTitleCase from 'to-title-case';
 import { setAuth } from '../../../store/actions/auth';
@@ -15,6 +15,7 @@ function ProfileAccountForm() {
   const dispatch = useDispatch();
   const router = useRouter();
   const inputRef = {
+    name: useRef(null),
     username: useRef(null),
     email: useRef(null),
   };
@@ -34,6 +35,7 @@ function ProfileAccountForm() {
     setError(null);
 
     const data = {
+      name: inputRef.name.current.value,
       username: inputRef.username.current.value,
       email: inputRef.email.current.value,
     };
@@ -52,6 +54,12 @@ function ProfileAccountForm() {
   };
 
   const inputAttributes = [
+    {
+      name: 'name',
+      label: 'Nama Lengkap',
+      placeholder: 'Masukkan nama lengkap',
+      value: defaultValue?.name,
+    },
     {
       name: 'username',
       value: defaultValue?.username,
@@ -87,12 +95,12 @@ function ProfileAccountForm() {
               isInvalid={Boolean(error?.[name])}
               placeholder={placeholder || `Masukkan ${name}`}
             />
+            {error?.[name] && (
+            <Form.Control.Feedback type="invalid">
+              {error[name].map((err) => <div>{err}</div>)}
+            </Form.Control.Feedback>
+            )}
           </div>
-          {error?.[name] && (
-          <Form.Control.Feedback type="invalid">
-            {error[name].map((err) => <div>{err}</div>)}
-          </Form.Control.Feedback>
-          )}
         </Form.Group>
       ))}
       <div className="row">

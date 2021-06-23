@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import toTitleCase from 'to-title-case';
 import SaveBtn from '../../elements/SaveBtn';
 
@@ -12,7 +12,6 @@ function ProfileInfoForm() {
   const [onChange, setOnChange] = useState(false);
   const router = useRouter();
   const inputRef = {
-    name: useRef(null),
     address_1: useRef(null),
     address_2: useRef(null),
     postcode: useRef(null),
@@ -35,7 +34,6 @@ function ProfileInfoForm() {
     setLoading(true);
 
     const data = {
-      name: inputRef.name.current.value,
       address_1: inputRef.address_1.current.value,
       address_2: inputRef.address_2.current.value,
       postcode: inputRef.postcode.current.value,
@@ -57,12 +55,6 @@ function ProfileInfoForm() {
   };
 
   const inputAttributes = [
-    {
-      name: 'name',
-      label: 'Nama Lengkap',
-      placeholder: 'Masukkan nama lengkap',
-      value: defaultValue?.name,
-    },
     {
       name: 'address_1',
       label: 'Alamat 1',

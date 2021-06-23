@@ -29,6 +29,11 @@ function ProfilePasswordForm() {
       await axios.put('customer/password', data);
       setOnChange(false);
       setError(null);
+
+      // reset input
+      inputRef.old_password.current.value = '';
+      inputRef.password.current.value = '';
+      inputRef.password_confirmation.current.value = '';
     } catch (err) {
       const { errors, message } = err.response.data;
       setError({ ...errors, message });

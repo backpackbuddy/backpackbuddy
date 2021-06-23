@@ -6,15 +6,17 @@ import {
 } from 'react-floating-button-menu';
 
 // Icons
-import { ChatIcon, CloseIcon, WhatsappIcon, MessengerIcon } from '../Icons';
+import {
+  ChatIcon, CloseIcon, WhatsappIcon, MessengerIcon,
+} from '../Icons';
 
-import { whatsappLink, messengerLink } from '../../../constants/sosmed-links';
+import { WHATSAPP_LINK, MESSENGER_LINK } from '../../../constants/sosmed-links';
 
 function ContactBtn() {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleIsOpen() {
-    return setIsOpen(prevPros => !prevPros);
+    return setIsOpen((prevPros) => !prevPros);
   }
 
   return (
@@ -39,20 +41,20 @@ function ContactBtn() {
       />
       <ChildButton
         background="white"
-        icon={
-          <a href={whatsappLink}>
+        icon={(
+          <a href={WHATSAPP_LINK}>
             <WhatsappIcon width="20px" height="20px" />
           </a>
-        }
+        )}
         size={50}
       />
       <ChildButton
         background="white"
-        icon={
-          <a href={messengerLink} target="_blank" rel="noreferrer">
+        icon={(
+          <a href={MESSENGER_LINK} target="_blank" rel="noreferrer">
             <MessengerIcon width="20px" height="20px" />
           </a>
-        }
+        )}
         size={50}
       />
     </FloatingMenu>

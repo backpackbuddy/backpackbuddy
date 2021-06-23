@@ -59,7 +59,7 @@ function Me() {
                       {[
                         {
                           icon: faUser,
-                          text: 'PROFIL SAYA',
+                          text: 'IDENTITAS SAYA',
                           url: `/me/${PAGE_PROFILE}`,
                         },
                         {
@@ -89,7 +89,7 @@ function Me() {
                     <section className="px-4 px-lg-5 py-4">
                       {page === PAGE_PROFILE && (
                       <>
-                        <Title text="UBAH PROFIL" />
+                        <Title text="UBAH IDENTITAS SAYA" />
                         <ProfileInfoForm />
                       </>
                       )}

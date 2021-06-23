@@ -8,29 +8,29 @@ import {
 
 // variables
 import {
-  facebookLink,
-  youtubeLink,
-  instagramLink,
-  linkedinLink,
+  FACEBOOK_LINK,
+  YOUTUBE_LINK,
+  INSTAGRAM_LINK,
+  LINKEDIN_LINK,
 } from '../../../constants/sosmed-links';
 
 function Sosmed(props) {
   return [
     {
       Icon: FacebookIcon,
-      url: facebookLink,
+      url: FACEBOOK_LINK,
     },
     {
       Icon: YoutubeIcon,
-      url: youtubeLink,
+      url: YOUTUBE_LINK,
     },
     {
       Icon: InstagramIcon,
-      url: instagramLink,
+      url: INSTAGRAM_LINK,
     },
     {
       Icon: LinkedInIcon,
-      url: linkedinLink,
+      url: LINKEDIN_LINK,
     },
   ].map(({ Icon, url }) => (
     <a href={url} target="_blank" key={url} rel="noreferrer">

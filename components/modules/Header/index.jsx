@@ -112,9 +112,8 @@ function Header(props) {
             >
               |
             </div>
-            <hr className="text-secondary d-lg-none" />
             {isLoggedIn ? (
-              <NavDropdown title={user?.username}>
+              <NavDropdown title={user?.username} alignRight>
                 <Link href="/me/profile">
                   <NavDropdown.Item
                     className="d-flex align-items-center"
@@ -125,7 +124,7 @@ function Header(props) {
                       className="mr-2"
                       fixedWidth
                       icon={faUser}
-                    /> Profil
+                    /> Akun Saya
                   </NavDropdown.Item>
                 </Link>
                 <Link href="/backpack">
@@ -137,19 +136,19 @@ function Header(props) {
                       className="mr-2"
                       fixedWidth
                       icon={faSuitcaseRolling}
-                    /> Backpack
+                    /> Ransel Saya
                   </NavDropdown.Item>
                 </Link>
-                <Link href="/order">
+                <Link href="/myorder">
                   <NavDropdown.Item
                     className="d-flex align-items-center"
-                    href="/order"
+                    href="/myorder"
                   >
                     <FontAwesomeIcon
                       className="mr-2"
                       fixedWidth
                       icon={faCartArrowDown}
-                    /> Pesanan
+                    /> Pesanan Saya
                   </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />

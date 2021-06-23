@@ -1,22 +1,19 @@
 import Link from 'next/link';
-import pt from 'prop-types';
+import PropTypes from 'prop-types';
 import { Card, Col } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
-import DestinationCardLoader from '../../Loading/DestinationCardLoader';
 import '../../../styles/backpack.scss';
+import BackpackItemLoader from './BackpackItemLoader';
 
 function BackpackItem({ orders, loading }) {
-  if (loading) {
-    return Array.from(Array(4)).map(() => (
-      <Col className="mb-4" md={6} lg={4} xl={3}>
-        <DestinationCardLoader />
-      </Col>
-    ));
-  }
+  if (loading) return <BackpackItemLoader />;
 
   return !orders.length
     ? (
-      <div className="w-100 text-center text-danger d-flex align-items-center justify-content-center" style={{ minHeight: '300px' }}>
+      <div
+        className="w-100 text-center text-danger d-flex align-items-center justify-content-center"
+        style={{ minHeight: '300px' }}
+      >
         Tidak ada data yang dapat ditampilkan
       </div>
     )
@@ -57,8 +54,8 @@ function BackpackItem({ orders, loading }) {
 }
 
 BackpackItem.propTypes = {
-  orders: pt.instanceOf(Array).isRequired,
-  loading: pt.bool.isRequired,
+  orders: PropTypes.instanceOf(Array).isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default BackpackItem;

@@ -9,6 +9,11 @@ import toTitleCase from 'to-title-case';
 import Layout from '../../components/layouts/app';
 import BackpackItem from '../../components/modules/BackpackItem';
 import Header from '../../components/modules/Header';
+import {
+  TAB_COMPLETED,
+  TAB_FAILED,
+  TAB_PENDING,
+} from '../../constants/order-tab';
 import { selectAuth } from '../../store/selector';
 
 function Backpack() {
@@ -41,8 +46,21 @@ function Backpack() {
               activeKey={tab}
               onSelect={setTab}
             >
-              {['pending', 'completed', 'failed'].map((key) => (
-                <Tab eventKey={key} title={toTitleCase(key)}>
+              {[
+                {
+                  key: TAB_PENDING,
+                  title: 'tertunda',
+                },
+                {
+                  key: TAB_COMPLETED,
+                  title: 'selesai',
+                },
+                {
+                  key: TAB_FAILED,
+                  title: 'gagal',
+                },
+              ].map(({ key, title }) => (
+                <Tab eventKey={key} title={toTitleCase(title)}>
                   <div className="border border-top-0 bg-white p-4">
                     <Row>
                       <BackpackItem

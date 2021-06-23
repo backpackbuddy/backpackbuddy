@@ -1,17 +1,11 @@
 import {
   Button, Col, Container, Form, Row,
 } from 'react-bootstrap';
-
-// icons
 import { MessengerIcon, WhatsappIcon } from '../components/elements/Icons';
-
-// sosmed links
-import { whatsappLink, messengerLink } from '../constants/sosmed-links';
-
-// Components
+import Sosmed from '../components/elements/Sosmed';
 import Layout from '../components/layouts/app';
 import BasicTopBar from '../components/modules/Header';
-import Sosmed from '../components/elements/Sosmed';
+import { MESSENGER_LINK, WHATSAPP_LINK } from '../constants/sosmed-links';
 
 function Contact() {
   return (
@@ -46,10 +40,10 @@ function Contact() {
               <Sosmed width="38px" height="38px" className="m-1 m-lg-2" />
               <h5 className="mt-3">Personal Chat</h5>
               <div className="m-1 m-lg-2">
-                <a className="mr-2" href={whatsappLink}>
+                <a className="mr-2" href={WHATSAPP_LINK}>
                   <WhatsappIcon height="38px" width="38px" />
                 </a>
-                <a href={messengerLink}>
+                <a href={MESSENGER_LINK}>
                   <MessengerIcon height="38px" width="38px" />
                 </a>
               </div>

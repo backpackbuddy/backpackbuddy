@@ -12,16 +12,14 @@ function Order() {
   const { itineraryId } = router.query;
 
   useEffect(() => {
-    if (typeof itineraryId === 'string') {
-      axios.get(`order/exist/${itineraryId}`)
-        .then((res) => {
-          if (res.data.exist) {
-            alert('You already oldered this');
-            router.back();
-          }
-        })
-        .catch();
-    }
+    axios.get(`order/exist/${itineraryId}`)
+      .then((res) => {
+        if (res.data.exist) {
+          alert('You already oldered this');
+          router.back();
+        }
+      })
+      .catch();
   }, [itineraryId]);
 
   return (
