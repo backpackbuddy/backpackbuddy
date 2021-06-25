@@ -5,7 +5,7 @@ import pt from 'prop-types';
 import Footer from '../modules/Footer';
 import ContactBtn from '../elements/FloatBtn';
 
-function Layout (props) {
+function Layout(props) {
   const { children } = props;
   return (
     <>

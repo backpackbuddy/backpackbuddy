@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { Button, Carousel, Container } from 'react-bootstrap';
 import '../../../styles/intro.scss';
 
-function Intro () {
-  function Btn () {
+function Intro() {
+  function Btn() {
     return (
-      <Link href="/destinasi">
+      <Link href="/destination">
         <Button className="intro__btn mt-5">Cari tau disini</Button>
       </Link>
     );

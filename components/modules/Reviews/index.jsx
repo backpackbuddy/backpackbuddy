@@ -1,4 +1,4 @@
-import pt from 'prop-types';
+import PropTypes from 'prop-types';
 import Rating from 'react-rating';
 import ReviewForm from '../ReviewForm';
 import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';
@@ -55,8 +55,8 @@ function Reviews({ data, itineraryId }) {
 }
 
 Reviews.propTypes = {
-  data: pt.instanceOf(Array).isRequired,
-  itineraryId: pt.string.isRequired,
+  data: PropTypes.instanceOf(Array).isRequired,
+  itineraryId: PropTypes.string.isRequired,
 };
 
 export default Reviews;

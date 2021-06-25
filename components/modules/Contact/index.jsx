@@ -1,4 +1,6 @@
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import {
+  Button, Col, Form, Row,
+} from 'react-bootstrap';
 import '../../../styles/contact.scss';
 
 function Contact() {
