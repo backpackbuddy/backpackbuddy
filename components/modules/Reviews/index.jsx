@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import Rating from 'react-rating';
 import ReviewForm from '../ReviewForm';
 import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';
-import '../../../styles/comments.scss';
 
 function Reviews({ data, itineraryId }) {
   return (

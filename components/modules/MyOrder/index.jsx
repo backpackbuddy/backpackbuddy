@@ -2,7 +2,6 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Card, Col } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
-import '../../../styles/backpack.scss';
 import MyOrderLoader from './MyOrderLoader';
 
 function MyOrder({ orders, loading }) {

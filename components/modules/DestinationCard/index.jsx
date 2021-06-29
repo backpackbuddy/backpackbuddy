@@ -4,7 +4,6 @@ import { Card } from 'react-bootstrap';
 import { LocationIcon } from '../../elements/Icons';
 import PriceTag from '../../elements/PriceTag';
 import Stars from '../../elements/Stars';
-import '../../../styles/destination.scss';
 
 function DestinationCard({
   id,

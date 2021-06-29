@@ -19,7 +19,6 @@ import DestinationLoader from '../../components/loader/DestinationLoader';
 import BasicTopBar from '../../components/modules/Header';
 import Reviews from '../../components/modules/Reviews';
 import { selectAuth } from '../../store/selector';
-import '../../styles/itinerary.scss';
 
 function Itinerary() {
   const router = useRouter();

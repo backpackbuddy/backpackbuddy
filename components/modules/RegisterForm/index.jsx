@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import toTitleCase from 'to-title-case';
-import { setAuthenticated } from '../../../utils/auth';
 
 function RegisterForm() {
   const router = useRouter();
@@ -42,8 +41,7 @@ function RegisterForm() {
     };
 
     try {
-      const res = await axios.post('/register', data);
-      await setAuthenticated(await res.data);
+      await axios.post('/register', data);
       router.back();
     } catch (err) {
       const { errors, message } = err.response.data;
@@ -124,12 +122,11 @@ function RegisterForm() {
             isInvalid={Boolean(error?.[name])}
             placeholder={placeholder || `Masukkan ${name}`}
           />
-          {error?.[name]
-						&& (
-<Form.Control.Feedback type="invalid">
-  {error[name].map((err) => <div>{err}</div>)}
-</Form.Control.Feedback>
-						)}
+          {error?.[name] && (
+          <Form.Control.Feedback type="invalid">
+            {error[name].map((err) => <div>{err}</div>)}
+          </Form.Control.Feedback>
+          )}
         </Form.Group>
       ))}
       <Button

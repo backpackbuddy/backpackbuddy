@@ -6,7 +6,6 @@ import {
 import BasicTopBar from '../components/modules/Header';
 import Layout from '../components/layouts/app';
 import Sosmed from '../components/elements/Sosmed';
-import '../styles/about.scss';
 
 function About() {
   return (

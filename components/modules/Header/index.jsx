@@ -12,7 +12,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { deauthenticate } from '../../../store/actions/auth';
 import { selectAuth } from '../../../store/selector';
-import '../../../styles/header.scss';
 import setAxiosConfig from '../../../utils/axios-config';
 
 function Header(props) {

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import pt from 'prop-types';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -43,9 +43,9 @@ function App({ Component, pageProps, router }) {
 }
 
 App.propTypes = {
-  Component: pt.func.isRequired,
-  pageProps: pt.instanceOf(Object).isRequired,
-  router: pt.instanceOf(Object).isRequired,
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.instanceOf(Object).isRequired,
+  router: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default App;

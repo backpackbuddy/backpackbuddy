@@ -23,7 +23,6 @@ import DestinationCardLoader from '../components/loader/DestinationCardLoader';
 import DestinationCard from '../components/modules/DestinationCard';
 import TopBar from '../components/modules/Header';
 import Intro from '../components/modules/Intro';
-import '../styles/home.scss';
 
 function Home() {
   const [destinations, selectDestinations] = useState([]);
