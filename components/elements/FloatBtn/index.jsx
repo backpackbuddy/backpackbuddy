@@ -42,7 +42,7 @@ function ContactBtn() {
       <ChildButton
         background="white"
         icon={(
-          <a href={WHATSAPP_LINK}>
+          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer">
             <WhatsappIcon width="20px" height="20px" />
           </a>
         )}
