@@ -1,4 +1,3 @@
-import 'bootstrap/scss/bootstrap.scss';
 import '../styles/globals.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import Router from 'next/router';
