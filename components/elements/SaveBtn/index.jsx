@@ -14,7 +14,7 @@ function SaveBtn({ onChange, loading }) {
       {loading ? (
         <div className="d-flex align-items-center">
           <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" />
-          <span className="ml-1">Loading...</span>
+          <span className="ml-1">Tunggu sebentar...</span>
         </div>
       ) : (
         <>

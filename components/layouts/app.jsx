@@ -1,10 +1,25 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import Footer from '../modules/Footer';
+import {
+  Toast, ToastBody, ToastHeader,
+} from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import toTitleCase from 'to-title-case';
+import { closeToast } from '../../store/actions/toast';
+import { selectToast } from '../../store/selector';
 import ContactBtn from '../elements/FloatBtn';
+import Footer from '../modules/Footer';
 
 function Layout(props) {
   const { children } = props;
+  const {
+    title, message, show, bg,
+  } = useSelector(selectToast);
+  const dispatch = useDispatch();
+
+  const handleCloseToast = () => {
+    dispatch(closeToast);
+  };
 
   return (
     <>
@@ -32,6 +47,26 @@ function Layout(props) {
       <main {...props}>{children}</main>
       <ContactBtn />
       <Footer />
+      <div
+        style={{
+          position: 'absolute',
+          top: '5rem',
+          right: '1rem',
+        }}
+      >
+        <Toast
+          show={show}
+          onClose={handleCloseToast}
+          delay={4000}
+          autohide
+          bg={bg}
+        >
+          <ToastHeader>
+            <strong>{toTitleCase(title)}</strong>
+          </ToastHeader>
+          <ToastBody>{message}</ToastBody>
+        </Toast>
+      </div>
     </>
   );
 }

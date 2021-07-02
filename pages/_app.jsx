@@ -1,4 +1,3 @@
-import '../styles/globals.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import Router from 'next/router';
 import NProgress from 'nprogress';
@@ -8,6 +7,7 @@ import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import { useStore } from '../store';
+import '../styles/globals.scss';
 
 NProgress.configure({
   easing: 'ease',

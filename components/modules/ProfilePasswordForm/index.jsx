@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import toTitleCase from 'to-title-case';
+import { setToast } from '../../../store/actions/toast';
 import SaveBtn from '../../elements/SaveBtn';
 
 function ProfilePasswordForm() {
@@ -13,6 +15,7 @@ function ProfilePasswordForm() {
     password: useRef(null),
     password_confirmation: useRef(null),
   };
+  const dispatch = useDispatch();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +37,12 @@ function ProfilePasswordForm() {
       inputRef.old_password.current.value = '';
       inputRef.password.current.value = '';
       inputRef.password_confirmation.current.value = '';
+
+      // send toast notification
+      dispatch(setToast({
+        title: 'Ganti Password',
+        message: 'Password berhasil diperbaharui',
+      }));
     } catch (err) {
       const { errors, message } = err.response.data;
       setError({ ...errors, message });
