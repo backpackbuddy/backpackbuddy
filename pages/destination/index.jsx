@@ -80,7 +80,7 @@ function Destination() {
                 </Col>
                 <Col xs={12} sm md={3} lg="auto" className="pl-sm-0">
                   <div className="input-group">
-                    <select className="custom-select" onChange={setPriceOrder}>
+                    <select className="custom-select" onChange={setPriceOrder} defaultValue="Harga">
                       <option disabled selected={orderBy !== ORDER_BY_PRICE}>Harga</option>
                       <option value={ORDER_HIGHEST_TO_LOWEST}>Harga: Tinggi ke Rendah </option>
                       <option value={ORDER_LOWEST_TO_HIGHEST}>Harga: Rendah ke Tinggi</option>

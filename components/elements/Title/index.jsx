@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import { cslx } from '../../../utils/cslx';
 
-function Title({
-  text, className, children, style,
-}) {
+function Title({ className, children, style }) {
   return (
     <h1
       className={cslx('font-weight-bold mb-3 text-primary', className)}
@@ -12,7 +10,7 @@ function Title({
         ...style,
       }}
     >
-      { children || text }
+      { children }
     </h1>
   );
 }
@@ -23,7 +21,6 @@ Title.defaultProps = {
 };
 
 Title.propTypes = {
-  text: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
   className: PropTypes.string,
   style: PropTypes.instanceOf(Object),

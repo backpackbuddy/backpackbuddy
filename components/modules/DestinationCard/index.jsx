@@ -44,8 +44,8 @@ function DestinationCard({
         </Card.Title>
         <PriceTag
           className="my-3"
-          sale={Number(sale)}
-          price={Number(price)}
+          sale={sale}
+          price={price}
         />
         <div className="d-flex align-items-center justify-content-between">
           <Stars rating={average_rating} />
@@ -59,11 +59,11 @@ function DestinationCard({
 DestinationCard.propTypes = {
   id: PropTypes.number.isRequired,
   featured_picture_thumb: PropTypes.string.isRequired,
-  media: PropTypes.instanceOf(Array).isRequired,
+  media: PropTypes.arrayOf(PropTypes.string).isRequired,
   place_name: PropTypes.string.isRequired,
   average_rating: PropTypes.number,
-  sale: PropTypes.string,
-  price: PropTypes.string.isRequired,
+  sale: PropTypes.number,
+  price: PropTypes.number.isRequired,
   orders_count: PropTypes.number.isRequired,
 };
 

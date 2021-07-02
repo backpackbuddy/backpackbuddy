@@ -12,10 +12,9 @@ import Loading from '../../components/elements/Loading';
 import Title from '../../components/elements/Title';
 import Layout from '../../components/layouts/app';
 import Header from '../../components/modules/Header';
-import PageHeader from '../../components/elements/PageHeader';
+import ProfileSecurity from '../../components/modules/ProfileAccount';
 import ProfileInfoForm from '../../components/modules/ProfileInfoForm';
 import ProfileMenu from '../../components/modules/ProfileMenu';
-import ProfileSecurity from '../../components/modules/ProfileAccount';
 import { deauthenticate } from '../../store/actions/auth';
 import { selectAuth } from '../../store/selector';
 
@@ -90,7 +89,7 @@ function Me() {
                     <section className="px-4 px-lg-5 py-4">
                       {page === PAGE_PROFILE && (
                       <>
-                        <Title text="UBAH IDENTITAS SAYA" />
+                        <Title>UBAH IDENTITAS SAYA</Title>
                         <ProfileInfoForm />
                       </>
                       )}

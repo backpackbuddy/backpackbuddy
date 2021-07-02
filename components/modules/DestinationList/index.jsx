@@ -35,7 +35,7 @@ function DestinationList() {
           md={4}
           lg={3}
           // eslint-disable-next-line react/prop-types
-          key={props.place_name}
+          key={props.id}
         >
           <DestinationCard {...props} />
         </Col>

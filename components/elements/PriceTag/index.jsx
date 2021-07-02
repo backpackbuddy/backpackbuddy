@@ -37,8 +37,14 @@ PriceTag.defaultProps = {
 };
 
 PriceTag.propTypes = {
-  price: PropTypes.number,
-  sale: PropTypes.number,
+  price: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  sale: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
 };
 
 export default PriceTag;

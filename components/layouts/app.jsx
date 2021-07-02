@@ -1,8 +1,5 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { ToastContainer } from 'react-nextjs-toast';
-
-// Components
 import Footer from '../modules/Footer';
 import ContactBtn from '../elements/FloatBtn';
 
@@ -32,7 +29,6 @@ function Layout(props) {
           rel="stylesheet"
         />
       </Head>
-      <ToastContainer />
       <main {...props}>{children}</main>
       <ContactBtn />
       <Footer />
@@ -41,7 +37,10 @@ function Layout(props) {
 }
 
 Layout.propTypes = {
-  children: PropTypes.instanceOf(Object).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
 };
 
 export default Layout;
