@@ -6,6 +6,7 @@ import {
 import BasicTopBar from '../components/modules/Header';
 import Layout from '../components/layouts/app';
 import Sosmed from '../components/elements/Sosmed';
+import PageHeader from '../components/elements/PageHeader';
 
 function About() {
   return (
@@ -14,8 +15,10 @@ function About() {
       <Layout>
         <section className="pt-4">
           <Container className="text-dark">
-            <h1 className="text-center">About Us</h1>
-            <p className="text-center">Your digital travel buddy</p>
+            <PageHeader
+              title="tentang kami"
+              description="Your digital travel buddy"
+            />
             <Row className="justify-content-center mt-4">
               <Col xs={12} md={5}>
                 <Image

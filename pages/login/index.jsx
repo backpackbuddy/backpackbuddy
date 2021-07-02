@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import Title from '../../components/elements/Title';
 import Layout from '../../components/layouts/app';
 import Header from '../../components/modules/Header';
 import LoginForm from '../../components/modules/LoginForm';
@@ -26,7 +27,12 @@ function Login() {
               className="bg-white shadow-sm py-5 px-4 px-sm-5"
               md={{ span: 6, offset: 3 }}
             >
-              <h1 className="text-center mb-5">Login</h1>
+              <Title
+                className="text-center mb-5"
+                style={{ fontSize: '2.5rem' }}
+              >
+                LOGIN
+              </Title>
               <LoginForm />
               <div className="text-center mt-4">
                 Belum punya akun?&nbsp;

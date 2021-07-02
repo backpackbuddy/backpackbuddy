@@ -5,6 +5,7 @@ import {
   Col, Container, Row, Button, InputGroup, FormControl,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import PageHeader from '../../components/elements/PageHeader';
 import Layout from '../../components/layouts/app';
 import DestinationList from '../../components/modules/DestinationList';
 import BasicTopBar from '../../components/modules/Header';
@@ -49,9 +50,10 @@ function Destination() {
       <Layout>
         <section className="pt-4">
           <Container>
-            <h1 className="text-center">Destinasi Wisata</h1>
-            <p className="text-center">Pilihan Destinasi Wisata di Bali</p>
-
+            <PageHeader
+              title="destinasi wisata"
+              description="Pilihan destinasi wisata di Bali"
+            />
             <div
               className="mb-3 p-3 shadow-sm"
               style={{ backgroundColor: '#f7f7f7' }}

@@ -50,6 +50,7 @@ function ProfilePasswordForm() {
     },
     {
       name: 'password',
+      label: 'Password Baru',
       placeholder: 'Masukkan password baru',
     },
     {

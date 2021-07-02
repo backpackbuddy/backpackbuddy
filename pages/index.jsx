@@ -36,7 +36,7 @@ function Home() {
 
   const Loader = () => Array.from(Array(4)).map((_, i) => (
     // eslint-disable-next-line react/no-array-index-key
-    <Col className="mb-4" xs={6} md={4} lg={3} key={`Loader-${i}`}>
+    <Col className="mb-4" xs={12} md={4} lg={3} key={`Loader-${i}`}>
       <DestinationCardLoader />
     </Col>
   ));
@@ -84,8 +84,8 @@ function Home() {
             <Row className="my-2 my-md-0">
               {loading ? <Loader /> : destinations.slice(0, 4).map((props) => (
                 <Col
-                  className="place__destination mb-4 px-1 px-sm-3"
-                  xs={6}
+                  className="place__destination mb-4"
+                  xs={12}
                   md={4}
                   lg={3}
                   // eslint-disable-next-line react/prop-types

@@ -2,6 +2,7 @@ import {
   Button, Col, Container, Form, Row,
 } from 'react-bootstrap';
 import { MessengerIcon, WhatsappIcon } from '../components/elements/Icons';
+import PageHeader from '../components/elements/PageHeader';
 import Sosmed from '../components/elements/Sosmed';
 import Layout from '../components/layouts/app';
 import BasicTopBar from '../components/modules/Header';
@@ -13,7 +14,7 @@ function Contact() {
       <BasicTopBar />
       <Layout>
         <Container className="my-5">
-          <h1 className="text-center mb-4">Let&apos;s Chat</h1>
+          <PageHeader title="kontak" description="Let's chat" />
           <Row className="justify-content-center">
             <Col
               className="bg-white shadow-sm p-4 mt-4 mt-lg-0"

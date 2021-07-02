@@ -25,7 +25,7 @@ function Header(props) {
     if (isLoggedIn) {
       axios.get('/customer/me/info')
         .catch(({ response }) => {
-          if (response.data.message === 'Unauthenticated.') {
+          if (response.data.message === 'Unauthenticated') {
             dispatch(deauthenticate());
           }
         });

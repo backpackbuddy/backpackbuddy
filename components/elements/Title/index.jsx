@@ -6,9 +6,8 @@ function Title({
 }) {
   return (
     <h1
-      className={cslx('font-weight-bold mb-3', className)}
+      className={cslx('font-weight-bold mb-3 text-primary', className)}
       style={{
-        color: '#3aabe6',
         fontSize: '1.4rem',
         ...style,
       }}

@@ -12,6 +12,7 @@ import Loading from '../../components/elements/Loading';
 import Title from '../../components/elements/Title';
 import Layout from '../../components/layouts/app';
 import Header from '../../components/modules/Header';
+import PageHeader from '../../components/elements/PageHeader';
 import ProfileInfoForm from '../../components/modules/ProfileInfoForm';
 import ProfileMenu from '../../components/modules/ProfileMenu';
 import ProfileSecurity from '../../components/modules/ProfileAccount';

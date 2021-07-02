@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import pt from 'prop-types';
+import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-nextjs-toast';
 
 // Components
 import Footer from '../modules/Footer';
@@ -7,6 +8,7 @@ import ContactBtn from '../elements/FloatBtn';
 
 function Layout(props) {
   const { children } = props;
+
   return (
     <>
       <Head>
@@ -23,12 +25,15 @@ function Layout(props) {
         />
         <title>Backpack Buddy</title>
         <link rel="favicon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
           rel="stylesheet"
         />
       </Head>
-      <main {...props}> {children} </main>
+      <ToastContainer />
+      <main {...props}>{children}</main>
       <ContactBtn />
       <Footer />
     </>
@@ -36,7 +41,7 @@ function Layout(props) {
 }
 
 Layout.propTypes = {
-  children: pt.instanceOf(Object).isRequired,
+  children: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Layout;

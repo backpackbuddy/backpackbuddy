@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import Title from '../../components/elements/Title';
 import Layout from '../../components/layouts/app';
 import Header from '../../components/modules/Header';
 import RegisterForm from '../../components/modules/RegisterForm';
@@ -28,7 +29,12 @@ function Register() {
               className="bg-white shadow-sm py-5 px-4 px-sm-5"
               md={{ span: 6, offset: 3 }}
             >
-              <h1 className="text-center mb-5">Buat Akun</h1>
+              <Title
+                className="text-center mb-5"
+                style={{ fontSize: '2.5rem' }}
+              >
+                BUAT AKUN
+              </Title>
               <RegisterForm />
               <div className="text-center mt-4">
                 Sudah terdaftar?&nbsp;
