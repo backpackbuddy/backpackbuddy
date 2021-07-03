@@ -55,14 +55,14 @@ function Layout(props) {
         }}
       >
         <Toast
-          show={show}
-          onClose={handleCloseToast}
-          delay={4000}
           autohide
           bg={bg}
+          delay={7000}
+          onClose={handleCloseToast}
+          show={show}
         >
           <ToastHeader>
-            <strong>{toTitleCase(title)}</strong>
+            <strong className="mr-auto">{toTitleCase(title)}</strong>
           </ToastHeader>
           <ToastBody>{message}</ToastBody>
         </Toast>

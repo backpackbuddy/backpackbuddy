@@ -10,7 +10,7 @@ export const initialState = {
   destinations: [],
   filter: {
     offset: 0,
-    limit: 12,
+    limit: 20,
     orderBy: ORDER_BY_NEWEST,
     order: 'DESC',
     search: '',
