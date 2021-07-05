@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import { useStore } from '../store';
-import '../styles/globals.scss';
+import '../styles/app.scss';
 
 NProgress.configure({
   easing: 'ease',
