@@ -2,7 +2,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef } from 'react';
 import {
-  Col, Container, Row, Button, InputGroup, FormControl,
+  Button, Col, Container, FormControl, InputGroup, Row,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import PageHeader from '../../components/elements/PageHeader';
@@ -10,9 +10,7 @@ import Layout from '../../components/layouts/app';
 import DestinationList from '../../components/modules/DestinationList';
 import BasicTopBar from '../../components/modules/Header';
 import {
-  ORDER_BY_NEWEST,
-  ORDER_BY_BEST_SELLER,
-  ORDER_BY_PRICE,
+  ORDER_BY_BEST_SELLER, ORDER_BY_NEWEST, ORDER_BY_PRICE,
   ORDER_HIGHEST_TO_LOWEST,
   ORDER_LOWEST_TO_HIGHEST,
 } from '../../constants/filter-destination';
