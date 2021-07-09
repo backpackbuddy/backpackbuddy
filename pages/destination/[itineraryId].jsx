@@ -10,10 +10,7 @@ import NumberFormat from 'react-number-format';
 import Rating from 'react-rating';
 import { useSelector } from 'react-redux';
 import rehypeRaw from 'rehype-raw';
-import {
-  StarFilledIcon,
-  StarOutlineIcon,
-} from '../../components/elements/Icons';
+import { StarFilledIcon, StarOutlineIcon } from '../../components/elements/Icons';
 import Layout from '../../components/layouts/app';
 import DestinationLoader from '../../components/loader/DestinationLoader';
 import BasicTopBar from '../../components/modules/Header';
