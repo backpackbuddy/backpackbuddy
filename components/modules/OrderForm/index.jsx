@@ -21,9 +21,8 @@ function OrderForm({ itineraryId }) {
     };
 
     axios.post('/order', data)
-    // eslint-disable-next-line no-alert
-      .catch(() => router.push('/login'))
-      .finally(() => router.push('/backpack'));
+      .then((res) => router.push(`/myorder/${res.data.id}`))
+      .catch(() => router.push('/login'));
   };
 
   return (

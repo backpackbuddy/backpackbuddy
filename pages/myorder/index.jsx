@@ -47,6 +47,11 @@ function Backpack() {
                 <>
                   <MyOrderListMobile orders={orders} />
                   <MyOrderList orders={orders} />
+                  {!orders.length && (
+                    <section className="px-3 pt-lg-5">
+                      <div className="text-danger text-center">Anda belum pernah melakukan pemesanan.</div>
+                    </section>
+                  )}
                 </>
               )}
             </Col>

@@ -5,6 +5,7 @@ import { Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import toTitleCase from 'to-title-case';
 import { setAuth } from '../../../store/actions/auth';
+import { setToast } from '../../../store/actions/toast';
 import SaveBtn from '../../elements/SaveBtn';
 
 function ProfileAccountForm() {
@@ -45,6 +46,11 @@ function ProfileAccountForm() {
       setOnChange(false);
       setError(null);
       dispatch(setAuth(data.username));
+      // send toast notification
+      dispatch(setToast({
+        title: 'Perbarui Informasi Akun',
+        message: 'Informasi akun berhasil diperbaharui',
+      }));
     } catch (err) {
       const { errors, message } = err.response.data;
       setError({ ...errors, message });

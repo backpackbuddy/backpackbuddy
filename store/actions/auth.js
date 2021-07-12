@@ -12,7 +12,7 @@ export const authenticate = (creds) => async (dispatch) => {
 };
 
 export const deauthenticate = () => async (dispatch) => {
-  await axios.post('/logout');
+  await axios.post('/logout').catch(() => {});
   dispatch({ type: DEAUTHENTICATE });
 };
 

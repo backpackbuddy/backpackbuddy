@@ -1,4 +1,3 @@
-import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import PriceTag from '../../elements/PriceTag';

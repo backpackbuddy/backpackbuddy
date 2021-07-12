@@ -6,19 +6,19 @@ import StatusBadge from '../../elements/StatusBadge';
 
 function MyOrderList({ orders }) {
   return (
-    <section className="p-4">
-      <Table className="d-none d-lg-table" borderless>
+    <section className="p-4 d-none d-lg-block">
+      <Table borderless>
         <thead className="border-bottom">
           <tr className="text-primary">
             <th>PRODUK</th>
             <th>KODE PESANAN</th>
             <th>STATUS</th>
+            <th>DIUPDATE</th>
             <th>TOTAL</th>
           </tr>
         </thead>
         <tbody>
           {orders.map(({
-            id,
             itinerary_id,
             featured_picture,
             place_name,
@@ -27,6 +27,7 @@ function MyOrderList({ orders }) {
             price,
             code,
             ordered_at,
+            updated_at,
           }) => (
             <tr key={code}>
               <td>
@@ -50,18 +51,10 @@ function MyOrderList({ orders }) {
                   <StatusBadge statusCode={status_code}>{status}</StatusBadge>
                 </div>
               </td>
+              <td>{updated_at}</td>
               <td>
                 <div className="d-flex align-items-center">
                   <PriceTag price={price} />
-                  <Link href={`/myorder/${id}`}>
-                    <a
-                      href={`/myorder/${id}`}
-                      className="btn btn-outline-primary ml-auto text-nowrap"
-                      variant="outline-primary"
-                    >
-                      Rincian Pesanan
-                    </a>
-                  </Link>
                 </div>
               </td>
             </tr>

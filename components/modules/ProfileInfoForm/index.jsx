@@ -2,7 +2,9 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import toTitleCase from 'to-title-case';
+import { setToast } from '../../../store/actions/toast';
 import SaveBtn from '../../elements/SaveBtn';
 
 function ProfileInfoForm() {
@@ -11,6 +13,7 @@ function ProfileInfoForm() {
   const [defaultValue, setDefaultValue] = useState(null);
   const [onChange, setOnChange] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
   const inputRef = {
     address_1: useRef(null),
     address_2: useRef(null),
@@ -46,6 +49,11 @@ function ProfileInfoForm() {
       await axios.put('customer/info', data);
       setOnChange(false);
       setError(null);
+      // send toast notification
+      dispatch(setToast({
+        title: 'Perbarui Informasi Profil',
+        message: 'Informasi profil berhasil diperbaharui',
+      }));
     } catch (err) {
       const { errors, message } = err.response.data;
       setError({ ...errors, message });

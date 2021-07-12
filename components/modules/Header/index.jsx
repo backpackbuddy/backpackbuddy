@@ -25,7 +25,7 @@ function Header(props) {
     if (isLoggedIn) {
       axios.get('/customer/me/info')
         .catch(({ response }) => {
-          if (response.data.message === 'Unauthenticated') {
+          if (response.data.message.includes('Unauthenticated')) {
             dispatch(deauthenticate());
           }
         });
@@ -124,18 +124,6 @@ function Header(props) {
                       fixedWidth
                       icon={faUser}
                     /> Akun Saya
-                  </NavDropdown.Item>
-                </Link>
-                <Link href="/backpack">
-                  <NavDropdown.Item
-                    className="d-flex align-items-center"
-                    href="/backpack"
-                  >
-                    <FontAwesomeIcon
-                      className="mr-2"
-                      fixedWidth
-                      icon={faSuitcaseRolling}
-                    /> Ransel Saya
                   </NavDropdown.Item>
                 </Link>
                 <Link href="/myorder">
