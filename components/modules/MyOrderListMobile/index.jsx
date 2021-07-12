@@ -5,7 +5,6 @@ import StatusBadge from '../../elements/StatusBadge';
 
 function MyOrderListMobile({ orders }) {
   return orders.map(({
-    id,
     itinerary_id,
     featured_picture,
     place_name,
@@ -14,6 +13,7 @@ function MyOrderListMobile({ orders }) {
     price,
     code,
     ordered_at,
+    updated_at,
   }) => (
     <div className="d-lg-none p-3 mb-2 bg-white shadow-sm" key={code}>
       <div className="d-flex" style={{ gap: '.8rem' }}>
@@ -28,7 +28,7 @@ function MyOrderListMobile({ orders }) {
               {place_name}
             </a>
           </Link>
-          <small className="d-block text-right">{ordered_at}</small>
+          <small className="d-block">{ordered_at}</small>
         </div>
       </div>
       {[
@@ -41,22 +41,15 @@ function MyOrderListMobile({ orders }) {
           content: <PriceTag className="d-inline-block" price={price} />,
         },
         {
-          title: <StatusBadge statusCode={status_code}>{status}</StatusBadge>,
+          title: 'Status:',
+          content: <StatusBadge statusCode={status_code}>{status}</StatusBadge>,
         },
         {
-          title: (
-            <Link href={`/myorder/${id}`}>
-              <a
-                className="d-block w-100 btn btn-link btn-sm font-weight-bold mt-1 shadow-none"
-                href={`/myorder/${id}`}
-              >
-                LIHAT PESANAN
-              </a>
-            </Link>
-          ),
+          title: 'Diupdate:',
+          content: updated_at,
         },
       ].map(({ title, content }) => (
-        <div className="text-right pt-2 mt-2 border-top">
+        <div className="text-right pt-2 mt-2 border-top d-flex justify-content-between">
           <span>{title}</span>
           <span>{content}</span>
         </div>

@@ -4,13 +4,16 @@ import pt from 'prop-types';
 import { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import Rating from 'react-rating';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setToast } from '../../../store/actions/toast';
 import { selectAuth } from '../../../store/selector';
 import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';
 
 function ReviewForm({ data = [], itineraryId }) {
   const { isLoggedIn } = useSelector(selectAuth);
   const [userRating, setUserRating] = useState(5);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const content = useRef(null);
   const router = useRouter();
 
@@ -20,6 +23,8 @@ function ReviewForm({ data = [], itineraryId }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     const formData = {
       content: content.current.value,
@@ -28,7 +33,10 @@ function ReviewForm({ data = [], itineraryId }) {
 
     axios.post(`/review/${itineraryId}`, formData)
       .then(router.reload)
-      .catch((err) => alert(err.response.data.message));
+      .catch((err) => {
+        setError(err.response.data.message);
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -75,15 +83,17 @@ function ReviewForm({ data = [], itineraryId }) {
           type="text"
           rows={4}
           placeholder="Tulis ulasan"
-          disabled={!isLoggedIn}
+          disabled={!isLoggedIn || loading}
           ref={content}
           required
+          isInvalid={error}
         />
+        <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
       </Form.Group>
 
       {isLoggedIn
         ? (
-          <Button variant="outline-primary" type="submit">
+          <Button variant="outline-primary" type="submit" disabled={loading}>
             Kirim Ulasan
           </Button>
         ) : (

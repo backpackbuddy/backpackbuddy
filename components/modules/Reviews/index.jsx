@@ -11,12 +11,14 @@ function Reviews({ data, itineraryId }) {
           <h3>Ulasan</h3>
           <ReviewForm data={data} itineraryId={itineraryId} />
         </div>
-        <div className="comment__comments">
+        <div className="comment__comments border-top mt-4 pt-4">
+          {!data.length && (
+            <div className="text-center py-5 text-secondary">Jadilah yang pertama memberikan ulasan.</div>
+          )}
           {data.map(({
             name, is_edited, updated_at, rating, content,
           }) => (
-            <div key={name}>
-              <hr />
+            <div className="border-bottom" key={name}>
               <div>
                 <div className="ml-4">
                   <div className="d-flex align-text-center flex-wrap justify-content-between">
