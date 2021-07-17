@@ -1,3 +1,5 @@
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -116,12 +118,26 @@ function Itinerary() {
                         </h3>
                       )}
                       <Link href={`/order/${itineraryId}`}>
-                        <Button
-                          className="w-100 mt-4"
-                          disabled={isAlreadyOrdered || !isLoggedIn}
-                        >
-                          {isAlreadyOrdered ? 'Sudah ada di ransel' : 'Pesan Sekarang'}
-                        </Button>
+                        {isLoggedIn ? (
+                          <Button
+                            className="w-100 mt-4 text-uppercase font-weight-bold"
+                            disabled={isAlreadyOrdered}
+                          >
+                            {isAlreadyOrdered ? 'Sudah ada di ransel' : 'Pesan Sekarang'}
+                          </Button>
+                        ) : (
+                          <Button
+                            className="w-100 mt-4 text-uppercase font-weight-bold"
+                            onClick={() => {}}
+                          >
+                            <FontAwesomeIcon
+                              className="mr-2"
+                              fixedWidth
+                              icon={faSignInAlt}
+                            />
+                            Login
+                          </Button>
+                        ) }
                       </Link>
 
                       <hr />

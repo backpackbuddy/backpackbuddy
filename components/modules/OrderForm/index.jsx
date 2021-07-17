@@ -21,7 +21,7 @@ function OrderForm({ itineraryId }) {
     };
 
     axios.post('/order', data)
-      .then((res) => router.push(`/myorder/${res.data.id}`))
+      .then((res) => router.push('/myorder'))
       .catch(() => router.push('/login'));
   };
 
@@ -38,12 +38,11 @@ function OrderForm({ itineraryId }) {
             label="Transfer Bank"
             isInvalid={Boolean(error?.payment)}
           />
-          {error?.payment
-						&& (
-<Form.Control.Feedback type="invalid">
-  {error.payment.map((err) => <div>{err}</div>)}
-</Form.Control.Feedback>
-						)}
+          {error?.payment && (
+          <Form.Control.Feedback type="invalid">
+            {error.payment.map((err) => <div>{err}</div>)}
+          </Form.Control.Feedback>
+          )}
         </Form.Group>
         <Button
           className="d-block w-100 mt-4"

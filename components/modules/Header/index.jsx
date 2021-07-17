@@ -67,7 +67,12 @@ function Header(props) {
           </Navbar.Brand>
           {isLoggedIn || (
           <Link href="/login">
-            <a className="ml-auto mr-3 d-lg-none btn btn-outline-secondary" href="/login">Login</a>
+            <a
+              className="ml-auto mr-3 d-lg-none btn btn-outline-secondary text-uppercase font-weight-bold"
+              href="/login"
+            >
+              Login
+            </a>
           </Link>
           )}
           <Navbar.Toggle className={isLoggedIn && 'ml-auto'} aria-controls="bb-navbar-nav" />
@@ -164,7 +169,7 @@ function Header(props) {
             ].map(({ url, name, classes }) => (
               <Link href={url} key={name}>
                 <Nav.Link
-                  className={`px-lg-3 text-nowrap ${classes}`}
+                  className={`px-lg-3 text-nowrap font-weight-bold text-uppercase ${classes}`}
                   style={{ fontSize: '1.1em' }}
                   href={url}
                 >
