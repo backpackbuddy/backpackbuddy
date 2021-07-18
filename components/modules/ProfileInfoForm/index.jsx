@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import toTitleCase from 'to-title-case';
 import { setToast } from '../../../store/actions/toast';
 import SaveBtn from '../../elements/SaveBtn';
+import Title from '../../elements/Title';
 
 function ProfileInfoForm() {
   const [loading, setLoading] = useState(false);
@@ -101,44 +102,47 @@ function ProfileInfoForm() {
   ];
 
   return (
-    <Form onSubmit={onSubmit} method="POST">
-      {inputAttributes.map(({
-        label, name, type, placeholder = null, value,
-      }) => (
-        <Form.Group
-          className="row align-items-center"
-          key={name}
-          controlId={`input${toTitleCase(name)}`}
-        >
-          <div className="col-12 col-sm-4">
-            <Form.Label className="mb-0">{label || toTitleCase(name)}</Form.Label>
-          </div>
-          <div className="col-12 col-sm-6">
-            <Form.Control
-              key={name}
-              type={type || 'text'}
-              name={name}
-              disabled={loading}
-              defaultValue={value}
-              onChange={setOnChange}
-              ref={inputRef[name]}
-              isInvalid={Boolean(error?.[name])}
-              placeholder={placeholder || `Masukkan ${name}`}
-            />
-          </div>
-          {error?.[name] && (
+    <>
+      <Title>UBAH IDENTITAS SAYA</Title>
+      <Form onSubmit={onSubmit} method="POST">
+        {inputAttributes.map(({
+          label, name, type, placeholder = null, value,
+        }) => (
+          <Form.Group
+            className="row align-items-center"
+            key={name}
+            controlId={`input${toTitleCase(name)}`}
+          >
+            <div className="col-12 col-sm-4">
+              <Form.Label className="mb-0">{label || toTitleCase(name)}</Form.Label>
+            </div>
+            <div className="col-12 col-sm-6">
+              <Form.Control
+                key={name}
+                type={type || 'text'}
+                name={name}
+                disabled={loading}
+                defaultValue={value}
+                onChange={setOnChange}
+                ref={inputRef[name]}
+                isInvalid={Boolean(error?.[name])}
+                placeholder={placeholder || `Masukkan ${name}`}
+              />
+            </div>
+            {error?.[name] && (
             <Form.Control.Feedback type="invalid">
               {error[name].map((err) => <div>{err}</div>)}
             </Form.Control.Feedback>
-          )}
-        </Form.Group>
-      ))}
-      <div className="row">
-        <div className="col-12 offset-sm-4 col-sm-6">
-          <SaveBtn onChange={onChange} loading={loading} />
+            )}
+          </Form.Group>
+        ))}
+        <div className="row">
+          <div className="col-12 offset-sm-4 col-sm-6">
+            <SaveBtn onChange={onChange} loading={loading} />
+          </div>
         </div>
-      </div>
-    </Form>
+      </Form>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import {
-  faCommentDots, faLock, faSignOutAlt, faUser,
+  faCartArrowDown, faLock, faSignOutAlt, faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/router';
@@ -9,18 +9,18 @@ import {
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../../components/elements/Loading';
-import Title from '../../components/elements/Title';
 import Layout from '../../components/layouts/app';
 import Header from '../../components/modules/Header';
 import ProfileSecurity from '../../components/modules/ProfileAccount';
 import ProfileInfoForm from '../../components/modules/ProfileInfoForm';
 import ProfileMenu from '../../components/modules/ProfileMenu';
+import ProfileMyOrders from '../../components/modules/ProfileMyOrders';
 import { deauthenticate } from '../../store/actions/auth';
 import { selectAuth } from '../../store/selector';
 
 const PAGE_PROFILE = 'profile';
 const PAGE_ACCOUNT = 'account';
-const PAGE_MYREVIEW = 'review';
+const PAGE_MYORDER = 'orders';
 
 function Me() {
   const router = useRouter();
@@ -68,9 +68,9 @@ function Me() {
                           url: `/me/${PAGE_ACCOUNT}`,
                         },
                         {
-                          icon: faCommentDots,
-                          text: 'ULASAN SAYA',
-                          url: `/me/${PAGE_MYREVIEW}`,
+                          icon: faCartArrowDown,
+                          text: 'PESANAN SAYA',
+                          url: `/me/${PAGE_MYORDER}`,
                         },
                       ].map(ProfileMenu)}
                       <Button
@@ -81,19 +81,15 @@ function Me() {
                         <span className="mr-3">
                           <FontAwesomeIcon icon={faSignOutAlt} />
                         </span>
-                        <span className="">LOGOUT</span>
+                        <span>LOGOUT</span>
                       </Button>
                     </section>
                   </Col>
                   <Col md={8}>
                     <section className="px-4 px-lg-5 py-4">
-                      {page === PAGE_PROFILE && (
-                      <>
-                        <Title>UBAH IDENTITAS SAYA</Title>
-                        <ProfileInfoForm />
-                      </>
-                      )}
+                      {page === PAGE_PROFILE && <ProfileInfoForm />}
                       {page === PAGE_ACCOUNT && <ProfileSecurity />}
+                      {page === PAGE_MYORDER && <ProfileMyOrders />}
                     </section>
                   </Col>
                 </Row>
