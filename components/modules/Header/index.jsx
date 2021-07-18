@@ -110,51 +110,16 @@ function Header(props) {
                 </Nav.Link>
               </Link>
             ))}
-            <div
-              className="px-lg-3 text-secondary d-none d-lg-block"
-              style={{ fontSize: '1.2rem' }}
-            >
-              |
-            </div>
             {isLoggedIn ? (
-              <NavDropdown title={user?.username} alignRight>
-                <Link href="/me/profile">
-                  <NavDropdown.Item
-                    className="d-flex align-items-center"
-                    href="/me/profile"
-                    active={router.pathname.includes('/me/')}
-                  >
-                    <FontAwesomeIcon
-                      className="mr-2"
-                      fixedWidth
-                      icon={faUser}
-                    /> Akun Saya
-                  </NavDropdown.Item>
-                </Link>
-                <Link href="/myorder">
-                  <NavDropdown.Item
-                    className="d-flex align-items-center"
-                    href="/myorder"
-                  >
-                    <FontAwesomeIcon
-                      className="mr-2"
-                      fixedWidth
-                      icon={faCartArrowDown}
-                    /> Pesanan Saya
-                  </NavDropdown.Item>
-                </Link>
-                <NavDropdown.Divider />
-                <NavDropdown.Item
-                  className="d-flex align-items-center text-danger"
-                  onClick={logoutHandler}
+              <Link href="/me/profile">
+                <Nav.Link
+                  className="px-lg-3 text-nowrap"
+                  style={{ fontSize: '1.1em' }}
+                  href="/me/profile"
                 >
-                  <FontAwesomeIcon
-                    className="mr-2"
-                    fixedWidth
-                    icon={faSignOutAlt}
-                  /> Log out
-                </NavDropdown.Item>
-              </NavDropdown>
+                  {user.username}
+                </Nav.Link>
+              </Link>
             ) : [
               {
                 url: '/login',
