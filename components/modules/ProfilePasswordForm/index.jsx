@@ -79,7 +79,7 @@ function ProfilePasswordForm() {
           controlId={`input${toTitleCase(name)}`}
         >
           <div className="col-12 col-sm-4">
-            <Form.Label>{label || toTitleCase(name)}</Form.Label>
+            <Form.Label className="mb-0">{label || toTitleCase(name)}</Form.Label>
           </div>
           <div className="col-12 col-sm-6">
             <Form.Control

@@ -1,13 +1,9 @@
-import {
-  faCartArrowDown, faSignOutAlt, faSuitcaseRolling, faUser,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import {
-  Container, Image, Nav, Navbar, NavDropdown,
+  Container, Image, Nav, Navbar,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { deauthenticate } from '../../../store/actions/auth';
@@ -31,10 +27,6 @@ function Header(props) {
         });
     }
   }, [user.access_token]);
-
-  const logoutHandler = () => {
-    dispatch(deauthenticate());
-  };
 
   return (
     <Navbar
