@@ -60,7 +60,7 @@ function Header(props) {
           {isLoggedIn || (
           <Link href="/login">
             <a
-              className="ml-auto mr-3 d-lg-none btn btn-outline-secondary text-uppercase font-weight-bold"
+              className="ml-auto mr-3 d-lg-none btn btn-outline-secondary"
               href="/login"
             >
               Login
@@ -126,7 +126,7 @@ function Header(props) {
             ].map(({ url, name, classes }) => (
               <Link href={url} key={name}>
                 <Nav.Link
-                  className={`px-lg-3 text-nowrap font-weight-bold text-uppercase ${classes}`}
+                  className={`px-lg-3 text-nowrap ${classes}`}
                   style={{ fontSize: '1.1em' }}
                   href={url}
                 >
