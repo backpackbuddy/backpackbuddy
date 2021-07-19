@@ -1,4 +1,4 @@
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faLocationArrow, faSignInAlt, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import Link from 'next/link';
@@ -149,11 +149,7 @@ function Itinerary() {
                   </Col>
                   <Col lg={8}>
                     <div className="shadow-sm p-4 my-4 my-lg-0 bg-white">
-                      <h1>
-                        {' '}
-                        {data.place_name}
-                        {' '}
-                      </h1>
+                      <h1>{data.place_name}</h1>
                       <Rating
                         readonly
                         emptySymbol={(
@@ -178,6 +174,14 @@ function Itinerary() {
                             {`(${data.reviews.length} Ulasan) | ${data.view} kali dilihat`}
                           </span>
                         </div>
+                      </div>
+                      <div className="d-flex align-items-center text-secondary">
+                        <FontAwesomeIcon icon={faTag} />
+                        <span>&nbsp;{data.categories}</span>
+                      </div>
+                      <div className="d-flex align-items-center text-secondary">
+                        <FontAwesomeIcon icon={faLocationArrow} />
+                        <span>&nbsp;{data.districts}</span>
                       </div>
                       <hr />
                       <div className="premium__description">
