@@ -8,7 +8,7 @@ function ProfileAccount() {
       <Title>UBAH INFORMASI AKUN</Title>
       <ProfileAccountForm />
       <div className="mt-5">
-        <Title className="text-dark" text="GANTI PASSWORD" />
+        <Title style={{ fontSize: '1.3rem' }}>GANTI PASSWORD</Title>
         <ProfilePasswordForm />
       </div>
     </>
