@@ -7,6 +7,7 @@ import BasicTopBar from '../components/modules/Header';
 import Layout from '../components/layouts/app';
 import Sosmed from '../components/elements/Sosmed';
 import PageHeader from '../components/elements/PageHeader';
+import Title from '../components/elements/Title';
 
 function About() {
   return (
@@ -80,9 +81,9 @@ function About() {
                 />
               </Col>
               <Col xs={12} md={6}>
-                <h2 className="mt-2 mt-md-0 text-center text-md-left">
+                <Title className="mt-2 mt-md-0 text-center text-md-left text-uppercase" style={{ fontSize: '2rem' }}>
                   Niken Pertiwi
-                </h2>
+                </Title>
                 <p>
                   Hai, saya Niki, saya merupakan founder dari Backpack Buddy.
                   Saya berpengalaman dari tahun 2015 mengelola Chagiya Korean
@@ -106,9 +107,9 @@ function About() {
                 />
               </Col>
               <Col xs={12} md={6}>
-                <h2 className="mt-2 mt-md-0 text-center text-md-left">
+                <Title className="mt-2 mt-md-0 text-center text-md-left text-uppercase" style={{ fontSize: '2rem' }}>
                   Utary Dewi
-                </h2>
+                </Title>
                 <p>
                   Saya menyukai traveling dan bertualang ke tempat-tempat baru.
                   Berpengalaman kerja di perhotelan dan pariwisata selama 11

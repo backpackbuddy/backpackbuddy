@@ -4,6 +4,7 @@ import {
 import { MessengerIcon, WhatsappIcon } from '../components/elements/Icons';
 import PageHeader from '../components/elements/PageHeader';
 import Sosmed from '../components/elements/Sosmed';
+import Title from '../components/elements/Title';
 import Layout from '../components/layouts/app';
 import BasicTopBar from '../components/modules/Header';
 import { MESSENGER_LINK, WHATSAPP_LINK } from '../constants/sosmed-links';
@@ -22,7 +23,7 @@ function Contact() {
               lg={4}
             >
               <Col className="px-0" sm={6} md={12}>
-                <h4>Alamat</h4>
+                <Title style={{ fontSize: '1.8rem' }}>ALAMAT</Title>
                 <p>
                   Balai Diklat Industri Denpasar Gedung Animation Jl. WR
                   Supratman no. 302 Tohpati Denpasar – Bali
@@ -30,16 +31,16 @@ function Contact() {
               </Col>
 
               <Col className="px-0" sm={6} md={12}>
-                <h5>Jam Kerja</h5>
+                <Title style={{ fontSize: '1.1rem' }}>JAM KERJA</Title>
                 <p>
                   Senin - Jumat: 9:00 AM – 5:00 PM
                   <br />
                   Sabtu : 11:00 AM – 3:00 PM
                 </p>
               </Col>
-              <h5>Social Media</h5>
+              <Title style={{ fontSize: '1.1rem' }}>SOCIAL MEDIA</Title>
               <Sosmed width="38px" height="38px" className="m-1 m-lg-2" />
-              <h5 className="mt-3">Personal Chat</h5>
+              <Title className="mt-3" style={{ fontSize: '1.1rem' }}>PERSONAL CHAT</Title>
               <div className="m-1 m-lg-2">
                 <a className="mr-2" href={WHATSAPP_LINK}>
                   <WhatsappIcon height="38px" width="38px" />
@@ -54,7 +55,7 @@ function Contact() {
               xs={{ span: 12, order: 'first' }}
               lg={{ offset: 1, span: 6, order: 'last' }}
             >
-              <h4 className="text-center mb-4">Kirim Pesan</h4>
+              <Title className="text-center" style={{ fontSize: '1.8rem' }}>KIRIM PESAN</Title>
               <Form action="/api/sendmail" method="POST">
                 <Row>
                   <Col xs={12} sm={6}>
@@ -91,8 +92,8 @@ function Contact() {
                 </Row>
                 <Row>
                   <Col>
-                    <Button variant="primary" type="submit">
-                      Kirim Pesan
+                    <Button className="font-weight-bold" variant="primary" type="submit">
+                      KIRIM PESAN
                     </Button>
                   </Col>
                 </Row>
