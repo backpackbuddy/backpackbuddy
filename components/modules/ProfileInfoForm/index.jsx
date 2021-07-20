@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
@@ -8,7 +9,7 @@ import { setToast } from '../../../store/actions/toast';
 import SaveBtn from '../../elements/SaveBtn';
 import Title from '../../elements/Title';
 
-function ProfileInfoForm() {
+function ProfileInfoForm({ displayTitle = true }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [defaultValue, setDefaultValue] = useState(null);
@@ -103,7 +104,7 @@ function ProfileInfoForm() {
 
   return (
     <>
-      <Title>UBAH IDENTITAS SAYA</Title>
+      { displayTitle && <Title>UBAH IDENTITAS SAYA</Title> }
       <Form onSubmit={onSubmit} method="POST">
         {inputAttributes.map(({
           label, name, type, placeholder = null, value,
@@ -145,5 +146,9 @@ function ProfileInfoForm() {
     </>
   );
 }
+
+ProfileInfoForm.propTypes = {
+  displayTitle: PropTypes.bool,
+};
 
 export default ProfileInfoForm;

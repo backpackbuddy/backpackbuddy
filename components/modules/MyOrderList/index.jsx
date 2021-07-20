@@ -15,7 +15,7 @@ function MyOrderList({ orders }) {
     ordered_at,
     updated_at,
   }) => (
-    <div className="p-3 mb-3 bg-white shadow-sm" key={code}>
+    <div className="p-2 p-lg-3 mb-3 bg-light shadow-sm" key={code}>
       <div className="d-flex" style={{ gap: '.8rem' }}>
         <Link href={`/destination/${itinerary_id}`}>
           <a href={`/destination/${itinerary_id}`}>

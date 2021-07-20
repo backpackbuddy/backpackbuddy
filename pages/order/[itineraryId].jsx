@@ -40,7 +40,7 @@ function Order() {
                 <h5 className="mb-4 text-uppercase font-weight-bold text-primary">
                   Pastikan data sudah benar
                 </h5>
-                <ProfileInfoForm />
+                <ProfileInfoForm displayTitle={false} />
               </section>
             </Col>
             <Col md="5">

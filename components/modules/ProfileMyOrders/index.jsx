@@ -27,7 +27,7 @@ function ProfileMyOrders() {
   }, [isLoggedIn]);
 
   return (
-    <Container>
+    <>
       <Title>PESANAN SAYA</Title>
       <Row>
         <Col xs={12}>
@@ -35,15 +35,15 @@ function ProfileMyOrders() {
             <>
               <MyOrderList orders={orders} />
               {!orders.length && (
-                <section className="px-3 pt-lg-5">
-                  <div className="text-danger text-center">Anda belum pernah melakukan pemesanan.</div>
-                </section>
+              <section className="px-3 pt-lg-5">
+                <div className="text-danger text-center">Anda belum pernah melakukan pemesanan.</div>
+              </section>
               )}
             </>
           )}
         </Col>
       </Row>
-    </Container>
+    </>
   );
 }
 

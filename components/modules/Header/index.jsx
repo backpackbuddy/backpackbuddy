@@ -1,3 +1,5 @@
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -14,6 +16,10 @@ function Header(props) {
   const { isLoggedIn, user } = useSelector(selectAuth);
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const logoutHandler = () => {
+    dispatch(deauthenticate());
+  };
 
   useEffect(() => {
     setAxiosConfig(user.access_token);
@@ -103,15 +109,25 @@ function Header(props) {
               </Link>
             ))}
             {isLoggedIn ? (
-              <Link href="/me/profile">
+              <>
+                <Link href="/me/profile">
+                  <Nav.Link
+                    className="px-lg-3 text-nowrap"
+                    style={{ fontSize: '1.1em' }}
+                    href="/me/profile"
+                  >
+                    {user.username}
+                  </Nav.Link>
+                </Link>
                 <Nav.Link
-                  className="px-lg-3 text-nowrap"
+                  className="d-lg-none border-top mt-3 pt-3 px-lg-3 text-nowrap text-danger"
                   style={{ fontSize: '1.1em' }}
-                  href="/me/profile"
+                  onClick={logoutHandler}
                 >
-                  {user.username}
+                  <FontAwesomeIcon icon={faSignOutAlt} />
+                  &nbsp;Logout
                 </Nav.Link>
-              </Link>
+              </>
             ) : [
               {
                 url: '/login',

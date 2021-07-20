@@ -1,8 +1,6 @@
 import { Button, Container, Image } from 'react-bootstrap';
-
-// Components
-import Sosmed from '../../elements/Sosmed';
 import { FooterArrowIcon } from '../../elements/Icons';
+import Sosmed from '../../elements/Sosmed';
 
 function Footer() {
   function scrollToTop() {
