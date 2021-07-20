@@ -1,16 +1,9 @@
 import { useState } from 'react';
+import { ChildButton, FloatingMenu, MainButton } from 'react-floating-button-menu';
+import { MESSENGER_LINK, WHATSAPP_LINK } from '../../../constants/sosmed-links';
 import {
-  FloatingMenu,
-  MainButton,
-  ChildButton,
-} from 'react-floating-button-menu';
-
-// Icons
-import {
-  ChatIcon, CloseIcon, WhatsappIcon, MessengerIcon,
+  ChatIcon, CloseIcon, MessengerIcon, WhatsappIcon,
 } from '../Icons';
-
-import { WHATSAPP_LINK, MESSENGER_LINK } from '../../../constants/sosmed-links';
 
 function ContactBtn() {
   const [isOpen, setIsOpen] = useState(false);
