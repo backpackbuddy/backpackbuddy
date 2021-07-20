@@ -21,7 +21,7 @@ function OrderForm({ itineraryId }) {
     };
 
     axios.post('/order', data)
-      .then((res) => router.push('/myorder'))
+      .then(() => router.push('/me/orders'))
       .catch(() => router.push('/login'));
   };
 
