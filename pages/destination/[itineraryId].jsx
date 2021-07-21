@@ -117,15 +117,17 @@ function Itinerary() {
                           />
                         </h3>
                       )}
-                      <Link href={`/order/${itineraryId}`}>
-                        {isLoggedIn ? (
+                      {isLoggedIn ? (
+                        <Link href={`/order/${itineraryId}`}>
                           <Button
                             className="w-100 mt-4 text-uppercase font-weight-bold"
                             disabled={isAlreadyOrdered}
                           >
-                            {isAlreadyOrdered ? 'Sudah ada di ransel' : 'Pesan Sekarang'}
+                            {isAlreadyOrdered ? 'Sudah Dipesan' : 'Pesan Sekarang'}
                           </Button>
-                        ) : (
+                        </Link>
+                      ) : (
+                        <Link href="/login">
                           <Button
                             className="w-100 mt-4 text-uppercase font-weight-bold"
                             onClick={() => {}}
@@ -137,8 +139,8 @@ function Itinerary() {
                             />
                             Login
                           </Button>
-                        ) }
-                      </Link>
+                        </Link>
+                      )}
 
                       <hr />
 
