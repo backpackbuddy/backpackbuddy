@@ -91,7 +91,7 @@ function ProfileInfoForm({ displayTitle = true }) {
     {
       name: 'identity',
       label: 'Nomor Identitas',
-      placeholder: 'Nomor Identitas KTP/Akta Kelahiran/Pasport',
+      placeholder: 'Nomor KTP/Pasport/Visa',
       value: defaultValue?.identity,
     },
     {
