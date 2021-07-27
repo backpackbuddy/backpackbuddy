@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { selectAuth } from '../../../store/selector';
 import Title from '../../elements/Title';

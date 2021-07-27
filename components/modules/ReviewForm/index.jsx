@@ -4,8 +4,7 @@ import pt from 'prop-types';
 import { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import Rating from 'react-rating';
-import { useDispatch, useSelector } from 'react-redux';
-import { setToast } from '../../../store/actions/toast';
+import { useSelector } from 'react-redux';
 import { selectAuth } from '../../../store/selector';
 import { StarFilledIcon, StarOutlineIcon } from '../../elements/Icons';
 
