@@ -108,6 +108,11 @@ function Header(props) {
                 </Nav.Link>
               </Link>
             ))}
+            <Nav.Link
+              className="d-none d-lg-inline-block"
+              style={{ cursor: 'default' }}
+            > |
+            </Nav.Link>
             {isLoggedIn ? (
               <>
                 <Link href="/me/profile">
