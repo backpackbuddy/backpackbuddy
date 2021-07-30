@@ -129,12 +129,12 @@ function ProfileInfoForm({ displayTitle = true }) {
                 isInvalid={Boolean(error?.[name])}
                 placeholder={placeholder || `Masukkan ${name}`}
               />
+              {error?.[name] && (
+              <Form.Control.Feedback type="invalid">
+                {error[name].map((err) => <div>{err}</div>)}
+              </Form.Control.Feedback>
+              )}
             </div>
-            {error?.[name] && (
-            <Form.Control.Feedback type="invalid">
-              {error[name].map((err) => <div>{err}</div>)}
-            </Form.Control.Feedback>
-            )}
           </Form.Group>
         ))}
         <div className="row">
