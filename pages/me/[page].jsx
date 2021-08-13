@@ -75,7 +75,7 @@ function Me() {
                 <Row>
                   <Col md={4}>
                     <section
-                      className="px-4 px-lg-5 py-4 d-none d-lg-flex flex-column"
+                      className="px-4 px-lg-5 py-4 d-none d-md-flex flex-column"
                       style={{ rowGap: '1rem' }}
                     >
                       {/* desktop menu */}
@@ -93,7 +93,7 @@ function Me() {
                     </section>
 
                     {/* mobile menu */}
-                    <section className="d-lg-none p-0 mb-3">
+                    <section className="d-md-none p-0 mb-3">
                       <select className="custom-select" onChange={handleMobileMenu} value={`/me/${page}`}>
                         {menu.map(({ text, url }) => (
                           <option value={url}>{text}</option>

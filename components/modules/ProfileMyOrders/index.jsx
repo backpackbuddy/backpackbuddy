@@ -1,30 +1,19 @@
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { selectAuth } from '../../../store/selector';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMyOrders } from '../../../store/actions/myOrders';
+import { selectMyOrders } from '../../../store/selector';
 import Title from '../../elements/Title';
 import MyOrderLoader from '../../loader/MyOrderLoader';
 import MyOrderList from '../MyOrderList';
 
 function ProfileMyOrders() {
-  const [orders, setOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { isLoggedIn } = useSelector(selectAuth);
-  const router = useRouter();
+  const { orders = [], loading } = useSelector(selectMyOrders);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
-
-    if (!isLoggedIn) {
-      router.push('/login');
-    }
-
-    axios.get('/order')
-      .then((res) => setOrders(res.data))
-      .finally(() => setLoading(false));
-  }, [isLoggedIn]);
+    dispatch(fetchMyOrders());
+  }, []);
 
   return (
     <>

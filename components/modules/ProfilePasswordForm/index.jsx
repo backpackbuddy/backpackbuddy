@@ -42,6 +42,7 @@ function ProfilePasswordForm() {
       dispatch(setToast({
         title: 'Ganti Password',
         message: 'Password berhasil diperbaharui',
+        bg: 'success',
       }));
     } catch (err) {
       const { errors, message } = err.response.data;
