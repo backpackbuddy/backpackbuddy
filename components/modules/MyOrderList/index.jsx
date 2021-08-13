@@ -15,11 +15,9 @@ function MyOrderList({ orders }) {
 
   const isPayed = (status_code) => status_code === 4;
 
-  const receiptUploadHandler = async (e) => {
-    // eslint-disable-next-line no-restricted-globals
-    if (confirm('Upload file sekarang?')) {
+  const receiptUploadHandler = async (e, id, index) => {
+    if (window.confirm('Upload file sekarang?')) {
       const [file] = e.target.files;
-      const { id, index } = e.target.dataset;
 
       const formData = new FormData();
       formData.append('receipt', file, 'receipt');
@@ -31,7 +29,6 @@ function MyOrderList({ orders }) {
         dispatch(setToast({
           title: 'Upload Berhasil',
           message: 'Upload Bukti Pembayaran Berhasil!',
-          bg: 'success',
         }));
 
         dispatch(updateMyOrder(res, index));
@@ -60,9 +57,7 @@ function MyOrderList({ orders }) {
         </Link>
         <div className="flex-fill text-truncate">
           <Link href={`/destination/${itinerary_id}`}>
-            <a href={`/destination/${itinerary_id}`}>
-              {place_name}
-            </a>
+            <a href={`/destination/${itinerary_id}`}>{place_name}</a>
           </Link>
           <small className="d-block">{ordered_at}</small>
         </div>
@@ -94,26 +89,26 @@ function MyOrderList({ orders }) {
         </div>
       ))}
 
-      <label
-        className={cslx(
-          status_code >= 3 && 'disabled',
-          'mx-auto d-block text-uppercase mt-3 btn btn-link btn-sm',
-        )}
-        htmlFor="receipt"
-      >
-        <input
-          type="file"
-          className="d-none"
-          id="receipt"
-          name="receipt"
-          data-id={id}
-          data-index={index}
-          onChange={receiptUploadHandler}
-          disabled={isPayed(status_code)}
-        />
-        <FontAwesomeIcon className="mr-2" icon={isPayed(status_code) ? faCheck : faUpload} />
-        {isPayed(status_code) ? 'Menunggu Konfirmasi' : 'Upload Bukti Pembayaran'}
-      </label>
+      <form className="d-flex justify-content-between align-items-center">
+        <label
+          className={cslx(
+            isPayed(status_code) && 'disabled',
+            'mx-auto d-block text-uppercase mt-3 btn btn-link btn-sm',
+          )}
+          htmlFor={`receipt-${id}`}
+        >
+          <input
+            type="file"
+            className="d-none"
+            id={`receipt-${id}`}
+            name="receipt"
+            disabled={isPayed(status_code)}
+            onChange={(e) => receiptUploadHandler(e, id, index)}
+          />
+          <FontAwesomeIcon className="mr-2" icon={isPayed(status_code) ? faCheck : faUpload} />
+          {isPayed(status_code) ? 'Menunggu Konfirmasi' : 'Upload Bukti Pembayaran'}
+        </label>
+      </form>
     </div>
   ));
 }

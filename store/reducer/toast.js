@@ -4,7 +4,6 @@ const initialState = {
   title: '',
   message: '',
   show: false,
-  bg: 'primary',
 };
 
 const toastReducer = (state = initialState, action) => {
