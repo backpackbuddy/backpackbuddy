@@ -26,6 +26,7 @@
         "array-bracket-spacing": 1,
         "object-curly-spacing": 1,
         "camelcase": "off",
-        "no-alert": "off"
+        "no-alert": "off",
+        "max-len": "off"
     }
 }
