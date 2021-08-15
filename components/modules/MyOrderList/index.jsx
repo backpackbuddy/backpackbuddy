@@ -18,7 +18,7 @@ function MyOrderList({ orders }) {
   const [modalPrice, setModalPrice] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const dispatch = useDispatch();
-  const isPendingPayment = (status_code) => status_code === 4;
+  const isPendingPayment = (status_code) => status_code === 1;
 
   const receiptUploadHandler = async (e, id, index) => {
     if (window.confirm('Upload file sekarang?')) {
@@ -125,14 +125,16 @@ function MyOrderList({ orders }) {
               content: (
                 <div className="d-flex align-items-center">
                   {status_code === 1 && (
-                    <>
+                    <button
+                      type="button"
+                      className="btn text-secondary p-0 shadow-none"
+                    >
                       <FontAwesomeIcon
-                        className="text-secondary mr-1"
+                        className="mr-1"
                         icon={faQuestionCircle}
                         onClick={() => revealPaymentInfo(price)}
-                        style={{ cursor: 'pointer' }}
                       />
-                    </>
+                    </button>
                   )}
                   <StatusBadge statusCode={status_code}>{status}</StatusBadge>
                 </div>
