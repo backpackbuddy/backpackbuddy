@@ -18,7 +18,7 @@ function MyOrderList({ orders }) {
   const [modalPrice, setModalPrice] = useState(0);
   const [modalShow, setModalShow] = useState(false);
   const dispatch = useDispatch();
-  const isPayed = (status_code) => status_code === 4;
+  const isPendingPayment = (status_code) => status_code === 4;
 
   const receiptUploadHandler = async (e, id, index) => {
     if (window.confirm('Upload file sekarang?')) {
@@ -134,13 +134,7 @@ function MyOrderList({ orders }) {
                       />
                     </>
                   )}
-                  <button
-                    type="button"
-                    className="btn shadow-none p-0"
-                    onClick={() => revealPaymentInfo(price)}
-                  >
-                    <StatusBadge statusCode={status_code}>{status}</StatusBadge>
-                  </button>
+                  <StatusBadge statusCode={status_code}>{status}</StatusBadge>
                 </div>
               ),
             },
@@ -158,10 +152,11 @@ function MyOrderList({ orders }) {
             </div>
           ))}
 
+          {isPendingPayment(status_code) && (
           <form className="d-flex justify-content-between align-items-center">
             <label
               className={cslx(
-                isPayed(status_code) && 'disabled',
+                isPendingPayment(status_code) || 'disabled',
                 'mx-auto d-block text-uppercase mt-3 btn btn-link btn-sm',
               )}
               htmlFor={`receipt-${id}`}
@@ -171,13 +166,14 @@ function MyOrderList({ orders }) {
                 className="d-none"
                 id={`receipt-${id}`}
                 name="receipt"
-                disabled={isPayed(status_code)}
+                disabled={!isPendingPayment(status_code)}
                 onChange={(e) => receiptUploadHandler(e, id, index)}
               />
-              <FontAwesomeIcon className="mr-2" icon={isPayed(status_code) ? faCheck : faUpload} />
-              {isPayed(status_code) ? 'Menunggu Konfirmasi' : 'Upload Bukti Pembayaran'}
+              <FontAwesomeIcon className="mr-2" icon={isPendingPayment(status_code) ? faUpload : faCheck} />
+              {isPendingPayment(status_code) ? 'Upload Bukti Pembayaran' : 'Menunggu Konfirmasi'}
             </label>
           </form>
+          )}
         </div>
       ))}
     </>
