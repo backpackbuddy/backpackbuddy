@@ -31,7 +31,7 @@ function Login() {
                 className="text-center mb-5"
                 style={{ fontSize: '2.5rem' }}
               >
-                LOGIN
+                MASUK
               </Title>
               <LoginForm />
               <div className="text-center mt-4">

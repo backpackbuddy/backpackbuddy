@@ -136,7 +136,7 @@ function Header(props) {
             ) : [
               {
                 url: '/login',
-                name: 'Login',
+                name: 'Masuk',
                 classes: 'mr-2 d-none d-lg-block',
               },
               {
