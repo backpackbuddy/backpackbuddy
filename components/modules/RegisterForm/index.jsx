@@ -2,12 +2,15 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import toTitleCase from 'to-title-case';
+import { setToast } from '../../../store/actions/toast';
 
 function RegisterForm() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
   const inputRef = {
     name: useRef(null),
     username: useRef(null),
@@ -43,6 +46,12 @@ function RegisterForm() {
     try {
       await axios.post('/register', data);
       router.back();
+
+      // send toast notification
+      dispatch(setToast({
+        title: 'Registrasi Berhasil',
+        message: 'Silahkan melakukan Masuk',
+      }));
     } catch (err) {
       const { errors, message } = err.response.data;
       setError({ ...errors, message });
