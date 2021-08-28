@@ -83,7 +83,7 @@ function Header(props) {
             {[
               {
                 url: '/',
-                name: 'Home',
+                name: 'Beranda',
               },
               {
                 url: '/destination',
