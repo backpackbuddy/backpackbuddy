@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Router from 'next/router';
 import { useRef, useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
@@ -39,9 +40,9 @@ function LoginForm() {
 
   const inputAttributes = [
     {
-      label: 'Username atau Email',
+      label: 'Username',
       name: 'username',
-      placeholder: 'Masukkan username atau email',
+      placeholder: 'Masukkan username',
       autofocus: true,
     },
     {
@@ -76,14 +77,19 @@ function LoginForm() {
             )}
         </Form.Group>
       ))}
-      <Form.Group controlId="rememberMe">
-        <Form.Check
-          type="checkbox"
-          ref={inputRef.rememberMe}
-          disabled={loading}
-          label="&nbsp;Ingat Saya"
-        />
-      </Form.Group>
+      <div className="d-flex justify-content-between">
+        <Form.Group controlId="rememberMe">
+          <Form.Check
+            type="checkbox"
+            ref={inputRef.rememberMe}
+            disabled={loading}
+            label="&nbsp;Ingat Saya"
+          />
+        </Form.Group>
+        <Link href="/forgot">
+          <a className="text-primary" href="/forgot">Lupa Password?</a>
+        </Link>
+      </div>
       <Button
         className="d-block w-100"
         disabled={loading}
