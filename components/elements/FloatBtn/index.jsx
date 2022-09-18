@@ -7,10 +7,7 @@ import {
 
 function ContactBtn() {
   const [isOpen, setIsOpen] = useState(false);
-
-  function toggleIsOpen() {
-    return setIsOpen((prevPros) => !prevPros);
-  }
+  const toggleIsOpen = () => setIsOpen((prevPros) => !prevPros);
 
   return (
     <FloatingMenu

@@ -3,12 +3,12 @@ import { FooterArrowIcon } from '../../elements/Icons';
 import Sosmed from '../../elements/Sosmed';
 
 function Footer() {
-  function scrollToTop() {
+  const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-  }
+  };
 
   return (
     <footer className="footer text-light text-center py-5 bg-dark">
