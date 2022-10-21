@@ -8,7 +8,7 @@
         "build": "next build",
         "preexport": "npm run build",
         "export": "next export",
-        "start": "next start -p $PORT:-3000"
+        "start": "next start -p ${PORT:-3000}"
     },
     "devDependencies": {
         "eslint": "^7.29.0",

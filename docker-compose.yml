@@ -13,7 +13,7 @@ services:
       - ${PORT}:${PORT}
     working_dir: /app
     env_file: .env
-    command: sh -c 'npm i --legacy-peer-deps; npm run build; npm start'
+    command: sh -c 'npm i --force; npm run build; npm start'
     restart: unless-stopped
     networks:
       - backpackbuddy
