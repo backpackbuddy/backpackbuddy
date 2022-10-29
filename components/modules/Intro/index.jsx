@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import { Button, Carousel, Container } from 'react-bootstrap';
 
-function Intro() {
-  function Btn() {
-    return (
-      <Link href="/destination">
-        <Button className="intro__btn mt-5">Cari tau disini</Button>
-      </Link>
-    );
-  }
+function Btn() {
+  return (
+    <Link href="/destination">
+      <Button className="intro__btn mt-5">Cari tau disini</Button>
+    </Link>
+  );
+}
 
+function Intro() {
   return (
     <div className="intro">
       <Carousel className="intro__carousel" controls={false} pause={false}>

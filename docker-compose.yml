@@ -6,14 +6,14 @@ networks:
 
 services:
   app:
-    image: node:16-alpine
+    image: node:10-alpine
     volumes:
       - .:/app
     ports:
       - ${PORT}:${PORT}
     working_dir: /app
     env_file: .env
-    command: sh -c 'npm i --force; npm run build; npm start'
+    command: npm start
     restart: unless-stopped
     networks:
       - backpackbuddy

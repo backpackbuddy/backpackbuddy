@@ -26,34 +26,32 @@ function OrderForm({ itineraryId }) {
   };
 
   return (
-    <>
-      <Form onSubmit={handleSubmit} method="POST">
-        <Form.Group controlId="payment">
-          <Form.Check
-            type="radio"
-            name="payment"
-            disabled={loading}
-            ref={payment}
-            checked
-            label="Transfer Bank"
-            isInvalid={Boolean(error?.payment)}
-          />
-          {error?.payment && (
+    <Form onSubmit={handleSubmit} method="POST">
+      <Form.Group controlId="payment">
+        <Form.Check
+          type="radio"
+          name="payment"
+          disabled={loading}
+          ref={payment}
+          checked
+          label="Transfer Bank"
+          isInvalid={Boolean(error?.payment)}
+        />
+        {error?.payment && (
           <Form.Control.Feedback type="invalid">
             {error.payment.map((err) => <div>{err}</div>)}
           </Form.Control.Feedback>
-          )}
-        </Form.Group>
-        <Button
-          className="d-block w-100 mt-4"
-          disabled={loading}
-          variant="primary"
-          type="submit"
-        >
-          {loading ? 'Memproses...' : 'Order Sekarang'}
-        </Button>
-      </Form>
-    </>
+        )}
+      </Form.Group>
+      <Button
+        className="d-block w-100 mt-4"
+        disabled={loading}
+        variant="primary"
+        type="submit"
+      >
+        {loading ? 'Memproses...' : 'Order Sekarang'}
+      </Button>
+    </Form>
   );
 }
 

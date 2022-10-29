@@ -5,8 +5,6 @@ import Footer from '../modules/Footer';
 import NotificationToast from '../modules/NotificationToast/NotificationToast';
 
 function Layout(props) {
-  const { children } = props;
-
   return (
     <>
       <Head>
@@ -22,7 +20,7 @@ function Layout(props) {
           content="backpack, buddy, travel, id, indonesia, bali, free, itinerary, wisata, backpacker"
         />
         <title>Backpack Buddy</title>
-        <link rel="favicon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link
@@ -30,7 +28,7 @@ function Layout(props) {
           rel="stylesheet"
         />
       </Head>
-      <main {...props}>{children}</main>
+      <main {...props} />
       <ContactBtn />
       <Footer />
       <div
