@@ -1,7 +1,7 @@
 # Backpackbuddy Landing Page
 
 ### Local Development
-First, run the backend server https://github.com/yudi7ll/backpackbuddy-admin
+First, run the backend server https://github.com/yudi7ll/backpackbuddy-admin.
 ```
 npm install
 npm run dev
