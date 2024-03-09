@@ -44,10 +44,12 @@ function LoginForm() {
       name: 'username',
       placeholder: 'Masukkan username',
       autofocus: true,
+      defaultValue: 'member',
     },
     {
       name: 'password',
       type: 'password',
+      defaultValue: 'password',
     },
   ];
 
@@ -55,7 +57,7 @@ function LoginForm() {
     <Form onSubmit={submitHandler} method="POST">
       {error?.message && <Alert variant="danger">{error.message}</Alert>}
       {inputAttributes.map(({
-        label, name, type, placeholder, autofocus = false,
+        label, name, type, placeholder, autofocus = false, defaultValue
       }) => (
         <Form.Group key={name} controlId={`input${toTitleCase(name)}`}>
           <Form.Label>{label || toTitleCase(name)}</Form.Label>
@@ -68,6 +70,7 @@ function LoginForm() {
             isInvalid={Boolean(error?.[name])}
             placeholder={placeholder || `Masukkan ${name}`}
             autoFocus={autofocus}
+            defaultValue={defaultValue}
           />
           {error?.[name]
             && (
